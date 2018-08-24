@@ -1,7 +1,7 @@
 # Teamwork Questionnaire for _Vina Nguyen_
 
 1. __Is it generally easier to reach you by text, electronic mail, voice mail or something else?  What hours?__ 
-   * Yes. From 7AM to 12AM
+   * You can text me or email me from 7AM to 12AM. I will reply as soon as possible.
 1. __What are your expectations about what your team will accomplish this semester?__ 
    * Be responsible, finish each individual tasks on time, don't procrastinate, know how to work as a team
 1. __What are your personal goals for improving your teamwork and communication skills this semester?__ 
