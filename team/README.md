@@ -1,5 +1,8 @@
 # t04 - _team name goes here_
-Team image goes here
+<p align="center">
+<img src="https://github.com/csu18fa314/t04/blob/master/team/images/IMG-9852.jpeg" width="70%" height="60%"> 
+</p>
+From left to right: Vina Nguyen, Zhe Liu, Kira, Abel
 
 # Member Information
 | Name | CSU eName | GitHub Username | Email | Nickname (Optional) |
@@ -14,8 +17,10 @@ My paragraph bio will be here
 ### Kira Deming
 I am a first-year masters student in the Department of Forest and Rangeland Stewardship (FRS) where my research focuses on forest planning software and optimization. In addition, I work with FRS and The Colorado Forest Restoration Institute as a GIS Analyst.  When I'm not working, I enjoy running and being outdoors.  I earned my BS in Ecosystem Science and Sustainability from Colorado State University in 2018.  
 
+
 # Manifesto
  Values are here (4 totals each person per para)
+
 
 # Expectations
  I think each of us should write a few lines and combine them later.Please be more specific.
