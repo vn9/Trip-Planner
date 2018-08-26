@@ -15,7 +15,7 @@
 
 **To teammates:** Cells can vary in width and do not need to be perfectly aligned within columns. 
 ### Vina Nguyen
-My paragraph bio will be here
+I am a fourth-year student pursuing a Bachelor degree in Computer Science and I expect to graduate in 2019. Currently I am a lab monitor at the College of Liberal Arts and an undergraduate research assistant at the department of Computer Science. During my free time, I enjoy hiking, listening to music and watching anime. After graduation, I plan to continue my education by becoming a graduate student at Colorado State University.
 
 ### Kira Deming
 I am a first-year masters student in the Department of Forest and Rangeland Stewardship (FRS) where my research focuses on forest planning software and optimization. In addition, I work with FRS and The Colorado Forest Restoration Institute as a GIS Analyst.  When I'm not working, I enjoy running and being outdoors.  I earned my BS in Ecosystem Science and Sustainability from Colorado State University in 2018.
@@ -25,8 +25,9 @@ I am a third-year computer science student who is planning to graduate in the sp
 
 
 # Manifesto
- Values are here (4 totals each person per para)
+In a team there will be many perspectives about a problem. If each person tries to talk and does not listen to each other's words, the problem will get worse and the team will collapse. Therefore, listening to each other is a significant key for a successful team and I value that. I also think listening to each other shows respect to the team member and gives me  the opportunity to learn something new. 
+
 
 
 # Expectations
- I think each of us should write a few lines and combine them later.Please be more specific.
+ My expectation is that every member will not procrastinate. It is always good to start early. If we do not know how to solve a problem while working individually, we still have other members who can help us. Then we will have the results we want. If one of us procrastinates, it will affect each others' progress and we will not have the assisnments completed on time. 
