@@ -20,7 +20,7 @@ My paragraph bio will be here
 I am a first-year masters student in the Department of Forest and Rangeland Stewardship (FRS) where my research focuses on forest planning software and optimization. In addition, I work with FRS and The Colorado Forest Restoration Institute as a GIS Analyst.  When I'm not working, I enjoy running and being outdoors.  I earned my BS in Ecosystem Science and Sustainability from Colorado State University in 2018.
 
 ### Abel Ykalo
-I am a third-year computer science student who anticipates to graduate in the spring of 2020. I work as a student web developer for the Collaborative for Student Achievement at Colorado State University. I am president fo the Soceity of Black Engineers and Scientists (NSBE) at Colorado State and enjoy playing video games and solving puzzles of any type when time permits. 
+I am a third-year computer science student who is planning to graduate in the spring of 2020. I work as a student web developer for the Collaborative for Student Achievement at Colorado State University. I am president fo the Soceity of Black Engineers and Scientists (NSBE) at Colorado State and enjoy playing video games and solving puzzles of any type when time permits. 
 
 
 # Manifesto
