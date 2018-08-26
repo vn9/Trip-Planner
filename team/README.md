@@ -1,8 +1,10 @@
 # t04 - _team name goes here_
 <p align="center">
 <img src="https://github.com/csu18fa314/t04/blob/master/team/images/IMG-9852.jpeg" width="70%" height="60%"> 
+<p align="center">
+ <b> From Left to Right: </b> Vina Nguyen, Zhe Liu, Kira Deming, Abel Ykalo
 </p>
-From left to right: Vina Nguyen, Zhe Liu, Kira, Abel
+</p>
 
 # Member Information
 | Name | CSU eName | GitHub Username | Email | Nickname (Optional) |
