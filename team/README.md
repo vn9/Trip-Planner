@@ -9,6 +9,7 @@ From left to right: Vina Nguyen, Zhe Liu, Kira, Abel
 | :---: | :---: | :---: | :---: | :---: |
 | Vina Nguyen | vnnguyen | vn9 | vnnguyen@rams.colostate.edu | N/A |
 | Kira Deming | kdeming | kirademing | kdeming@rams.colostate.edu | N/A |
+| Abel Ykalo | aykalo | aykalo | aykalo@rams.colostate.edu | N/A |
 
 **To teammates:** Cells can vary in width and do not need to be perfectly aligned within columns. 
 ### Vina Nguyen
