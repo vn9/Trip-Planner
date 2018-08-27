@@ -12,8 +12,7 @@
 | Vina Nguyen | vnnguyen | vn9 | vnnguyen@rams.colostate.edu | N/A |
 | Kira Deming | kdeming | kirademing | kdeming@rams.colostate.edu | N/A |
 | Abel Ykalo | aykalo | aykalo | aykalo@rams.colostate.edu | N/A |
-
-**To teammates:** Cells can vary in width and do not need to be perfectly aligned within columns. 
+ 
 ### Vina Nguyen
 I am a fourth-year student pursuing a Bachelor degree in Computer Science and I expect to graduate in 2019. Currently I am a lab monitor at the College of Liberal Arts and an undergraduate research assistant at the department of Computer Science. During my free time, I enjoy hiking, listening to music and watching anime. After graduation, I plan to continue my education by becoming a graduate student at Colorado State University.
 
