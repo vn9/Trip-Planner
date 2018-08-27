@@ -24,9 +24,12 @@ I am a third-year computer science student who is planning to graduate in the sp
 
 
 # Manifesto
-In a team there will be many perspectives about a problem. If each person tries to talk and does not listen to each other's words, the problem will get worse and the team will collapse. Therefore, listening to each other is a key for a successful team. we also think listening to each other shows respect to the team member and gives us the opportunity to learn something new. 
+In a team there will be many perspectives about a problem. If each person tries to talk and does not listen to each other's words, the problem will get worse and the team will collapse. Therefore, listening to each other is a key for a successful team. We also think listening to each other shows respect to the team member and gives us the opportunity to learn something new. 
 
-
+Our team also values hard work and effort.  We understand that everyone has a unique skillset to bring to the team and that this will influence what their contributions look like.  That is okay, all we ask is that everyone puts forth their best work and effort.  By working together as  a team we can create things that we never could on our own, but that must start with everyone's individual efforts.  If the initial work is not there, there is nothing we can work with.  
 
 # Expectations
 The first expectation our team has is that every member will not procrastinate. It is always good to start early. If we do not know how to solve a problem while working individually, we still have other members who can help us. Then we will have the results we want. If one of us procrastinates, it will affect each others' progress and we will not have the assisnments completed on time. 
+
+The second expectation of our team is that constructive feedback will be given.  This means that if someone asks for a review, it will be done. This expectation does not imply that all feedback will be positive, but that feedback will be provided in a way that will help guide the work toward the desired end product.  This means giving helpful suggestions for improvement, rather than just asking someone to redo their work.  It is also answering questions and pointing others in the right direction.  
+
