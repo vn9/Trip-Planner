@@ -25,9 +25,9 @@ I am a third-year computer science student who is planning to graduate in the sp
 
 
 # Manifesto
-In a team there will be many perspectives about a problem. If each person tries to talk and does not listen to each other's words, the problem will get worse and the team will collapse. Therefore, listening to each other is a significant key for a successful team and I value that. I also think listening to each other shows respect to the team member and gives me  the opportunity to learn something new. 
+In a team there will be many perspectives about a problem. If each person tries to talk and does not listen to each other's words, the problem will get worse and the team will collapse. Therefore, listening to each other is a key for a successful team. we also think listening to each other shows respect to the team member and gives us the opportunity to learn something new. 
 
 
 
 # Expectations
- My expectation is that every member will not procrastinate. It is always good to start early. If we do not know how to solve a problem while working individually, we still have other members who can help us. Then we will have the results we want. If one of us procrastinates, it will affect each others' progress and we will not have the assisnments completed on time. 
+The first expectation our team has is that every member will not procrastinate. It is always good to start early. If we do not know how to solve a problem while working individually, we still have other members who can help us. Then we will have the results we want. If one of us procrastinates, it will affect each others' progress and we will not have the assisnments completed on time. 
