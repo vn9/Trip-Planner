@@ -1,4 +1,4 @@
-# t04 - _team name goes here_
+# t04 - _Rush Hour_
 <p align="center">
 <img src="https://github.com/csu18fa314/t04/blob/master/team/images/IMG-9852.jpeg" width="70%" height="60%"> 
 <p align="center">
