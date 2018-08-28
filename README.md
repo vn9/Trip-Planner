@@ -12,6 +12,7 @@
 | Vina Nguyen | vnnguyen | vn9 | vnnguyen@rams.colostate.edu | N/A |
 | Kira Deming | kdeming | kirademing | kdeming@rams.colostate.edu | N/A |
 | Abel Ykalo | aykalo | aykalo | aykalo@rams.colostate.edu | N/A |
+| Zhe Liu | liuzhezz | liuzhezz | liuzhezz@rams.colostate.edu | N/A |
  
 ### Vina Nguyen
 I am a fourth-year student pursuing a Bachelor degree in Computer Science and I expect to graduate in 2019. Currently I am a lab monitor at the College of Liberal Arts and an undergraduate research assistant at the department of Computer Science. During my free time, I enjoy hiking, listening to music and watching anime. After graduation, I plan to continue my education by becoming a graduate student at Colorado State University.
@@ -22,6 +23,8 @@ I am a first-year masters student in the Department of Forest and Rangeland Stew
 ### Abel Ykalo
 I am a third-year computer science student who is planning to graduate in the spring of 2020. I work as a student web developer for the Collaborative for Student Achievement at Colorado State University. I am president fo the Soceity of Black Engineers and Scientists (NSBE) at Colorado State and enjoy playing video games and solving puzzles of any type when time permits. 
 
+### Zhe Liu
+I am a fourth-year student in computer science major. I also minor mathematics at the same time. I do not have any working or researching exprience currently but I am planning to find a lab this semester. I choose computer science just because I like all kinds of video games. Therefore, comparing with other major I am not interested in, computer science can let me know how those amazing games be produced. Additionally, artifical intelligence is one of the thing attracts me so I might choose AI branch in my master program.
 
 # Manifesto
 In a team there will be many perspectives about a problem. If each person tries to talk and does not listen to each other's words, the problem will get worse and the team will collapse. Therefore, listening to each other is a key for a successful team. We also think listening to each other shows respect to the team member and gives us the opportunity to learn something new. 
