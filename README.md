@@ -33,3 +33,6 @@ The first expectation our team has is that every member will not procrastinate. 
 
 The second expectation of our team is that constructive feedback will be given.  This means that if someone asks for a review, it will be done. This expectation does not imply that all feedback will be positive, but that feedback will be provided in a way that will help guide the work toward the desired end product.  This means giving helpful suggestions for improvement, rather than just asking someone to redo their work.  It is also answering questions and pointing others in the right direction.  
 
+Last but not least, we expect eveyone in the team to follow some steps to work with gitHub. First of all, we will create new issue stating the problem we are trying to resolve and how we will approach it. Then, we will make the changes in the files. Next, we ask for a pull request. If the changes we made are important we will let other team members know to have at least two persons review the changes. Otherwise, we will need only one reviewer so we do not have to wait to do the next step. After reviewing we will approve the changes and comment to close the current issue. Finally, we agree that the last person who review the pull request will merge the branch to the master to prevent bias. 
+
+
