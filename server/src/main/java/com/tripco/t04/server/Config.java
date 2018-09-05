@@ -7,15 +7,16 @@ import java.util.List;
 
 public class Config {
 
-  private short version = 1;
-  private String type = "config";
+    private short version = 1;
+    private String type = "config";
 
-  private List<String> units = Arrays.asList("miles");
+    private List<String> units = Arrays.asList("miles", "kilometers", "Nautical Miles");
 
-  static String getConfig() {
-    Config conf = new Config();
-    Gson gson = new Gson();
 
-    return gson.toJson(conf);
-  }
+    static String getConfig() {
+        Config conf = new Config();
+        Gson gson = new Gson();
+
+        return gson.toJson(conf);
+    }
 }
