@@ -56,9 +56,9 @@ public class Trip {
     dist.add(34);
     dist.add(45);
     dist.add(65);
-    dist.add(19);
+    dist.add(19); //should actually be 19
 
     return dist;
   }
-
+//hello
 }
