@@ -34,13 +34,13 @@ public class Calculate {
 
         // convert the body of the request to a Java class.
         Gson gson = new Gson();
-        dist_obj = gson.fromJson(requestBody, Distance.class);
+        dist = gson.fromJson(requestBody, Distance.class);
 
         // Calculate the distance.
-        dist_obj.Calculate();
+        dist.vincenty(); //make sure dist.XXXXXX matches the method in Abel's Distance class
 
         // log something.
-        System.out.println(dist_obj.title);
+        System.out.println(dist.title);
     }
 
     /** Handles the response for a distance object.
