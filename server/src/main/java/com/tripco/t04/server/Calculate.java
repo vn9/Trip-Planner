@@ -37,7 +37,7 @@ public class Calculate {
         dist = gson.fromJson(requestBody, Distance.class);
 
         // Calculate the distance.
-        dist.vincenty(); //make sure dist.XXXXXX matches the method in Abel's Distance class
+        dist.vincenty();
 
         // log something.
         System.out.println(dist.title);
