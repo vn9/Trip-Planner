@@ -17,7 +17,7 @@ class Application extends Component {
         type: "trip",
         title: "",
         options: {
-          unit: "miles", unit1:  "kilometers", unit2: "nautical miles",
+          unit: "miles", unit1:  "kilometers", unit2: "Nautical Miles",
         },
         places: [],
         distances: [],
