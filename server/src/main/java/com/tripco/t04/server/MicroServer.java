@@ -117,7 +117,14 @@ public class MicroServer {
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
 
-    return "{}";
+    return new Plan(request).getTrip();
+  }
+
+  private String distance(Request request, Response response){
+    response.type("application/json");
+    response.header("Access-Control-Allow-Origin", "*");
+
+    return new Calculate(request).getDistance();   //Add a Calculate Class in planner folder with getdistance() method to complete.
   }
 
 
