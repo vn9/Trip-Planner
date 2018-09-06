@@ -124,7 +124,7 @@ public class MicroServer {
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
 
-    return new Calculate(request).getdistance();   //Add a Calculate Class in planner folder with getdistance() method to complete.
+    return new Calculate(request).getDistance();   //Add a Calculate Class in planner folder with getdistance() method to complete.
   }
 
   /** A REST API that returns the team information associated with the server.
