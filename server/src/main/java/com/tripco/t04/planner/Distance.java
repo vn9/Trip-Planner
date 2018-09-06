@@ -24,7 +24,7 @@ public class Distance {
         double top = Math.pow(Math.cos(phi2)*Math.sin(delta),2) + Math.pow(Math.cos(phi1)*Math.sin(phi2)-Math.sin(phi1)*Math.cos(phi2)*Math.cos(delta),2);
         top = Math.sqrt(top);
         double bottom = Math.sin(phi1) * Math.sin (phi2) + Math.cos(phi1) * Math.cos(phi2) * Math.cos(delta);
-        distance = (int)Math.atan(top/bottom);
+        distance = (int)Math.atan2(top,bottom);
         distance = distance * 3959;
         return distance;
     }
