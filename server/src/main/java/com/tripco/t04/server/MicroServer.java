@@ -45,6 +45,7 @@ public class MicroServer {
     // client is sending data, so a HTTP POST is used instead of a GET
     get("/config", this::config);
     post("/plan", this::plan);
+    post("/distance", this::distance);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
   }
@@ -118,6 +119,7 @@ public class MicroServer {
 
     return "{}";
   }
+
 
   /** A REST API that returns the team information associated with the server.
    *
