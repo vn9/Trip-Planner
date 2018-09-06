@@ -16,12 +16,12 @@ class Application extends Component {
       trip: {
         type: "trip",
         title: "",
-        options : {
-          unit: "miles"
+        options: {
+          unit: "miles", unit1:  "kilometers", unit2: "Nautical Miles",
         },
         places: [],
         distances: [],
-        map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
+          map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
       }
     };
     this.updateTrip = this.updateTrip.bind(this);
