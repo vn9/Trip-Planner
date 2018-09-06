@@ -10,7 +10,7 @@ public class Config {
     private short version = 1;
     private String type = "config";
 
-    private List<String> units = Arrays.asList("miles", "kilometers", "Nautical Miles");
+    private List<String> units = Arrays.asList("miles", "kilometers", "nautical miles");
 
 
     static String getConfig() {
