@@ -50,6 +50,7 @@ Epics planned for this release.
 We were very flexible with being able to meet on short notice and code next to each other. We also were very responsive on Github and Slack with reviewing each other's work. We found that we worked most efficently when we all sat down and coded next to each other. Pull requests were fulfilled quickly and debugging was a team effort instead of individual's burden. 
 
 #### Potential improvements
-Potential improvements that we plan to make are to first, making the assignment of tasks and estimating the difficulty of each task more of a group effort when we all sit down in our weekly meetings. We also plan on implementing incremental deadlines within our sprints so that we are communicating our issues ahead of time and will result in less of a time crunch at the end. 
+A potential improvement is to implement incremental deadlines within our sprints so that we are communicating our issues and successes ahead of time and will result in less of a time crunch at the end and better communcication throughout the sprint. We also can make the estimating of tasks and assignments of them more of a group effort instead of individuals estimating their own tasks after being assigned them.
 
 #### What we will change next time
+We will come together at the beginning of the sprint to create estimates for tasks together and assign tasks at the earliest time possible. We will test our product earlier and more frequently now that we all have a better grasp on how to test our code.
