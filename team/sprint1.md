@@ -1,9 +1,9 @@
-# Sprint # - *your team number* - *your team name*
+# Sprint # - *04* - *Rush Hour*
 
 ## Goal
 
 ### Distance Calculator!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: *Abel Ykalo*
 
 ## Definition of Done
 
