@@ -47,6 +47,7 @@ Epics planned for this release.
 ## Retrospective
 
 #### What went well
+We were very flexible with being able to meet on short notice and code next to each other. We also were very responsive on github and slack with review on each other's changes. We found that we worked best and most efficently when we all sat down and coded next to each other. Pull requests were fulfilled quickly and debugging was a team effort instead of individual's burden. 
 
 #### Potential improvements
 
