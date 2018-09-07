@@ -1,4 +1,6 @@
-package com.tripco.t04.planner;
+package com.tripco.t04.server;
+import com.tripco.t04.planner.Place;
+
 import java.lang.Math;
 
 public class Distance {
@@ -10,29 +12,33 @@ public class Distance {
     // Note that Place currently has an extra id element
     private Place origin;
     private Place destination;
-    private String units;
+    public String units;
 
     //variable for calculation
     public int distance;
 
-    private int vincenty(){
+    public int vincenty(){
         double phi1 = Math.toRadians(Double.parseDouble(origin.latitude));
         double phi2 = Math.toRadians(Double.parseDouble(destination.latitude));
-        double lambda1 = Math.toRadians(Double.parseDouble(origin.latitude));
-        double lambda2 = Math.toRadians(Double.parseDouble(destination.latitude));
+        double lambda1 = Math.toRadians(Double.parseDouble(origin.longitude));
+        double lambda2 = Math.toRadians(Double.parseDouble(destination.longitude));
         double delta = Math.abs(lambda1-lambda2);
         double top = Math.pow(Math.cos(phi2)*Math.sin(delta),2) + Math.pow(Math.cos(phi1)*Math.sin(phi2)-Math.sin(phi1)*Math.cos(phi2)*Math.cos(delta),2);
         top = Math.sqrt(top);
         double bottom = Math.sin(phi1) * Math.sin (phi2) + Math.cos(phi1) * Math.cos(phi2) * Math.cos(delta);
-        distance = (int)Math.atan2(top,bottom);
+        double angle = Math.atan2(top,bottom);
+        //angle = Math.toRadians(angle);
         if(units.equals("miles")) {
-            distance = distance * 3959;
+            float hold = (float)angle * 3959;
+            distance = Math.round(hold);
         }
         else if(units.equals("kilometers")) {
-            distance = distance * 6371;
+            float hold = (float)angle * 6371;
+            distance = Math.round(hold);
         }
         else if(units.equals("nautical miles")) {
-            distance = distance * 3440;
+            float hold = (float)angle * 3440;
+            distance = Math.round(hold);
         }
         return distance;
     }

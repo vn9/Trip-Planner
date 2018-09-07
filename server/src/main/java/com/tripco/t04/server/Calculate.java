@@ -40,7 +40,7 @@ public class Calculate {
         dist.vincenty();
 
         // log something.
-        System.out.println(dist.title);
+        System.out.println(dist.units);
     }
 
     /** Handles the response for a distance object.
