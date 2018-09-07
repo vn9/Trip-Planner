@@ -25,13 +25,13 @@ public class Distance {
         top = Math.sqrt(top);
         double bottom = Math.sin(phi1) * Math.sin (phi2) + Math.cos(phi1) * Math.cos(phi2) * Math.cos(delta);
         distance = (int)Math.atan2(top,bottom);
-        if(units == "miles") {
+        if(units.equals("miles")) {
             distance = distance * 3959;
         }
-        else if(units == "kilometers") {
+        else if(units.equals("kilometers")) {
             distance = distance * 6371;
         }
-        else if(units == "nautical miles") {
+        else if(units.equals("nautical miles")) {
             distance = distance * 3440;
         }
         return distance;
