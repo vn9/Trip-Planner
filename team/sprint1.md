@@ -29,10 +29,10 @@ Epics planned for this release.
 
 Planning Decisions Made
 
-*Set weekly group meeting
-*Assigned task difficulty values
-*Distributed tasks in an equitable manner
-*Added two other face-to-face group meetings
+* Set weekly group meeting
+* Assigned task difficulty values
+* Distributed tasks in an equitable manner
+* Added two other face-to-face group meetings
 
 
 ## Review
@@ -45,8 +45,10 @@ Planning Decisions Made
 * *None*
 
 #### What went well
-* *something*
-*
+* Everyone was very accomdating when it came to arranging extra meeting times.
+* Debugging as a team.
+* People were responsive in the Slack channel when teammates had questions.
+* All tasks were completed.
 
 #### Problems encountered and resolutions
 * *something*
