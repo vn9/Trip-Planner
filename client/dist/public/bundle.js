@@ -38900,7 +38900,7 @@ var Navigation = function (_Component) {
           _react2.default.createElement(
             _reactstrap.NavbarBrand,
             { className: 'nav_title', href: '/' },
-            't04 TripCo'
+            't04 Rush Hour'
           ),
           _react2.default.createElement(
             'div',
