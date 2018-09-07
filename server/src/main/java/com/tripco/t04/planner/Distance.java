@@ -31,6 +31,9 @@ public class Distance {
         else if(units == "kilometers") {
             distance = distance * 6371;
         }
+        else if(units == "nautical miles") {
+            distance = distance * 3440;
+        }
         return distance;
     }
 }
