@@ -1,4 +1,4 @@
-# Sprint # - *04* - *Rush Hour*
+# Sprint 1 - *04* - *Rush Hour*
 
 ## Goal
 
@@ -9,22 +9,31 @@
 
 * Web application deployed on the production server (black-bottle.cs.colostate.edu).
 * Version in server/pom.xml should be `<version>1.0</version>`.
-* Sprint Review and Restrospectives completed (sprint#.md).
+* Sprint Review and Restrospectives completed (sprint1.md).
 * Product Increment release `v1.0` created on GitHub.
+* Personalized the user interface with team name, number, and unit buttons.
 
 ## Policies
 
 * All commits include a task/issue number.
-* No commits to master
+* No commits to master.
+* At least one approving review before merging code.
+* Post messages in Slack, not group chat.
 
 ## Plan
 
 Epics planned for this release.
 
-* *## title*
-*
+* *RESTful Service for distance*
+* *Responsive Client for distance calculator*
 
-*Include a discussion of planning decisions the team made.*
+Planning Decisions Made
+
+*Set weekly group meeting
+*Assigned task difficulty values
+*Distributed tasks in an equitable manner
+*Added two other face-to-face group meetings
+
 
 ## Review
 
@@ -33,8 +42,7 @@ Epics planned for this release.
 * 
 
 #### Incomplete epics in Sprint Backlog 
-* *user story*: *explanation...*
-*
+* *None*
 
 #### What went well
 * *something*
