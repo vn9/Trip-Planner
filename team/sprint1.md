@@ -46,13 +46,14 @@ Planning Decisions Made
 
 #### What went well
 * Everyone was very accomdating when it came to arranging extra meeting times.
-* Debugging as a team.
+* Debugging as a team was very efficient. 
 * People were responsive in the Slack channel when teammates had questions.
-* All tasks were completed.
+* We completed all the tasks given to us. 
 
 #### Problems encountered and resolutions
-* *something*
-*
+* *Problem 1:* In the beginning, we did not understand what to do and how our parts would interact.  In order to resolve the problem we sat down as a group and talked ourselves through it.  What we couldn't answer we asked the TA about.  
+* *Problem 2:* When the server deployment test was due at midnight our deployments failed, worked, and failed again.  To get it working, our group messaged back and forth to figure out had who deployed at what time and what they deployed.  Then redeployed the working solution. 
+* *Problem 3:*  After all the other code came together, our code wouldn't return the correct numbers.  In order to fix the problem our group met up in the computer lab to suggest and test solutions.  
 
 ## Retrospective
 
