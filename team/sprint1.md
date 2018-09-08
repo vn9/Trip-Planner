@@ -63,4 +63,4 @@ We were very flexible with being able to meet on short notice and code next to e
 A potential improvement is to implement incremental deadlines within our sprints so that we are communicating our issues and successes ahead of time, which will result in less of a time crunch at the end and better communcication throughout the sprint. We will make the time estimations and assignments more of a group effort instead of individuals estimating their own tasks after being assigned them.
 
 #### What we will change next time
-We will come together at the beginning of the sprint to create estimates for tasks together and assign tasks at the earliest time possible. We will also test our product earlier and more frequently now that we all have a better grasp on how to test our code.
+We will come together at the beginning of the sprint to create estimates for tasks together and assign tasks at the earliest time possible. In addition, having an early meeting will help reduce confusion about the assignment and the individual tasks. We will also test our product earlier and more frequently now that we all have a better grasp on how to test our code.
