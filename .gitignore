@@ -8,5 +8,7 @@ client/*.log
 client_bundle/
 target/
 
+/client/dist/
+
 # Client Jest coverage reports
 /client/coverage/
