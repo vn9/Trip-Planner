@@ -8,7 +8,7 @@
 1. __What are your personal goals for improving your teamwork and communication skills this semester?__ 
    * Learn more about the front end.
 1. __What kinds of obstacles might you encounter in trying to reach both your team and personal goals?__ 
-   * Well I don't think I'm familar with the front end. I think I need many time to study.
+   * Well I don't think I'm familar with the front end. I think I need more time to study.
 1. __What happens if some people on the team want to get an “A” while others think a “B” will be acceptable?__ 
    * It's ok
 1. __Is it acceptable for some team members to do more work on the assignment in order to get an “A”?__ 
