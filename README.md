@@ -13,6 +13,7 @@
 | Kira Deming | kdeming | kirademing | kdeming@rams.colostate.edu | N/A |
 | Abel Ykalo | aykalo | aykalo | aykalo@rams.colostate.edu | N/A |
 | Zhe Liu | liuzhezz | liuzhezz | liuzhezz@rams.colostate.edu | N/A |
+| Junyi Liu | junyiliu | JennieLiu | junyiliu@rams.colostate.edu | N/A |
  
 ### Vina Nguyen
 I am a fourth-year student pursuing a Bachelor degree in Computer Science and I expect to graduate in 2019. Currently I am a lab monitor at the College of Liberal Arts and an undergraduate research assistant at the department of Computer Science. During my free time, I enjoy hiking, listening to music and watching anime. After graduation, I plan to continue my education by becoming a graduate student at Colorado State University.
@@ -25,6 +26,9 @@ I am a third-year computer science student who is planning to graduate in the sp
 
 ### Zhe Liu
 I am a fourth-year student with a major in computer science and a minor in mathematics. I chose computer science because I like all kinds of video games and computer science can let me know how those amazing games be produced. Additionally, artifical intelligence (AI) is one of the thing attracts me so I might study AI in my master program. Also, I am looking for a computer science lab where I can be an assistant so that I can connect my knowledge from books with practice. 
+
+### Junyi Liu
+I am a fourth-year student with a double major in computer science and math. Last summer, I worked for Deloitte as a development intern in Beijing. I'm interested in big data and cloud computing. I'm familiar with Spark, Hadoop and HIVE and I love to combine machine learning knowledge with big data to solve interesting problems. I'm actively looking for a position, so if you have any internships or full-time positions that fit me, please contact with me at your earliest convenience. In my spare time, cooking and traveling are my favorite things to do.
 
 # Manifesto
 In a team there will be many perspectives about a problem. If each person tries to talk and does not listen to each other's words, the problem will get worse and the team will collapse. Therefore, listening to each other is a key for a successful team. We also think listening to each other shows respect to the team member and gives us the opportunity to learn something new. 
