@@ -1,12 +1,16 @@
-# Sprint 2 - *your team number* - *your team name*
+# Sprint 2 - *04* - *Rush Hour*
 
 ## Goal
+The goal of this sprint is to have an application that calculates the distances between locations on a multi-location-round trip, displays the trip on a map, and is viewable from any device.  
 
 ### A mobile, responsive map and itinerary!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: *Kira Deming*
 
 ## Definition of Done
 
+* Leg distances are calculated correctly for all units
+* Distance array is returned
+* Map shows line of trip
 * Sprint Review and Restrospectives completed (sprint2.md).
 * Version in pom.xml should be `<version>2.0.0</version>`.
 * Increment deployed for demo and testing.
@@ -14,6 +18,10 @@
 
 
 ## Policies
+* Clean code should be written
+* Two approving reviews, the second approving review merges
+* Test your code, twice 
+* Ask for help, early and often
 
 #### Test Driven Development
 * Write method headers, javadoc, unit tests, and code in that order.
@@ -33,21 +41,23 @@
 
 ## Plan
 
-*An introductory paragraph describing what you expect to accomplish this sprint with a list of epics that will achieve the goal.*
+In this sprint we expect to complete all code related to the calculations for the distances between locations given in a multi-location-round trip, the display of a trip map, and change server port.
 
-* *## epic title: description*
-*
+* *#122 I want a map and itinerary for my trip: App supports new TFFI trip object, calculates distance for roundtrip, and shows a map that can be viewed on mobile.*
+* *#123: I want to supply my own units for the distances: App supports any units defined by the user for distance calculations.*
+* *#125: TripCo: The solution must be responsive for mobile devices: App is designed for mobile environment and still looks good on desktop.*
+* *#126:TripCo: All clients and servers must interporate: Client must include a configuration option to change to a different server:port.*
 
-*Include a discussion of planning decisions.*
+*For this sprint we decided that the first order of business is to make sure that the new units are fully supported.  If we cannot create a trip itinerary then it cannot be drawn on a map.  The second priority is the map and that it scales properly on all devices.  The third and final goal, besides having clean code as a standard, is to make sure that we have a configuration option to change the server port so that anyone can run on our server. We decided to start with the backend because if that doesn't work then we don't have anything for the UI to do.*
 
 
 ## Metrics
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *value* | *value* |
-| Tasks |  *value*   | *value* | 
-| Story Points |  *value*  | *value* | 
+| Epics | *5* | *0* |
+| Tasks |  *7*   | *0* | 
+| Story Points |  *10*  | *0* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
 
@@ -56,7 +66,7 @@
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* | *none* | 
+| *9/14/2018* | *Nones* | *#129, #130, #132* | *Dependencies need to be completed before other important code and tasks can be started* | 
 
 *Add a new row for each scrum session.*
 
