@@ -56,8 +56,8 @@ In this sprint we expect to complete all code related to the calculations for th
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
 | Epics | *5* | *0* |
-| Tasks |  *7*   | *0* | 
-| Story Points |  *10*  | *0* | 
+| Tasks |  *7*   | *1* | 
+| Story Points |  *10*  | *1* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
 
@@ -67,6 +67,8 @@ In this sprint we expect to complete all code related to the calculations for th
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *9/14/2018* | *Nones* | *#129, #130, #132* | *Dependencies need to be completed before other important code and tasks can be started* | 
+| *9/17/2018* | *#129* | *#130, #131, #132, #133, #135 | *Dependencies still need to be finished and making sure that we all know the direction we are going is the correct one. This should be cleared up with TA hours.*|
+
 
 *Add a new row for each scrum session.*
 
