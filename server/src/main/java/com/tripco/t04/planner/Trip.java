@@ -64,10 +64,9 @@ public class Trip {
     catch (Exception e){
       return "Error in load and store file: "+e.getMessage();
     }
-
+    
     // Return the arrayList rawMap
     return rawMap.toString();
-
   }
 
   /**
