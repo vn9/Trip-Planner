@@ -9,7 +9,10 @@ import spark.Spark;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import java.util.ArrayList;
 import static spark.Spark.*;
+
+
 
 
 /** A simple micro-server for the web.  Just what we need, nothing more.
@@ -126,7 +129,6 @@ public class MicroServer {
 
     return new Calculate(request).getDistance();   //Add a Calculate Class in planner folder with getdistance() method to complete.
   }
-
 
   /** A REST API that returns the team information associated with the server.
    *
