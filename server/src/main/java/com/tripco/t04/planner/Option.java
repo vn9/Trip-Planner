@@ -8,5 +8,9 @@ public class Option {
 
   public String distance;
   public String optimization;
+  public String units;
+  public String unitName;
+  public String unitRadius;
+  
 
 }
