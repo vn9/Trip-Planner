@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody } from 'reactstrap'
+import { Card, CardHeader, CardBody, Input, Row} from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
@@ -27,12 +27,32 @@ class Options extends Component{
 
     return(
       <Card>
-        <CardBody>
-          <p>Select the options you wish to use.</p>
-          <ButtonGroup>
-            {buttons}
-          </ButtonGroup>
-        </CardBody>
+        <Row>
+          <CardBody>
+            <p>Upload your file:</p>
+            <Input
+                type = 'file'
+                name = 'file'
+            />
+          </CardBody>
+
+          <CardBody>
+            <p>Select the options you wish to use</p>
+            <ButtonGroup>
+              {buttons}
+            </ButtonGroup>
+          </CardBody>
+
+          <CardBody>
+            <p>Plan your trip now:</p>
+            <Button
+                type='button'
+                className='btn-outline-dark plan-button'
+            >Plan
+            </Button>
+          </CardBody>
+        </Row>
+
       </Card>
     )
   }
