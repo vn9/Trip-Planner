@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class Trip {
   // The variables in this class should reflect TFFI.
   public String type;
+  public Integer version;
   public String title;
   public Option options;
   public ArrayList<Place> places;
@@ -86,7 +87,14 @@ public class Trip {
       if(places != null) {
           totalPlaces = places.size();
           Distance calculator = new Distance(); // Using distance class lower down to calculate the distance between two points
-          calculator.units = options.units;
+          if(options.units.equals("user defined")){
+              calculator.units = options.units;
+              calculator.unitName = options.unitName;
+              calculator.unitRadius = options.unitRadius;
+          }
+          else {calculator.units = options.units;}
+
+
           for (int i = 0; i < totalPlaces; i++) //for loop that occurs the same number of times = totalPlaces
           {
               Place start = places.get(i); //origin, where you are driving from

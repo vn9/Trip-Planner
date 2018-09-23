@@ -45252,7 +45252,7 @@ var Options = function (_Component) {
             active: _this2.props.options.unit === unit,
             value: unit,
             onClick: function onClick(event) {
-              return _this2.props.updateOptions('distance', event.target.value);
+              return _this2.props.updateOptions('unit', event.target.value);
             }
           },
           unit.charAt(0).toUpperCase() + unit.slice(1)

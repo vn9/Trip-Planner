@@ -10,7 +10,7 @@ public class Option {
   public String optimization;
   public String units;
   public String unitName;
-  public String unitRadius;
+  public Double unitRadius;
   
 
 }
