@@ -3,6 +3,7 @@ package com.tripco.t04.planner;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.tripco.t04.server.Distance;
 import com.tripco.t04.server.HTTP;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -76,17 +77,40 @@ public class Trip {
    */
   private ArrayList<Integer> legDistances() {
 
-    ArrayList<Integer> dist = new ArrayList<Integer>();
+      ArrayList<Integer> dist = new ArrayList<Integer>();
+      //dist.add(places.size());
 
-    // hardcoded example
-    dist.add(12);
-    dist.add(23);
-    dist.add(34);
-    dist.add(45);
-    dist.add(65);
-    dist.add(19); //should actually be 19
+      ArrayList<Place> roadtrip = new ArrayList<Place>();
 
-    return dist;
+      int totalPlaces; //total number of places in the plan. i.e. (Denver, FoCo, Boulder. totalPlaces = 3.)
+      if(places != null) {
+          totalPlaces = places.size();
+          Distance calculator = new Distance(); // Using distance class lower down to calculate the distance between two points
+          calculator.units = options.units;
+          for (int i = 0; i < totalPlaces; i++) //for loop that occurs the same number of times = totalPlaces
+          {
+              Place start = places.get(i); //origin, where you are driving from
+              Place end; //destination, where you are driving to
+              if ((i + 1) >= totalPlaces) //if (i+1) is out of scope, it means that we are at the last origin and that the destination is now the original origin
+              {
+                  end = places.get(0); // destination is the original origin
+              } else {
+                  end = places.get(i + 1); // destination is the next city in the places arraylist
+              }
+              calculator.origin = start;
+              calculator.destination = end;
+              dist.add(calculator.vincenty());
+          }
+      }
+      // hardcoded example
+      //dist.add(12);
+      //dist.add(23);
+      //dist.add(34);
+      //dist.add(45);
+      //dist.add(65);
+      //dist.add(19); //should actually be 19
+
+      return dist;
+      }
   }
-//hello
-}
+

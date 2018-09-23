@@ -10,8 +10,8 @@ public class Distance {
     private int version;
 
     // Note that Place currently has an extra id element
-    private Place origin;
-    private Place destination;
+    public Place origin;
+    public Place destination;
     public String units;
 
     //variable for calculation
