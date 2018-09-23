@@ -10,7 +10,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import spark.Request;
 import java.util.ArrayList;
-import com.tripco.t04.planner.Option;
 
 
 /**
@@ -87,7 +86,7 @@ public class Trip {
       if(places != null) {
           totalPlaces = places.size();
           Distance calculator = new Distance(); // Using distance class lower down to calculate the distance between two points
-          calculator.options = options;
+          calculator.units = options.units;
           for (int i = 0; i < totalPlaces; i++) //for loop that occurs the same number of times = totalPlaces
           {
               Place start = places.get(i); //origin, where you are driving from
