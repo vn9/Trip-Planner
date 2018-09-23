@@ -13,6 +13,8 @@ public class Distance {
     public Place origin;
     public Place destination;
     public String units;
+    public String unitName;
+    public Double unitRadius;
 
     //variable for calculation
     public int distance;
@@ -40,7 +42,12 @@ public class Distance {
             float hold = (float)angle * 3440;
             distance = Math.round(hold);
         }
+        else if(units.equals("user defined")){
+            float hold = (float)angle * unitRadius.floatValue();
+            distance = Math.round(hold);
+        }
         return distance;
     }
 }
 
+//misellaneous
