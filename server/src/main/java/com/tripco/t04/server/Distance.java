@@ -1,6 +1,5 @@
 package com.tripco.t04.server;
 import com.tripco.t04.planner.Place;
-import com.tripco.t04.planner.Option;
 
 import java.lang.Math;
 
@@ -13,7 +12,7 @@ public class Distance {
     // Note that Place currently has an extra id element
     public Place origin;
     public Place destination;
-    public Option options;
+    public String units;
 
     //variable for calculation
     public int distance;
@@ -29,25 +28,18 @@ public class Distance {
         double bottom = Math.sin(phi1) * Math.sin (phi2) + Math.cos(phi1) * Math.cos(phi2) * Math.cos(delta);
         double angle = Math.atan2(top,bottom);
         //angle = Math.toRadians(angle);
-        if(options.units.equals("miles")) {
+        if(units.equals("miles")) {
             float hold = (float)angle * 3959;
             distance = Math.round(hold);
         }
-        else if(options.units.equals("kilometers")) {
+        else if(units.equals("kilometers")) {
             float hold = (float)angle * 6371;
             distance = Math.round(hold);
         }
-        else if(options.units.equals("nautical miles")) {
+        else if(units.equals("nautical miles")) {
             float hold = (float)angle * 3440;
             distance = Math.round(hold);
         }
-        else if(options.units.equals("user defined")){
-            float radius = options.unitRadius.floatValue();
-            float hold = (float)angle * radius;
-            distance = Math.round(hold);
-        }
-
-
         return distance;
     }
 }
