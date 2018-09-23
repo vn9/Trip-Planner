@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Container } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
+import UploadFile from './UploadFile';
 
 import { get_config } from '../../api/api';
 
@@ -61,6 +62,7 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
+        <UploadFile/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
       </Container>
     )
