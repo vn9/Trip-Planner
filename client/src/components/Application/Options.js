@@ -29,7 +29,7 @@ class Options extends Component{
       <Card>
         <CardBody>
           <p>Select the options you wish to use</p>
-          <ButtonGroup>
+            <ButtonGroup>
             {buttons}
             </ButtonGroup>
         </CardBody>
