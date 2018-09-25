@@ -70,6 +70,8 @@ In this sprint we expect to complete all code related to the calculations for th
 | *9/17/2018* | *#129* | *#130, #131, #132, #133, #135 | *Dependencies still need to be finished and making sure that we all know the direction we are going is the correct one. This should be cleared up with TA hours.*|
 | *9/19/2018* | *#129* | *#130, #131, #132, #133, #135 | *Decent progress was made however a bug was pushed to master so top priority is to solve this issue*|
 | *9/21/2018*| *#149*, *#131*| *#130, #132, #133, #135, #152 | *The NullPointer Error is preventing the essential function of the program.  Also, group members have been gone and will be absent this coming week, so we need to be ontop of what is being worked on.*|
+| *9/24/2018* | *#155, #154, #135, #132, #152, #157* | *#177, #178, #133, #134, #158* | Key parts of the code have not been finished, which makes testing other parts of the code very difficult.  Time remaining will limit how much we are able to do. |
+
 
 *Add a new row for each scrum session.*
 
