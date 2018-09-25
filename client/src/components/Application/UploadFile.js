@@ -14,6 +14,17 @@ export default class UploadFile extends React.Component {
         };
     }
 
+  loadFile(event){
+    let file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsText(file)
+    reader.onload = (event) =>{
+      console.warn("file data ",event.target.result); // Print to console
+      const object = JSON.parse(event.target.result); // Convert JSON string to java object
+      console.log(object);
+    }
+  }
+
     onFormSubmit(){
         alert(JSON.stringify(this.state, null, ' '));
     }
@@ -63,7 +74,13 @@ export default class UploadFile extends React.Component {
                 </FormGroup>
                 <FormGroup>
                     <Label for="exampleFile">File</Label>
-                    <Input type="file" name="file" id="exampleFile" />
+                    <Input
+                        title="upload"
+                        type="file"
+                        id="fileInput"
+                        onChange={(event)=>this.props.updateTrip("file", this.loadFile(event))}
+                    >
+                    </Input>
                     <FormText color="muted">
                         Enter Something here
                     </FormText>
