@@ -7,10 +7,10 @@ export default class UploadFile extends React.Component {
         super();
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.state =  {
-            originLatitude: '',
-            originLongitude: '',
-            destinationLatitude: '',
-            destinationLongitude: ''
+            origin_latitude: '',
+            origin_longitude: '',
+            destination_latitude: '',
+            destination_longitude: ''
         };
     }
 
@@ -25,40 +25,40 @@ export default class UploadFile extends React.Component {
                     <Label>Origin Latitude:</Label>
                     <Input
                         type="text"
-                        originLatitude="text"
+                        origin_latitude="text"
                         placeholder="101.00"
-                        value={this.state.originLatitude}
-                        onChange={e => this.setState({originLatitude: e.target.value})}
+                        value={this.state.origin_latitude}
+                        onChange={e => this.setState({origin_latitude: e.target.value})}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Origin Longitude:</Label>
                     <Input
                         type="text"
-                        originLongitude="text"
+                        origin_longitude="text"
                         placeholder="101.00"
-                        value={this.state.originLongitude}
-                        onChange={e => this.setState({originLongitude: e.target.value})}
+                        value={this.state.origin_longitude}
+                        onChange={e => this.setState({origin_longitude: e.target.value})}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Destination Latitude:</Label>
                     <Input
                         type="text"
-                        destinationLatitude="text"
+                        destination_latitude="text"
                         placeholder="101.00"
-                        value={this.state.destinationLatitude}
-                        onChange={e => this.setState({destinationLatitude: e.target.value})}
+                        value={this.state.destination_latitude}
+                        onChange={e => this.setState({destination_latitude: e.target.value})}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Destination Longitude:</Label>
                     <Input
                         type="text"
-                        destinationLongitude="text"
+                        destination_longitude="text"
                         placeholder="101.00"
-                        value={this.state.destinationLongitude}
-                        onChange={e => this.setState({destinationLongitude: e.target.value})}
+                        value={this.state.destination_longitude}
+                        onChange={e => this.setState({destination_longitude: e.target.value})}
                     />
                 </FormGroup>
                 <FormGroup>
