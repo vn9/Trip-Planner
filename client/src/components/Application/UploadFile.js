@@ -4,6 +4,9 @@ import {Card, CardHeader, CardBody, Button, Form, FormGroup, Label, Input, FormT
 import {request} from '../../api/api'
 
 
+var myObject;
+var toDisplay;
+
 export default class UploadFile extends React.Component {
     constructor(props) {
         super(props);
@@ -18,25 +21,25 @@ export default class UploadFile extends React.Component {
         reader.onload = (event)=> {
             console.warn("file data",event.target.result); // Print to console
             const object = JSON.parse(event.target.result); // Convert JSON string to java object
-            console.log(object);
+            myObject = object;
+            console.log(myObject);
 
-            request(object, 'plan').then(                   //Calls request function from api.js, takes a body object, api method/name)
-                (response) => {                             //After resolved, we have a thing in response
-                    console.log(response);                  //Prints the response in the console
-                    for (var key in response){              //Key is a part of the tffi(version, type, places, options, etc)
-                        var value = response[key];          //Sets a variable called value to the information of each part of
-                        this.props.updateTrip(key, value);          //the tffi( version: 2, whats in the places, options,etc)
-                        console.log(key);                   //Updates the state of the trip in application with the key and value
-                        console.log(value);                 //Prints out the key and associated value in the console
-                    }
 
-                    })
-
-                }
-        };
+        }
+    };
 
     onFormSubmit(){
-        alert('Sending to Server');
+        request(myObject, 'plan').then(                   //Calls request function from api.js, takes a body object, api method/name)
+            (response) => {                             //After resolved, we have a thing in response
+                console.log(response);                  //Prints the response in the console
+                for (var key in response){              //Key is a part of the tffi(version, type, places, options, etc)
+                    var value = response[key];          //Sets a variable called value to the information of each part of
+                    this.props.updateTrip(key, value);          //the tffi( version: 2, whats in the places, options,etc)
+                    console.log(key);                   //Updates the state of the trip in application with the key and value
+                    console.log(value);                 //Prints out the key and associated value in the console
+                }
+                toDisplay = response;
+            })
 
     }
 
@@ -61,6 +64,6 @@ export default class UploadFile extends React.Component {
     }
 }
 
-//onChange={(event)=>this.props.updateTrip("file", this.loadFile(event))}
 
 //function with key, for key in json thing.  //14, Joe Eschen
+
