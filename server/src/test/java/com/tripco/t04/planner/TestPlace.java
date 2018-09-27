@@ -20,17 +20,17 @@ public class TestPlace {
   // Setup to be done before every test in TestPlan
   @Before
   public void initialize() {
-    //place = new Place();
+    place = new Place("dnvr","Denver", "39.5", "-104.5");
     //place.id = "dnvr";
     //place.name="Denver";
   }
 
-  /*@Test 
+  @Test 
   public void testPlace() {
     String id = "dnvr";
     String name = "Denver";
     assertEquals(place.id, id);
     assertEquals(place.name,name);
-  }*/
+  }
 
 }
