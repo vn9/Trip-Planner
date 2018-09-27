@@ -64,9 +64,9 @@ public class TestTrip {
     assertEquals(expectedDistances, trip.distances);
   }*/
 
-  /*@Test
-
-  /*
+  
+  
+   /*
   * testMap uses BufferedReader to read in a local file
   * stores each line in an arrayList then return a big long string
   * testMap also uses PrintWriter to write each line that was read into a pre-created local file
@@ -74,6 +74,10 @@ public class TestTrip {
   * @param line - temporary string when read and write file
   * @param localPath - a string of the path where the output file locates, change the path if needed*/
 
+  
+  
+  
+  /*@Test
   public void testMap() {
     trip.plan();
     BufferedReader reader;
