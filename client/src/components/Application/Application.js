@@ -62,7 +62,7 @@ class Application extends Component {
     return(
       <Container id="Application">
         <Info/>
-        <UploadFile/>
+        <UploadFile file={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
         <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
       </Container>
     )
