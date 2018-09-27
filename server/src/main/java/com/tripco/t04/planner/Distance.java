@@ -1,4 +1,4 @@
-package com.tripco.t04.server;
+package com.tripco.t04.planner;
 import com.tripco.t04.planner.Place;
 
 import java.lang.Math;

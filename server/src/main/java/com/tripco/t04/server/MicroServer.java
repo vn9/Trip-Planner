@@ -1,18 +1,13 @@
 package com.tripco.t04.server;
 
+import com.tripco.t04.planner.Calculate;
 import com.tripco.t04.planner.Plan;
 
 import spark.Request;
 import spark.Response;
 import spark.Spark;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
-import java.util.ArrayList;
 import static spark.Spark.*;
-
-
 
 
 /** A simple micro-server for the web.  Just what we need, nothing more.
@@ -127,7 +122,7 @@ public class MicroServer {
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
 
-    return new Calculate(request).getDistance();   //Add a Calculate Class in planner folder with getdistance() method to complete.
+    return new Calculate(request).getDistance();
   }
 
   /** A REST API that returns the team information associated with the server.

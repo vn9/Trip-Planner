@@ -1,4 +1,4 @@
-package com.tripco.t04.server;
+package com.tripco.t04.planner;
 
 
 import com.google.gson.Gson;
@@ -6,8 +6,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.tripco.t04.server.HTTP;
 import spark.Request;
-
-import java.util.ArrayList;
 
 /**
  * This class handles to the conversions of the distance request/resopnse,
