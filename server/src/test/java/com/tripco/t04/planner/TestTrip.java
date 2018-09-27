@@ -22,17 +22,37 @@ import static org.junit.Assert.*;
 @RunWith(JUnit4.class)
 public class TestTrip {
   Trip trip;
+  Place denver;
+  Place peublo;
+  Place saguache;
+  Place minturn;
 
   // Setup to be done before every test in TestPlan
   @Before
   public void initialize() {
-    trip = new Trip();
+    denver = new Place("1", "Denver", "39.555", "-104.66");
+    peublo = new Place("2", "Pueblo", "38.111", "-104.3");
+    saguache = new Place("3", "Saguache", "38.02", "-106.08");
+    minturn = new Place("4", "Minturn", "39.35", "-106.25");
+    ArrayList<Place> places = new ArrayList<>();
+    places.add(denver);
+    places.add(peublo);
+    places.add(saguache);
+    places.add(minturn);
+    ArrayList<Integer> distances = new ArrayList<>();
+    distances.add(1299);
+    distances.add(135);
+    distances.add(216);
+    distances.add(1135);
+    trip = new Trip("trip", 2 , "Test", null , places, distances, "");
   }
 
   @Test
   public void testTrue() {
     // assertTrue checks if a statement is true
     assertTrue(true == true);
+    System.out.println(trip.svg());
+
   }
 
   /*@Test
