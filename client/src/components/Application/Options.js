@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody} from 'reactstrap'
+import { Card, CardHeader, CardBody, Label, Input, FormGroup, Form} from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
@@ -7,10 +7,30 @@ import { ButtonGroup, Button } from 'reactstrap'
  * The options reside in the parent object so they may be shared with the Trip object.
  * Allows the user to set the options used by the application via a set of buttons.
  */
+
+
+
 class Options extends Component{
   constructor(props) {
     super(props);
+    this.state = {userDefinedOn:false};
+    this._userDefinedOn = this._userDefinedOn.bind(this);
   }
+
+
+
+  _userDefinedOn(event){
+      this.props.updateOptions('unit', event.target.value);
+
+        if(event.target.value == 'user defined'){
+            this.setState({userDefinedOn : true});
+        }
+        else {
+            this.setState({userDefinedOn : false});
+        }
+  }
+
+
 
   render() {
     const buttons = this.props.config.units.map((unit) =>
@@ -19,11 +39,12 @@ class Options extends Component{
         className='btn-outline-dark unit-button'
         active={this.props.options.unit === unit}
         value={unit}
-        onClick={(event) => this.props.updateOptions('unit', event.target.value)}
+        onClick={this._userDefinedOn}
       >
         {unit.charAt(0).toUpperCase() + unit.slice(1)}
       </Button>
     );
+
 
     return(
       <Card>
@@ -32,9 +53,31 @@ class Options extends Component{
             <ButtonGroup>
             {buttons}
             </ButtonGroup>
+            {this.state.userDefinedOn && (<Form>
+                <FormGroup>
+                    <Label>Unit Name:</Label>
+                    <Input
+                        type="text"
+                        originLatitude="text"
+                        placeholder="ex. Mile"
+                        value={this.state.unitName}
+                        onChange={e => this.setState({unitName: e.target.value})}
+                    />
+                </FormGroup>
+                <FormGroup>
+                    <Label>Radius of Earth in unit:</Label>
+                    <Input
+                        type="text"
+                        originLongitude="text"
+                        placeholder="Number only, ex. 3959 (in Mile)"
+                        value={this.state.unitRadius}
+                        onChange={e => this.setState({unitRadius: e.target.value})}
+                    />
+                </FormGroup>
+            </Form>)}
         </CardBody>
       </Card>
-    )
+    );
   }
 }
 
