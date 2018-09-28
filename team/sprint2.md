@@ -110,20 +110,20 @@ In this sprint we expect to complete all code related to the calculations for th
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+*This sprint was very difficult for our team. From the very beginning we struggled with understanding what was need to be done. This got us on the wrong foot and required us to play catch-up for the remainder of the sprint. There was more tension in the team this sprint due to the lack of communication. We had a meeting with our manager because of it part way through. However improvements were not seen and another meeting with our manager will be scheduled.*
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+*This sprint we added a fifth member. Integration of that fifth member took more time and effort than we had anticipated at the beginning at the sprint. Due to this new effort, we failed to make the changes that we stated we would change in the last sprint.*
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+**
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+*Communication is something that needs to be improved on. It worsened from last sprint which was a disappointment. Doubling down on communication, multiple times during the sprint, group members had no idea what other group members were doing due to lack of pull requests. Therefore, there needs to be an increase of pull requests and updates on Slack. We need to have a better start to the sprint with our plan. We did not fully understand what this sprint required and fell behind because of that.*
 
 #### What we will change next sprint 
 
-*Articulate at the end of the sprint.  Focus on one of things you need to work on.*
+*We will communicate a lot better next sprint. We plan to have a sit down with our manager to hash out some of our problems and expect improvements from our group as a whole.*
