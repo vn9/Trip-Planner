@@ -65,11 +65,11 @@ class Options extends Component{
                     />
                 </FormGroup>
                 <FormGroup>
-                    <Label>Radius of Earth in unit:</Label>
+                    <Label>Earth Radius (in specified unit):</Label>
                     <Input
                         type="text"
                         originLongitude="text"
-                        placeholder="Number only, ex. 3959 (in Mile)"
+                        placeholder="ex. 3959"
                         value={this.state.unitRadius}
                         onChange={e => this.setState({unitRadius: e.target.value})}
                     />
