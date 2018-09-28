@@ -39,12 +39,12 @@ public class TestTrip {
     places.add(peublo);
     places.add(saguache);
     places.add(minturn);
-    ArrayList<Integer> distances = new ArrayList<>();
-    distances.add(1299);
-    distances.add(135);
-    distances.add(216);
-    distances.add(1135);
-    trip = new Trip("trip", 2 , "Test", null , places, distances, "");
+    //ArrayList<Integer> distances = new ArrayList<>();
+    //distances.add(1299);
+    //distances.add(135);
+    //distances.add(216);
+    //distances.add(1135);
+    trip = new Trip("trip", 2 , "Test", null , places, null , "");
   }
 
   @Test
