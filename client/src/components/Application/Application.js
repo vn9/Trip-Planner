@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
-import SetServer from './SetServer';
+
 
 import { get_config } from '../../api/api';
 
@@ -16,7 +16,6 @@ class Application extends Component {
         super(props);
         this.state = {
             config: null,
-            serverURL: 'http://' + location.host,
             trip: {
                 type: "trip",
                 title: "",
@@ -33,7 +32,7 @@ class Application extends Component {
         this.updateTrip = this.updateTrip.bind(this);
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
-        this.updateServer = this.updateServer.bind(this);
+        //this.updateServer = this.updateServer.bind(this);
 
     }
 
@@ -64,13 +63,6 @@ class Application extends Component {
         this.setState(trip);
     }
 
-    updateServer(value){
-        let x= this.state.serverURL;
-        x.serverURL = value;
-        console.log(x);
-        this.setState(x);
-    }
-
     render() {
         if(!this.state.config) { return <div/> }
 
@@ -78,7 +70,6 @@ class Application extends Component {
             <Container id="Application">
                 <Info/>
                 <UploadFile file={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
-                <SetServer server= {this.state.serverURL} updateServer={this.updateServer}/>
                 <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
             </Container>
         )
@@ -88,3 +79,21 @@ class Application extends Component {
 
 
 export default Application;
+
+
+
+
+
+/*
+Add these back if we want to add back an entire js for setting the server port
+
+import SetServer from './SetServer';
+updateServer(value){
+        let x= this.state.serverURL;
+        x.serverURL = value;
+        console.log(x);
+        this.setState(x);
+    }
+    //serverURL: 'http://' + location.host,
+    //<SetServer server= {this.state.serverURL} updateServer={this.updateServer}/>
+ */

@@ -72,7 +72,6 @@ public class Trip {
   private ArrayList<Integer> legDistances() {
 
       ArrayList<Integer> dist = new ArrayList<Integer>();
-      //dist.add(places.size());
 
       ArrayList<Place> roadtrip = new ArrayList<Place>();
 
@@ -103,13 +102,6 @@ public class Trip {
               dist.add(calculator.vincenty());
           }
       }
-      // hardcoded example
-      //dist.add(12);
-      //dist.add(23);
-      //dist.add(34);
-      //dist.add(45);
-      //dist.add(65);
-      //dist.add(19); //should actually be 19
 
       return dist;
       }
