@@ -118,7 +118,7 @@ In this sprint we expect to complete all code related to the calculations for th
 
 #### What we did well
 
-**
+*We at the very least got a lot of work at the end of our sprint. It looked bleak throughout but something was accomplished.*
 
 #### What we need to work on
 
@@ -126,4 +126,4 @@ In this sprint we expect to complete all code related to the calculations for th
 
 #### What we will change next sprint 
 
-*We will communicate a lot better next sprint. We plan to have a sit down with our manager to hash out some of our problems and expect improvements from our group as a whole.*
+*We will communicate a lot better next sprint. We plan to have a sit down with our manager to hash out some of our problems and expect improvements from our group as a whole. Also testing is an improvement that needs to be made by every individual member and will be improved on.*
