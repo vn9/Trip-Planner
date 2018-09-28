@@ -11,7 +11,9 @@ export default class UploadFile extends React.Component {
     constructor(props) {
         super(props);
         this.onFormSubmit = this.onFormSubmit.bind(this);
-        this.serverChange = this.serverChange.bind(this)
+        this.serverChange = this.serverChange.bind(this);
+        this.updateTitle = this.updateTitle.bind(this);
+        this.saveTFFI = this.saveTFFI.bind(this)
 
     }
 
@@ -24,8 +26,7 @@ export default class UploadFile extends React.Component {
             const object = JSON.parse(event.target.result); // Convert JSON string to java object
             myObject = object;
             console.log(myObject);
-
-
+            this.props.updateTrip(myObject); // Pass the response to back Application.js
         }
     };
 
@@ -47,6 +48,39 @@ export default class UploadFile extends React.Component {
             })
 
     }
+
+
+
+
+    updateTitle(event) {
+        let mytitle = event.target.value;
+        console.log("myTitle:"+mytitle);
+        this.props.updateTrip('title', mytitle);
+    }
+
+    /* Saves the map and itinerary to the local file system. */
+
+    saveTFFI(){
+        var tripTitle = this.props.trip.title;
+
+        //Convert data to TFFI formatted string
+        var tffi = JSON.stringify(this.props.trip);
+
+
+        //add .json extension if not already added by user
+        if(!tripTitle.endsWith(".json")){
+            tripTitle += ".json";
+        }
+
+        //generate file and download
+        var element = document.createElement('a');
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(tffi));
+        element.setAttribute('download', tripTitle);
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+
 
     render() {
         return (
@@ -81,6 +115,12 @@ export default class UploadFile extends React.Component {
                         <Button type="button" onClick={this.onFormSubmit}>Submit</Button>
                     </FormGroup>
                 </Form>
+
+                    <input type="text" className="form-control" placeholder="Trip title..." value={this.props.trip.title} onChange={this.updateTitle} />
+                    <span className="input-group-btn">
+                        <button className="btn btn-primary " onClick={this.saveTFFI} type="button">Save</button>
+                    </span>
+
                 </CardBody>
             </Card>
         )
