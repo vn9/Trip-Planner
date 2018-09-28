@@ -4,6 +4,7 @@ import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
 import Map from './Map';
+import ItineraryForm from './ItineraryForm';
 
 
 import { get_config } from '../../api/api';
@@ -73,6 +74,7 @@ class Application extends Component {
                 <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
                 <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
                 <Map trip={this.state.trip} config={this.state.config}/>
+                <ItineraryForm trip={this.state.trip}/>
             </Container>
 
         )
