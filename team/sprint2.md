@@ -78,29 +78,29 @@ In this sprint we expect to complete all code related to the calculations for th
 
 ## Review
 
-* Overall, our result has a complete framework which makes it look like what it should be. For the functionalities, most of the functionalities are realized excepting user-custom unit. The basic realized functionalities include uploading a JSON file, phrasing the JSON file and delivering the phrasing object into back-end server to do some calculation about distance. Finally, the reasult will be returned with well-calculated data. Then, the client can display trip data on a map and list a table with detailed itinerary. The unrealized functionalities is user-custom unit. According to the requirements, when users click the "user-defined" button and type in two info, the itinerary should be updated automatically and all distacnes data should be well-calculated in new unit. In our result, however, we just display two input boxes for user-defined button. They acutually do nothing there.
+* For this sprint the result was a web app that allows users to upload a json file with their trip, choose any server, hit submit, and receive a map and itinerary of their trip. While we were able to implement a lot of good changes, we are still missing the ability of a user to change and define the units of the trip from the user interface.
 
 #### Completed epics in Sprint Backlog 
 
-* *User: I want a map and itinerary for my trip:*  We can show the itinerary in form of table and the trip on a CO map.
-* *TripCo: All clients and servers must interoperate:*  We can deliver the calculation request to other groups' sever. Their sever will return the data and display the itinerary and trip on our team page's table and map.
+* *User: I want a map and itinerary for my trip:*  We can display a table with the trip itinerary and the route on a map.
+* *TripCo: All clients and servers must interoperate:*  We can send the plan request to another group’s server and display the data returned to us. Their sever will return the data and display the itinerary and trip on our team page's table and map.
 
 
 #### Incomplete epics in Sprint Backlog 
 
-* *TripCo: All code shall be clean:*  We do not pay attention to this part this time because we are not fimiliar with the project. We need more time to work with those functionaluties. But we will care about it in sprint 3.
-* *TripCo: The solution must be responsive for mobile devices:*  Our unit-selection part does not change its size and file cannot be choosen from mobile device.
-* *User: I want to determine the distance between a pair of destinations:*  This epic is easy to be solved once we can link those unit button with back-end data but we do not have enough time in this sprint.
-* *User: I want to supply my own units for the distances:*  We already finished the front-end of this epic. Unit button and input boxes can be seen from user interface. More works are needed to connect the front-end and the back-end.
+* *TripCo: All code shall be clean:*  We didn’t pay enough attention to this part this time because we were more concerned with getting working code than the cleanest code.
+* *TripCo: The solution must be responsive for mobile devices:*  We did not have enough time to adjust our unit-selection buttons and allow for file upload from mobile.
+* *User: I want to determine the distance between a pair of destinations:*  This epic is easy to be solved once we can link those unit button with back-end data but we didn’t finish this epic because we ran out of tim
+* *User: I want to supply my own units for the distances:*  We already finished the front-end of this epic. Unit button and input boxes can be seen from user interface. This epic remains open because we did not understand the purpose/use of the button.
 
 #### What went well
 
-* Patience: all group members consistently worked on this project. Although we did not know anything about this project, we leart and built more and more stuffs gradully. We even cannot display the map and itinerary yesterday but no one gives up. We worked until the midnight deadline and we finnaly got it. 
+* Persistence: Although we did not know anything about this project, we leart and built more and more stuffs gradully. We were unable to display an itinerary or map the day before it was due, but nobody gave up and we worked until the end to get it done.
 
 #### Problems encountered and resolutions
 
-* *Unfamiliar framework:* The whole project is unfamiliar for our group. None of us has used or learnt similar topics before. We even do not know how different part working together. We spent lots of time to discuss how this project works and how those epics can be divided into more detailed small tasks. 
-* *Dependency problem:* Because we do not know this project well, we also cannot start to code on time. Therefore, many dependedp-tasks begin earlier because we do not have superfluous time to wait pre-requisite taks be finished. 
+* *Unfamiliar framework:* None of us has used or learnt similar topics before. Our group was unfamiliar with front-end web design and we didn’t understand how the different parts fit together. To solve this problem, we spent a lot of time discussing how this project works.
+* *Dependency problem:* We were unable to begin a lot of the coding on time because other pre-requisite tasks had yet to be finished. While this problem wasn’t really resolved, we worked through it by putting in lots of hard work at the end.
 
 ## Retrospective
 
