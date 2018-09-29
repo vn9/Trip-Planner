@@ -55,9 +55,9 @@ In this sprint we expect to complete all code related to the calculations for th
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *5* | *0* |
-| Tasks |  *7*   | *1* | 
-| Story Points |  *10*  | *1* | 
+| Epics | *6* | *2* |
+| Tasks |  *21*   | *20* | 
+| Story Points |  *30*  | *30* | 
 
 *Enter the `# Planned` at the beginning of the sprint, `# Completed` at the end of the sprint.*
 
@@ -112,7 +112,7 @@ In this sprint we expect to complete all code related to the calculations for th
 
 #### What we did well
 
-*We at the very least got a lot of work at the end of our sprint. It looked bleak throughout but something was accomplished.*
+*At the very least we got a lot of work at the end of our sprint. It looked bleak throughout but something was accomplished.*
 
 #### What we need to work on
 
