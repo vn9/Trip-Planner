@@ -78,35 +78,29 @@ In this sprint we expect to complete all code related to the calculations for th
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+* For this sprint the result was a web app that allows users to upload a json file with their trip, choose any server, hit submit, and receive a map and itinerary of their trip. While we were able to implement a lot of good changes, we are still missing the ability of a user to change and define the units of the trip from the user interface.
 
 #### Completed epics in Sprint Backlog 
 
-*Describe the solution based on the completed epics and list the epics below.*
+* *User: I want a map and itinerary for my trip:*  We can display a table with the trip itinerary and the route on a map.
+* *TripCo: All clients and servers must interoperate:*  We can send the plan request to another group’s server and display the data returned to us. Their sever will return the data and display the itinerary and trip on our team page's table and map.
 
-* *## epic title: comments*
-* 
 
 #### Incomplete epics in Sprint Backlog 
 
-*Describe capabilities not included in the release and list the epics below with an explanation.*
-
-* *## epic title: explanation*
-*
+* *TripCo: All code shall be clean:*  We didn’t pay enough attention to this part this time because we were more concerned with getting working code than the cleanest code.
+* *TripCo: The solution must be responsive for mobile devices:*  We did not have enough time to adjust our unit-selection buttons and allow for file upload from mobile.
+* *User: I want to determine the distance between a pair of destinations:*  This epic is easy to be solved once we can link those unit button with back-end data but we didn’t finish this epic because we ran out of tim
+* *User: I want to supply my own units for the distances:*  We already finished the front-end of this epic. Unit button and input boxes can be seen from user interface. This epic remains open because we did not understand the purpose/use of the button.
 
 #### What went well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
-
-* *something*
-*
+* Persistence: Although we did not know anything about this project, we leart and built more and more stuffs gradully. We were unable to display an itinerary or map the day before it was due, but nobody gave up and we worked until the end to get it done.
 
 #### Problems encountered and resolutions
 
-*Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
-
-* *something*
-*
+* *Unfamiliar framework:* None of us has used or learnt similar topics before. Our group was unfamiliar with front-end web design and we didn’t understand how the different parts fit together. To solve this problem, we spent a lot of time discussing how this project works.
+* *Dependency problem:* We were unable to begin a lot of the coding on time because other pre-requisite tasks had yet to be finished. While this problem wasn’t really resolved, we worked through it by putting in lots of hard work at the end.
 
 ## Retrospective
 
