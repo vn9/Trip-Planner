@@ -4,7 +4,6 @@ import {Card, CardHeader, CardBody, Button, Form, FormGroup, Label, Input, FormT
 import {request} from '../../api/api'
 
 
-var myObject;
 var serverURL =  'http://' + location.host;  //Sets the default server to some local host
 
 export default class UploadFile extends React.Component {
@@ -24,9 +23,11 @@ export default class UploadFile extends React.Component {
         reader.onload = (event)=> {
             console.warn("file data",event.target.result); // Print to console
             const object = JSON.parse(event.target.result); // Convert JSON string to java object
-            myObject = object;
-            console.log(myObject);
-            this.props.updateTrip(myObject); // Pass the response to back Application.js
+            console.log(object);
+            for (var key in object){
+                var value = object[key];
+                this.props.updateTrip(key,value);           //update trip state
+            }
         }
     };
 
@@ -36,7 +37,7 @@ export default class UploadFile extends React.Component {
     }
 
     onFormSubmit(){
-        request(myObject, 'plan', serverURL).then(                 //Calls request function from api.js, takes a body object, api method/name)
+        request(this.props.trip, 'plan', serverURL).then(                 //Calls request function from api.js, takes a body object, api method/name)
             (response) => {                             //After resolved, we have a thing in response
                 console.log(response);                  //Prints the response in the console
                 for (var key in response){              //Key is a part of the tffi(version, type, places, options, etc)
