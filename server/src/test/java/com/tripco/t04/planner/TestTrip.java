@@ -51,7 +51,7 @@ public class TestTrip {
   public void testTrue() {
     // assertTrue checks if a statement is true
     assertTrue(true == true);
-    System.out.println(trip.svg());
+    //System.out.println(trip.svg());
 
   }
 
