@@ -5,6 +5,7 @@ import Options from './Options';
 import UploadFile from './UploadFile';
 import Map from './Map';
 import ItineraryForm from './ItineraryForm';
+import TwoPtCalculator from './twoPointCalc';
 
 
 import { get_config } from '../../api/api';
@@ -73,8 +74,9 @@ class Application extends Component {
         return(
             <Container id="Application">
                 <Info/>
-                <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
                 <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
+                <TwoPtCalculator/>
                 <Map trip={this.state.trip} config={this.state.config}/>
                 <ItineraryForm trip={this.state.trip}/>
             </Container>
