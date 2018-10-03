@@ -4,7 +4,7 @@ import {Card, CardHeader, CardBody, Button, Form, FormGroup, Label, Input, FormT
 import {request} from '../../api/api'
 
 
-var serverURL =  'http://' + location.host;  //Sets the default server to some local host
+export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
 
 export default class UploadFile extends React.Component {
     constructor(props) {
@@ -43,11 +43,8 @@ export default class UploadFile extends React.Component {
                 for (var key in response){              //Key is a part of the tffi(version, type, places, options, etc)
                     var value = response[key];          //Sets a variable called value to the information of each part of
                     this.props.updateTrip(key, value);  //the tffi( version: 2, whats in the places, options,etc)
-                    console.log(key);                   //Updates the state of the trip in application with the key and value
-                    console.log(value);                 //Prints out the key and associated value in the console
                 }
             })
-
     }
 
 
