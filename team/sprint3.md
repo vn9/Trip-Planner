@@ -1,9 +1,9 @@
-# Sprint 3 - *your team number* - *your team name*
+# Sprint 3 - *t04* - *Rush Hour*
 
 ## Goal
 
 ### The goal of this sprint is to add features to our application that include, allowing the user to create a plan from start for their trip, and also to complete the epics that were left over from sprint 2.
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: *Junyi Liu*
 
 ## Definition of Done
 
