@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody, Label, Input, FormGroup, Form} from 'reactstrap'
+import { Card, CardBody, Label, Input, FormGroup, Form} from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
@@ -20,9 +20,9 @@ class Options extends Component{
 
 
   _userDefinedOn(event){
-      this.props.updateOptions('unit', event.target.value);
+      this.props.updateOptions('units', event.target.value);
 
-        if(event.target.value == 'user defined'){
+        if(event.target.value === 'user defined'){
             this.setState({userDefinedOn : true});
         }
         else {
@@ -37,7 +37,7 @@ class Options extends Component{
       <Button
         key={'distance_button_' + unit}
         className='btn-outline-dark unit-button'
-        active={this.props.options.unit === unit}
+        active={this.props.options.units === unit}
         value={unit}
         onClick={this._userDefinedOn}
       >
