@@ -53,25 +53,22 @@ class Options extends Component{
             <ButtonGroup>
             {buttons}
             </ButtonGroup>
+            <p>{' '}</p>
             {this.state.userDefinedOn && (<Form>
                 <FormGroup>
                     <Label>Unit Name:</Label>
                     <Input
                         type="text"
-                        originLatitude="text"
-                        placeholder="ex. Mile"
-                        value={this.state.unitName}
-                        onChange={e => this.setState({unitName: e.target.value})}
+                        placeholder="ex. Miles"
+                        onChange={event => {this.props.updateOptions('unitName', event.target.value)}}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Earth Radius (in specified unit):</Label>
                     <Input
                         type="text"
-                        originLongitude="text"
                         placeholder="ex. 3959"
-                        value={this.state.unitRadius}
-                        onChange={e => this.setState({unitRadius: e.target.value})}
+                        onChange={event => {this.props.updateOptions('unitRadius', event.target.value)}}
                     />
                 </FormGroup>
             </Form>)}

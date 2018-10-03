@@ -60,16 +60,16 @@ class ItineraryForm extends Component{
     render() {
         return (
             <Card>
-            <CardBody>
-            <Form >
-            <Table>
-            <tbody className="Body">
-            {this.tableGenerator()}
-    </tbody>
-        </Table>
-        </Form>
-        </CardBody>
-        </Card>);
+                <CardBody>
+                    <Form>
+                        <Table>
+                            <tbody className="Body">
+                                {this.tableGenerator()}
+                            </tbody>
+                        </Table>
+                    </Form>
+                </CardBody>
+            </Card>);
     }
 
 }
