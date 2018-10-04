@@ -1,4 +1,4 @@
-import { Card, CardBody, Form, Table } from 'reactstrap';
+import {Button, Card, CardBody, Form, Table, Collapse} from 'reactstrap';
 import React, {Component} from 'react'
 
 
@@ -7,7 +7,12 @@ class ItineraryForm extends Component{
 
     constructor(props) {
         super(props);
+        this.state = {
+            collapse: true,
+        };
+
         this.tableGenerator = this.tableGenerator.bind(this);
+        this.toggle = this.toggle.bind(this);
     }
 
     tableGenerator(){
@@ -69,19 +74,27 @@ class ItineraryForm extends Component{
         }
     }
 
+    toggle(){
+        this.setState({collapse: !this.state.collapse})
+    }
+
     render() {
         return (
+            <div>
+            <Button onClick={this.toggle} className='btn-dark' block>Itinerary</Button>
+                <Collapse isOpen={this.state.collapse}>
             <Card>
                 <CardBody>
-                    <Form>
                         <Table>
                             <tbody className="Body">
                                 {this.tableGenerator()}
                             </tbody>
                         </Table>
-                    </Form>
                 </CardBody>
-            </Card>);
+            </Card>
+                </Collapse>
+            </div>
+        );
     }
 
 }

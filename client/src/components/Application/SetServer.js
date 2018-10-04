@@ -1,40 +1,60 @@
 import React, {Component} from 'react'
-import { ButtonGroup, Button, Form, Label, Input } from 'reactstrap'
+import {Card, CardBody, Button, Input, InputGroup, InputGroupAddon, Collapse, Fade, CardText} from 'reactstrap'
 
-class SetServer extends Component{
+export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
+
+class SetServer extends React.Component {
     constructor(props) {
         super(props);
-        this.state= {
-            serverAddress: '',       //Adds a state called serverAddress
-        }
+        this.state ={
+            collapse: false,
+        };
+
+        this.serverChange = this.serverChange.bind(this);
+        this.toggleServer= this.toggleServer.bind(this);
+        this.resetServer = this.resetServer.bind(this);
+    };
+
+    serverChange(e){
+        serverURL = e.target.value;
+        console.log(serverURL)
     }
 
-    handleOnChange(event){          //When the text is updated, the local state is set
-        this.setState({serverAddress: event.target.value})
-
+    toggleServer(){
+        this.setState({collapse: !this.state.collapse})
     }
 
-    handleOnClick(){
-        this.props.updateServer(this.serverAddress)
+    resetServer(){
+        serverURL = 'http://' + location.host;
+        document.getElementById("newServer").value = serverURL;
+        console.log(serverURL)
     }
 
-    render() {
+    render(){
+        return(
+            <div>
+                <Button onClick={this.toggleServer} className='btn-dark' block>Choose a Server</Button>
+                <Collapse isOpen={this.state.collapse}>
+                    <Card>
+                        <CardBody>
+                            <InputGroup>
+                                <InputGroupAddon addonType={"prepend"}> Server URL</InputGroupAddon>
+                                <Input id="newServer" defaultValue={serverURL}  onChange={(e)=> this.serverChange(e)}/>
+                                <InputGroupAddon addonType={"append"}><Button onClick={this.resetServer}>Reset Server</Button></InputGroupAddon>
+                            </InputGroup>
+                            <CardText>
+                                <small className="text-muted">The server updates automatically as you type. If you wish to restore the default, hit Reset Server.</small>
+                            </CardText>
+                        </CardBody>
+                    </Card>
+                </Collapse>
+            </div>
 
-    return (
-        <Form>
-            <Input type="text"
-                   Address="text"
-                   placeholder="http://black-bottle.cs.colostate.edu:31404"
-                   value={this.state.serverAddress.value}
-                   onChange={this.handleOnChange.bind(this)}/>
-            <Button onClick={this.handleOnClick.bind(this)}>Set Server</Button>
-        </Form>
-
-    )
+        )
     }
 }
+
 export default SetServer;
 
-/*If not working, seperate the bind function to above handle events*/
 
 

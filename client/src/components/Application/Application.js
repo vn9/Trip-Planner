@@ -5,6 +5,8 @@ import Options from './Options';
 import UploadFile from './UploadFile';
 import Map from './Map';
 import ItineraryForm from './ItineraryForm';
+import TwoPtCalculator from './twoPointCalc';
+import SetServer from './SetServer';
 
 
 import { get_config } from '../../api/api';
@@ -23,6 +25,8 @@ class Application extends Component {
                 title: "",
                 options: {
                     units: "miles",
+                    unitName: "",
+                    unitRadius: 0.0000
                 },
                 places: [],
                 distances: [],
@@ -69,11 +73,16 @@ class Application extends Component {
         if(!this.state.config) { return <div/> }
 
         return(
-            <Container id="Application">
+            <Container id="Application" >
                 <Info/>
-                <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
                 <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
+                <SetServer/>
+                <br/>
+                <TwoPtCalculator/>
+                <br/>
                 <Map trip={this.state.trip} config={this.state.config}/>
+                <br/>
                 <ItineraryForm trip={this.state.trip}/>
             </Container>
 

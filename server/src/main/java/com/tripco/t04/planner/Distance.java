@@ -29,7 +29,7 @@ public class Distance {
         top = Math.sqrt(top);
         double bottom = Math.sin(phi1) * Math.sin (phi2) + Math.cos(phi1) * Math.cos(phi2) * Math.cos(delta);
         double angle = Math.atan2(top,bottom);
-        //angle = Math.toRadians(angle);
+
         if(units.equals("miles")) {
             float hold = (float)angle * 3959;
             distance = Math.round(hold);
@@ -50,4 +50,3 @@ public class Distance {
     }
 }
 
-//misellaneous

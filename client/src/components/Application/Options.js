@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import { Card, CardBody, Label, Input, FormGroup, Form} from 'reactstrap'
+import { Card, CardHeader, CardBody, Label, Input, FormGroup, Form} from 'reactstrap'
 import { ButtonGroup, Button } from 'reactstrap'
+
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -18,7 +19,6 @@ class Options extends Component{
   }
 
 
-
   _userDefinedOn(event){
       this.props.updateOptions('units', event.target.value);
 
@@ -33,14 +33,14 @@ class Options extends Component{
 
 
   render() {
-    const buttons = this.props.config.units.map((unit) =>
+    let buttons = this.props.config.units.map((unit) =>
       <Button
         key={'distance_button_' + unit}
         className='btn-outline-dark unit-button'
         active={this.props.options.units === unit}
         value={unit}
         onClick={this._userDefinedOn}
-      >
+      block>
         {unit.charAt(0).toUpperCase() + unit.slice(1)}
       </Button>
     );
@@ -50,28 +50,26 @@ class Options extends Component{
       <Card>
         <CardBody>
           <p>Select the options you wish to use</p>
-            <ButtonGroup>
+
             {buttons}
-            </ButtonGroup>
+
+            <p>{' '}</p>
+
             {this.state.userDefinedOn && (<Form>
                 <FormGroup>
                     <Label>Unit Name:</Label>
                     <Input
                         type="text"
-                        originLatitude="text"
-                        placeholder="ex. Mile"
-                        value={this.state.unitName}
-                        onChange={e => this.setState({unitName: e.target.value})}
+                        placeholder="ex. Miles"
+                        onChange={event => {this.props.updateOptions('unitName', event.target.value)}}
                     />
                 </FormGroup>
                 <FormGroup>
                     <Label>Earth Radius (in specified unit):</Label>
                     <Input
                         type="text"
-                        originLongitude="text"
                         placeholder="ex. 3959"
-                        value={this.state.unitRadius}
-                        onChange={e => this.setState({unitRadius: e.target.value})}
+                        onChange={event => {this.props.updateOptions('unitRadius', event.target.value)}}
                     />
                 </FormGroup>
             </Form>)}
