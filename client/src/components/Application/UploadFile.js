@@ -58,7 +58,9 @@ export default class UploadFile extends React.Component {
         var tripTitle = this.props.trip.title;
 
         //Convert data to TFFI formatted string
-        var tffi = JSON.stringify(this.props.trip);
+        let trip = this.props.trip;
+        trip['map'] = '';
+        var tffi = JSON.stringify(trip); // make the map attributes to be ''
 
 
         //add .json extension if not already added by user
