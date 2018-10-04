@@ -73,7 +73,7 @@ class ItineraryForm extends Component{
         return (
             <Card>
                 <CardBody>
-                    <Form >
+                    <Form>
                         <Table>
                             <tbody className="Body">
                                 {this.tableGenerator()}
