@@ -19,6 +19,13 @@ public class Distance {
     //variable for calculation
     public int distance;
 
+    //create a default constructor
+    Distance(){
+
+    }
+
+
+
     public int vincenty(){
         double phi1 = Math.toRadians(Double.parseDouble(origin.latitude));
         double phi2 = Math.toRadians(Double.parseDouble(destination.latitude));
