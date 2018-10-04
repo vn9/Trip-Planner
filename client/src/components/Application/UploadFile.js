@@ -3,14 +3,15 @@ import {Card, CardHeader, CardBody, Button, Form, FormGroup, Label, Input, FormT
 
 import {request} from '../../api/api'
 
+import {serverURL} from './SetServer'
+//export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
 
-export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
+
 
 export default class UploadFile extends React.Component {
     constructor(props) {
         super(props);
         this.onFormSubmit = this.onFormSubmit.bind(this);
-        this.serverChange = this.serverChange.bind(this);
         this.updateTitle = this.updateTitle.bind(this);
         this.saveTFFI = this.saveTFFI.bind(this)
 
@@ -30,11 +31,6 @@ export default class UploadFile extends React.Component {
             }
         }
     };
-
-    serverChange(e){
-        serverURL = e.target.value;
-        console.log(serverURL)
-    }
 
     onFormSubmit(){
         request(this.props.trip, 'plan', serverURL).then(                 //Calls request function from api.js, takes a body object, api method/name)
@@ -84,19 +80,6 @@ export default class UploadFile extends React.Component {
         return (
             <Card>
                 <CardBody>
-                    <p> Choose Your Server </p>
-                <Form>
-                    <FormGroup>
-
-                        <Input type="text"
-                                //value="text"
-                                placeholder="http://black-bottle.cs.colostate.edu:31404"
-                                onChange={(e) =>this.serverChange(e)}/>
-                        <FormText color="muted">
-                            Input full server URL above if desired
-                        </FormText>
-                    </FormGroup>
-                </Form>
                     <p> Upload Your File </p>
                 <Form>
                     <FormGroup>
@@ -124,8 +107,4 @@ export default class UploadFile extends React.Component {
         )
     }
 }
-
-
-//function with key, for key in json thing.  //14, Joe Eschen
-
 
