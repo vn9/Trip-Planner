@@ -76,7 +76,7 @@ class ItineraryForm extends Component{
                     <Form >
                         <Table>
                             <tbody className="Body">
-                            {this.tableGenerator()}
+                                {this.tableGenerator()}
                             </tbody>
                         </Table>
                     </Form>
