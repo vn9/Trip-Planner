@@ -35,7 +35,7 @@ public class Calculate {
         dist = gson.fromJson(requestBody, Distance.class);
 
         // Calculate the distance.
-        dist.vincenty();
+        dist.calculate();
 
         // log something.
         System.out.println(dist.units);

@@ -122,13 +122,22 @@ public class Trip {
       int totalPlaces; //total number of places in the plan. i.e. (Denver, FoCo, Boulder. totalPlaces = 3.)
       if(places != null) {
           totalPlaces = places.size();
-          Distance calculator = new Distance(); // Using distance class lower down to calculate the distance between two points
+
+
+          String units;
+          String unitName;
+          Double unitRadius;
+
+          //Distance calculator = new Distance(); // Using distance class lower down to calculate the distance between two points
           if(options.units.equals("user defined")){
-              calculator.units = options.units;
-              calculator.unitName = options.unitName;
-              calculator.unitRadius = options.unitRadius;
+              units = options.units;
+              unitName = options.unitName;
+              unitRadius = options.unitRadius;
           }
-          else {calculator.units = options.units;}
+          else {units = options.units;
+              unitName = options.unitName;
+              unitRadius = 0.00;
+          }
 
 
           for (int i = 0; i < totalPlaces; i++) //for loop that occurs the same number of times = totalPlaces
@@ -141,8 +150,12 @@ public class Trip {
               } else {
                   end = places.get(i + 1); // destination is the next city in the places arraylist
               }
-              calculator.origin = start;
-              calculator.destination = end;
+              //calculator.origin = start;
+              //calculator.destination = end;
+
+              int distance = 0;
+              Distance calculator = new Distance(start, end, units, unitName, unitRadius, distance);
+
               dist.add(calculator.vincenty());
           }
       }

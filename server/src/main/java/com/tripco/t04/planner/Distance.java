@@ -19,18 +19,24 @@ public class Distance {
     //variable for calculation
     public int distance;
 
-    //create a default constructor
-    Distance(){
-
-    }
-
     //create a specified constructor
-    Distance(Place origin, Place destination, String units, String unitName, double unitRadius) {
+
+
+    public Distance(Place origin, Place destination, String units, String unitName, Double unitRadius, Integer distance){
+
+        this.type = type;
         this.origin = origin;
         this.destination = destination;
         this.units = units;
         this.unitName = unitName;
         this.unitRadius = unitRadius;
+        this.distance = distance;
+    }
+
+
+
+    public void calculate() {
+        this.distance = vincenty();
     }
 
     public int vincenty(){
