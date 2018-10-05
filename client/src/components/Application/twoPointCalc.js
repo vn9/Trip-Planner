@@ -9,73 +9,57 @@ class TwoPtCalculator extends Component {
         super(props);
 
         this.state = {
-            collapse: false ,
-            units: 'miles',
-            unitName: '',
-            unitRadius: '',
-            origin: {
-                latitude: null,
-                longitude: null,
-            },
-            destination:{
-                latitude: null,
-                longitude: null,
-            }
+            collapse: false,
         };
 
         this.onFormSubmit = this.onFormSubmit.bind(this);
+        /*
         this.oLatChange = this.oLatChange.bind(this);
         this.oLonChange = this.oLonChange.bind(this);
         this.dLatChange = this.dLatChange.bind(this);
         this.dLonChange = this.dLonChange.bind(this);
+        */
         this.toggle = this.toggle.bind(this);
     }
 
     onFormSubmit() {
-        console.log(JSON.stringify(this.state));
-        request(this.state, 'distance', serverURL).then(
+        console.log(JSON.stringify(this.props.distance));
+        request(this.props.distance, 'distance', serverURL).then(
             (response) => {
                 console.log(response);
+
             }
         )
     }
-
+/*
     oLatChange(event){
         let oLat = event.target.value;
-        console.log("oLat:" + oLat);
-        let dist = this.state.origin;
+        let dist = this.state.distance.origin;
         dist.latitude = oLat;
         this.setState(dist);
-        console.log(this.state)
     }
 
     oLonChange(event){
         let oLon = event.target.value;
-        console.log("oLon:" + oLon);
-        let dist = this.state.origin;
+        let dist = this.state.distance.origin;
         dist.longitude = oLon;
         this.setState(dist);
-        console.log(this.state)
     }
 
     dLatChange(event){
         let dLat = event.target.value;
-        console.log("dLat:" + dLat);
-        let dist = this.state.destination;
+        let dist = this.state.distance.destination;
         dist.latitude = dLat;
         this.setState(dist);
-        console.log(this.state)
     }
 
     dLonChange(event){
         let dLon = event.target.value;
-        console.log("dLon:" + dLon);
-        let dist = this.state.destination;
+        let dist = this.state.distance.destination;
         dist.longitude = dLon;
         this.setState(dist);
-        console.log(this.state)
     }
-
+*/
     toggle(){
         this.setState({collapse: !this.state.collapse})
     }
@@ -89,19 +73,19 @@ class TwoPtCalculator extends Component {
                         <CardBody>
                             <InputGroup>
                                 <InputGroupAddon addonType={"prepend"}> Origin Latitude</InputGroupAddon>
-                                    <Input placeholder="45.00" onChange={(event)=> this.oLatChange(event)}/>
+                                    <Input placeholder="45.00" onChange={(event)=> this.props.updateDistOrLat(event.target.value)}/>
                                 <InputGroupAddon addonType={"prepend"}>Origin Longitude</InputGroupAddon>
-                                    <Input placeholder="101.00" onChange={(event)=> this.oLonChange(event)}/>
+                                    <Input placeholder="101.00" onChange={(event)=> this.props.updateDistOrLon(event.target.value)}/>
                             </InputGroup>
                             <br/>
                             <InputGroup>
                                 <InputGroupAddon addonType={"prepend"}>Destination Latitude</InputGroupAddon>
-                                    <Input placeholder="45.00" onChange={(event)=> this.dLatChange(event)}/>
+                                    <Input placeholder="45.00" onChange={(event)=> this.props.updateDistDeLat(event.target.value)}/>
                                 <InputGroupAddon addonType={"prepend"}>Destination Longitude</InputGroupAddon>
-                                    <Input placeholder="101.00" onChange={(event)=> this.dLonChange(event)}/>
+                                    <Input placeholder="101.00" onChange={(event)=> this.props.updateDistDeLon(event.target.value)}/>
                             </InputGroup>
                             <br/>
-                            <Button type="submit" onClick={this.onFormSubmit}>Calculate</Button>
+                            <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
                         </CardBody>
                     </Card>
                 </Collapse>

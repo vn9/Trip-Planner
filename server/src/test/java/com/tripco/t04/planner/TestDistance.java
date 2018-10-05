@@ -18,6 +18,8 @@ public class TestDistance {
     private Place test1Destination;
     private Place test2Origin;
     private Place test2Destination;
+    private Integer test1Dist;
+    private Integer test2Dist;
 
     @Before
     public void initialize() {
@@ -25,8 +27,10 @@ public class TestDistance {
         test1Destination = new Place("bldr","Boulder", "40.015", "-105.2706");
         test2Origin = new Place("bldr","Boulder", "40.015", "-105.2706");
         test2Destination = new Place("foco","Fort Collins", "40.5853", "-105.0844");
-        distance1 = new Distance( test1Origin, test1Destination,"user defined", "accurate miles", 3958.7613);
-        distance2 = new Distance( test2Origin, test2Destination,"user defined", "accurate miles", 3958.7613);
+        test1Dist = 1;
+        test2Dist = 1;
+        distance1 = new Distance( test1Origin, test1Destination,"user defined", "accurate miles", 3958.7613, test1Dist);
+        distance2 = new Distance( test2Origin, test2Destination,"user defined", "accurate miles", 3958.7613, test2Dist);
     }
 
     @Test
