@@ -13,12 +13,6 @@ class TwoPtCalculator extends Component {
         };
 
         this.onFormSubmit = this.onFormSubmit.bind(this);
-        /*
-        this.oLatChange = this.oLatChange.bind(this);
-        this.oLonChange = this.oLonChange.bind(this);
-        this.dLatChange = this.dLatChange.bind(this);
-        this.dLonChange = this.dLonChange.bind(this);
-        */
         this.toggle = this.toggle.bind(this);
     }
 
@@ -31,35 +25,7 @@ class TwoPtCalculator extends Component {
             }
         )
     }
-/*
-    oLatChange(event){
-        let oLat = event.target.value;
-        let dist = this.state.distance.origin;
-        dist.latitude = oLat;
-        this.setState(dist);
-    }
 
-    oLonChange(event){
-        let oLon = event.target.value;
-        let dist = this.state.distance.origin;
-        dist.longitude = oLon;
-        this.setState(dist);
-    }
-
-    dLatChange(event){
-        let dLat = event.target.value;
-        let dist = this.state.distance.destination;
-        dist.latitude = dLat;
-        this.setState(dist);
-    }
-
-    dLonChange(event){
-        let dLon = event.target.value;
-        let dist = this.state.distance.destination;
-        dist.longitude = dLon;
-        this.setState(dist);
-    }
-*/
     toggle(){
         this.setState({collapse: !this.state.collapse})
     }
