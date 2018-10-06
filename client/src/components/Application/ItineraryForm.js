@@ -83,18 +83,18 @@ class ItineraryForm extends Component{
             <div>
             <Button onClick={this.toggle} className='btn-dark' block>Itinerary</Button>
                 <Collapse isOpen={this.state.collapse}>
-            <Card>
-                <CardBody>
-                    <div style={{'height': '300px',
-                      'overflow':'scroll', 'display':'block', 'width':'100%'}} align="center">
-                  <Table>
-                    <tbody>
-                        {this.tableGenerator()}
-                    </tbody>
-                  </Table>
-                    </div>
-                </CardBody>
-            </Card>
+                    <Card>
+                        <CardBody>
+                            <div style={{'height': '300px',
+                                'overflow':'scroll', 'display':'block', 'width':'100%'}} align="center">
+                                <Table>
+                                    <tbody>
+                                        {this.tableGenerator()}
+                                    </tbody>
+                                </Table>
+                            </div>
+                        </CardBody>
+                    </Card>
                 </Collapse>
             </div>
         );
