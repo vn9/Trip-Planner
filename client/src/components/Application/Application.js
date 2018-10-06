@@ -126,7 +126,8 @@ class Application extends Component {
             <Container id="Application" >
                 <Info/>
                 <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-                <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
+                <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}
+                            updateBasedOnResponse={this.updateBasedOnResponse}/>
                 <SetServer/>
                 <br/>
                 <TwoPtCalculator distance={this.state.distance} config={this.state.config} updateDist={this.updateDist}
