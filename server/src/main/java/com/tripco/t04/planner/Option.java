@@ -11,6 +11,12 @@ public class Option {
   public String units;
   public String unitName;
   public Double unitRadius;
-  
+
+  public Option(String optimization, String units, String unitName, Double unitRadius){
+    this.optimization = optimization;
+    this.units = units;
+    this.unitName = unitName;
+    this.unitRadius = unitRadius;
+  }
 
 }
