@@ -36,10 +36,7 @@ export default class UploadFile extends React.Component {
         request(this.props.trip, 'plan', serverURL).then(                 //Calls request function from api.js, takes a body object, api method/name)
             (response) => {                             //After resolved, we have a thing in response
                 console.log(response);                  //Prints the response in the console
-                for (var key in response){              //Key is a part of the tffi(version, type, places, options, etc)
-                    var value = response[key];          //Sets a variable called value to the information of each part of
-                    this.props.updateTrip(key, value);  //the tffi( version: 2, whats in the places, options,etc)
-                }
+                this.props.updateBasedOnResponse(response);
             })
     }
 
@@ -85,12 +82,7 @@ export default class UploadFile extends React.Component {
                     <p> Upload Your File </p>
                 <Form>
                     <FormGroup>
-
-                        <Input
-                            title="upload"
-                            type="file"
-                            id="fileInput"
-                            onChange={(event)=>this.loadFile(event)}>
+                        <Input title="upload" type="file" id="fileInput" onChange={(event)=>this.loadFile(event)}>
                         </Input>
                         <FormText color="muted">
                             Enter Something here
@@ -98,12 +90,10 @@ export default class UploadFile extends React.Component {
                         <Button type="button" onClick={this.onFormSubmit}>Submit</Button>
                     </FormGroup>
                 </Form>
-
                     <input type="text" className="form-control" placeholder="Trip title..." value={this.props.trip.title} onChange={this.updateTitle} />
                     <span className="input-group-btn">
                         <button className="btn btn-primary " onClick={this.saveTFFI} type="button">Save</button>
                     </span>
-
                 </CardBody>
             </Card>
         )

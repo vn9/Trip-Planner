@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardBody, Button, Input, InputGroup, InputGroupAddon, Collapse} from 'reactstrap'
+import {Card, CardBody, Button, Input, InputGroup, InputGroupAddon, Collapse, Col, Row} from 'reactstrap'
 import {serverURL} from  './SetServer'
 
 import {request} from '../../api/api'
@@ -21,6 +21,7 @@ class TwoPtCalculator extends Component {
         request(this.props.distance, 'distance', serverURL).then(
             (response) => {
                 console.log(response);
+                this.props.updateDist(response);
 
             }
         )
@@ -52,6 +53,7 @@ class TwoPtCalculator extends Component {
                             </InputGroup>
                             <br/>
                             <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
+                            <p>{"Your Distance: " + this.props.distance.distance + ' ' + this.props.distance.units}</p>
                         </CardBody>
                     </Card>
                 </Collapse>
