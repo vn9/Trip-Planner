@@ -40,7 +40,7 @@ public class TestTrip {
     places.add(peublo);
     places.add(saguache);
     places.add(minturn);
-    options = new Option("none", "miles", null, null);
+    options = new Option("none", "user defined", "miles", 3959.0);
     trip = new Trip("trip", 2 , "Test", options, places, null , "");
   }
 
@@ -61,8 +61,6 @@ public class TestTrip {
     assertEquals(expectedDistances, trip.distances);
   }
 
-  
-  
    /*
   * testMap uses BufferedReader to read in a local file
   * stores each line in an arrayList then return a big long string
