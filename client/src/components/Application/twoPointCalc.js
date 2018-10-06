@@ -10,18 +10,38 @@ class TwoPtCalculator extends Component {
 
         this.state = {
             collapse: false,
+            distance: {
+                type: "distance",
+                version: 0,
+                units: "miles",
+                unitName: "",
+                unitRadius: 0.00,
+                origin: {
+                    latitude: "",
+                    longitude: "",
+                },
+                destination: {
+                    latitude: "",
+                    longitude: "",
+                },
+                distance: 0,
+            }
+
         };
 
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.updateDist = this.updateDist.bind(this);
+        this.updateDestination = this.updateDestination.bind(this);
+        this.updateOrigin = this.updateOrigin.bind(this);
     }
 
     onFormSubmit() {
-        console.log(JSON.stringify(this.props.distance));
-        request(this.props.distance, 'distance', serverURL).then(
+        console.log(JSON.stringify(this.state.distance));
+        request(this.state.distance, 'distance', serverURL).then(
             (response) => {
                 console.log(response);
-                this.props.updateDist(response);
+                this.updateDist(response);
 
             }
         )
@@ -30,6 +50,26 @@ class TwoPtCalculator extends Component {
     toggle(){
         this.setState({collapse: !this.state.collapse})
     }
+
+
+    updateOrigin(coordinate, value){
+        let place = this.state.distance.origin;
+        place[coordinate] = value;
+        this.setState(place);
+    }
+
+    updateDestination(coordinate, value){
+        let place = this.state.distance.destination;
+        place[coordinate] = value;
+        this.setState(place);
+    }
+
+    updateDist(value){
+        let place=this.state.distance;
+        place.distance = value;
+        this.setState(place);
+    }
+
 
     render() {
         return (
@@ -40,20 +80,20 @@ class TwoPtCalculator extends Component {
                         <CardBody>
                             <InputGroup>
                                 <InputGroupAddon addonType={"prepend"}> Origin Latitude</InputGroupAddon>
-                                    <Input placeholder="45.00" onChange={(event)=> this.props.updateDistOrLat(event.target.value)}/>
+                                    <Input placeholder="45.00" onChange={(event)=> this.updateOrigin('latitude',event.target.value)}/>
                                 <InputGroupAddon addonType={"prepend"}>Origin Longitude</InputGroupAddon>
-                                    <Input placeholder="101.00" onChange={(event)=> this.props.updateDistOrLon(event.target.value)}/>
+                                    <Input placeholder="101.00" onChange={(event)=> this.updateOrigin('longitude', event.target.value)}/>
                             </InputGroup>
                             <br/>
                             <InputGroup>
                                 <InputGroupAddon addonType={"prepend"}>Destination Latitude</InputGroupAddon>
-                                    <Input placeholder="45.00" onChange={(event)=> this.props.updateDistDeLat(event.target.value)}/>
+                                    <Input placeholder="45.00" onChange={(event)=> this.updateDestination('latitude', event.target.value)}/>
                                 <InputGroupAddon addonType={"prepend"}>Destination Longitude</InputGroupAddon>
-                                    <Input placeholder="101.00" onChange={(event)=> this.props.updateDistDeLon(event.target.value)}/>
+                                    <Input placeholder="101.00" onChange={(event)=> this.updateDestination('longitude', event.target.value)}/>
                             </InputGroup>
                             <br/>
                             <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
-                            <p>{"Your Distance: " + this.props.distance.distance + ' ' + this.props.distance.units}</p>
+                            <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.state.distance.units}</p>
                         </CardBody>
                     </Card>
                 </Collapse>
