@@ -26,6 +26,7 @@ public class TestTrip {
   Place peublo;
   Place saguache;
   Place minturn;
+  Option options;
 
   // Setup to be done before every test in TestPlan
   @Before
@@ -39,12 +40,8 @@ public class TestTrip {
     places.add(peublo);
     places.add(saguache);
     places.add(minturn);
-    //ArrayList<Integer> distances = new ArrayList<>();
-    //distances.add(1299);
-    //distances.add(135);
-    //distances.add(216);
-    //distances.add(1135);
-    trip = new Trip("trip", 2 , "Test", null , places, null , "");
+    options = new Option("none", "miles", null, null);
+    trip = new Trip("trip", 2 , "Test", options, places, null , "");
   }
 
   @Test
@@ -55,14 +52,14 @@ public class TestTrip {
 
   }
 
-  /*@Test
-  public void testDistances() {
+  @Test
+  public void testLegDistances() {
     trip.plan();
     ArrayList<Integer> expectedDistances = new ArrayList<Integer>();
-    Collections.addAll(expectedDistances, 12, 23, 34, 45, 65, 19);
+    Collections.addAll(expectedDistances,  102, 97, 92, 86);
     // Call the equals() method of the first object on the second object.
     assertEquals(expectedDistances, trip.distances);
-  }*/
+  }
 
   
   
