@@ -22,15 +22,13 @@ public class Distance {
     //create a specified constructor
 
 
-    public Distance(Place origin, Place destination, String units, String unitName, Double unitRadius, Integer distance){
+    public Distance(Place origin, Place destination, String units, String unitName, Double unitRadius){
 
-        this.type = type;
         this.origin = origin;
         this.destination = destination;
         this.units = units;
         this.unitName = unitName;
         this.unitRadius = unitRadius;
-        this.distance = distance;
     }
 
 
