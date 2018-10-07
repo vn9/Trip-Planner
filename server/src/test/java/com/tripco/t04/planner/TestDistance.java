@@ -61,5 +61,14 @@ public class TestDistance {
         assertEquals(result6, test6Distance);
     }
 
+    @Test
+    public void testCalculateMethod(){
+        distance2.units = "nautical miles";
+        int test7Distance = 35;
+        distance2.calculate();
+        int result7 = distance2.distance;
+        assertEquals(result7, test7Distance);
+    }
+
 
 }
