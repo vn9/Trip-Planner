@@ -33,8 +33,6 @@ public class Distance {
         this.distance = distance;
     }
 
-
-
     public void calculate() {
         this.distance = vincenty();
     }
@@ -46,25 +44,20 @@ public class Distance {
         double lambda2 = Math.toRadians(Double.parseDouble(destination.longitude));
         double delta = Math.abs(lambda1-lambda2);
         double top = Math.pow(Math.cos(phi2)*Math.sin(delta),2) + Math.pow(Math.cos(phi1)*Math.sin(phi2)-Math.sin(phi1)*Math.cos(phi2)*Math.cos(delta),2);
-        top = Math.sqrt(top);
         double bottom = Math.sin(phi1) * Math.sin (phi2) + Math.cos(phi1) * Math.cos(phi2) * Math.cos(delta);
-        double angle = Math.atan2(top,bottom);
+        double angle = Math.atan2(Math.sqrt(top),bottom);
 
         if(units.equals("miles")) {
-            float hold = (float)angle * 3959;
-            distance = Math.round(hold);
+            distance = Math.round((float)angle * 3959);
         }
         else if(units.equals("kilometers")) {
-            float hold = (float)angle * 6371;
-            distance = Math.round(hold);
+            distance = Math.round((float)angle * 6371);
         }
         else if(units.equals("nautical miles")) {
-            float hold = (float)angle * 3440;
-            distance = Math.round(hold);
+            distance = Math.round((float)angle * 3440);
         }
         else if(units.equals("user defined")){
-            float hold = (float)angle * unitRadius.floatValue();
-            distance = Math.round(hold);
+            distance = Math.round((float)angle * unitRadius.floatValue());
         }
         return distance;
     }
