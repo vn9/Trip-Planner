@@ -50,10 +50,8 @@ public class Trip {
    * It might need to reorder the places in the future.
    */
   public void plan() {
-
     this.map = svg();
     this.distances = legDistances();
-
   }
 
   /**
@@ -117,47 +115,34 @@ public class Trip {
 
       ArrayList<Integer> dist = new ArrayList<Integer>();
 
-      ArrayList<Place> roadtrip = new ArrayList<Place>();
+      if (places == null) {
+          return dist;
+      }
 
-      int totalPlaces; //total number of places in the plan. i.e. (Denver, FoCo, Boulder. totalPlaces = 3.)
-      if(places != null) {
-          totalPlaces = places.size();
+      int totalPlaces = places.size();  // total number of places in the plan
+      String units = options.units;
+      String unitName = null;
+      Double unitRadius = null;
+
+      if (options.units.equals("user defined")) {
+          unitName = options.unitName;
+          unitRadius = options.unitRadius;
+      }
+
+    /*
+    Loop sets origin and destination based on place in array list, when it
+    reaches the end of the list, it resets the end to be the first list item,
+    making a round-trip.
+     */
+
+      for (int i = 0; i < totalPlaces; i++) {
+
+          Place start = places.get(i);
+          Place end = places.get((i + 1) % totalPlaces); // % sets back to back zero when end reached
 
 
-          String units;
-          String unitName;
-          Double unitRadius;
-
-          //Distance calculator = new Distance(); // Using distance class lower down to calculate the distance between two points
-          if(options.units.equals("user defined")){
-              units = options.units;
-              unitName = options.unitName;
-              unitRadius = options.unitRadius;
-          }
-          else {units = options.units;
-              unitName = options.unitName;
-              unitRadius = 0.00;
-          }
-
-
-          for (int i = 0; i < totalPlaces; i++) //for loop that occurs the same number of times = totalPlaces
-          {
-              Place start = places.get(i); //origin, where you are driving from
-              Place end; //destination, where you are driving to
-              if ((i + 1) >= totalPlaces) //if (i+1) is out of scope, it means that we are at the last origin and that the destination is now the original origin
-              {
-                  end = places.get(0); // destination is the original origin
-              } else {
-                  end = places.get(i + 1); // destination is the next city in the places arraylist
-              }
-              //calculator.origin = start;
-              //calculator.destination = end;
-
-              int distance = 0;
-              Distance calculator = new Distance(start, end, units, unitName, unitRadius, distance);
-
-              dist.add(calculator.vincenty());
-          }
+          Distance calculator = new Distance(start, end, units, unitName, unitRadius);
+          dist.add(calculator.vincenty());
       }
 
       return dist;
