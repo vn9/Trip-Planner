@@ -4,40 +4,39 @@ import React, {Component} from 'react'
 
 class ItineraryForm extends Component{
 
-
     constructor(props) {
         super(props);
         this.state = {
             collapse: true,
         };
-
+        this.tableHeader = this.tableHeader.bind(this);
         this.tableGenerator = this.tableGenerator.bind(this);
         this.toggle = this.toggle.bind(this);
+    }
+
+    tableHeader(){
+      let table = [];
+      let children = [];
+      children.push(<th key='origin'>{"Origin"}</th>);
+      children.push(<th key='destination'>{"Destination"}</th>);
+      children.push(<th key='distance'>{"Distance"}</th>);
+      children.push(<th key='totalDistance'>{"Total Distance"}</th>);
+      table.push(<tr key='header'>{children}</tr>);
+      return table;
     }
 
     tableGenerator(){
 
         var wholeTrip = 0;
         let table = [];
-        let children = [];
 
         if(this.props.trip.places.length === 0){ // no place inside the table
-            children.push(<th key='origin'>{"Origin"}</th>);
-            children.push(<th key='destination'>{"Destination"}</th>);
-            children.push(<th key='distance'>{"Distance"}</th>);
-            children.push(<th key='totalDistance'>{"Total Distance"}</th>);
-            table.push(<tr key='header'>{children}</tr>);
-            return table;
+            table = this.tableHeader();
         }
         else {
-            children.push(<th key='origin'>{"Origin"}</th>);
-            children.push(<th key='destination'>{"Destination"}</th>);
-            children.push(<th key='distance'>{"Distance"}</th>);
-            children.push(<th key='totalDistance'>{"Total Distance"}</th>);
-            table.push(<tr key='first row'>{children}</tr>);
-
+            table = this.tableHeader();
             let cell = [];
-
+            // Add each origin-destination pair to the table
             for (let i = 0; i < this.props.trip.places.length - 1; i++) {
                 cell = [];
                 cell.push(<td key={'origin' + i}>{this.props.trip.places[i].name}</td>);
@@ -51,11 +50,10 @@ class ItineraryForm extends Component{
                     cell.push(<td key={'distance' + i}>{this.props.trip.distances[i]}</td>);
                     wholeTrip += this.props.trip.distances[i];
                     cell.push(<td key={'totalDistance' + i}>{wholeTrip}</td>);
-
                 }
                 table.push(<tr key={'row' + i}>{cell}</tr>)
             }
-
+            // Add the last pair to the table to make a round trip
             cell=[];
             cell.push(<td key="origin last" >{this.props.trip.places[this.props.trip.places.length - 1].name}</td>);
             cell.push(<td key="destination last">{this.props.trip.places[0].name}</td>);
@@ -74,9 +72,7 @@ class ItineraryForm extends Component{
         }
     }
 
-    toggle(){
-        this.setState({collapse: !this.state.collapse})
-    }
+    toggle(){this.setState({collapse: !this.state.collapse})}
 
     render() {
         return (
@@ -99,6 +95,5 @@ class ItineraryForm extends Component{
             </div>
         );
     }
-
 }
 export default ItineraryForm;
