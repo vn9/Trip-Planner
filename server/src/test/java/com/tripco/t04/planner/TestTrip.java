@@ -40,7 +40,7 @@ public class TestTrip {
     places.add(peublo);
     places.add(saguache);
     places.add(minturn);
-    options = new Option("none", "miles", null, null);
+    options = new Option("none", "user defined", "miles", 3959.0);
     trip = new Trip("trip", 2 , "Test", options, places, null , "");
   }
 
@@ -60,9 +60,21 @@ public class TestTrip {
     // Call the equals() method of the first object on the second object.
     assertEquals(expectedDistances, trip.distances);
   }
+  
+  @Test
+  public void testOptions(){
+    trip.plan();
+      String opti = "none";
+      String unit = "user defined";
+      String unName = "miles";
+      Double unRad = 3959.0;
 
-  
-  
+      assertEquals(opti, trip.options.optimization);
+      assertEquals(unit, trip.options.units);
+      assertEquals(unName, trip.options.unitName);
+      assertEquals(unRad, trip.options.unitRadius);
+    }
+
    /*
   * testMap uses BufferedReader to read in a local file
   * stores each line in an arrayList then return a big long string
