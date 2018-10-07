@@ -41,5 +41,25 @@ public class TestDistance {
         assertEquals(result2,test2Distance);
     }
 
+    @Test
+    public void testDistanceUnits(){
+        distance1.units = "miles";
+        distance2.units = "kilometers";
+        int test3Distance = 24;
+        int test4Distance = 65;
+        int result3 = distance1.vincenty();
+        int result4 = distance2.vincenty();
+        assertEquals(result3, test3Distance);
+        assertEquals(result4, test4Distance);
+    }
+
+    @Test
+    public void testDistanceNauticalMilesUnits(){
+        distance2.units = "nautical miles";
+        int test6Distance = 35;
+        int result6 = distance2.vincenty();
+        assertEquals(result6, test6Distance);
+    }
+
 
 }
