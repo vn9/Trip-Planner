@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardHeader, CardBody, Button, Form, FormGroup, Label, Input, FormText} from 'reactstrap'
+import {Card, CardBody, Button, Input, Row, Col, Collapse, Form} from 'reactstrap'
 
 import {request} from '../../api/api'
 
@@ -8,39 +8,70 @@ import {serverURL} from './SetServer'
 
 
 
-export default class UploadFile extends React.Component {
+export default class UploadFile extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            collapse: false,
+            place: {
+                id: "",
+                name: "",
+                latitude: "",
+                longitude: "",
+            }
+        };
+
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.updateTitle = this.updateTitle.bind(this);
-        this.saveTFFI = this.saveTFFI.bind(this)
+        this.saveTFFI = this.saveTFFI.bind(this);
+        this.updatePlace = this.updatePlace.bind(this);
+        this.addPlace = this.addPlace.bind(this);
+        this.toggle = this.toggle.bind(this);
 
     }
 
+    toggle(){
+        this.setState({collapse: !this.state.collapse})
+    }
+
+    // Reads the file contents and updates trip in application
     loadFile(event){
         let file = event.target.files[0];
         let reader = new FileReader();
         reader.readAsText(file);
         reader.onload = (event)=> {
-            console.warn("file data",event.target.result); // Print to console
-            const object = JSON.parse(event.target.result); // Convert JSON string to java object
+            console.warn("file data",event.target.result);
+            const object = JSON.parse(event.target.result);
             console.log(object);
             for (var key in object){
                 var value = object[key];
-                this.props.updateTrip(key,value);           //update trip state
+                this.props.updateTrip(key,value);
             }
         }
     };
 
+
+    // This function sends the trip to the server for distance calcultions
+
     onFormSubmit(){
-        request(this.props.trip, 'plan', serverURL).then(                 //Calls request function from api.js, takes a body object, api method/name)
-            (response) => {                             //After resolved, we have a thing in response
-                console.log(response);                  //Prints the response in the console
+        request(this.props.trip, 'plan', serverURL).then(
+            (response) => {
+                console.log(response);
                 this.props.updateBasedOnResponse(response);
             })
     }
 
+    updatePlace(field, value){
+        let place = this.state.place;
+        place[field] = value;
+        this.setState(place);
 
+    }
+
+    addPlace(){
+        console.log(JSON.stringify(this.state.place))
+    }
 
 
     updateTitle(event) {
@@ -77,25 +108,34 @@ export default class UploadFile extends React.Component {
 
     render() {
         return (
-            <Card>
-                <CardBody>
-                    <p> Upload Your File </p>
-                <Form>
-                    <FormGroup>
-                        <Input title="upload" type="file" id="fileInput" onChange={(event)=>this.loadFile(event)}>
-                        </Input>
-                        <FormText color="muted">
-                            Enter Something here
-                        </FormText>
-                        <Button type="button" onClick={this.onFormSubmit}>Submit</Button>
-                    </FormGroup>
-                </Form>
-                    <input type="text" className="form-control" placeholder="Trip title..." value={this.props.trip.title} onChange={this.updateTitle} />
-                    <span className="input-group-btn">
-                        <button className="btn btn-primary " onClick={this.saveTFFI} type="button">Save</button>
-                    </span>
-                </CardBody>
-            </Card>
+            <div>
+                <Button onClick={this.toggle} className='btn-dark' block>Create Your Trip</Button>
+                <Collapse isOpen={this.state.collapse}>
+                    <Card>
+                        <CardBody>
+                            <Row>
+                                <Col md={6}>
+                                    <p> Upload Your File </p>
+                                    <Input title="upload" type="file" id="fileInput" onChange={(event)=>this.loadFile(event)}/>
+                                </Col>
+                                <Col md={6}>
+                                    <p> Add Your Own </p>
+                                        <Input type="text" placeholder="Id  ex. den" onChange={(e)=>this.updatePlace('id', e.target.value)}/>
+                                        <Input type="text" placeholder="Name  ex. Denver" onChange={(e)=>this.updatePlace('name', e.target.value)}/>
+                                        <Input type="text" placeholder="Latitude  ex. 39.73" onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
+                                        <Input type="text" placeholder="Longitude  ex.-104.99" onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
+                                    <br/>
+                                    <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
+                                </Col>
+                            </Row>
+                            <br/>
+                            <Input type="text" className="form-control" placeholder="Trip title..." value={this.props.trip.title} onChange={this.updateTitle} />
+                            <Button onClick={this.saveTFFI} type="Button">Save Trip</Button>
+                        </CardBody>
+                        <Button  type="button" onClick={this.onFormSubmit} block>Plan Trip</Button>
+                    </Card>
+                </Collapse>
+            </div>
         )
     }
 }
