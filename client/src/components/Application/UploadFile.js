@@ -131,8 +131,10 @@ export default class UploadFile extends Component {
                             <br/>
                             <Input type="text" className="form-control" placeholder="Trip title..." value={this.props.trip.title} onChange={this.updateTitle} />
                             <Button onClick={this.saveTFFI} type="Button">Save Trip</Button>
+                            <div align="center">
+                                <Button color="primary" type="button" onClick={this.onFormSubmit}>Plan Trip</Button>
+                            </div>
                         </CardBody>
-                        <Button  type="button" onClick={this.onFormSubmit} block>Plan Trip</Button>
                     </Card>
                 </Collapse>
             </div>
