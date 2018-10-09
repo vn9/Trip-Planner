@@ -78,7 +78,7 @@ class Application extends Component {
                             updateBasedOnResponse={this.updateBasedOnResponse}/>
                 <SetServer/>
                 <br/>
-                <TwoPtCalculator config={this.state.config}/>
+                <TwoPtCalculator config={this.state.config} options={this.state.trip.options}/>
                 <br/>
                 <Map trip={this.state.trip} config={this.state.config}/>
                 <br/>
