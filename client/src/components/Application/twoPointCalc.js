@@ -4,18 +4,6 @@ import {serverURL} from  './SetServer'
 
 import {request} from '../../api/api'
 
-const CoordinateInputGroup = (props) => {
-  const {locationName, updateLocation} = props;
-  return (
-      <InputGroup>
-        <InputGroupAddon addonType="prepend">Latitude{locationName}</InputGroupAddon>
-        <Input placeholder="45.00" onChange={(event) => updateLocation('latitude', event.target.value)}/>
-        <InputGroupAddon addonType="prepend">Longitude{locationName}</InputGroupAddon>
-        <Input placeholder="101.00" onChange={(event) => updateLocation('longitude', event.target.value)}/>
-      </InputGroup>
-  )
-};
-
 class TwoPtCalculator extends Component {
     constructor(props) {
         super(props);
@@ -86,9 +74,11 @@ class TwoPtCalculator extends Component {
                 <Collapse isOpen={this.state.collapse}>
                     <Card>
                         <CardBody>
-                          <CoordinateInputGroup locationName=" Origin " updateLocation={this.updateOrigin}/>
+                          <Input placeholder="Origin Latitude in Degree ex. 45.00" onChange={(event) => this.updateOrigin('latitude', event.target.value)}/>
+                          <Input placeholder="Origin Longitude in Degree ex. 101.00" onChange={(event) => this.updateOrigin('longitude', event.target.value)}/>
                           <br/>
-                          <CoordinateInputGroup locationName=" Destination " updateLocation={this.updateDestination}/>
+                          <Input placeholder="Destination Latitude in Degree ex. 45.00" onChange={(event) => this.updateOrigin('latitude', event.target.value)}/>
+                          <Input placeholder="Destination Longitude in Degree ex. 101.00" onChange={(event) => this.updateOrigin('longitude', event.target.value)}/>
                           <br/>
                           <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
                           <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.state.distance.units}</p>
