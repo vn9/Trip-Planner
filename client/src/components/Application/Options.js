@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardBody, Label, Input, FormGroup, Form, Button} from 'reactstrap'
+import { Card, CardBody, Input, Form, Button} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
