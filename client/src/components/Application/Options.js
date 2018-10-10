@@ -1,7 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardHeader, CardBody, Label, Input, FormGroup, Form} from 'reactstrap'
-import { ButtonGroup, Button } from 'reactstrap'
-
+import { Card, CardBody, Input, Form, Button} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -36,24 +34,12 @@ class Options extends Component{
       <Card>
         <CardBody>
           <p>Select the options you wish to use</p>
-
             {buttons}
-
             <p>{' '}</p>
-
             {this.state.userDefinedOn && (<Form>
-                <FormGroup>
-                    <Label>Unit Name:</Label>
-                    <Input type="text" placeholder="ex. Miles"
-                        onChange={event => {this.props.updateOptions('unitName', event.target.value)}}
-                    />
-                </FormGroup>
-                <FormGroup>
-                    <Label>Earth Radius (in specified unit):</Label>
-                    <Input type="text" placeholder="ex. 3959"
-                        onChange={event => {this.props.updateOptions('unitRadius', event.target.value)}}
-                    />
-                </FormGroup>
+                  <Input placeholder="Unit Name ex. Miles" onChange={(event) => this.props.updateOptions('unitName', event.target.value)}/>
+                  <br/>
+                  <Input placeholder="Earth Radius ex. 3959" onChange={(event) => this.props.updateOptions('unitRadius', event.target.value)}/>
             </Form>)}
         </CardBody>
       </Card>
