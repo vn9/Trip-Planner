@@ -33,9 +33,26 @@ class TwoPtCalculator extends Component {
         this.updateDist = this.updateDist.bind(this);
         this.updateDestination = this.updateDestination.bind(this);
         this.updateOrigin = this.updateOrigin.bind(this);
+        this.getUnits = this.getUnits.bind(this);
+        this.displayUnits = this.displayUnits.bind(this);
+    }
+
+    getUnits() {
+        let distance = this.state.distance;
+        let options = this.props.options;
+
+        distance.units = options.units;
+        if (options.units === "user defined") {
+            distance.unitName = options.unitName;
+            distance.unitRadius = options.unitRadius;
+        }
+        this.setState(distance);
+        console.log(distance);
+
     }
 
     onFormSubmit() {
+        this.getUnits();
         console.log(JSON.stringify(this.state.distance));
         request(this.state.distance, 'distance', serverURL).then(
             (response) => {
@@ -62,9 +79,15 @@ class TwoPtCalculator extends Component {
     }
 
     updateDist(value){
-        let place=this.state.distance;
-        place.distance = value;
-        this.setState(place);
+        this.setState({'distance' : value});
+    }
+
+    displayUnits(){
+        let unit = this.state.distance.units;
+        if (unit === "user defined"){
+            unit = this.state.distance.unitName;
+        }
+        return(unit);
     }
 
     render() {
