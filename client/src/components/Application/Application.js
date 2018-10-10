@@ -76,6 +76,7 @@ class Application extends Component {
                 <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
                 <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}
                             updateBasedOnResponse={this.updateBasedOnResponse}/>
+                <br/>
                 <SetServer/>
                 <br/>
                 <TwoPtCalculator config={this.state.config}/>
