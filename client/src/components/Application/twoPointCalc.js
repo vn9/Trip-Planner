@@ -34,14 +34,32 @@ class TwoPtCalculator extends Component {
         this.updateDist = this.updateDist.bind(this);
         this.updateDestination = this.updateDestination.bind(this);
         this.updateOrigin = this.updateOrigin.bind(this);
+        this.getUnits = this.getUnits.bind(this);
+        this.displayUnits = this.displayUnits.bind(this);
+    }
+
+    getUnits() {
+        let distance = this.state.distance;
+        let options = this.props.options;
+
+        distance.units = options.units;
+        if (options.units === "user defined") {
+            distance.unitName = options.unitName;
+            distance.unitRadius = options.unitRadius;
+        }
+        this.setState(distance);
+        console.log(distance);
+
     }
 
     onFormSubmit() {
+        this.getUnits();
         console.log(JSON.stringify(this.state.distance));
         request(this.state.distance, 'distance', serverURL).then(
             (response) => {
                 console.log(response);
                 this.updateDist(response);
+
 
             }
         )
@@ -65,9 +83,15 @@ class TwoPtCalculator extends Component {
     }
 
     updateDist(value){
-        let place=this.state.distance;
-        place.distance = value;
-        this.setState(place);
+        this.setState({'distance' : value});
+    }
+
+    displayUnits(){
+        let unit = this.state.distance.units;
+        if (unit === "user defined"){
+            unit = this.state.distance.unitName;
+        }
+        return(unit);
     }
 
 
@@ -93,7 +117,7 @@ class TwoPtCalculator extends Component {
                             </InputGroup>
                             <br/>
                             <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
-                            <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.state.distance.units}</p>
+                            <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.displayUnits()}</p>
                         </CardBody>
                     </Card>
                 </Collapse>

@@ -79,7 +79,7 @@ class Application extends Component {
                 <br/>
                 <SetServer/>
                 <br/>
-                <TwoPtCalculator config={this.state.config}/>
+                <TwoPtCalculator config={this.state.config} options={this.state.trip.options}/>
                 <br/>
                 <Map trip={this.state.trip} config={this.state.config}/>
                 <br/>
