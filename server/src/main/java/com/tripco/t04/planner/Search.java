@@ -1,5 +1,7 @@
 package com.tripco.t04.planner;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 //import database in this file to do the search and return a list of Place objects
@@ -22,6 +24,12 @@ public class Search {
         this.limit = limit;
         this.places = places;
 
+    }
+
+    //This method return an ArrayList of place which contain those places conform to the requirements
+    public String getPlaces () {
+        Gson gson = new Gson();
+        return gson.toJson(places);
     }
 
 }

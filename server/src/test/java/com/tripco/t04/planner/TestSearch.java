@@ -27,7 +27,7 @@ public class TestSearch {
     }
 
     @Test
-    public void testPlace() {
+    public void testSearch() {
 
 
         if(searchobj1.version.equals(searchobj2.version) ||
