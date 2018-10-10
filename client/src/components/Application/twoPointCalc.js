@@ -100,11 +100,11 @@ class TwoPtCalculator extends Component {
                           <Input placeholder="Origin Latitude in Degree ex. 45.00" onChange={(event) => this.updateOrigin('latitude', event.target.value)}/>
                           <Input placeholder="Origin Longitude in Degree ex. 101.00" onChange={(event) => this.updateOrigin('longitude', event.target.value)}/>
                           <br/>
-                          <Input placeholder="Destination Latitude in Degree ex. 45.00" onChange={(event) => this.updateOrigin('latitude', event.target.value)}/>
-                          <Input placeholder="Destination Longitude in Degree ex. 101.00" onChange={(event) => this.updateOrigin('longitude', event.target.value)}/>
+                          <Input placeholder="Destination Latitude in Degree ex. 45.00" onChange={(event) => this.updateDestination('latitude', event.target.value)}/>
+                          <Input placeholder="Destination Longitude in Degree ex. 101.00" onChange={(event) => this.updateDestination('longitude', event.target.value)}/>
                           <br/>
                           <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
-                          <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.state.distance.units}</p>
+                          <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.displayUnits()}</p>
                         </CardBody>
                     </Card>
                 </Collapse>

@@ -6,15 +6,43 @@ import {request} from '../../api/api'
 import {serverURL} from './SetServer'
 //export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
 
+class Node {
+    constructor(place){
+        this.place = place;
+        this.next = null;
+    }
+}
 
+class LinkedList {
+    constructor(length = 0, head = null) {
+        this.head = head;
+        this.length = length;
+        this.addNode = this.addNode.bind(this);
+    }
+
+    addNode(place) {
+        var newNode = new Node(place);
+        let current = this.head;
+        console.log(newNode);
+        if (!current) {
+            this.head = newNode;
+        }
+        else{
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        this.length++;
+    }
+}
 
 export default class UploadFile extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             collapse: false,
-            place: {
+            Place: {
                 id: "",
                 name: "",
                 latitude: "",
@@ -28,8 +56,23 @@ export default class UploadFile extends Component {
         this.updatePlace = this.updatePlace.bind(this);
         this.addPlace = this.addPlace.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.createLinkedList = this.createLinkedList.bind(this);
 
     }
+
+    createLinkedList(){
+        let places = this.props.trip.places;
+        var myPlacesLL = new LinkedList();
+        for (let i = 0; i < places.length; i++){
+            let value = places[i];
+            myPlacesLL.addNode(value);
+        }
+        console.log(myPlacesLL);
+        console.log(typeof(myPlacesLL));
+
+        return(myPlacesLL);
+    }
+
 
     toggle(){
         this.setState({collapse: !this.state.collapse})
@@ -48,9 +91,9 @@ export default class UploadFile extends Component {
                 var value = object[key];
                 this.props.updateTrip(key,value);
             }
+            this.createLinkedList();
         }
     };
-
 
     // This function sends the trip to the server for distance calcultions
 
@@ -105,7 +148,6 @@ export default class UploadFile extends Component {
         document.body.removeChild(element);
     }
 
-
     render() {
         return (
             <div>
@@ -120,10 +162,10 @@ export default class UploadFile extends Component {
                                 </Col>
                                 <Col md={6}>
                                     <p> Add Your Own </p>
-                                        <Input type="text" placeholder="Id  ex. den" onChange={(e)=>this.updatePlace('id', e.target.value)}/>
-                                        <Input type="text" placeholder="Name  ex. Denver" onChange={(e)=>this.updatePlace('name', e.target.value)}/>
-                                        <Input type="text" placeholder="Latitude  ex. 39.73" onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
-                                        <Input type="text" placeholder="Longitude  ex.-104.99" onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
+                                    <Input type="text" placeholder="Id  ex. den" onChange={(e)=>this.updatePlace('id', e.target.value)}/>
+                                    <Input type="text" placeholder="Name  ex. Denver" onChange={(e)=>this.updatePlace('name', e.target.value)}/>
+                                    <Input type="text" placeholder="Latitude  ex. 39.73" onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
+                                    <Input type="text" placeholder="Longitude  ex.-104.99" onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
                                     <br/>
                                     <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
                                 </Col>
