@@ -18,6 +18,7 @@ class Options extends Component{
 
   _userDefinedOn(event){
       this.props.updateOptions('units', event.target.value);
+      this.setState({userDefinedOn: false});
       if(event.target.value === 'user defined'){
         this.setState({userDefinedOn : !this.state.userDefinedOn});
       }
