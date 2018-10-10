@@ -72,8 +72,9 @@ Epics planned for this sprint.
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *10/3* | *#123, #125, #225, #229, #230, #233* | *#213, #217, #231, #234, #236* | *none* |
-| *10/5* | *#217, #235* | *#208, #213, #220, #232, #235, #239, #240, #243* | *none* |
+| *10/5* | *#217, #235* | *#208, #213, #220, #232, #239, #240, #243* | *none* |
 | *10/8* | *#166, #208, #213, #223, #239, #243, #250, #256, #258，#260, #263* | *#220, #222, #232, #240* | *none* |
+| *10/10* | *#142 ,#219, #222, #240, #266, #273, #275, #279, #280* | *#220, #221, #232, #268, #281, #282, #285* | *Maintaining a focused effort to close epics while still working to get our test coverage up will be challenging* |
 
 *Add a new row for the scrum session after each lecture. *
 
