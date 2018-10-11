@@ -19,16 +19,22 @@ public class Place {
 
   public double getLat() {
     double decLat = Double.parseDouble(latitude);
-    if (decLat < -90.0 || decLat > 90.0)
+    if (decLat < -90.0 || decLat > 90.0){
       System.err.println(String.format("%s lat out of range: %s", id, decLat));
-    return decLat;
+      return 0.0;
+    }
+    else{
+      return decLat;}
   }
 
   public double getLong() {
     double decLong = Double.parseDouble(longitude);
-    if (decLong < -180.0 || decLong > 180.0)
+    if (decLong < -180.0 || decLong > 180.0){
       System.err.println(String.format("%s long out of range: %s", id, decLong));
-    return decLong;
+      return 0.0;
+    }
+    else{
+      return decLong;}
   }
 
   public String getSvgCoordinate() {
