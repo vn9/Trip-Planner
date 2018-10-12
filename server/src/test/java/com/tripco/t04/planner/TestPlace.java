@@ -39,8 +39,8 @@ public class TestPlace {
   public void testGet(){
     // corver the invaild input
     place = new Place("dnvr","Denver", "-390.5", "-104.5");
-    assertEquals(0.0, place.getLat(),0.0);
+    assertEquals(-999.0, place.getLat(),0.0);
     place = new Place("dnvr","Denver", "-39.5", "-1040.5");
-    assertEquals(0.0, place.getLong(),0.0);
+    assertEquals(-999.0, place.getLong(),0.0);
   }
 }
