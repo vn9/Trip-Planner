@@ -42,7 +42,7 @@ export default class UploadFile extends Component {
         super(props);
         this.state = {
             collapse: false,
-            Place: {
+            place: {
                 id: "",
                 name: "",
                 latitude: "",
