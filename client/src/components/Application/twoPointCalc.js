@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardBody, Button, Input, InputGroup, InputGroupAddon, Collapse} from 'reactstrap'
+import {Card, CardBody, Button, Input, Collapse} from 'reactstrap'
 import {serverURL} from  './SetServer'
 
 import {request} from '../../api/api'
@@ -7,7 +7,6 @@ import {request} from '../../api/api'
 class TwoPtCalculator extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
           collapse: false,
           distance: {
@@ -31,10 +30,9 @@ class TwoPtCalculator extends Component {
         this.onFormSubmit = this.onFormSubmit.bind(this);
         this.toggle = this.toggle.bind(this);
         this.updateDist = this.updateDist.bind(this);
-        this.updateDestination = this.updateDestination.bind(this);
-        this.updateOrigin = this.updateOrigin.bind(this);
         this.getUnits = this.getUnits.bind(this);
         this.displayUnits = this.displayUnits.bind(this);
+        this.updateLocation = this.updateLocation.bind(this);
     }
 
     getUnits() {
@@ -66,16 +64,14 @@ class TwoPtCalculator extends Component {
         this.setState({collapse: !this.state.collapse})
     }
 
-    updateOrigin(coordinate, value){
-        let place = this.state.distance.origin;
-        place[coordinate] = value;
-        this.setState(place);
-    }
-
-    updateDestination(coordinate, value){
-        let place = this.state.distance.destination;
-        place[coordinate] = value;
-        this.setState(place);
+    updateLocation(coordinate,value,origin){
+      let place;
+      if(origin=== true)
+        place = this.state.distance.origin;
+      if(origin === false)
+        place = this.state.distance.destination;
+      place[coordinate] = value;
+      this.setState(place);
     }
 
     updateDist(value){
@@ -97,11 +93,11 @@ class TwoPtCalculator extends Component {
                 <Collapse isOpen={this.state.collapse}>
                     <Card>
                         <CardBody>
-                          <Input placeholder="Origin Latitude in Degree ex. 45.00" onChange={(event) => this.updateOrigin('latitude', event.target.value)}/>
-                          <Input placeholder="Origin Longitude in Degree ex. 101.00" onChange={(event) => this.updateOrigin('longitude', event.target.value)}/>
+                          <Input placeholder="Origin Latitude in Degree ex. 45.00" onChange={(event) => this.updateLocation('latitude', event.target.value, true)}/>
+                          <Input placeholder="Origin Longitude in Degree ex. 101.00" onChange={(event) => this.updateLocation('longitude', event.target.value, true)}/>
                           <br/>
-                          <Input placeholder="Destination Latitude in Degree ex. 45.00" onChange={(event) => this.updateDestination('latitude', event.target.value)}/>
-                          <Input placeholder="Destination Longitude in Degree ex. 101.00" onChange={(event) => this.updateDestination('longitude', event.target.value)}/>
+                          <Input placeholder="Destination Latitude in Degree ex. 45.00" onChange={(event) => this.updateLocation('latitude', event.target.value, false)}/>
+                          <Input placeholder="Destination Longitude in Degree ex. 101.00" onChange={(event) => this.updateLocation('longitude', event.target.value, false)}/>
                           <br/>
                           <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
                           <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.displayUnits()}</p>
