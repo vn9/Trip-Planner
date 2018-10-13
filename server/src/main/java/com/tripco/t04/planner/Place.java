@@ -17,7 +17,7 @@ public class Place {
     this.longitude = longitude;
   }
 
-  private double getLat() {
+  public double getLat() {
     double decLat = Double.parseDouble(latitude);
     if (decLat < -90.0 || decLat > 90.0)
       System.err.println(String.format("%s lat out of range: %s", id, decLat));
@@ -31,7 +31,7 @@ public class Place {
     return decLong;
   }
 
-  String getSvgCoordinate() {
+  public String getSvgCoordinate() {
     // Only for drawing on the Colorado Background
     return String.format("%.5f,%.5f",
             34.72952 + (getLong() + 109.3) / 7.5 * 992.96318,
