@@ -3,12 +3,12 @@ package com.tripco.t04.server;
 import com.tripco.t04.planner.Place;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
-/** This class connect to the database and find those data which conform to the match string
+/** This class connect to the database and find those data which conform to the match string.
  *
  */
 public class Driver {
@@ -23,13 +23,14 @@ public class Driver {
     public static ArrayList<Place> places = new ArrayList<>();
 
     /**
-     * The method accesses to the database
+     * The method accesses to the database.
      *
      */
     public static void find(String match) {
         //count the number of records in the table
         count = "select count(*) from airports";
-        search = "select id,name,municipality,latitude,longitude from airports where name like '%" + match + "%' or municipality like '%" + match + "%' order by name";
+        search = "select id,name,municipality,latitude,longitude from airports where name like '%" 
+            + match + "%' or municipality like '%" + match + "%' order by name";
         try {
             Class.forName(myDriver);
             // connect to the database and query
@@ -39,7 +40,7 @@ public class Driver {
                  ResultSet rsCount = stCount.executeQuery(count);
                  ResultSet rsQuery = stQuery.executeQuery(search)
             ) {
-                printJSON(rsCount, rsQuery, match);
+                printJson(rsCount, rsQuery, match);
             }
         } catch (Exception e) {
             System.err.println("Exception: " + e.getMessage());
@@ -47,10 +48,10 @@ public class Driver {
     }
 
     /**
-     * This method will print the Json created on the terminal or console to log
-     * Those places which matched will be added into places ArrayList
+     * This method will print the Json created on the terminal or console to log.
+     * Those places which matched will be added into places ArrayList.
      */
-    private static void printJSON(ResultSet count, ResultSet query, String match)
+    private static void printJson(ResultSet count, ResultSet query, String match)
             throws SQLException {
         System.out.printf("\n{\n");
         System.out.printf("\"type\": \"find\",\n");
