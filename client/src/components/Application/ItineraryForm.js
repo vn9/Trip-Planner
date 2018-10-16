@@ -17,7 +17,7 @@ class ItineraryForm extends Component {
     getDistanceName(){
         let units = this.props.trip.options.units;
         if(units === "user defined") {
-            units = this.props.trip.options.units;
+            units = this.props.trip.options.unitName;
         }
         return units;
     }
