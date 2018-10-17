@@ -14,7 +14,8 @@ import java.util.ArrayList;
 public class Driver {
     // db configuration information
     private final static String myDriver = "com.mysql.jdbc.Driver";
-    private final static String myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
+    //make sure the ssh -L <some-prot#>:faure:3306 <username>@<cs-machine> be the same port here (5655)
+    private final static String myUrl = "jdbc:mysql://localhost:5655/cs314?useUnicode=true&characterEncoding=utf-8";
     private final static String user = "cs314-db";
     private final static String pass = "eiK5liet1uej";
     // fill in SQL queries to count the number of records and to retrieve the data

@@ -75,6 +75,8 @@ Epics planned for this sprint.
 | *10/5* | *#217, #235* | *#208, #213, #220, #232, #239, #240, #243* | *none* |
 | *10/8* | *#166, #208, #213, #223, #239, #243, #250, #256, #258，#260, #263* | *#220, #222, #232, #240* | *none* |
 | *10/10* | *#142 ,#219, #222, #240, #266, #273, #275, #279, #280* | *#220, #221, #232, #268, #281, #282, #285* | *Maintaining a focused effort to close epics while still working to get our test coverage up will be challenging* |
+| *10/15* | *None* | *#220, #221, #232, #268, #281, #282, #285* | *Adding item to the array is challenging because the trip does not get updated|
+| *10/17* | *#221, #232, #268, #281, #285, #289, #292, #294, #295, #296, #298, #302, #308, #311, #312 #320* | *#212, #220, #278, #282, #316, #319*| *Trying to connect to the database, finishing all tasks and getting test coverage up by Thursday afternoon will be challenging*|
 
 *Add a new row for the scrum session after each lecture. *
 
