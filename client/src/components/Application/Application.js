@@ -7,6 +7,7 @@ import Map from './Map';
 import ItineraryForm from './ItineraryForm';
 import TwoPtCalculator from './twoPointCalc';
 import SetServer from './SetServer';
+import Search from './Search'
 
 
 import { get_config } from '../../api/api';
@@ -76,6 +77,8 @@ class Application extends Component {
                 <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
                 <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}
                             updateBasedOnResponse={this.updateBasedOnResponse}/>
+                <br/>
+                <Search config={this.state.config}/>
                 <br/>
                 <SetServer/>
                 <br/>
