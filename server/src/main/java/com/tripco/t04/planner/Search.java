@@ -1,11 +1,11 @@
 package com.tripco.t04.planner;
+import com.tripco.t04.server.Driver;
 
-import com.google.gson.Gson;
 import java.util.ArrayList;
 
 /**
  * This class imports the database here and search for places which conform the requirements.
- * It returns an ArrayList of places
+ * It returns an ArrayList of places.
  */
 public class Search {
 
@@ -14,6 +14,14 @@ public class Search {
     public String match;
     public int limit;
     public ArrayList<Place> places;
+
+    public Search(){
+        this.version = 3;
+        this.type = "Search";
+        this.match = "";
+        this.limit = 0;  //default unlimited
+        this.places = new ArrayList<>();
+    }
 
     public  Search(Integer version, String type,
                    String match, int limit, ArrayList<Place> places){
@@ -26,13 +34,12 @@ public class Search {
 
     }
 
-    //This method return an ArrayList of place which contain those places conform to the requirements
     /** Handles the response for an ArrayList of places object.
-     * Does the conversion from a Java class to a Json string.*
+     * Does the conversion from a Java class to a Json string.
      */
-    public String getPlaces () {
-        Gson gson = new Gson();
-        return gson.toJson(places);
+    void getPlaces () {
+        Driver.find(this.match);
+        this.places = Driver.places;
     }
 
 }

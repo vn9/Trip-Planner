@@ -22,17 +22,15 @@ public class TestSearch {
 
     @Before
     public void initialize() {
-        searchobj1 = new Search(3,"search","", 0, places);
-        searchobj2 = new Search(3,"search","", 0, places);
+        searchobj1 = new Search(3,"search","Aero Bear Field", 0, places);
+        searchobj2 = new Search(3,"search","Aero Bear Field", 0, places);
     }
 
     @Test
     public void testSearch() {
-
-        String places1 = searchobj1.getPlaces();
-        String places2 = searchobj2.getPlaces();
-        assertEquals(places1,places2);
-
+        searchobj1.getPlaces();
+        searchobj2.getPlaces();
+        assertEquals(searchobj1.places,searchobj2.places);
     }
 
 }
