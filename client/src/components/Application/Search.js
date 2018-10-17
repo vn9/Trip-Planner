@@ -33,7 +33,7 @@ export default class Search extends Component {
 
     onSearch(){
         console.log(JSON.stringify(this.state.search));
-        request(this.state.search, 'find', serverURL).then(
+        request(this.state.search, 'search', serverURL).then(
             (response) => {
                 console.log(response);
                 this.updateSearch(response);

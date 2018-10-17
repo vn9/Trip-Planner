@@ -46,7 +46,7 @@ public class MicroServer {
     // client is sending data, so a HTTP POST is used instead of a GET
     get("/config", this::config);
     post("/plan", this::plan);
-    post("/find", this::find);
+    post("/search", this::search);
     post("/distance", this::distance);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
@@ -128,13 +128,13 @@ public class MicroServer {
    * @param response
    * @return
    */
-  private String find(Request request, Response response) {
+  private String search(Request request, Response response) {
     String result;
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
-    try{
+    try {
       result = new Find(request).getSearch();
-    }catch (Exception e){
+    } catch (Exception e) {
       result = "";
       System.out.printf("Something wrong with the find/search");
     }
