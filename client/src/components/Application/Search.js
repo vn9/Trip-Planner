@@ -18,13 +18,13 @@ export default class Search extends Component {
         };
         this.matchChange = this.matchChange.bind(this);
         this.onSearch = this.onSearch.bind(this);
-        //this.updateSearch = this.updateSearch.bind(this);
+        this.updateSearch = this.updateSearch.bind(this);
     }
-/*
+
     updateSearch(response){
         this.setState({'search': response})
     }
-*/
+
     matchChange(query){
         let mySearch = this.state.search;
         mySearch['match'] =  query;
@@ -32,14 +32,13 @@ export default class Search extends Component {
     }
 
     onSearch(){
-        console.log(JSON.stringify(this.state.search))
-        /*
-        request(this.state.search, 'search', serverURL).then(
+        console.log(JSON.stringify(this.state.search));
+        request(this.state.search, 'find', serverURL).then(
             (response) => {
                 console.log(response);
                 this.updateSearch(response);
             })
-            */
+
     }
 
     render(){
