@@ -23,10 +23,10 @@ class DropDown extends Component {
             <td value={this.props.value}>
                 <div className="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded = "false">
                     {this.props.text}
-                    </div>
+                </div>
                 <div className="dropdown-menu">
                     {dropdownItems}
-                    </div>
+                </div>
             </td>
              )
     }

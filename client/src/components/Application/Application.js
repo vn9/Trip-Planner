@@ -83,7 +83,7 @@ class Application extends Component {
                 <br/>
                 <Map trip={this.state.trip} config={this.state.config}/>
                 <br/>
-                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip}/>
+                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} updateBasedOnResponse={this.updateBasedOnResponse}/>
             </Container>
 
         )

@@ -6,34 +6,12 @@ import {request} from '../../api/api'
 import {serverURL} from './SetServer'
 //export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
 
-class Node {
-    constructor(place){
-        this.place = place;
-        this.next = null;
-    }
-}
-
-class LinkedList {
-    constructor(length = 0, head = null) {
-        this.head = head;
-        this.length = length;
-        this.addNode = this.addNode.bind(this);
-    }
-
-    addNode(place) {
-        var newNode = new Node(place);
-        let current = this.head;
-        console.log(newNode);
-        if (!current) {
-            this.head = newNode;
-        }
-        else{
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
-        this.length++;
+class Place {
+    constructor(id, name, latitude, longitude){
+        this.id = id;
+        this.name = name;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 }
 
@@ -56,10 +34,10 @@ export default class UploadFile extends Component {
         this.updatePlace = this.updatePlace.bind(this);
         this.addPlace = this.addPlace.bind(this);
         this.toggle = this.toggle.bind(this);
-        this.createLinkedList = this.createLinkedList.bind(this);
+        //this.createLinkedList = this.createLinkedList.bind(this);
 
     }
-
+/*
     createLinkedList(){
         let places = this.props.trip.places;
         var myPlacesLL = new LinkedList();
@@ -72,7 +50,7 @@ export default class UploadFile extends Component {
 
         return(myPlacesLL);
     }
-
+*/
 
     toggle(){
         this.setState({collapse: !this.state.collapse})
@@ -91,7 +69,7 @@ export default class UploadFile extends Component {
                 var value = object[key];
                 this.props.updateTrip(key,value);
             }
-            this.createLinkedList();
+            //this.createLinkedList();
         }
     };
 
@@ -112,8 +90,16 @@ export default class UploadFile extends Component {
 
     }
 
+
     addPlace(){
-        console.log(JSON.stringify(this.state.place))
+        let myPlaces = this.props.trip.places;
+        console.log(myPlaces);
+        let place = this.state.place;
+        let newPlace = new Place(place.id, place.name, place.latitude, place.longitude);
+        console.log(newPlace);
+        myPlaces.push(newPlace);
+        this.props.updateTrip('places', myPlaces);
+        console.log(this.props.trip.places);
     }
 
 
@@ -184,3 +170,36 @@ export default class UploadFile extends Component {
     }
 }
 
+
+/*
+class Node {
+    constructor(place){
+        this.place = place;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor(length = 0, head = null) {
+        this.head = head;
+        this.length = length;
+        this.addNode = this.addNode.bind(this);
+    }
+
+    addNode(place) {
+        var newNode = new Node(place);
+        let current = this.head;
+        console.log(newNode);
+        if (!current) {
+            this.head = newNode;
+        }
+        else{
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
+        }
+        this.length++;
+    }
+}
+*/
