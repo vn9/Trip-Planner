@@ -2,10 +2,13 @@ package com.tripco.t04.server;
 
 import com.tripco.t04.planner.Calculate;
 import com.tripco.t04.planner.Plan;
+import com.tripco.t04.planner.Find;
 
 import spark.Request;
 import spark.Response;
 import spark.Spark;
+
+import java.lang.Exception;
 
 import static spark.Spark.*;
 
@@ -43,6 +46,7 @@ public class MicroServer {
     // client is sending data, so a HTTP POST is used instead of a GET
     get("/config", this::config);
     post("/plan", this::plan);
+    post("/find", this::find);
     post("/distance", this::distance);
 
     System.out.println("\n\nServer running on port: " + this.port + "\n\n");
@@ -118,6 +122,31 @@ public class MicroServer {
     return new Plan(request).getTrip();
   }
 
+  /** A REST API to support search find.
+   *
+   * @param request
+   * @param response
+   * @return
+   */
+  private String find(Request request, Response response) {
+    String result;
+    response.type("application/json");
+    response.header("Access-Control-Allow-Origin", "*");
+    try{
+      result = new Find(request).getSearch();
+    }catch (Exception e){
+      result = "";
+      System.out.printf("Something wrong with the find/search");
+    }
+    return result;
+  }
+
+  /** A REST API to support calculate distance.
+   *
+   * @param request
+   * @param response
+   * @return
+   */
   private String distance(Request request, Response response){
     response.type("application/json");
     response.header("Access-Control-Allow-Origin", "*");
