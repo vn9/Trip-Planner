@@ -34,7 +34,7 @@ class Options extends Component{
     return(
       <Card>
         <CardBody>
-          <p>Select the options you wish to use</p>
+          <p align="Center">Select the options you wish to use</p>
             {buttons}
             <p>{' '}</p>
             {this.state.userDefinedOn && (<Form>

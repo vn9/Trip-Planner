@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Container } from 'reactstrap';
+import { Container, Col, Row } from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -7,7 +7,8 @@ import Map from './Map';
 import ItineraryForm from './ItineraryForm';
 import TwoPtCalculator from './twoPointCalc';
 import SetServer from './SetServer';
-import Search from './Search'
+import Search from './Search';
+import Optimization from './Optimization';
 
 
 import { get_config } from '../../api/api';
@@ -27,7 +28,8 @@ class Application extends Component {
                 options: {
                     units: "miles",
                     unitName: "",
-                    unitRadius: 0.0000
+                    unitRadius: 0.0000,
+                    optimization: "none",
                 },
                 places: [],
                 distances: [],
@@ -74,7 +76,14 @@ class Application extends Component {
         return(
             <Container id="Application" >
                 <Info/>
-                <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                <Row>
+                    <Col md={6}>
+                        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                    </Col>
+                    <Col md={6}>
+                        <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                    </Col>
+                </Row>
                 <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}
                             updateBasedOnResponse={this.updateBasedOnResponse}/>
                 <br/>
