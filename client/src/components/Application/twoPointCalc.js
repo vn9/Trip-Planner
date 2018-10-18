@@ -11,7 +11,7 @@ class TwoPtCalculator extends Component {
           collapse: false,
           distance: {
             type: "distance",
-            version: 0,
+            version: 3,
             units: "miles",
             unitName: "",
             unitRadius: 0.00,
