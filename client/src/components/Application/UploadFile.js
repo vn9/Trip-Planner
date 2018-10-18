@@ -6,7 +6,7 @@ import {request} from '../../api/api'
 import {serverURL} from './SetServer'
 //export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
 
-class Place {
+export class Place {
     constructor(id, name, latitude, longitude){
         this.id = id;
         this.name = name;
