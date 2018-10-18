@@ -29,6 +29,7 @@ public class Trip {
   //public Place[] places;
   public ArrayList<Integer> distances;
   public String map;
+  //public int[][] arr;
 
 
   public Trip(String type, Integer version,
@@ -41,6 +42,7 @@ public class Trip {
         this.places = places;
         this.distances = distances;
         this.map = map;
+        //this.arr = distanceLatice();
     }
 
 
@@ -50,6 +52,19 @@ public class Trip {
    * It might need to reorder the places in the future.
    */
   public void plan() {
+
+    if(options.optimization != null){
+        if(options.optimization.equals("short")){
+            while(true){
+                ArrayList<Integer> temp;
+                temp = distances;
+                nearestNeighbor(distanceLatice());
+                this.distances = legDistances();
+                if(distances.equals(temp)){break;}
+            }
+            //this.map = svg();
+        }
+    }
     this.map = svg();
     this.distances = legDistances();
   }
@@ -134,18 +149,63 @@ public class Trip {
     reaches the end of the list, it resets the end to be the first list item,
     making a round-trip.
      */
-
       for (int i = 0; i < totalPlaces; i++) {
 
           Place start = places.get(i);
           Place end = places.get((i + 1) % totalPlaces); // % sets back to back zero when end reached
-
 
           Distance calculator = new Distance(start, end, units, unitName, unitRadius);
           dist.add(calculator.vincenty());
       }
 
       return dist;
+      }
+
+      private int[][] distanceLatice() {
+        int[][] latice = new int[places.size()][places.size()];
+          String units = options.units;
+          String unitName = null;
+          Double unitRadius = null;
+
+          if (options.units.equals("user defined")) {
+              unitName = options.unitName;
+              unitRadius = options.unitRadius;
+          }
+        for(int i = 0; i < places.size(); i++){
+            latice[i][i] = 0;
+            for(int j = i+1; j < places.size(); j++){
+                Distance temp = new Distance(places.get(i),places.get(j),units, unitName, unitRadius);
+                latice[i][j] = temp.vincenty();
+                latice[j][i] = latice[i][j];
+            }
+          }
+          return latice;
+      }
+
+      private void nearestNeighbor(int[][] latice) {
+        for(int i = 1; i < places.size(); i++){
+            int index = neighbor(i, latice);
+            swap(i, index);
+        }
+      }
+
+      private void swap(int first, int sec){
+        Place firstPlace = places.get(first);
+        this.places.set(first, places.get(sec));
+        this.places.set(sec, firstPlace);
+      }
+
+      private int neighbor(int start, int[][] latice){
+        int min = Integer.MAX_VALUE;
+        int j = -1;
+        for(int i = start; i < places.size(); i++){
+            int distance = latice[start-1][i];
+            if(distance < min){
+                min = distance;
+                j = i;
+            }
+        }
+        return j;
       }
   }
 
