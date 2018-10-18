@@ -14,6 +14,16 @@ class ItineraryForm extends Component {
         //this.tableHeader = this.tableHeader.bind(this);
         //this.tableGenerator = this.tableGenerator.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.sendRequest = this.sendRequest.bind(this);
+        this.reverseTable = this.reverseTable.bind(this);
+    }
+
+    sendRequest(){
+      request(this.props.trip, 'plan', serverURL).then(
+        (response) => {
+          console.log(response);
+          this.props.updateBasedOnResponse(response);
+        })
     }
 
     getDistanceName(){
@@ -40,12 +50,7 @@ class ItineraryForm extends Component {
         this.props.trip.places.splice(i,1); //remove place at i
         this.props.trip.distances = []; //clears out array since it's wrong after the deletion
         this.props.updateTrip(this.props.trip);
-
-        request(this.props.trip, 'plan', serverURL).then(
-            (response) => {
-                console.log(response);
-                this.props.updateBasedOnResponse(response);
-            })
+        this.sendRequest();
     }
 
     begFunc(e,i) {
@@ -143,23 +148,37 @@ class ItineraryForm extends Component {
         }
     }
 
-
+    reverseTable(){
+      let places = this.props.trip.places;
+      let arr = [places.length];
+      for(let i = 0; i < places.length; i++){
+        arr[i] = places[i]
+      }
+      arr.reverse();
+      this.props.updateTrip("places",arr);
+      this.sendRequest();
+    }
 
     render() {
         if(this.isTrip()) {
             return(
                 <div id="itinerary">
-                    <Button onClick={this.toggle} className='btn-dark' block>Itinerary</Button>
+                    <Button onClick={this.toggle} className='btn-dark' block>
+                      Itinerary</Button>
                     <Collapse isOpen={this.state.collapse}>
-                    <h4 align="Center">
-                        {this.tripTitle()}
-                    </h4>
-                    <table className="table table-responsive table-bordered" id={"tripItinerary"}>
+                      <h4 align="Center">{this.tripTitle()}</h4>
+                      <table className="table table-responsive table-bordered"
+                             id={"tripItinerary"}>
                         <thead className="thead-light">
-                            {this.tableRow()}
-                        </thead>
-                        {this.renderDistance()}
-                    </table>
+                          {this.tableRow()}
+                          </thead>
+                            {this.renderDistance()}
+                            </table>
+                        <div align="center">
+                        <Button id="reverse-button" onClick={this.reverseTable}>
+                          Reverse
+                        </Button>
+                        </div>
                     </Collapse>
                 </div>
             )
@@ -167,7 +186,9 @@ class ItineraryForm extends Component {
         else{
             return(
                 <div id="itinerary" >
-                    <Button onClick={this.toggle} className='btn-dark' block>Itinerary</Button>
+                    <Button onClick={this.toggle} className='btn-dark' block>
+                      Itinerary
+                    </Button>
                     <Collapse isOpen={this.state.collapse}>
                     <h4 align="center">No trip created yet</h4>
                     </Collapse>
