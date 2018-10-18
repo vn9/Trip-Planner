@@ -1,4 +1,4 @@
-import {Button, Card, CardBody, Table, Collapse} from 'reactstrap';
+import {Button, Collapse} from 'reactstrap';
 import React, {Component} from 'react'
 import DropDown from './DropDown'
 import {request} from "../../api/api";
@@ -82,7 +82,7 @@ class ItineraryForm extends Component {
             return <tr><td>Create Your Trip to See This Function!</td></tr>
         }
         return(
-            <tr className = "table-info">
+            <tr className = "table-info table-light">
                 <th className= "align-middle" >Destination</th>
                 {destinations}
                 <td key="dest_end">
@@ -102,7 +102,7 @@ class ItineraryForm extends Component {
         let units = this.getDistanceName();
         return(
             <tr>
-                <th className="table-info align-middle">{units}</th>
+                <th className="table-info align-middle table-light">{units}</th>
                 <td key ="dist_end">0</td>
                 {distances}
             </tr>
@@ -125,7 +125,7 @@ class ItineraryForm extends Component {
         let units = this.getDistanceName();
         return(
             <tr>
-                <th className="table-info align-middle "> Total {units}</th>
+                <th className="table-info align-middle table-light"> Total {units}</th>
                 {distances}
             </tr>
         );
@@ -136,7 +136,7 @@ class ItineraryForm extends Component {
         let totalDistanceRow = this.totalDistanceRow();
         if(this.distancesQ()){
         return(
-            <tbody>
+            <tbody >
             {placesRow}
             {totalDistanceRow}
             </tbody>)
@@ -155,7 +155,7 @@ class ItineraryForm extends Component {
                         {this.tripTitle()}
                     </h4>
                     <table className="table table-responsive table-bordered" id={"tripItinerary"}>
-                        <thead>
+                        <thead className="thead-light">
                             {this.tableRow()}
                         </thead>
                         {this.renderDistance()}
