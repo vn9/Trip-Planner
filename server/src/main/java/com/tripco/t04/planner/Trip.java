@@ -55,8 +55,11 @@ public class Trip {
     this.map = svg();
     if(options.optimization.equals("short")){
         nearestNeighbor(distanceLatice());
+        this.distances = legDistances();
+    } else{
+        this.distances = legDistances();
     }
-    this.distances = legDistances();
+
   }
 
   /**
