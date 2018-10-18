@@ -62,7 +62,9 @@ public class Trip {
                 this.distances = legDistances();
                 if(distances.equals(temp)){break;}
             }
-            //this.map = svg();
+        }
+        else if (options.optimization.equals("shorter")){
+            opt2();
         }
     }
     this.map = svg();
@@ -207,5 +209,50 @@ public class Trip {
         }
         return j;
       }
+
+    private static int distanceBetween(Place from, Place to) {
+        Distance calculator = new Distance(from, to, "miles", null ,null);
+        return calculator.vincenty();
+    }
+
+    private void reverse(int i1, int k) {
+        while(i1 < k){
+            Place temp = places.get(i1);
+            places.set(i1, places.get(k));
+            places.set(k,temp);
+            i1++;
+            k--;
+        }
+    }
+
+
+    public void opt2 () { // to change the order of places
+        final int n = places.size();
+        if (n > 4){ // n <= 4, keep unchanged
+            boolean improved = true;
+            while (improved){
+
+                improved = false;
+                for (int i = 0; i <= n - 3; i++) {
+                    for (int j = i + 2; j <= n-1 ; j++) {
+                        //delta = -dis(route,i,i+1)-dis(route,j,j+1)+dis(route,i,j) +dis(route,i+1,j+1)
+                        Place u1,u2,v1,v2;
+                        if (j == n-1){
+                            u1 = places.get(i); v1 = places.get(i + 1); u2 = places.get(j); v2 = places.get(0); // back to the first point
+                        }
+                        else {
+                            u1 = places.get(i); v1 = places.get(i + 1); u2 = places.get(j); v2 = places.get(j + 1);
+                        }
+                        int delta = - distanceBetween(u1,v1) - distanceBetween(u2,v2) + distanceBetween(u1, u2) + distanceBetween(v1 ,v2);
+                        if (delta < 0) {
+                            reverse(i + 1, j);
+                            improved = true;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
   }
 
