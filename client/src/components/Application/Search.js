@@ -59,13 +59,13 @@ export default class Search extends Component {
     }
 
     showPlaces(){
-        let destinations = this.state.search.places.map((place)=>
-            <Row>
+        let destinations = this.state.search.places.map((place, index)=>
+            <Row key={index}>
                 <Col md={9}>
                     <Input readOnly value={place.name}/>
                 </Col>
                 <Col md={2}>
-                    <Button id={place.id} key={place.name} value={JSON.stringify(place)} onClick={this.addPlace} block>Add</Button>
+                    <Button id={place.id} value={JSON.stringify(place)} onClick={this.addPlace} block>Add</Button>
                 </Col>
             </Row>
         );
