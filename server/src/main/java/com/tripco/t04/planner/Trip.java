@@ -52,18 +52,21 @@ public class Trip {
    * It might need to reorder the places in the future.
    */
   public void plan() {
-    this.map = svg();
-    if(options.optimization.equals("short")){
-        while(true){
-            ArrayList<Integer> temp;
-            temp = distances;
-            nearestNeighbor(distanceLatice());
-            this.distances = legDistances();
-            if(distances.equals(temp)){break;}
+
+    if(options.optimization != null){
+        if(options.optimization.equals("short")){
+            while(true){
+                ArrayList<Integer> temp;
+                temp = distances;
+                nearestNeighbor(distanceLatice());
+                this.distances = legDistances();
+                if(distances.equals(temp)){break;}
+            }
+            //this.map = svg();
         }
-    }else{
-        this.distances = legDistances();
     }
+    this.map = svg();
+    this.distances = legDistances();
   }
 
   /**
