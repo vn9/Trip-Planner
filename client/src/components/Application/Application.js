@@ -78,7 +78,7 @@ class Application extends Component {
                 <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}
                             updateBasedOnResponse={this.updateBasedOnResponse}/>
                 <br/>
-                <Search config={this.state.config}/>
+                <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
                 <br/>
                 <SetServer/>
                 <br/>
