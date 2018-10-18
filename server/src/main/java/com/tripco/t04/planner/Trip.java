@@ -54,12 +54,16 @@ public class Trip {
   public void plan() {
     this.map = svg();
     if(options.optimization.equals("short")){
-        nearestNeighbor(distanceLatice());
-        this.distances = legDistances();
-    } else{
+        while(true){
+            ArrayList<Integer> temp;
+            temp = distances;
+            nearestNeighbor(distanceLatice());
+            this.distances = legDistances();
+            if(distances.equals(temp)){break;}
+        }
+    }else{
         this.distances = legDistances();
     }
-
   }
 
   /**
@@ -142,12 +146,10 @@ public class Trip {
     reaches the end of the list, it resets the end to be the first list item,
     making a round-trip.
      */
-
       for (int i = 0; i < totalPlaces; i++) {
 
           Place start = places.get(i);
           Place end = places.get((i + 1) % totalPlaces); // % sets back to back zero when end reached
-
 
           Distance calculator = new Distance(start, end, units, unitName, unitRadius);
           dist.add(calculator.vincenty());
@@ -178,20 +180,16 @@ public class Trip {
       }
 
       private void nearestNeighbor(int[][] latice) {
-        //ArrayList<Place> opt1 = new ArrayList<>();
         for(int i = 1; i < places.size(); i++){
             int index = neighbor(i, latice);
-            //opt1.add(places.get(index));
             swap(i, index);
         }
-
-        //return opt1;
       }
 
       private void swap(int first, int sec){
         Place firstPlace = places.get(first);
-        places.set(first, places.get(sec));
-        places.set(sec, firstPlace);
+        this.places.set(first, places.get(sec));
+        this.places.set(sec, firstPlace);
       }
 
       private int neighbor(int start, int[][] latice){
