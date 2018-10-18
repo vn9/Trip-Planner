@@ -29,6 +29,7 @@ public class Trip {
   //public Place[] places;
   public ArrayList<Integer> distances;
   public String map;
+  //public int[][] arr;
 
 
   public Trip(String type, Integer version,
@@ -41,6 +42,7 @@ public class Trip {
         this.places = places;
         this.distances = distances;
         this.map = map;
+        //this.arr = distanceLatice();
     }
 
 
@@ -51,6 +53,9 @@ public class Trip {
    */
   public void plan() {
     this.map = svg();
+    if(options.optimization.equals("short")){
+        nearestNeighbor(distanceLatice());
+    }
     this.distances = legDistances();
   }
 
@@ -146,6 +151,57 @@ public class Trip {
       }
 
       return dist;
+      }
+
+      private int[][] distanceLatice() {
+        int[][] latice = new int[places.size()][places.size()];
+          String units = options.units;
+          String unitName = null;
+          Double unitRadius = null;
+
+          if (options.units.equals("user defined")) {
+              unitName = options.unitName;
+              unitRadius = options.unitRadius;
+          }
+        for(int i = 0; i < places.size(); i++){
+            latice[i][i] = 0;
+            for(int j = i+1; j < places.size(); j++){
+                Distance temp = new Distance(places.get(i),places.get(j),units, unitName, unitRadius);
+                latice[i][j] = temp.vincenty();
+                latice[j][i] = latice[i][j];
+            }
+          }
+          return latice;
+      }
+
+      private void nearestNeighbor(int[][] latice) {
+        //ArrayList<Place> opt1 = new ArrayList<>();
+        for(int i = 1; i < places.size(); i++){
+            int index = neighbor(i, latice);
+            //opt1.add(places.get(index));
+            swap(i, index);
+        }
+
+        //return opt1;
+      }
+
+      private void swap(int first, int sec){
+        Place firstPlace = places.get(first);
+        places.set(first, places.get(sec));
+        places.set(sec, firstPlace);
+      }
+
+      private int neighbor(int start, int[][] latice){
+        int min = Integer.MAX_VALUE;
+        int j = -1;
+        for(int i = start; i < places.size(); i++){
+            int distance = latice[start-1][i];
+            if(distance < min){
+                min = distance;
+                j = i;
+            }
+        }
+        return j;
       }
   }
 
