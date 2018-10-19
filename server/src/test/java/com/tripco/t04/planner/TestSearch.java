@@ -33,4 +33,18 @@ public class TestSearch {
         assertEquals(searchobj1.places,searchobj2.places);
     }
 
+    @Test
+    public void testConstructor(){
+        Integer three = 3;
+        String type = "search";
+        String match = "Aero Bear Field";
+        int number = 0;
+        ArrayList<Place> testPlaces = new ArrayList<>();
+        assertEquals(searchobj1.version, three);
+        assertEquals(searchobj1.type, type);
+        assertEquals(searchobj1.match, match);
+        assertEquals(searchobj1.limit, number);
+        assertEquals(searchobj1.places, testPlaces);
+    }
+
 }
