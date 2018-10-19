@@ -41,7 +41,7 @@
 
 ## Plan
 
-*This sprint we plan to accomplish all of the previous sprint's epics as well as allowing the user to search through our database to add destinations to their plans. We also want to add opt1 as an optimization option where we use the nearest neighbor algorithm. *
+*This sprint we plan to accomplish all of the previous sprint's epics as well as allowing the user to search through our database to add destinations to their plans. We also want to add opt1 as an optimization option where we use the nearest neighbor algorithm.*
 
 *We have two images in our slack channel that depicts what we would like our interface to look like and is our outline for the entire sprint*
 
@@ -94,8 +94,9 @@ Epics planned for this sprint.
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
-*
+* *#124 All Code Shall Be Clean: All the code is not as clean as it could be.  There are some blocks of code that we simply haven't figured out a better way to write.*
+*  *#205 All Code Must Be Tested: All the code is not tested, partciularly the client code.  Testing the client turned out to be much harder than we thought it would be.*
+* *Both of the above-mentioned epics were difficult to keep up with, particularly as we rushed to catch back up.*
 
 #### What Went Well
 
@@ -109,7 +110,7 @@ Epics planned for this sprint.
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
 * *Partway through our sprint we had a rut where no story points were completed for multiple days. We were lost as a team and had difficulty getting back to our productive start. We got together, regrouped, and were able to finish strong in the last three days.*
-*
+* *Open Pull Requests:* This sprint we had a problem where pull requests would build up.  We solved this problem by letting others know when things would be going up and specifically asking for people to look them over.*
 
 ## Retrospective
 
@@ -117,11 +118,11 @@ Epics planned for this sprint.
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+*In our last sprint we decided that we would work on improving our communciation.  This sprint we made a point of asking others for updates as well as updating the group. We frequently asked each other about progress and what we could do next.*
 
 #### What we did well
 
-*We started the sprint off very productively and had a great pace throughout the first half of the sprint. We also did a better job of managing tasks and being on the same page with what everyone was doing at all times*
+*We started the sprint off very productively and had a great pace throughout the first half of the sprint. We also did a better job of managing tasks and being on the same page with what everyone was doing at all times.  This sprint, dependencies were finished in a timely manner, which helped us continually move forward.*
 
 #### What we need to work on
 
