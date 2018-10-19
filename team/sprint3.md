@@ -119,7 +119,7 @@ Epics planned for this sprint.
 
 ## Retrospective
 
-*In this sprint we did a lot of things well as a team, but we also struggled as a team.  We improved our communication, but still struggled at times. We are learning how to work efficiently wtih each other, but still have yet to find a happy middle ground on work styles. We were less crunched at the end this time, but still left ourselves too much at the end. We have room to improve, but are happy with the progress we are making.*
+*In this sprint we did a lot of things well as a team, but we also struggled as a team.  We improved our communication, but still struggled at times. We are learning how to work efficiently with each other, but still have yet to find a happy middle ground on work styles. We were less crunched at the end this time, but still left ourselves too much at the end. We have room to improve, but are happy with the progress we are making.*
 
 #### What we changed this sprint
 
