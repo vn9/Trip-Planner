@@ -102,14 +102,14 @@ Epics planned for this sprint.
 
 *Describe what went well during the sprint in general terms followed by a more detailed list.*
 
-* *something*
+* *We did a very good job of hitting the ground running. Our burndown chart was ideal following the ideal path that was drawn for us. We also had better group participation throughout by specific members.*
 *
 
 #### Problems Encountered and Resolutions
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *something*
+* *Partway through our sprint we had a rut where no story points were completed for multiple days. We were lost as a team and had difficulty getting back to our productive start. We meeting together as a group and regrouped and were able to finish strong in the last three days.*
 *
 
 ## Retrospective
@@ -122,7 +122,7 @@ Epics planned for this sprint.
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+*We started the sprint off very productively and had a great pace throughout the first half of the sprint. We also did a better job of managing tasks and being on the same page with what everyone was doing at all times*
 
 #### What we need to work on
 
