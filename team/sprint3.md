@@ -58,13 +58,12 @@ Epics planned for this sprint.
 
 | Statistic | # Planned | # Completed |
 | --- | ---: | ---: |
-| Epics | *8* | *0* |
-| Tasks |  *16*   | *0* | 
-| Story Points |  *31*  | *0* | 
+| Epics | *8* | *7* |
+| Tasks |  *16*   | *37* | 
+| Story Points |  *31*  | *67* | 
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+*In this sprint we had a large gap in the number of story points and tasks that we planned and that we ended up completing.  One of our stuggles has been planning at the beginning and really thinking every single epic through.  We ended up with more tasks and points because each task and epic we planned to completed needed to be split further than we had anticipated.*
 
-*Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
 
 
 ## Scrums
@@ -82,7 +81,7 @@ Epics planned for this sprint.
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*This sprint we ended with an application that allows the user to build a trip from scratch, calculate the distance between two points, and shorten their trip.  When building a trip from scratch, the user can add places via file upload, manual input, or search our database for possible locations to add.  They may also reverse their trip, save it, and change their starting location.  They can choose between three levels of optimization for the trip length (none, short, and shorter).  The units and optimization displays now show the user what unit they are currently using and what level of optimization. The layout has also been revamped!*
 
 #### Completed Epics in Sprint Backlog 
 
@@ -109,7 +108,7 @@ Epics planned for this sprint.
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *Partway through our sprint we had a rut where no story points were completed for multiple days. We were lost as a team and had difficulty getting back to our productive start. We meeting together as a group and regrouped and were able to finish strong in the last three days.*
+* *Partway through our sprint we had a rut where no story points were completed for multiple days. We were lost as a team and had difficulty getting back to our productive start. We got together, regrouped, and were able to finish strong in the last three days.*
 *
 
 ## Retrospective
