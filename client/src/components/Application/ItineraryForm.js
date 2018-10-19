@@ -1,7 +1,6 @@
 import {Button, Collapse} from 'reactstrap';
 import React, {Component} from 'react'
 import DropDown from './DropDown'
-import {request} from "../../api/api";
 import {serverURL} from "./SetServer";
 
 class ItineraryForm extends Component {
@@ -11,19 +10,9 @@ class ItineraryForm extends Component {
         this.state = {
             collapse: true,
         };
-        //this.tableHeader = this.tableHeader.bind(this);
-        //this.tableGenerator = this.tableGenerator.bind(this);
-        this.toggle = this.toggle.bind(this);
-        this.sendRequest = this.sendRequest.bind(this);
-        this.reverseTable = this.reverseTable.bind(this);
-    }
 
-    sendRequest(){
-      request(this.props.trip, 'plan', serverURL).then(
-        (response) => {
-          console.log(response);
-          this.props.updateBasedOnResponse(response);
-        })
+        this.toggle = this.toggle.bind(this);
+        this.reverseTable = this.reverseTable.bind(this);
     }
 
     getDistanceName(){
@@ -50,7 +39,7 @@ class ItineraryForm extends Component {
         this.props.trip.places.splice(i,1); //remove place at i
         this.props.trip.distances = []; //clears out array since it's wrong after the deletion
         this.props.updateTrip(this.props.trip);
-        this.sendRequest();
+        this.props.planTrip();
     }
 
     begFunc(e,i) {
@@ -156,7 +145,7 @@ class ItineraryForm extends Component {
       }
       arr.reverse();
       this.props.updateTrip("places",arr);
-      this.sendRequest();
+      this.props.planTrip();
     }
 
     render() {

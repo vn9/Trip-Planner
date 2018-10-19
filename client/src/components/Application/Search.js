@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Button, Input, Row, Col} from 'reactstrap'
+import {Button, Input, Row, Col, Card, Collapse, CardBody, InputGroup,InputGroupAddon} from 'reactstrap'
 import {serverURL} from  './SetServer'
 
 import {request} from '../../api/api';
@@ -9,6 +9,7 @@ export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            collapse: true,
             search: {
                 version: 3,
                 type: "search",
@@ -16,7 +17,7 @@ export default class Search extends Component {
                 limit: 0,
                 places: []
             },
-            dropdownOpen: false,
+
         };
         this.matchChange = this.matchChange.bind(this);
         this.onSearch = this.onSearch.bind(this);
@@ -27,11 +28,11 @@ export default class Search extends Component {
     }
 
     toggle() {
-        this.setState({dropdownOpen: !this.state.dropdownOpen});
+        this.setState({collapse: !this.state.collapse});
     }
 
     updateSearch(response) {
-        this.setState({'search': response})
+        this.setState({'search': response});
     }
 
     matchChange(query) {
@@ -74,23 +75,29 @@ export default class Search extends Component {
     }
 
     render() {
-
-        return(
+        return (
             <div>
-                <h4 align="Center">Search for Places by Name</h4>
-                <Row>
-                    <Col md={6}>
-                        <Input placeholder="eg. Aspen" onChange={(event) => this.matchChange(event.target.value)}/>
-                        <Button className="btn-dark" onClick={this.onSearch}>Search</Button>
-                    </Col>
-                    <Col md={6}>
-                        <div style={{'height': '200px', 'overflow':'scroll', 'display':'block', 'width':'100%'}}>
-                            {this.showPlaces()}
-                        </div>
-                    </Col>
-                </Row>
+                <Button onClick={this.toggle} className='btn-dark' block>Create Trip: Search For Places</Button>
+                <Collapse isOpen={this.state.collapse}>
+                    <Card>
+                        <CardBody>
+                            <h4 align="Center">Search for Places by Name</h4>
+                            <InputGroup>
+                                <Input placeholder="ex. Aspen" onChange={(event) => this.matchChange(event.target.value)}/>
+                                <InputGroupAddon addonType="append"><Button className="btn-dark"
+                                                                            onClick={this.onSearch}>Search</Button>
+                                </InputGroupAddon>
+                            </InputGroup>
+                            <br/>
+                            <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
+                                {this.showPlaces()}
+                            </div>
+                        </CardBody>
+                    </Card>
+                </Collapse>
             </div>
         )
     }
+
 }
 
