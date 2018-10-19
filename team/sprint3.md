@@ -87,8 +87,13 @@ Epics planned for this sprint.
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
-* 
+* *#123 I want to Supply My Own Units for the Distances: Left over from sprint 2, we adjusted our unit buttons to reflect the current units and to allow users to choose the units they want.*
+* *#125 The Solution must be responsive for mobile devices: Left over from sprint 2.  We broke up the button group to allow the buttons to scale for mobile.*
+* *#142 User: I want to determine the distance between a pair of destinations: Leftover from sprint 2. We added the UI for two plalces and created a /distance request to the server to calculate the distance.*
+* *#203 User: I want to make and save changes to the trip: This was really difficult and it took everyone in the team to add a piece of the functionality (save, search for places, add places, remove places, etc).*
+* *#204 User: I want my trips to be shorter: This was put in the icebox until we caught up from sprint 2. This was an implementation of the nearest neighbor algorithm.  There are also buttons to allow the user to choose the optimization level.*
+* *#206 User: I want to design a trip from scratch so I can stop using the other tool: The user can now add a place manually or from a search and create a trip. This was a little tricky to complete as it was pretty vague.*
+* *#344 User: I'd like even shorter trips: We did not plan on getting to this epic at all at the beginning.  This implements the 2-opt algorithm to make the trips even shorter.*
 
 #### Incomplete Epics in Sprint Backlog 
 
@@ -103,7 +108,7 @@ Epics planned for this sprint.
 *Describe what went well during the sprint in general terms followed by a more detailed list.*
 
 * *We did a very good job of hitting the ground running. Our burndown chart was ideal following the ideal path that was drawn for us. We also had better group participation throughout by specific members.*
-*
+
 
 #### Problems Encountered and Resolutions
 
