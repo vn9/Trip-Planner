@@ -65,6 +65,7 @@ public class Driver {
      */
     private void printJson(ResultSet count, ResultSet query, String match)
             throws SQLException {
+        places.clear();
         System.out.printf("\n{\n");
         System.out.printf("\"type\": \"find\",\n");
         System.out.printf("\"title\": \"%s\",\n", match);
