@@ -122,11 +122,11 @@ Epics planned for this sprint.
 
 #### What we did well
 
-*We started the sprint off very productively and had a great pace throughout the first half of the sprint. We also did a better job of managing tasks and being on the same page with what everyone was doing at all times.  This sprint, dependencies were finished in a timely manner, which helped us continually move forward.*
+*We started the sprint off very productively and had a great pace throughout the first half of the sprint. We also did a better job of managing tasks and being on the same page with what everyone was doing at all times.  This sprint, dependencies were finished in a timely manner, which helped us continually move forward. We did better on clean code, and during the process we learnt a lot about good coding habits.* 
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+*We still need to improve our test coverage. Although we have tried really hard to add tests, it's not enough. 70% is our target for next sprint.*
 
 #### What we will change next sprint 
 
