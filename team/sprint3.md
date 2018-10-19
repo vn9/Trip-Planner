@@ -126,7 +126,7 @@ Epics planned for this sprint.
 
 #### What we need to work on
 
-*We still need to improve our test coverage. Although we have tried really hard to add tests, it's not enough. 70% is our target for next sprint. *
+*We still need to improve our test coverage. Although we have tried really hard to add tests, it's not enough. 70% is our target for next sprint.*
 
 #### What we will change next sprint 
 
