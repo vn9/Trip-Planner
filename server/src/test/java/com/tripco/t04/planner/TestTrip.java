@@ -63,7 +63,7 @@ public class TestTrip {
   
   @Test
   public void testOptions(){
-    trip.plan();
+      trip.plan();
       String opti = "none";
       String unit = "user defined";
       String unName = "miles";
@@ -74,6 +74,24 @@ public class TestTrip {
       assertEquals(unName, trip.options.unitName);
       assertEquals(unRad, trip.options.unitRadius);
     }
+
+  @Test
+  public void testOpt1(){
+    trip.options.optimization = "short";
+    trip.plan();
+    ArrayList<Place> testplaces = new ArrayList<>();
+    testplaces.add(denver); testplaces.add(minturn); testplaces.add(saguache); testplaces.add(peublo);
+    assertEquals(trip.places, testplaces);
+  }
+
+  @Test
+  public void testOpt2(){
+      trip.options.optimization = "shorter";
+      trip.plan();
+      ArrayList<Place> testplaces = new ArrayList<>();
+      testplaces.add(denver); testplaces.add(peublo); testplaces.add(saguache); testplaces.add(minturn);
+      assertEquals(trip.places, testplaces);
+  }
 
    /*
   * testMap uses BufferedReader to read in a local file
