@@ -119,7 +119,7 @@ Epics planned for this sprint.
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+*In this sprint we did a lot of things well as a team, but we also struggled as a team.  We improved our communication, but still struggled at times. We are learning how to work efficiently wtih each other, but still have yet to find a happy middle ground on work styles. We were less crunched at the end this time, but still left ourselves too much at the end. We have room to improve, but are happy with the progress we are making.*
 
 #### What we changed this sprint
 
@@ -131,8 +131,8 @@ Epics planned for this sprint.
 
 #### What we need to work on
 
-*We still need to improve our test coverage. Although we have tried really hard to add tests, it's not enough. 70% is our target for next sprint.*
+*We still need to improve our test coverage. Although we have tried really hard to add tests, it's not enough. 70% is our target for next sprint. We also need to work on working consistently and not procrastinating till the end.*
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+*One thing we would like to change next sprint is to have consistent work that meets deadlines.  We did better in this sprint (compared to our previous sprint), but we had a large period of time when we were very lost and unproductive.  Next sprint we will come up with a more comprehensive plan at the beginning and give ourselves smaller deadlines. This will help us continuously make progress and avoid procrastinating till the end of the sprint.
