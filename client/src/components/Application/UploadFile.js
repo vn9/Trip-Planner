@@ -27,7 +27,7 @@ export default class UploadFile extends Component {
         this.updatePlace = this.updatePlace.bind(this);
         this.addPlace = this.addPlace.bind(this);
         this.toggle = this.toggle.bind(this);
-        this.updateTitle = this.updateTitle.bind(this);
+        this.addManual = this.addManual.bind(this);
     }
 
 
@@ -71,10 +71,18 @@ export default class UploadFile extends Component {
         console.log(this.props.trip.places);
     }
 
-    updateTitle(event) {
-        let mytitle = event.target.value;
-        console.log("myTitle:"+mytitle);
-        this.props.updateTrip('title', mytitle);
+    addManual(){
+        let myAdd =
+            <Col md={6}>
+                <p align="Center"> Add Your Own </p>
+                <Input type="text" placeholder="Id  ex. den" onChange={(e)=>this.updatePlace('id', e.target.value)}/>
+                <Input type="text" placeholder="Name  ex. Denver" onChange={(e)=>this.updatePlace('name', e.target.value)}/>
+                <Input type="text" placeholder="Latitude  ex. 39.73" onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
+                <Input type="text" placeholder="Longitude  ex.-104.99" onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
+                <br/>
+                <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
+            </Col>;
+        return(myAdd)
     }
 
 
@@ -85,23 +93,15 @@ export default class UploadFile extends Component {
                 <Collapse isOpen={this.state.collapse}>
                     <Card>
                         <CardBody>
+                            <p align="Center">Name Your Trip</p>
+                            <Input placeholder="Name Your Trip" value={this.props.trip.title}
+                                   onChange={(event)=>this.updateTrip('title', event.target.value)}/><br/>
                             <Row>
                                 <Col md={6}>
-                                    <p align="Center">Name Your Trip</p>
-                                    <Input type="text" className="form-control" placeholder="ex. Epic Ski Trip" value={this.props.trip.title} onChange={this.updateTitle}/>
-                                    <br/>
                                     <p align="Center"> Upload Your File </p>
                                     <Input title="upload" type="file" id="fileInput" onChange={(event)=>this.loadFile(event)}/>
                                 </Col>
-                                <Col md={6}>
-                                    <p align="Center"> Add Your Own </p>
-                                    <Input type="text" placeholder="Id  ex. den" onChange={(e)=>this.updatePlace('id', e.target.value)}/>
-                                    <Input type="text" placeholder="Name  ex. Denver" onChange={(e)=>this.updatePlace('name', e.target.value)}/>
-                                    <Input type="text" placeholder="Latitude  ex. 39.73" onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
-                                    <Input type="text" placeholder="Longitude  ex.-104.99" onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
-                                    <br/>
-                                    <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
-                                </Col>
+                                {this.addManual()}
                             </Row>
                             <br/>
                         </CardBody>
