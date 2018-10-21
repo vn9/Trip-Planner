@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardBody, Button, Input, Row, Col, Collapse, Form} from 'reactstrap'
+import {Card, CardBody, Button, Input, Row, Col, Collapse, InputGroup, InputGroupAddon} from 'reactstrap'
 
 
 export class Place {
@@ -28,6 +28,7 @@ export default class UploadFile extends Component {
         this.addPlace = this.addPlace.bind(this);
         this.toggle = this.toggle.bind(this);
         this.updateTitle = this.updateTitle.bind(this);
+        this.clearFields = this.clearFields.bind(this);
     }
 
 
@@ -59,16 +60,24 @@ export default class UploadFile extends Component {
 
     }
 
+    clearFields(){
+        let clear = {
+            id: "",
+            name: "",
+            latitude: "",
+            longitude: "",
+        };
+        this.setState(clear);
+    }
+
 
     addPlace(){
         let myPlaces = this.props.trip.places;
-        console.log(myPlaces);
         let place = this.state.place;
         let newPlace = new Place(place.id, place.name, place.latitude, place.longitude);
-        console.log(newPlace);
         myPlaces.push(newPlace);
         this.props.updateTrip('places', myPlaces);
-        console.log(this.props.trip.places);
+        this.clearFields();
     }
 
     updateTitle(event) {
@@ -76,7 +85,6 @@ export default class UploadFile extends Component {
         console.log("myTitle:"+mytitle);
         this.props.updateTrip('title', mytitle);
     }
-
 
     render() {
         return (
