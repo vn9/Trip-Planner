@@ -103,6 +103,7 @@ export default class Search extends Component {
                             <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                                 {this.showPlaces()}
                             </div>
+                            <br/>
                             <Button onClick={this.addAll}>Add All</Button>
                         </CardBody>
                     </Card>
