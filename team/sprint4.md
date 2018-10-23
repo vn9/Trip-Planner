@@ -71,7 +71,7 @@ Epics planned for this sprint.
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *date* | *#task, ...* | *#task, ...* | *none* | 
-| *10/22* | *#212, #220, #278, #282, #316, #319* | *#354* | *none* | 
+| *10/22* | *none* | *#354* | *none* | 
 
 *Add a new row for the scrum session after each lecture. *
 
