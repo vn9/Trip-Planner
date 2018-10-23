@@ -62,11 +62,13 @@ export default class Search extends Component {
 
     addAll(){
         let newPlaces = this.state.search.places;
+        console.log(newPlaces);
         let myPlaces= this.props.trip.places;
         for (let i = 0; i < newPlaces.length; i++){
             let aPlace = newPlaces[i];
             let newPlace = new Place(aPlace.id, aPlace.name, aPlace.latitude, aPlace.longitude);
             myPlaces.push(newPlace);
+        this.props.updateTrip('places', myPlaces)
         }
     }
 
@@ -77,7 +79,7 @@ export default class Search extends Component {
                     <Input readOnly value={place.name}/>
                 </Col>
                 <Col md={2}>
-                    <Button id={place.id} value={JSON.stringify(place)} onClick={this.addPlace}block>Add</Button>
+                    <Button id={place.id} value={JSON.stringify(place)} onClick={this.addPlace} block>Add</Button>
                 </Col>
             </Row>
         );
