@@ -31,7 +31,7 @@ public class Driver {
         //count the number of records in the table
         count = "select count(*) from airports";
         search = "select id,name,municipality,latitude,longitude from airports where name like '%" 
-            + match + "%' or municipality like '%" + match + "%' order by name";
+            + match + "%' or municipality like '%" + match + "%' or id like '%" + match + "%' order by name";
         /** Note that if the variable isn't defined, System.getenv will return null.
          *  When test on own computer, make sure set up "export CS314_ENV=development" in .bash_profile for Mac or .bashrc for linux.
          *  Then make sure the ssh -L 5655:faure:3306 -N <username>@<cs-machine> be the same port here (5655)
