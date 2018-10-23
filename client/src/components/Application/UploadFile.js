@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Card, CardBody, Button, Input, Row, Col, Collapse, Form} from 'reactstrap'
+import {Card, CardBody, Button, Input, Row, Col, Collapse, Form, InputGroup, InputGroupAddon} from 'reactstrap'
 
 
 export class Place {
@@ -28,6 +28,8 @@ export default class UploadFile extends Component {
         this.addPlace = this.addPlace.bind(this);
         this.toggle = this.toggle.bind(this);
         this.updateTitle = this.updateTitle.bind(this);
+        this.addOwn = this.addOwn.bind(this);
+        this.clearPlace = this.clearPlace.bind(this);
     }
 
 
@@ -59,6 +61,15 @@ export default class UploadFile extends Component {
 
     }
 
+    clearPlace(){
+        let noPlace = this.state.place;
+        noPlace.id = '';
+        noPlace.name= '';
+        noPlace.latitude = '';
+        noPlace.longitude = '';
+        this.setState(noPlace);
+    }
+
 
     addPlace(){
         let myPlaces = this.props.trip.places;
@@ -69,12 +80,37 @@ export default class UploadFile extends Component {
         myPlaces.push(newPlace);
         this.props.updateTrip('places', myPlaces);
         console.log(this.props.trip.places);
+        this.clearPlace();
     }
 
     updateTitle(event) {
         let mytitle = event.target.value;
         console.log("myTitle:"+mytitle);
         this.props.updateTrip('title', mytitle);
+    }
+
+    addOwn(){
+        let place = this.state.place;
+        let myAdd =
+            <div>
+                <InputGroup>
+                    <InputGroupAddon addonType="prepend">ID</InputGroupAddon>
+                    <Input type="text" placeholder="ex. den" value={place.id} onChange={(e)=>this.updatePlace('id', e.target.value)}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
+                    <Input type="text" placeholder="ex. Denver" value={place.name} onChange={(e)=>this.updatePlace('name', e.target.value)}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroupAddon addonType="prepend">Latitude</InputGroupAddon>
+                    <Input type="text" placeholder="ex. 39.73" value={place.latitude} onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
+                </InputGroup>
+                <InputGroup>
+                    <InputGroupAddon addonType="prepend">Longitude</InputGroupAddon>
+                    <Input type="text" placeholder="ex. -104.99" value={place.longitude} onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
+                </InputGroup>
+            </div>;
+        return(myAdd)
     }
 
 
@@ -95,10 +131,7 @@ export default class UploadFile extends Component {
                                 </Col>
                                 <Col md={6}>
                                     <p align="Center"> Add Your Own </p>
-                                    <Input type="text" placeholder="Id  ex. den" onChange={(e)=>this.updatePlace('id', e.target.value)}/>
-                                    <Input type="text" placeholder="Name  ex. Denver" onChange={(e)=>this.updatePlace('name', e.target.value)}/>
-                                    <Input type="text" placeholder="Latitude  ex. 39.73" onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
-                                    <Input type="text" placeholder="Longitude  ex.-104.99" onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
+                                    {this.addOwn()}
                                     <br/>
                                     <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
                                 </Col>
