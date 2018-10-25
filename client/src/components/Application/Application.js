@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Col, Row, Button} from 'reactstrap';
+import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody, Input} from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -22,6 +22,8 @@ class Application extends Component {
         super(props);
         this.state = {
             config: null,
+            modal: false,
+            collapse: true,
             trip: {
                 type: "trip",
                 title: "",
@@ -35,7 +37,6 @@ class Application extends Component {
                 distances: [],
                 map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
             }
-
         };
 
         this.planTrip = this.planTrip.bind(this);
@@ -43,8 +44,12 @@ class Application extends Component {
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
         this.saveTFFI = this.saveTFFI.bind(this);
-
+        this.toggle = this.toggle.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.createOptions = this.createOptions.bind(this);
+        this.createTrip = this.createTrip.bind(this);
     }
+
 
     componentWillMount() {
         get_config().then(
@@ -80,6 +85,13 @@ class Application extends Component {
             })
     }
 
+    toggleModal(){
+        this.setState({modal: !this.state.modal})
+    }
+
+    toggle(){
+        this.setState({collapse: !this.state.collapse})
+    }
 
 
     /* Saves the map and itinerary to the local file system. */
@@ -107,11 +119,74 @@ class Application extends Component {
         document.body.removeChild(element);
     }
 
+    createOptions(){
+        let options =
+            <Card>
+                <CardBody>
+                    <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}
+                                trip={this.state.trip} updateTrip={this.updateTrip}/>
+                    <Button size="sm" color="Link" onClick={this.toggleModal}>Advanced Options</Button>
+                    <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
+                        <ModalHeader>Advanced Options</ModalHeader>
+                        <ModalBody>
+                            <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                            <SetServer/>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button onClick={this.toggleModal}>Done</Button>
+                        </ModalFooter>
+                    </Modal>
+                </CardBody>
+            </Card>;
+        return(options)
+    }
+
+    createTrip(){
+        let tripBuilder =
+            <Row>
+                <Col md={6}>
+                    <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
+                </Col>
+                <Col md={6}>
+                    <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
+                </Col>
+            </Row>;
+
+        return(tripBuilder)
+
+    }
 
     render() {
         if(!this.state.config) { return <div/> }
 
         return(
+            <Container id="Application">
+                <Info/><br/>
+                <Row>
+                    <Col md={6}>
+                        <Button onClick={this.toggle} className="btn-dark" block>Trip Options</Button>
+                        <Collapse isOpen={this.state.collapse}>
+                            {this.createOptions()}
+                        </Collapse>
+                    </Col>
+                    <Col md={6}>
+                        <TwoPtCalculator config={this.state.config} options={this.state.trip.options}/><br/>
+                    </Col>
+                </Row><br/>
+                {this.createTrip()} <br/>
+                <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
+                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip}/><br/>
+                <Map trip={this.state.trip} config={this.state.config}/><br/>
+                <div align="center"><Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button></div>
+            </Container>
+        )
+    }
+}
+
+
+export default Application;
+
+/*
             <Container id="Application" >
                 <Info/>
                 <Row>
@@ -150,12 +225,5 @@ class Application extends Component {
                 <br/>
                 <div align="Center"><Button onClick={this.saveTFFI} type="Button" className="btn-dark">Save Trip</Button></div>
             </Container>
-
-        )
-    }
-
-}
-
-
-export default Application;
+ */
 
