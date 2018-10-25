@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Button, Input,Card, Collapse, CardBody, InputGroup,InputGroupAddon, InputGroupText} from 'reactstrap'
+
 import {serverURL} from  './SetServer'
 
 import {request} from '../../api/api';
@@ -25,6 +26,7 @@ export default class Search extends Component {
         this.toggle = this.toggle.bind(this);
         this.addPlace = this.addPlace.bind(this);
         this.showPlaces = this.showPlaces.bind(this);
+        this.addAll = this.addAll.bind(this);
     }
 
     toggle() {
@@ -59,6 +61,18 @@ export default class Search extends Component {
         this.props.updateTrip('places', myPlaces);
     }
 
+    addAll(){
+        let newPlaces = this.state.search.places;
+        console.log(newPlaces);
+        let myPlaces= this.props.trip.places;
+        for (let i = 0; i < newPlaces.length; i++){
+            let aPlace = newPlaces[i];
+            let newPlace = new Place(aPlace.id, aPlace.name, aPlace.latitude, aPlace.longitude);
+            myPlaces.push(newPlace);
+        this.props.updateTrip('places', myPlaces)
+        }
+    }
+
     showPlaces(){
         let destinations = this.state.search.places.map((place, index)=>
             <InputGroup key={index}>
@@ -90,6 +104,8 @@ export default class Search extends Component {
                             <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                                 {this.showPlaces()}
                             </div>
+                            <br/>
+                            <Button onClick={this.addAll}>Add All</Button>
                         </CardBody>
                     </Card>
                 </Collapse>
