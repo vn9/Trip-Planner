@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardBody, Input, Form, Button} from 'reactstrap'
+import {Card, CardBody, Input, Form, Button, Col} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -11,6 +11,7 @@ class Options extends Component{
   constructor(props) {
     super(props);
     this.state = {userDefinedOn:false};
+
     this._userDefinedOn = this._userDefinedOn.bind(this);
   }
 
@@ -34,7 +35,7 @@ class Options extends Component{
     return(
       <Card>
         <CardBody>
-          <p align="Center">Select the options you wish to use</p>
+            <p align="Center">Select Your Units</p>
             {buttons}
             <p>{' '}</p>
             {this.state.userDefinedOn && (<Form>

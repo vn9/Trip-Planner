@@ -3,7 +3,7 @@
 ## Goal
 
 ### Interactive Maps and Shorter Trips!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: *Zhe Liu*
 
 ## Definition of Done
 
@@ -58,8 +58,8 @@ Epics planned for this sprint.
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
 | Epics | *7* | *total* |
-| Tasks |  *total*   | *total* | 
-| Story Points |  *total*  | *total* | 
+| Tasks |  *29*   | *total* | 
+| Story Points |  *46*  | *total* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
@@ -72,6 +72,7 @@ Epics planned for this sprint.
 | :--- | :--- | :--- | :--- |
 | *date* | *#task, ...* | *#task, ...* | *none* | 
 | *10/22* | *none* | *#354* | *none* | 
+| *10/24* | *#367* | *#354, #364, #365, #366, #368, #371, #372, #376, #381* | *none* | 
 
 *Add a new row for the scrum session after each lecture. *
 
