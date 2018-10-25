@@ -27,9 +27,7 @@ export default class UploadFile extends Component {
         this.updatePlace = this.updatePlace.bind(this);
         this.addPlace = this.addPlace.bind(this);
         this.toggle = this.toggle.bind(this);
-        this.updateTitle = this.updateTitle.bind(this);
         this.addOwn = this.addOwn.bind(this);
-        this.addManual = this.addManual.bind(this);
     }
 
 
@@ -83,19 +81,6 @@ export default class UploadFile extends Component {
         this.clearPlace();
     }
 
-    addManual(){
-        let myAdd =
-            <Col md={6}>
-                <p align="Center"> Add Your Own </p>
-                <Input type="text" placeholder="Id  ex. den" onChange={(e)=>this.updatePlace('id', e.target.value)}/>
-                <Input type="text" placeholder="Name  ex. Denver" onChange={(e)=>this.updatePlace('name', e.target.value)}/>
-                <Input type="text" placeholder="Latitude  ex. 39.73" onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
-                <Input type="text" placeholder="Longitude  ex.-104.99" onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
-                <br/>
-                <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
-            </Col>;
-        return(myAdd)
-    }
 
     addOwn(){
         let place = this.state.place;
@@ -143,7 +128,6 @@ export default class UploadFile extends Component {
                                     <br/>
                                     <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
                                 </Col>
-                                {this.addManual()}
                             </Row>
                             <br/>
                         </CardBody>
