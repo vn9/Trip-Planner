@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import {Button, Input, Row, Col, Card, Collapse, CardBody, InputGroup,InputGroupAddon, Alert} from 'reactstrap'
+import {Button, Input,Card, Collapse, CardBody, InputGroup,InputGroupAddon, InputGroupText} from 'reactstrap'
+
 import {serverURL} from  './SetServer'
 
 import {request} from '../../api/api';
@@ -74,14 +75,12 @@ export default class Search extends Component {
 
     showPlaces(){
         let destinations = this.state.search.places.map((place, index)=>
-            <Row key={index}>
-                <Col md={9}>
-                    <Input readOnly value={place.name}/>
-                </Col>
-                <Col md={2}>
-                    <Button id={place.id} value={JSON.stringify(place)} onClick={this.addPlace} block>Add</Button>
-                </Col>
-            </Row>
+            <InputGroup key={index}>
+                <InputGroupAddon addonType="prepend"><InputGroupText>{(index + 1)}</InputGroupText></InputGroupAddon>
+                <Input readOnly value={place.name}/>
+                <InputGroupAddon addonType="append"><Button id={place.id} value={JSON.stringify(place)}
+                                                            onClick={this.addPlace} block>Add</Button></InputGroupAddon>
+            </InputGroup>
         );
 
         return(destinations)
