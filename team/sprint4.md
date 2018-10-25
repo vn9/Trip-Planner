@@ -58,8 +58,8 @@ Epics planned for this sprint.
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
 | Epics | *7* | *total* |
-| Tasks |  *total*   | *total* | 
-| Story Points |  *total*  | *total* | 
+| Tasks |  *29*   | *total* | 
+| Story Points |  *46*  | *total* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
