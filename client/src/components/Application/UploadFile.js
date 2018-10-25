@@ -64,16 +64,16 @@ export default class UploadFile extends Component {
 
     }
 
-    clearFields(){
-        let clear = {
-            id: "",
-            name: "",
-            latitude: "",
-            longitude: "",
-        };
-        this.setState(clear);
 
-    }
+    clearFields(){
+            let noPlace = this.state.place;
+            noPlace.id = '';
+            noPlace.name= '';
+            noPlace.latitude = '';
+            noPlace.longitude = '';
+            this.setState(noPlace);
+        }
+
 
 
     addPlace(){
