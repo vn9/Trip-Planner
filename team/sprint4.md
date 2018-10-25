@@ -3,7 +3,7 @@
 ## Goal
 
 ### Interactive Maps and Shorter Trips!
-### Sprint Leader: *firstname lastname*
+### Sprint Leader: *Zhe Liu*
 
 ## Definition of Done
 
