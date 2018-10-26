@@ -51,6 +51,7 @@ class ItineraryForm extends Component {
     }
 
     action(number){
+        // Dropdown function is taking from the bootstrap-dropdown page
         return(
             <div className="dropdown">
                 <button className="dropdown-toggle"
@@ -66,7 +67,7 @@ class ItineraryForm extends Component {
                     </button>
                     <button className="dropdown_item"
                             type="button"
-                            onClick={(e) => this.removeFunc(e,number-1)}>Start
+                            onClick={(e) => this.removeFunc(e,number-1)}>Remove
                     </button>
                 </div>
             </div>
