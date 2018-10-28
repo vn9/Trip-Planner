@@ -13,6 +13,7 @@ public class Search {
     public String type;
     public String match;
     public int limit;
+    public Integer found;
     public ArrayList<Place> places;
 
     public Search(){
@@ -20,16 +21,18 @@ public class Search {
         this.type = "Search";
         this.match = "";
         this.limit = 0;  //default unlimited
+        this.found = null;
         this.places = new ArrayList<>();
     }
 
     public  Search(Integer version, String type,
-                   String match, int limit, ArrayList<Place> places){
+                   String match, int limit, Integer found, ArrayList<Place> places){
 
         this.version = version;
         this.type = type;
         this.match = match;
         this.limit = limit;
+        this.found = found;
         this.places = places;
 
     }
@@ -41,6 +44,7 @@ public class Search {
         Driver myDriver = new Driver();
         myDriver.find(this.match);
         this.places = Driver.places;
+        this.found = Driver.places.size();
     }
 
 }

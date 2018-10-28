@@ -12,10 +12,11 @@ export default class Search extends Component {
         this.state = {
             collapse: true,
             search: {
-                version: 3,
+                version: 4,
                 type: "search",
                 match: "",
                 limit: 0,
+                found: 0,
                 places: []
             },
 
@@ -104,6 +105,7 @@ export default class Search extends Component {
                             <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                                 {this.showPlaces()}
                             </div>
+                            <p align="Center">{this.state.search.found} Places Found</p>
                             <br/>
                             <Button onClick={this.addAll}>Add All</Button>
                         </CardBody>

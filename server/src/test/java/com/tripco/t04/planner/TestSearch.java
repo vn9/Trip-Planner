@@ -22,8 +22,8 @@ public class TestSearch {
 
     @Before
     public void initialize() {
-        searchobj1 = new Search(3,"search","Aero Bear Field", 0, places);
-        searchobj2 = new Search(3,"search","Aero Bear Field", 0, places);
+        searchobj1 = new Search(4,"search","Aero Bear Field", 0, null, places);
+        searchobj2 = new Search(4,"search","Aero Bear Field", 0, null, places);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class TestSearch {
 
     @Test
     public void testConstructor(){
-        Integer three = 3;
+        Integer three = 4;
         String type = "search";
         String match = "Aero Bear Field";
         int number = 0;
