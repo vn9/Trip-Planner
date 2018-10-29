@@ -48,6 +48,7 @@ class Application extends Component {
         this.toggleModal = this.toggleModal.bind(this);
         this.createOptions = this.createOptions.bind(this);
         this.createTrip = this.createTrip.bind(this);
+        this.clearTrip = this.clearTrip.bind(this);
     }
 
 
@@ -91,6 +92,17 @@ class Application extends Component {
 
     toggle(){
         this.setState({collapse: !this.state.collapse})
+    }
+
+    clearTrip(){
+        let myTrip = this.state.trip;
+        myTrip.distances= [];
+        myTrip.title = '';
+        myTrip.places = [];
+        myTrip.map = '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>';
+        myTrip.options = {units: 'miles'}
+        this.setState(myTrip);
+
     }
 
 
@@ -177,7 +189,8 @@ class Application extends Component {
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
                 <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip}/><br/>
                 <Map trip={this.state.trip} config={this.state.config}/><br/>
-                <div align="center"><Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button></div>
+                <div align="center"><Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
+                    <Button className="btn-dark" onClick={this.clearTrip}>Clear</Button></div>
             </Container>
         )
     }
