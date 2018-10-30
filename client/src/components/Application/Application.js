@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody, Input} from 'reactstrap';
+import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody} from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -101,7 +101,7 @@ class Application extends Component {
         myTrip.title = '';
         myTrip.places = [];
         myTrip.map = '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>';
-        myTrip.options = {units: 'miles'}
+        myTrip.options = {units: 'miles'};
         this.setState(myTrip);
 
     }
@@ -135,7 +135,7 @@ class Application extends Component {
     saveMap(){
         //generate file and download
         let element = document.createElement('a');
-        element.setAttribute('href', this.state.trip.map);
+        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + this.state.trip.map);
         element.setAttribute('download', 'downlaod.svg');
         document.body.appendChild(element);
         element.click();
