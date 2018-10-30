@@ -73,6 +73,7 @@ Epics planned for this sprint.
 | *date* | *#task, ...* | *#task, ...* | *none* | 
 | *10/22* | *none* | *#354* | *none* | 
 | *10/24* | *#367* | *#354, #364, #365, #366, #368, #371, #372, #376, #381* | *none* | 
+| *10/26* | *#354, #365, #372* | *#364, #366, #368, #371, #373, #376, #381, #382, #384* | *Modify 1-opt and 2-opt implementations to imporove performance to work with large data will be challenging* |
 
 *Add a new row for the scrum session after each lecture. *
 
