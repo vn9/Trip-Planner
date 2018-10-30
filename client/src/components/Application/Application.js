@@ -44,6 +44,7 @@ class Application extends Component {
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
         this.saveTFFI = this.saveTFFI.bind(this);
+        this.saveMap = this.saveMap.bind(this);
         this.toggle = this.toggle.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.createOptions = this.createOptions.bind(this);
@@ -131,6 +132,16 @@ class Application extends Component {
         document.body.removeChild(element);
     }
 
+    saveMap(){
+        //generate file and download
+        let element = document.createElement('a');
+        element.setAttribute('href', this.state.trip.map);
+        element.setAttribute('download', 'downlaod.svg');
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+
     createOptions(){
         let options =
             <Card>
@@ -189,7 +200,9 @@ class Application extends Component {
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
                 <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip}/><br/>
                 <Map trip={this.state.trip} config={this.state.config}/><br/>
-                <div align="center"><Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
+                <div align="center">
+                    <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
+                    <Button onClick={this.saveMap} className="btn-dark">Save Map</Button>{' '}
                     <Button className="btn-dark" onClick={this.clearTrip}>Clear</Button></div>
             </Container>
         )
