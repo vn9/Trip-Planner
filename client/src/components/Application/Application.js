@@ -214,7 +214,7 @@ class Application extends Component {
                 {this.createTrip()} <br/>
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
                 <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} attributes={this.state.attributes}/><br/>
-                <Attributes attributes={this.state.attributes} updateAttributes={this.updateAttributes}/>
+                <Attributes attributes={this.state.attributes} updateAttributes={this.updateAttributes} config={this.state.config}/>
                 <Map trip={this.state.trip} config={this.state.config}/><br/>
                 <div align="center">
                     <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}

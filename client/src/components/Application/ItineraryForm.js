@@ -75,21 +75,22 @@ class ItineraryForm extends Component {
     }
 
     tableHeader(){
+        let attributes = this.props.attributes;
         let table = [];
         let item = [];
             item.push(<th key='count'>{"#"}</th>);  //index
-        if(this.props.attributes.showId === true)
+        if(attributes.showId === true)
             item.push(<th key='id1'>{"ID"}</th>);  //id
-        if(this.props.attributes.showName === true) {
-            item.push(<th key='origin'>{"Origin"}</th>);  //origin
-            item.push(<th key='destination'>{"Destination"}</th>);  //destination
+        if(attributes.showName === true) {
+            item.push(<th key='origin'>{"Place"}</th>);  //origin
+            //item.push(<th key='destination'>{"Destination"}</th>);  //destination
         }
-        if(this.props.attributes.showLatitudeLongitude === true)
+        if(attributes.showLatitudeLongitude === true)
             item.push(<th key='latitudeLongitude'>{"Latitude & Longitude"}</th>);  //latitude & longitude
-        if(this.props.attributes.showLegDistance === true)
-            item.push(<th key='distance'>{"Distance in " + this.getDistanceName()}</th>);  //distance
-        if(this.props.attributes.showTotalDistance === true)
-            item.push(<th key='total'>{"Total Distance in " + this.getDistanceName()}</th>);  //total distance
+        if(attributes.showLegDistance === true)
+            item.push(<th key='distance'>{"Distance to Next Place " + "(" + this.getDistanceName() + ")"}</th>);  //distance
+        if(attributes.showTotalDistance === true)
+            item.push(<th key='total'>{"Total Distance " + "("+ this.getDistanceName() + ")"}</th>);  //total distance
             table.push(<tr key='header'>{item}</tr>);
         return table;
     }
@@ -99,34 +100,34 @@ class ItineraryForm extends Component {
         let table = this.tableHeader();
         let trip = this.props.trip;
         let totalPlaces = trip.places.length;
+        let attributes = this.props.attributes;
 
         // Add each origin-destination pair to the table
         for (let i = 0; i < totalPlaces; i++) {
             let cell = [];
             let origin = trip.places[i];
-            let dest = trip.places[(i + 1) % totalPlaces];
+
             cell.push(<td key={'id' + i}>{this.action(i+1)}</td>);  //index
-            if(this.props.attributes.showId === true)
-                cell.push(<td key={'id1' + i}>{origin.id+ " -> " +dest.id}</td>);  //id
-            if(this.props.attributes.showName === true) {
+            if(attributes.showId === true)
+                cell.push(<td key={'id1' + i}>{origin.id}</td>);  //id
+            if(attributes.showName === true) {
                 cell.push(<td key={'origin' + i}>{origin.name}</td>);  //origin
-                cell.push(<td key={'destination' + i}>{dest.name}</td>);  //destination
+                //cell.push(<td key={'destination' + i}>{dest.name}</td>);  //destination
             }
-            if(this.props.attributes.showLatitudeLongitude === true)
-                cell.push(<td key={'latitudeLongitude' + i}>{"[" +
-                origin.latitude + ", " + origin.longitude + "]" +
-                "  >>-->>  " + "[" + dest.latitude + ", " + dest.longitude+ "]"}</td>);  //latitude & longitude
-            if (this.props.trip.distances.length === 0) {
-                if(this.props.attributes.showLegDistance === true)
-                    cell.push(<td key={'distance' + i}>{'0'}</td>);  //distance
-                if(this.props.attributes.showTotalDistance === true)
-                    cell.push(<td key={'totalDistance' + i}>{'0'}</td>);  //total distance
+            if(attributes.showLatitudeLongitude === true)
+                cell.push(<td key={'latitudeLongitude' + i}>{
+                origin.latitude + ", " + origin.longitude }</td>);  //latitude & longitude
+            if (trip.distances.length === 0) {
+                if(attributes.showLegDistance === true)
+                    cell.push(<td key={'distance' + i}>{' '}</td>);  //distance
+                if(attributes.showTotalDistance === true)
+                    cell.push(<td key={'totalDistance' + i}>{' '}</td>);  //total distance
                 table.push(<tr key={'row' + i}>{cell}</tr>)
             }
             else{
-                if(this.props.attributes.showLegDistance === true)
+                if(attributes.showLegDistance === true)
                     cell.push(<td key={'distance' + i}>{trip.distances[i]}</td>);  //distance
-                if(this.props.attributes.showTotalDistance === true) {
+                if(attributes.showTotalDistance === true) {
                     wholeTrip += trip.distances[i];
                     cell.push(<td key={'totalDistance' + i}>{wholeTrip}</td>);  //total distance
                 }
