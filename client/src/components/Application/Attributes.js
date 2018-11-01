@@ -4,25 +4,14 @@ import {Form, Label, Input} from 'reactstrap';
 class Attributes extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showName: true,
-            showId: true,
-            showLatitudeLongitude: true,
-            showLegDistance: true,
-            showTotalDistance: true
-        };
-
         this.handleCheckChange = this.handleCheckChange.bind(this);
     }
 
     handleCheckChange(event) {
-        const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
+        let target = event.target;
+        let value = target.type === 'checkbox' ? target.checked : target.value;
+        let name = target.name;
+        this.props.updateAttributes(name,value);
     }
 
     render(){
@@ -32,7 +21,7 @@ class Attributes extends Component {
                     <Input
                         name = "showId"
                         type = "checkbox"
-                        checked = {this.state.showId}
+                        checked = {this.props.attributes.showId}
                         onChange={this.handleCheckChange}/>
                     <Label>
                         Show ID
@@ -43,7 +32,7 @@ class Attributes extends Component {
                     <Input
                         name = "showName"
                         type = "checkbox"
-                        checked = {this.state.showName}
+                        checked = {this.props.attributes.showName}
                         onChange={this.handleCheckChange}/>
                     <Label>
                         Show Name
@@ -54,7 +43,7 @@ class Attributes extends Component {
                     <Input
                         name = "showLatitudeLongitude"
                         type = "checkbox"
-                        checked = {this.state.showLatitudeLongitude}
+                        checked = {this.props.attributes.showLatitudeLongitude}
                         onChange={this.handleCheckChange}/>
                     <Label>
                         Show Latitude/Longitude:
@@ -65,7 +54,7 @@ class Attributes extends Component {
                     <Input
                         name = "showLegDistance"
                         type = "checkbox"
-                        checked = {this.state.showLegDistance}
+                        checked = {this.props.attributes.showLegDistance}
                         onChange={this.handleCheckChange}/>
                     <Label>
                         Show Leg Distance
@@ -76,7 +65,7 @@ class Attributes extends Component {
                     <Input
                         name = "showTotalDistance"
                         type = "checkbox"
-                        checked = {this.state.showTotalDistance}
+                        checked = {this.props.attributes.showTotalDistance}
                         onChange={this.handleCheckChange}/>
                     <Label>
                         Show Total Distance
