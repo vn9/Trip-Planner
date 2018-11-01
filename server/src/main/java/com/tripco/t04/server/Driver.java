@@ -29,9 +29,18 @@ public class Driver {
      */
     public  void find(String match) {
         //count the number of records in the table
-        count = "select count(*) from airports";
-        search = "select id,name,municipality,latitude,longitude from airports where name like '%" 
-            + match + "%' or municipality like '%" + match + "%' or id like '%" + match + "%' order by name";
+        count = "SELECT count(*) FROM world_airports";
+        search = "SELECT world_airports.id, world_airports.name, world_airports.municipality, " +
+                "world_airports.latitude, world_airports.longitude, country.name, continents.name " +
+                "FROM continents " +
+                "INNER JOIN country ON continents.id = country.continent " +
+                "INNER JOIN region ON country.id = region.iso_country " +
+                "INNER JOIN world_airports ON region.id = world_airports.iso_region " +
+                "WHERE country.name LIKE '%" + match + "%' " +
+                "OR world_airports.municipality LIKE'%" + match + "%' " +
+                "OR world_airports.name LIKE '%" + match + "%' " +
+                "OR world_airports.id LIKE '%" + match + "%' " +
+                "ORDER BY continents.name, country.name, region.name, world_airports.name ASC";
         /** Note that if the variable isn't defined, System.getenv will return null.
          *  When test on own computer, make sure set up "export CS314_ENV=development" in .bash_profile for Mac or .bashrc for linux.
          *  Then make sure the ssh -L 5655:faure:3306 -N <username>@<cs-machine> be the same port here (5655)
@@ -83,6 +92,8 @@ public class Driver {
             System.out.printf("\"name\":\"%s\", ", query.getString("name"));
             System.out.printf("\"latitude\":\"%s\", ", query.getString("latitude"));
             System.out.printf("\"longitude\":\"%s\"}", query.getString("longitude"));
+            //System.out.printf("\"name\":\"%s\", ", query.getString("country"));
+            //System.out.printf("\"name\":\"%s\", ", query.getString("continent"));
             if (--results == 0)  //All stuffs are printed. Adding a new break line and exit
             {System.out.printf("\n");}
             else
