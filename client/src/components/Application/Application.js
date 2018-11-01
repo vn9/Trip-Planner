@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody} from 'reactstrap';
+import Attributes from './Attributes';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -15,7 +16,7 @@ import {get_config, request} from '../../api/api';
 
 
 /* Renders the application.
- * Holds the destinations and options state shared with the trip.
+ * Holds the destinations and options state shared with showName: true,
  */
 class Application extends Component {
     constructor(props){
@@ -36,6 +37,13 @@ class Application extends Component {
                 places: [],
                 distances: [],
                 map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
+            },
+            attributes: {
+                showName: true,
+                showId: true,
+                showLatitudeLongitude: true,
+                showLegDistance: true,
+                showTotalDistance: true
             }
         };
 
@@ -43,6 +51,7 @@ class Application extends Component {
         this.updateTrip = this.updateTrip.bind(this);
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
+        this.updateAttributes = this.updateAttributes.bind(this);
         this.saveTFFI = this.saveTFFI.bind(this);
         this.saveMap = this.saveMap.bind(this);
         this.toggle = this.toggle.bind(this);
@@ -67,6 +76,12 @@ class Application extends Component {
         let trip = this.state.trip;
         trip[field] = value;
         this.setState(trip);
+    }
+
+    updateAttributes(field, value){
+        let attributes = this.state.attributes;
+        attributes[field] = value;
+        this.setState(attributes);
     }
 
     updateBasedOnResponse(value) {
@@ -198,7 +213,8 @@ class Application extends Component {
                 </Row><br/>
                 {this.createTrip()} <br/>
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
-                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip}/><br/>
+                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} attributes={this.state.attributes}/><br/>
+                <Attributes attributes={this.state.attributes} updateAttributes={this.updateAttributes} config={this.state.config}/>
                 <Map trip={this.state.trip} config={this.state.config}/><br/>
                 <div align="center">
                     <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}

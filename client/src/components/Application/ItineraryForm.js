@@ -75,14 +75,23 @@ class ItineraryForm extends Component {
     }
 
     tableHeader(){
+        let attributes = this.props.attributes;
         let table = [];
         let item = [];
-        item.push(<th key='count'>{"#"}</th>);
-        item.push(<th key='origin'>{"Origin"}</th>);
-        item.push(<th key='destination'>{"Destination"}</th>);
-        item.push(<th key='distance'>{"Distance in " + this.getDistanceName()}</th>);
-        item.push(<th key='total'>{"Total Distance in " + this.getDistanceName()}</th>);
-        table.push(<tr key='header'>{item}</tr>);
+            item.push(<th key='count'>{"#"}</th>);  //index
+        if(attributes.showId === true)
+            item.push(<th key='id1'>{"ID"}</th>);  //id
+        if(attributes.showName === true) {
+            item.push(<th key='origin'>{"Place"}</th>);  //origin
+            //item.push(<th key='destination'>{"Destination"}</th>);  //destination
+        }
+        if(attributes.showLatitudeLongitude === true)
+            item.push(<th key='latitudeLongitude'>{"Latitude & Longitude"}</th>);  //latitude & longitude
+        if(attributes.showLegDistance === true)
+            item.push(<th key='distance'>{"Distance to Next Place " + "(" + this.getDistanceName() + ")"}</th>);  //distance
+        if(attributes.showTotalDistance === true)
+            item.push(<th key='total'>{"Total Distance " + "("+ this.getDistanceName() + ")"}</th>);  //total distance
+            table.push(<tr key='header'>{item}</tr>);
         return table;
     }
 
@@ -91,24 +100,37 @@ class ItineraryForm extends Component {
         let table = this.tableHeader();
         let trip = this.props.trip;
         let totalPlaces = trip.places.length;
+        let attributes = this.props.attributes;
 
         // Add each origin-destination pair to the table
         for (let i = 0; i < totalPlaces; i++) {
             let cell = [];
             let origin = trip.places[i];
-            let dest = trip.places[(i + 1) % totalPlaces];
-            cell.push(<td key={'id' + i}>{this.action(i+1)}</td>);
-            cell.push(<td key={'origin' + i}>{origin.name}</td>);
-            cell.push(<td key={'destination' + i}>{dest.name}</td>);
-            if (this.props.trip.distances.length === 0) {
-                cell.push(<td key={'distance' + i}>{'0'}</td>);
-                cell.push(<td key={'totalDistance' + i}>{'0'}</td>);
+
+            cell.push(<td key={'id' + i}>{this.action(i+1)}</td>);  //index
+            if(attributes.showId === true)
+                cell.push(<td key={'id1' + i}>{origin.id}</td>);  //id
+            if(attributes.showName === true) {
+                cell.push(<td key={'origin' + i}>{origin.name}</td>);  //origin
+                //cell.push(<td key={'destination' + i}>{dest.name}</td>);  //destination
+            }
+            if(attributes.showLatitudeLongitude === true)
+                cell.push(<td key={'latitudeLongitude' + i}>{
+                origin.latitude + ", " + origin.longitude }</td>);  //latitude & longitude
+            if (trip.distances.length === 0) {
+                if(attributes.showLegDistance === true)
+                    cell.push(<td key={'distance' + i}>{' '}</td>);  //distance
+                if(attributes.showTotalDistance === true)
+                    cell.push(<td key={'totalDistance' + i}>{' '}</td>);  //total distance
                 table.push(<tr key={'row' + i}>{cell}</tr>)
             }
             else{
-                cell.push(<td key={'distance' + i}>{trip.distances[i]}</td>);
-                wholeTrip += trip.distances[i];
-                cell.push(<td key={'totalDistance' + i}>{wholeTrip}</td>);
+                if(attributes.showLegDistance === true)
+                    cell.push(<td key={'distance' + i}>{trip.distances[i]}</td>);  //distance
+                if(attributes.showTotalDistance === true) {
+                    wholeTrip += trip.distances[i];
+                    cell.push(<td key={'totalDistance' + i}>{wholeTrip}</td>);  //total distance
+                }
                 table.push(<tr key={'row' + i}>{cell}</tr>)
             }
         }
