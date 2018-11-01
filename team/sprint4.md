@@ -75,6 +75,7 @@ Epics planned for this sprint.
 | *10/24* | *#367* | *#354, #364, #365, #366, #368, #371, #372, #376, #381* | *none* | 
 | *10/26* | *#354, #365, #372* | *#364, #366, #368, #371, #373, #376, #381, #382, #384* | *Modify 1-opt and 2-opt implementations to imporove performance to work with large data will be challenging* |
 | *10/29* | *#364, #366, #368, #384* | *#371, #373, #376, #381, #387, #409* | *Find away to access and combine the old database with the new database will be our next challenge * |
+| *10/31* | *#373* | *#371, #376, #381, #398, #409* | *None* |
 
 *Add a new row for the scrum session after each lecture. *
 
