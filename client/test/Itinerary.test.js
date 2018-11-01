@@ -39,6 +39,13 @@ const startProps = {
             {"id":"aspn", "name":"Aspen", "latitude":39.1911, "longitude":-106.8175}
         ],
         "distances":[24,41,133,105]
+    },
+    'attributes': {
+        "showName": true,
+        "showId": true,
+        "showLatitudeLongitude": true,
+        "showLegDistance": true,
+        "showTotalDistance": true
     }
 };
 
