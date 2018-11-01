@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody} from 'reactstrap';
+import Attributes from './Attributes';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -199,6 +200,7 @@ class Application extends Component {
                 {this.createTrip()} <br/>
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
                 <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip}/><br/>
+                <Attributes/>
                 <Map trip={this.state.trip} config={this.state.config}/><br/>
                 <div align="center">
                     <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
