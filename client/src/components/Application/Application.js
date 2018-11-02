@@ -39,9 +39,10 @@ class Application extends Component {
                 map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
             },
             attributes: {
-                showName: true,
-                showId: true,
-                showLatitudeLongitude: true,
+                name: true,
+                id: true,
+                latitude: true,
+                longitude: true,
                 showLegDistance: true,
                 showTotalDistance: true
             }
@@ -228,44 +229,4 @@ class Application extends Component {
 
 export default Application;
 
-/*
-            <Container id="Application" >
-                <Info/>
-                <Row>
-                    <Col md={6}>
-                        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-                    </Col>
-                    <Col md={6}>
-                        <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-                    </Col>
-                </Row>
-                <br/>
-                <Row>
-                    <Col md={6}>
-                        <SetServer/>
-                    </Col>
-                    <br/>
-                    <Col md={6}>
-                        <TwoPtCalculator config={this.state.config} options={this.state.trip.options}/>
-                    </Col>
-                </Row>
-                <br/>
-                <Row>
-                    <Col md={6}>
-                        <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
-                    </Col>
-                    <Col md={6}>
-                        <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
-                    </Col>
-                </Row>
-                <br/>
-                <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button>
-                <br/>
-                <Map trip={this.state.trip} config={this.state.config}/>
-                <br/>
-                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip}/>
-                <br/>
-                <div align="Center"><Button onClick={this.saveTFFI} type="Button" className="btn-dark">Save Trip</Button></div>
-            </Container>
- */
 
