@@ -60,7 +60,21 @@ export default class Search extends Component {
         let newPlace = new Place(jplace.id, jplace.name, jplace.latitude, jplace.longitude);
         myPlaces.push(newPlace);
         this.props.updateTrip('places', myPlaces);
+        //remove it from search result list
+        let myIndex = -1;
+        for (var i=0; i<this.state.search.places.length ;i++) {
+           if(this.state.search.places[i].id === newPlace.id){
+               myIndex = i;
+               break;
+           }
+        }
+        let newSearch = this.state.search;
+        newSearch['places'] =
+                this.state.search.places.slice(0, myIndex).
+            concat(this.state.search.places.slice(myIndex+1));
+        this.setState({'search': newSearch });
     }
+
 
     addAll(){
         let newPlaces = this.state.search.places;
@@ -72,18 +86,23 @@ export default class Search extends Component {
             myPlaces.push(newPlace);
         this.props.updateTrip('places', myPlaces)
         }
+        let newSearch = this.state.search;
+        newSearch['places'] = [];
+        this.setState({'search': newSearch });
     }
 
     showPlaces(){
         let destinations = this.state.search.places.map((place, index)=>
             <InputGroup key={index}>
-                <InputGroupAddon addonType="prepend"><InputGroupText>{(index + 1)}</InputGroupText></InputGroupAddon>
+                <InputGroupAddon addonType="prepend">
+                    <InputGroupText>{(index + 1)}</InputGroupText>
+                </InputGroupAddon>
                 <Input readOnly value={place.name}/>
-                <InputGroupAddon addonType="append"><Button id={place.id} value={JSON.stringify(place)}
-                                                            onClick={this.addPlace} block>Add</Button></InputGroupAddon>
+                <InputGroupAddon addonType="append">
+                    <Button id={place.id} value={JSON.stringify(place)} onClick={this.addPlace} block>Add</Button>
+                </InputGroupAddon>
             </InputGroup>
         );
-
         return(destinations)
     }
 
