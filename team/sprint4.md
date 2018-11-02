@@ -74,7 +74,8 @@ Epics planned for this sprint.
 | *10/22* | *none* | *#354* | *none* | 
 | *10/24* | *#367* | *#354, #364, #365, #366, #368, #371, #372, #376, #381* | *none* | 
 | *10/26* | *#354, #365, #372* | *#364, #366, #368, #371, #373, #376, #381, #382, #384* | *Modify 1-opt and 2-opt implementations to imporove performance to work with large data will be challenging* |
-| *10/29* | *#364, #366, #368, #384* | *#371, #373, #376, #381, #387, #409* | *Find away to access and combine the old database with the new database will be our next challenge * |
+| *10/29* | *#364, #366, #368, #384* | *#371, #373, #376, #381, #387, #409* | *Find away to access and combine the old database with the new database will be our next challenge* |
+| *10/31* | *#373* | *#371, #376, #381, #398, #409* | *Scaling the paths between places to fit the given svg map is not easy as it seems to be. Find errors and fix our restAPI is also a challenging* |
 
 *Add a new row for the scrum session after each lecture. *
 
