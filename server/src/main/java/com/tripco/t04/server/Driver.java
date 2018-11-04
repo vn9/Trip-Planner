@@ -11,6 +11,7 @@ import java.util.ArrayList;
 /** This class connect to the database and find those data which conform to the match string.
  *
  */
+
 public class Driver {
     // db configuration information
     private final static String myDriver = "com.mysql.jdbc.Driver";
@@ -27,11 +28,11 @@ public class Driver {
      * The method accesses to the database.
      *
      */
-    public  void find(String match) {
+    public void find(String match) {
         //count the number of records in the table
         count = "SELECT count(*) FROM world_airports";
         search = "SELECT world_airports.id, world_airports.name, world_airports.municipality, " +
-                "world_airports.latitude, world_airports.longitude, country.name, continents.name " +
+                "world_airports.latitude, world_airports.longitude, country.name, continents.name, world_airports.type " +
                 "FROM continents " +
                 "INNER JOIN country ON continents.id = country.continent " +
                 "INNER JOIN region ON country.id = region.iso_country " +
@@ -41,6 +42,7 @@ public class Driver {
                 "OR world_airports.name LIKE '%" + match + "%' " +
                 "OR world_airports.id LIKE '%" + match + "%' " +
                 "ORDER BY continents.name, country.name, region.name, world_airports.name ASC";
+
         /** Note that if the variable isn't defined, System.getenv will return null.
          *  When test on own computer, make sure set up "export CS314_ENV=development" in .bash_profile for Mac or .bashrc for linux.
          *  Then make sure the ssh -L 5655:faure:3306 -N <username>@<cs-machine> be the same port here (5655)
@@ -72,6 +74,7 @@ public class Driver {
      * This method will print the Json created on the terminal or console to log.
      * Those places which matched will be added into places ArrayList.
      */
+
     private void printJson(ResultSet count, ResultSet query, String match)
             throws SQLException {
         places.clear();

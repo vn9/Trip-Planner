@@ -1,18 +1,10 @@
 package com.tripco.t04.planner;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.tripco.t04.server.HTTP;
-import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import spark.Request;
+
 import java.util.ArrayList;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.stream.Collectors;
 
 /**

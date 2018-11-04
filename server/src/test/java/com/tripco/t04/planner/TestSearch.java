@@ -22,8 +22,8 @@ public class TestSearch {
 
     @Before
     public void initialize() {
-        searchobj1 = new Search(4,"search","Aero Bear Field", 0, null, places);
-        searchobj2 = new Search(4,"search","Aero Bear Field", 0, null, places);
+        searchobj1 = new Search(4,"search","Aero Bear Field", null,0, null, places);
+        searchobj2 = new Search(4,"search","Aero Bear Field", null, 0, null, places);
     }
 
     @Test
