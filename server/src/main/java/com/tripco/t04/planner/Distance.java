@@ -46,16 +46,16 @@ public class Distance {
         double angle = Math.atan2(Math.sqrt(top),bottom);
 
         if(units.equals("miles")) {
-            distance = Math.round((float)angle * 3959);
+            distance = (int)Math.round(angle * 3959);
         }
         else if(units.equals("kilometers")) {
-            distance = Math.round((float)angle * 6371);
+            distance = (int)Math.round(angle * 6371);
         }
         else if(units.equals("nautical miles")) {
-            distance = Math.round((float)angle * 3440);
+            distance = (int)Math.round(angle * 3440);
         }
         else if(units.equals("user defined")){
-            distance = Math.round((float)angle * unitRadius.floatValue());
+            distance = (int)Math.round(angle * unitRadius.doubleValue());
         }
         return distance;
     }
