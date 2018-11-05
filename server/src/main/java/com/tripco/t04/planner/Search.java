@@ -46,9 +46,9 @@ public class Search {
      * Does the conversion from a Java class to a Json string.
      */
 
-    void getPlaces () {
+    public void getPlaces () {
         Driver myDriver = new Driver();
-        myDriver.find(this.match);
+        myDriver.find(this.match, this.filters, this.limit);
         this.places = Driver.places;
         this.found = Driver.places.size();
     }

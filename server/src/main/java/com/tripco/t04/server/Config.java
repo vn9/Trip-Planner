@@ -30,7 +30,8 @@ public class Config {
 
         this.attributes = Arrays.asList("name", "id", "latitude", "longitude");
 
-        Filter filter1 = new Filter("world_airport.type", Arrays.asList("balloonport", "heliport", "airport"));
+        Filter filter1 = new Filter("world_airports.type", Arrays.asList("balloonport", "heliport", "small_airport",
+                "medium_airport", "large_airport", "seaplane_base"));
         Filter filter2 = new Filter("continents.name", Arrays.asList("North America", "South America", "Africa",
                 "Asia", "Oceania", "Europe", "Antarctica"));
         this.filters = Arrays.asList(filter1, filter2);

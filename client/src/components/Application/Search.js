@@ -42,8 +42,10 @@ export default class Search extends Component {
         this.addPlace = this.addPlace.bind(this);
         this.showPlaces = this.showPlaces.bind(this);
         this.addAll = this.addAll.bind(this);
-        this.makeFilters = this.makeFilters.bind(this);
-        this.onCheck = this.onCheck.bind(this);
+        //this.makeFilters = this.makeFilters.bind(this);
+        //this.onCheck = this.onCheck.bind(this);
+        this.getLimit = this.getLimit.bind(this);
+        this.limitChange = this.limitChange.bind(this);
     }
 
     toggle() {
@@ -60,6 +62,24 @@ export default class Search extends Component {
         this.setState(mySearch);
     }
 
+    limitChange(aLimit){
+        console.log(aLimit);
+        let search = this.state.search;
+        search['limit'] = aLimit;
+        this.setState(search);
+        console.log(this.state.search);
+    }
+
+    getLimit(){
+        let search = this.state.search;
+        if(search['limit'] === ""){
+            search['limit'] = 0;
+            this.setState(search)
+        }else{
+            this.setState(search);
+        }
+    }
+/*
     getActiveFilterValues () {
         // modify search.filters so that it matches what the server expects
         //   search.filters = [
@@ -77,10 +97,11 @@ export default class Search extends Component {
         }
         return filters;
     }
-
+*/
     onSearch() {
         let search = this.state.search;
-        search.filters = this.getActiveFilterValues();
+        this.getLimit();
+        //search.filters = this.getActiveFilterValues();
         console.log(JSON.stringify(search));
 
         request(search, 'search', serverURL).then(
@@ -141,7 +162,7 @@ export default class Search extends Component {
         );
         return(destinations)
     }
-
+/*
     onCheck(e) {
         let filterName = e.target.value;
         let checked = e.target.checked;
@@ -163,7 +184,7 @@ export default class Search extends Component {
             </Col>);
         return(myFilters)
     }
-
+*/
     render() {
         this.bindFunctions();
 
@@ -179,12 +200,9 @@ export default class Search extends Component {
                                 <InputGroupAddon addonType="append"><Button className="btn-dark"
                                                                             onClick={this.onSearch}>Search</Button>
                                 </InputGroupAddon>
+                                <Input type={'number'} id={'Limit'} placeholder="Limit" onChange={(event) => this.limitChange(event.target.value)}/>
                             </InputGroup>
-                            <CardBody>
-                                <Row>
-                                {this.makeFilters()}
-                                </Row>
-                            </CardBody>
+
                             <br/>
                             <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                                 {this.showPlaces()}
@@ -201,3 +219,11 @@ export default class Search extends Component {
 
 }
 
+
+/*
+                            <CardBody>
+                                <Row>
+                                {this.makeFilters()}
+                                </Row>
+                            </CardBody>
+ */
