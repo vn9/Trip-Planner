@@ -79,14 +79,15 @@ class ItineraryForm extends Component {
         let table = [];
         let item = [];
             item.push(<th key='count'>{"#"}</th>);  //index
-        if(attributes.showId === true)
+        if(attributes.id === true)
             item.push(<th key='id1'>{"ID"}</th>);  //id
-        if(attributes.showName === true) {
-            item.push(<th key='origin'>{"Place"}</th>);  //origin
+        if(attributes.name === true)
+            item.push(<th key='origin'>{"Name"}</th>);  //origin
             //item.push(<th key='destination'>{"Destination"}</th>);  //destination
-        }
-        if(attributes.showLatitudeLongitude === true)
-            item.push(<th key='latitudeLongitude'>{"Latitude & Longitude"}</th>);  //latitude & longitude
+        if(attributes.latitude === true)
+            item.push(<th key='latitude='>{"Latitude"}</th>);  //latitude & longitude
+        if(attributes.longitude === true)
+            item.push(<th key='longitude='>{"Longitude"}</th>);
         if(attributes.showLegDistance === true)
             item.push(<th key='distance'>{"Distance to Next Place " + "(" + this.getDistanceName() + ")"}</th>);  //distance
         if(attributes.showTotalDistance === true)
@@ -108,15 +109,18 @@ class ItineraryForm extends Component {
             let origin = trip.places[i];
 
             cell.push(<td key={'id' + i}>{this.action(i+1)}</td>);  //index
-            if(attributes.showId === true)
+            if(attributes.id === true)
                 cell.push(<td key={'id1' + i}>{origin.id}</td>);  //id
-            if(attributes.showName === true) {
+            if(attributes.name === true) {
                 cell.push(<td key={'origin' + i}>{origin.name}</td>);  //origin
                 //cell.push(<td key={'destination' + i}>{dest.name}</td>);  //destination
             }
-            if(attributes.showLatitudeLongitude === true)
-                cell.push(<td key={'latitudeLongitude' + i}>{
-                origin.latitude + ", " + origin.longitude }</td>);  //latitude & longitude
+            if(attributes.latitude === true)
+                cell.push(<td key={'latitude' + i}>{
+                    origin.latitude }</td>);  //latitude
+            if(attributes.longitude === true)
+                cell.push(<td key={'Longitude' + i}>{
+                    origin.longitude }</td>);  //longitude
             if (trip.distances.length === 0) {
                 if(attributes.showLegDistance === true)
                     cell.push(<td key={'distance' + i}>{' '}</td>);  //distance

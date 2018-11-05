@@ -15,61 +15,18 @@ class Attributes extends Component {
     }
 
     render(){
+        let items = this.props.config.attributes.map((attribute) =>
+        <div key={attribute}>
+            <Label check>
+                <Input name={attribute} type = "checkbox" value={'!this.state.' + attribute}
+                       defaultChecked={true} onChange={this.handleCheckChange}/>
+                {attribute.charAt(0).toUpperCase() + attribute.slice(1)}</Label>
+        </div>);
+
         return(
             <Form>
                 <div>
-                    <Input
-                        name = "showId"
-                        type = "checkbox"
-                        checked = {this.props.attributes.showId}
-                        onChange={this.handleCheckChange}/>
-                    <Label>
-                        Show ID
-                    </Label>
-                </div>
-                <br />
-                <div>
-                    <Input
-                        name = "showName"
-                        type = "checkbox"
-                        checked = {this.props.attributes.showName}
-                        onChange={this.handleCheckChange}/>
-                    <Label>
-                        Show Name
-                    </Label>
-                </div>
-                <br />
-                <div>
-                    <Input
-                        name = "showLatitudeLongitude"
-                        type = "checkbox"
-                        checked = {this.props.attributes.showLatitudeLongitude}
-                        onChange={this.handleCheckChange}/>
-                    <Label>
-                        Show Latitude/Longitude:
-                    </Label>
-                </div>
-                <br />
-                <div>
-                    <Input
-                        name = "showLegDistance"
-                        type = "checkbox"
-                        checked = {this.props.attributes.showLegDistance}
-                        onChange={this.handleCheckChange}/>
-                    <Label>
-                        Show Leg Distance
-                    </Label>
-                </div>
-                <br />
-                <div>
-                    <Input
-                        name = "showTotalDistance"
-                        type = "checkbox"
-                        checked = {this.props.attributes.showTotalDistance}
-                        onChange={this.handleCheckChange}/>
-                    <Label>
-                        Show Total Distance
-                    </Label>
+                    {items}
                 </div>
             </Form>
         );
