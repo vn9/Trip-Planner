@@ -129,13 +129,12 @@ class Application extends Component {
     /* Saves the map and itinerary to the local file system. */
 
     saveTFFI(){
-        var tripTitle = this.state.trip.title;
+        let tripTitle = this.state.trip.title;
 
         //Convert data to TFFI formatted string
         let trip = this.state.trip;
-        trip['map'] = '';
-        var tffi = JSON.stringify(trip); // make the map attributes to be ''
-
+        trip['map'] = this.state.trip.map;
+        let tffi = JSON.stringify(trip); // make the map attributes to be ''
 
         //add .json extension if not already added by user
         if(!tripTitle.endsWith(".json")){
@@ -143,7 +142,7 @@ class Application extends Component {
         }
 
         //generate file and download
-        var element = document.createElement('a');
+        let element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(tffi));
         element.setAttribute('download', tripTitle);
         document.body.appendChild(element);
@@ -155,7 +154,7 @@ class Application extends Component {
         //generate file and download
         let element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + this.state.trip.map);
-        element.setAttribute('download', 'downlaod.svg');
+        element.setAttribute('download', 'download.svg');
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
