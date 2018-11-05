@@ -47,7 +47,10 @@ class Application extends Component {
                 showTotalDistance: true
             }
         };
+        this.bindFunctions = this.bindFunctions.bind(this);
+    }
 
+    bindFunctions(){
         this.planTrip = this.planTrip.bind(this);
         this.updateTrip = this.updateTrip.bind(this);
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
@@ -196,6 +199,7 @@ class Application extends Component {
     }
 
     render() {
+        this.bindFunctions();
         if(!this.state.config) { return <div/> }
 
         return(

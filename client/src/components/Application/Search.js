@@ -1,10 +1,11 @@
 import React, {Component} from 'react'
-import {Button, Input,Card, Collapse, CardBody, InputGroup,InputGroupAddon, InputGroupText} from 'reactstrap'
+import {Button, Input,Card, Collapse, CardBody, InputGroup,InputGroupAddon, InputGroupText, Label, Col, Row} from 'reactstrap'
 
 import {serverURL} from  './SetServer'
 
 import {request} from '../../api/api';
 import {Place} from './UploadFile';
+
 
 export default class Search extends Component {
     constructor(props) {
@@ -15,12 +16,25 @@ export default class Search extends Component {
                 version: 4,
                 type: "search",
                 match: "",
+                filters: [],
                 limit: 0,
                 found: 0,
                 places: []
             },
-
         };
+
+        for (let filter of this.props.config.filters) {
+            let values = {};
+            for (let valueName of filter.values) {
+                values[valueName] = false;
+            }
+            this.state.search.filters[filter.name] = {'values': values};
+        }
+
+        this.bindFunctions = this.bindFunctions.bind(this);
+    }
+
+    bindFunctions(){
         this.matchChange = this.matchChange.bind(this);
         this.onSearch = this.onSearch.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
@@ -28,6 +42,10 @@ export default class Search extends Component {
         this.addPlace = this.addPlace.bind(this);
         this.showPlaces = this.showPlaces.bind(this);
         this.addAll = this.addAll.bind(this);
+        //this.makeFilters = this.makeFilters.bind(this);
+        //this.onCheck = this.onCheck.bind(this);
+        this.getLimit = this.getLimit.bind(this);
+        this.limitChange = this.limitChange.bind(this);
     }
 
     toggle() {
@@ -44,9 +62,49 @@ export default class Search extends Component {
         this.setState(mySearch);
     }
 
+    limitChange(aLimit){
+        console.log(aLimit);
+        let search = this.state.search;
+        search['limit'] = aLimit;
+        this.setState(search);
+        console.log(this.state.search);
+    }
+
+    getLimit(){
+        let search = this.state.search;
+        if(search['limit'] === ""){
+            search['limit'] = 0;
+            this.setState(search)
+        }else{
+            this.setState(search);
+        }
+    }
+/*
+    getActiveFilterValues () {
+        // modify search.filters so that it matches what the server expects
+        //   search.filters = [
+        //     name: <filter name>, values: [<name of selected values>, ...]
+        let filters = [];
+        for (let filterName in this.state.search.filters) {
+            let filter = this.state.search.filters[filterName];
+            let values = [];
+            for (let valueName in filter.values) {
+                if (filter.values[valueName]) {
+                    values.push(valueName);
+                }
+            }
+            filters.push({'name': filterName, 'values': values});
+        }
+        return filters;
+    }
+*/
     onSearch() {
-        console.log(JSON.stringify(this.state.search));
-        request(this.state.search, 'search', serverURL).then(
+        let search = this.state.search;
+        this.getLimit();
+        //search.filters = this.getActiveFilterValues();
+        console.log(JSON.stringify(search));
+
+        request(search, 'search', serverURL).then(
             (response) => {
                 console.log(response);
                 this.updateSearch(response);
@@ -62,7 +120,7 @@ export default class Search extends Component {
         this.props.updateTrip('places', myPlaces);
         //remove it from search result list
         let myIndex = -1;
-        for (var i=0; i<this.state.search.places.length ;i++) {
+        for (let i = 0; i < this.state.search.places.length; i++) {
            if(this.state.search.places[i].id === newPlace.id){
                myIndex = i;
                break;
@@ -74,7 +132,6 @@ export default class Search extends Component {
             concat(this.state.search.places.slice(myIndex+1));
         this.setState({'search': newSearch });
     }
-
 
     addAll(){
         let newPlaces = this.state.search.places;
@@ -105,8 +162,32 @@ export default class Search extends Component {
         );
         return(destinations)
     }
+/*
+    onCheck(e) {
+        let filterName = e.target.value;
+        let checked = e.target.checked;
+        let valueName = e.target.name;
+        this.state.search.filters[filterName].values[valueName] = checked;
+    }
 
+    makeFilters(){
+        let myFilters = this.props.config.filters.map((filter) =>
+            <Col key={filter.name}>
+                {filter.values.map((myValue)=>
+                    <div key={myValue}>
+                    <Label check>
+                        <Input name={myValue} type="checkbox" value={filter.name} onChange={this.onCheck}/>
+                        {myValue.charAt(0).toUpperCase() + myValue.slice(1)}
+                    </Label>
+                    </div>
+                )}
+            </Col>);
+        return(myFilters)
+    }
+*/
     render() {
+        this.bindFunctions();
+
         return (
             <div>
                 <Button onClick={this.toggle} className='btn-dark' block>Create Trip: Search For Places</Button>
@@ -119,7 +200,9 @@ export default class Search extends Component {
                                 <InputGroupAddon addonType="append"><Button className="btn-dark"
                                                                             onClick={this.onSearch}>Search</Button>
                                 </InputGroupAddon>
+                                <Input type={'number'} id={'Limit'} placeholder="Limit" onChange={(event) => this.limitChange(event.target.value)}/>
                             </InputGroup>
+
                             <br/>
                             <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                                 {this.showPlaces()}
@@ -136,3 +219,11 @@ export default class Search extends Component {
 
 }
 
+
+/*
+                            <CardBody>
+                                <Row>
+                                {this.makeFilters()}
+                                </Row>
+                            </CardBody>
+ */

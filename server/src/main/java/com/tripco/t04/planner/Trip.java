@@ -2,9 +2,9 @@ package com.tripco.t04.planner;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
 import java.util.ArrayList;
 import java.io.IOException;
-
 
 /**
  * The Trip class supports TFFI so it can easily be converted to/from Json by Gson.

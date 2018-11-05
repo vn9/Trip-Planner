@@ -7,10 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 /** This class connect to the database and find those data which conform to the match string.
  *
  */
+
 public class Driver {
     // db configuration information
     private final static String myDriver = "com.mysql.jdbc.Driver";
@@ -27,20 +29,88 @@ public class Driver {
      * The method accesses to the database.
      *
      */
-    public  void find(String match) {
+
+    public String getFilterQueryString(List<Filter> filters){
+        String myFilters = "";
+        if (filters == null){
+            return(myFilters);
+        }
+        if (filters.size() == 0){
+            return(myFilters);
+        }
+        for (int i = 0; i < filters.size(); i++) {
+            Filter filter = filters.get(i);
+            String filterString = "";
+            filterString += filter.name + " IN (";
+            for (int j = 0; j < filter.values.size(); j++) {
+                filterString += "\"" + filter.values.get(j) + "\", ";
+            }
+            filterString = filterString.substring(0, filterString.length() - 2) + ")";
+            myFilters += filterString + " AND ";
+        }
+        myFilters = myFilters.substring(0, myFilters.length() - 4);
+        System.out.print(myFilters);
+
+        return(myFilters);
+    }
+
+    public String getLimitString(int limit){
+        String myLimit;
+        if(limit == 0){
+            myLimit = " ";
+        }else {
+            myLimit = "LIMIT " + limit;
+        }
+        return(myLimit);
+    }
+
+    public String getMatchQueryString(String match){
+        String myMatch =
+                " country.name LIKE '%" + match + "%' " + "OR world_airports.municipality LIKE'%" + match + "%' " +
+                        "OR world_airports.name LIKE '%" + match + "%' " +
+                        "OR world_airports.id LIKE '%" + match + "%' ";
+        return(myMatch);
+    }
+
+    public String getMyQueryString(String match, String filters){
+        String myQuery = "";
+
+        if (match.equals("")){
+            myQuery = "WHERE " + filters;
+            System.out.print(myQuery);
+        } else if (filters.equals("")){
+            myQuery = "WHERE " + match + " ";
+        } else if (filters.equals("") && match.equals("")){
+            myQuery = " ";
+        } else {
+            myQuery = "WHERE ( " + match + " ) AND " + filters;
+            System.out.print(myQuery);
+        }
+        return(myQuery);
+    }
+
+    public void find(String match, List<Filter> filters, int limit) {
         //count the number of records in the table
+
+        String myMatch = getMatchQueryString(match);
+        String myFilters = getFilterQueryString(filters);
+        String myLimit = getLimitString(limit);
+        String myQuery = getMyQueryString(myMatch, myFilters);
+
+        //String myQuery = getQueryString(myFilters, myMatch);
+
+
+
         count = "SELECT count(*) FROM world_airports";
         search = "SELECT world_airports.id, world_airports.name, world_airports.municipality, " +
-                "world_airports.latitude, world_airports.longitude, country.name, continents.name " +
-                "FROM continents " +
-                "INNER JOIN country ON continents.id = country.continent " +
+                "world_airports.latitude, world_airports.longitude, country.name, continents.name, world_airports.type, " +
+                "region.name FROM continents INNER JOIN country ON continents.id = country.continent " +
                 "INNER JOIN region ON country.id = region.iso_country " +
-                "INNER JOIN world_airports ON region.id = world_airports.iso_region " +
-                "WHERE country.name LIKE '%" + match + "%' " +
-                "OR world_airports.municipality LIKE'%" + match + "%' " +
-                "OR world_airports.name LIKE '%" + match + "%' " +
-                "OR world_airports.id LIKE '%" + match + "%' " +
-                "ORDER BY continents.name, country.name, region.name, world_airports.name ASC";
+                "INNER JOIN world_airports ON region.id = world_airports.iso_region "
+                + myQuery +
+                " ORDER BY continents.name, country.name, region.name, world_airports.name ASC "
+                + myLimit;
+
         /** Note that if the variable isn't defined, System.getenv will return null.
          *  When test on own computer, make sure set up "export CS314_ENV=development" in .bash_profile for Mac or .bashrc for linux.
          *  Then make sure the ssh -L 5655:faure:3306 -N <username>@<cs-machine> be the same port here (5655)
@@ -72,6 +142,7 @@ public class Driver {
      * This method will print the Json created on the terminal or console to log.
      * Those places which matched will be added into places ArrayList.
      */
+
     private void printJson(ResultSet count, ResultSet query, String match)
             throws SQLException {
         places.clear();
@@ -101,6 +172,7 @@ public class Driver {
             places.add(place); //add the printed place into places ArrayList
         }
         System.out.printf(" ]\n}\n");
+        System.out.print(search);
     }
 
 }
