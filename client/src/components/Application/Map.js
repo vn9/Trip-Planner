@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Button, Collapse, Card} from "reactstrap";
+import {Button, Collapse} from "reactstrap";
 
 
 /* Map obtains and renders the map for the trip.
@@ -29,12 +29,8 @@ class Map extends Component {
                 <div>
                     <Button onClick={this.toggle} className='btn-dark' block>Map</Button>
                     <Collapse isOpen={this.state.collapse}>
-                        <Card>
-                <figure className="figure" id="map">
                     <img className="figure-img img-fluid" alt="Map"
-                         src={svgHeader.concat(svgData)}/>
-                </figure>
-                        </Card>
+                         src={svgHeader.concat(svgData)} width="100%" height="100%"/>
                     </Collapse>
                 </div>
             )
