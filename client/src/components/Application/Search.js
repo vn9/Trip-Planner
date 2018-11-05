@@ -21,14 +21,14 @@ export default class Search extends Component {
                 found: 0,
                 places: []
             },
+            myFilters: [],
         };
-
         for (let filter of this.props.config.filters) {
             let values = {};
             for (let valueName of filter.values) {
                 values[valueName] = false;
             }
-            this.state.search.filters[filter.name] = {'values': values};
+            this.state.myFilters[filter.name] = {'values': values};
         }
 
         this.bindFunctions = this.bindFunctions.bind(this);
@@ -42,8 +42,8 @@ export default class Search extends Component {
         this.addPlace = this.addPlace.bind(this);
         this.showPlaces = this.showPlaces.bind(this);
         this.addAll = this.addAll.bind(this);
-        //this.makeFilters = this.makeFilters.bind(this);
-        //this.onCheck = this.onCheck.bind(this);
+        this.makeFilters = this.makeFilters.bind(this);
+        this.onCheck = this.onCheck.bind(this);
         this.getLimit = this.getLimit.bind(this);
         this.limitChange = this.limitChange.bind(this);
     }
@@ -64,6 +64,9 @@ export default class Search extends Component {
 
     limitChange(aLimit){
         console.log(aLimit);
+        if(aLimit === ""){
+            aLimit = 0;
+        }
         let search = this.state.search;
         search['limit'] = aLimit;
         this.setState(search);
@@ -72,37 +75,39 @@ export default class Search extends Component {
 
     getLimit(){
         let search = this.state.search;
-        if(search['limit'] === ""){
+        if( search['limit'] === undefined){
             search['limit'] = 0;
-            this.setState(search)
+            this.setState(search);
         }else{
             this.setState(search);
         }
     }
-/*
+
     getActiveFilterValues () {
         // modify search.filters so that it matches what the server expects
         //   search.filters = [
         //     name: <filter name>, values: [<name of selected values>, ...]
         let filters = [];
-        for (let filterName in this.state.search.filters) {
-            let filter = this.state.search.filters[filterName];
+        for (let filterName in this.state.myFilters) {
+            let filter = this.state.myFilters[filterName];
             let values = [];
             for (let valueName in filter.values) {
                 if (filter.values[valueName]) {
                     values.push(valueName);
                 }
             }
-            filters.push({'name': filterName, 'values': values});
+            if (values.length > 0){
+                filters.push({'name': filterName, 'values': values});
+            }
         }
         return filters;
     }
-*/
+
     onSearch() {
-        let search = this.state.search;
         this.getLimit();
-        //search.filters = this.getActiveFilterValues();
-        console.log(JSON.stringify(search));
+        let search = Object.assign({}, this.state.search);
+        console.log(search);
+        search.filters = this.getActiveFilterValues();
 
         request(search, 'search', serverURL).then(
             (response) => {
@@ -148,6 +153,29 @@ export default class Search extends Component {
         this.setState({'search': newSearch });
     }
 
+    onCheck(e) {
+        let filterName = e.target.value;
+        let checked = e.target.checked;
+        let valueName = e.target.name;
+        this.state.myFilters[filterName].values[valueName] = checked;
+    }
+
+    makeFilters(){
+        let myFilters = this.props.config.filters.map((filter) =>
+            <Col key={filter.name}>
+                {filter.values.map((myValue)=>
+                    <div key={myValue}>
+                        <Label check>
+                            <Input name={myValue} type="checkbox" value={filter.name} onChange={this.onCheck}/>
+                            {myValue.charAt(0).toUpperCase() + myValue.slice(1)}
+                        </Label>
+                    </div>
+                )}
+            </Col>);
+        return(myFilters)
+    }
+
+
     showPlaces(){
         let destinations = this.state.search.places.map((place, index)=>
             <InputGroup key={index}>
@@ -162,29 +190,8 @@ export default class Search extends Component {
         );
         return(destinations)
     }
-/*
-    onCheck(e) {
-        let filterName = e.target.value;
-        let checked = e.target.checked;
-        let valueName = e.target.name;
-        this.state.search.filters[filterName].values[valueName] = checked;
-    }
 
-    makeFilters(){
-        let myFilters = this.props.config.filters.map((filter) =>
-            <Col key={filter.name}>
-                {filter.values.map((myValue)=>
-                    <div key={myValue}>
-                    <Label check>
-                        <Input name={myValue} type="checkbox" value={filter.name} onChange={this.onCheck}/>
-                        {myValue.charAt(0).toUpperCase() + myValue.slice(1)}
-                    </Label>
-                    </div>
-                )}
-            </Col>);
-        return(myFilters)
-    }
-*/
+
     render() {
         this.bindFunctions();
 
@@ -202,7 +209,11 @@ export default class Search extends Component {
                                 </InputGroupAddon>
                                 <Input type={'number'} id={'Limit'} placeholder="Limit" onChange={(event) => this.limitChange(event.target.value)}/>
                             </InputGroup>
-
+                            <CardBody>
+                                <Row>
+                                    {this.makeFilters()}
+                                </Row>
+                            </CardBody>
                             <br/>
                             <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                                 {this.showPlaces()}
@@ -218,12 +229,3 @@ export default class Search extends Component {
     }
 
 }
-
-
-/*
-                            <CardBody>
-                                <Row>
-                                {this.makeFilters()}
-                                </Row>
-                            </CardBody>
- */
