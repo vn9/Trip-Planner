@@ -120,7 +120,8 @@ export default class Search extends Component {
         let myplace = event.target.value;
         let jplace = JSON.parse(myplace);
         let myPlaces = this.props.trip.places;
-        let newPlace = new Place(jplace.id, jplace.name, jplace.latitude, jplace.longitude);
+        let newPlace = new Place(jplace.id, jplace.name, jplace.latitude, jplace.longitude, jplace.municipality,
+            jplace.country, jplace.continent);
         myPlaces.push(newPlace);
         this.props.updateTrip('places', myPlaces);
         //remove it from search result list
@@ -165,7 +166,7 @@ export default class Search extends Component {
             <Col key={filter.name}>
                 {filter.values.map((myValue)=>
                     <div key={myValue}>
-                        <Label check>
+                        <Label check key={myValue}>
                             <Input name={myValue} type="checkbox" value={filter.name} onChange={this.onCheck}/>
                             {myValue.charAt(0).toUpperCase() + myValue.slice(1)}
                         </Label>
@@ -182,7 +183,7 @@ export default class Search extends Component {
                 <InputGroupAddon addonType="prepend">
                     <InputGroupText>{(index + 1)}</InputGroupText>
                 </InputGroupAddon>
-                <Input readOnly value={place.name}/>
+                <Input readOnly value={place.name + ", " + place.municipality + ", " + place.country}/>
                 <InputGroupAddon addonType="append">
                     <Button id={place.id} value={JSON.stringify(place)} onClick={this.addPlace} block>Add</Button>
                 </InputGroupAddon>

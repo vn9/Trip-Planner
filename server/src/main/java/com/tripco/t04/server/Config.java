@@ -28,7 +28,7 @@ public class Config {
         Optimization opt3 = new Optimization("shorter","2-opt.");
         this.optimization = Arrays.asList(opt1, opt2, opt3);
 
-        this.attributes = Arrays.asList("name", "id", "latitude", "longitude");
+        this.attributes = Arrays.asList("id", "name", "latitude", "longitude", "municipality", "country", "continent");
 
         Filter filter1 = new Filter("world_airports.type", Arrays.asList("balloonport", "heliport", "small_airport",
                 "medium_airport", "large_airport", "seaplane_base"));

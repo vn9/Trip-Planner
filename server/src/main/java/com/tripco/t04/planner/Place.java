@@ -9,12 +9,18 @@ public class Place {
   public String name;
   public String latitude;
   public String longitude;
+  public String municipality;
+  public String country;
+  public String continent;
 
-  public Place(String id, String name, String latitude, String longitude) {
+  public Place(String id, String name, String latitude, String longitude, String municipality, String country, String continent) {
     this.id = id;
     this.name = name;
     this.latitude = latitude;
     this.longitude = longitude;
+    this.municipality = municipality;
+    this.country = country;
+    this.continent = continent;
   }
 
   public double getLat() {

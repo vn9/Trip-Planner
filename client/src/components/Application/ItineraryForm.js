@@ -1,4 +1,4 @@
-import {Button, Table, Collapse} from 'reactstrap';
+import {Button, Table, Collapse, Label, Input, Form, FormGroup} from 'reactstrap';
 import React, {Component} from 'react'
 
 class ItineraryForm extends Component {
@@ -7,13 +7,26 @@ class ItineraryForm extends Component {
         super(props);
         this.state = {
             collapse: true,
+            attributes: [],
+            myAttributes: [],
+            DistanceToNext: true,
+            TotalDistance: true,
         };
+        for (let attributes of this.props.config.attributes) {
+            let check = true;
+            this.state.myAttributes[attributes] = check;
+        }
+
         this.begFunc = this.begFunc.bind(this);
         this.removeFunc = this.removeFunc.bind(this);
         this.tableHeader = this.tableHeader.bind(this);
         this.tableGenerator = this.tableGenerator.bind(this);
         this.reverseTable = this.reverseTable.bind(this);
         this.toggle = this.toggle.bind(this);
+        this.onCheck = this.onCheck.bind(this);
+        this.getActiveAttributes = this.getActiveAttributes.bind(this);
+        this.makeCheckBoxes = this.makeCheckBoxes.bind(this);
+        this.handOnChange = this.handOnChange.bind(this);
     }
 
     getDistanceName(){
@@ -74,73 +87,6 @@ class ItineraryForm extends Component {
         )
     }
 
-    tableHeader(){
-        let attributes = this.props.attributes;
-        let table = [];
-        let item = [];
-            item.push(<th key='count'>{"#"}</th>);  //index
-        if(attributes.id === true)
-            item.push(<th key='id1'>{"ID"}</th>);  //id
-        if(attributes.name === true)
-            item.push(<th key='origin'>{"Name"}</th>);  //origin
-            //item.push(<th key='destination'>{"Destination"}</th>);  //destination
-        if(attributes.latitude === true)
-            item.push(<th key='latitude='>{"Latitude"}</th>);  //latitude & longitude
-        if(attributes.longitude === true)
-            item.push(<th key='longitude='>{"Longitude"}</th>);
-        if(attributes.showLegDistance === true)
-            item.push(<th key='distance'>{"Distance to Next Place " + "(" + this.getDistanceName() + ")"}</th>);  //distance
-        if(attributes.showTotalDistance === true)
-            item.push(<th key='total'>{"Total Distance " + "("+ this.getDistanceName() + ")"}</th>);  //total distance
-            table.push(<tr key='header'>{item}</tr>);
-        return table;
-    }
-
-    tableGenerator() {
-        let wholeTrip = 0;
-        let table = this.tableHeader();
-        let trip = this.props.trip;
-        let totalPlaces = trip.places.length;
-        let attributes = this.props.attributes;
-
-        // Add each origin-destination pair to the table
-        for (let i = 0; i < totalPlaces; i++) {
-            let cell = [];
-            let origin = trip.places[i];
-
-            cell.push(<td key={'id' + i}>{this.action(i+1)}</td>);  //index
-            if(attributes.id === true)
-                cell.push(<td key={'id1' + i}>{origin.id}</td>);  //id
-            if(attributes.name === true) {
-                cell.push(<td key={'origin' + i}>{origin.name}</td>);  //origin
-                //cell.push(<td key={'destination' + i}>{dest.name}</td>);  //destination
-            }
-            if(attributes.latitude === true)
-                cell.push(<td key={'latitude' + i}>{
-                    origin.latitude }</td>);  //latitude
-            if(attributes.longitude === true)
-                cell.push(<td key={'Longitude' + i}>{
-                    origin.longitude }</td>);  //longitude
-            if (trip.distances.length === 0) {
-                if(attributes.showLegDistance === true)
-                    cell.push(<td key={'distance' + i}>{' '}</td>);  //distance
-                if(attributes.showTotalDistance === true)
-                    cell.push(<td key={'totalDistance' + i}>{' '}</td>);  //total distance
-                table.push(<tr key={'row' + i}>{cell}</tr>)
-            }
-            else{
-                if(attributes.showLegDistance === true)
-                    cell.push(<td key={'distance' + i}>{trip.distances[i]}</td>);  //distance
-                if(attributes.showTotalDistance === true) {
-                    wholeTrip += trip.distances[i];
-                    cell.push(<td key={'totalDistance' + i}>{wholeTrip}</td>);  //total distance
-                }
-                table.push(<tr key={'row' + i}>{cell}</tr>)
-            }
-        }
-        return table;
-    }
-
     reverseTable(){
         let places = this.props.trip.places;
         let arr = [places.length];
@@ -156,6 +102,110 @@ class ItineraryForm extends Component {
         this.setState({collapse: !this.state.collapse})
     }
 
+    onCheck(e) {
+        let checked = e.target.checked;
+        let attr = e.target.name;
+        this.state.myAttributes[attr] = checked;
+        console.log(attr, this.state.myAttributes[attr]);
+        this.setState({'attributes': this.getActiveAttributes()});
+    }
+
+    getActiveAttributes () {
+        let attrs = [];
+        for (let attribute in this.state.myAttributes) {
+            if (this.state.myAttributes[attribute] === true){
+                attrs.push(attribute);
+            }
+        }
+        this.state.attributes = attrs;
+    }
+    handOnChange(e){
+        let name = e.target.value;
+        let myState = this.state;
+        myState[name] = e.target.checked;
+        this.setState(myState);
+    }
+
+    makeCheckBoxes(){
+        let items =
+            <div>
+            {this.props.config.attributes.map((attribute) =>
+                <FormGroup check inline key={attribute}>
+                    <Label check>
+                        <Input name={attribute} type = "checkbox" value={'!this.state.' + attribute}
+                               defaultChecked={true} onChange={this.onCheck}/>
+                        {attribute.charAt(0).toUpperCase() + attribute.slice(1)}
+                    </Label>
+                </FormGroup>
+            )}
+            <FormGroup check inline>
+                <Label check>
+                    <Input name={"showLegDist"} type={"checkbox"} value={'DistanceToNext'}
+                           onChange={this.handOnChange} defaultChecked={true}>
+                    </Input>{'Leg Distance'}</Label>
+            </FormGroup>
+            <FormGroup check inline>
+                <Label check>
+                    <Input name={"showTDist"} type={"checkbox"} value={'TotalDistance'}
+                           onChange={this.handOnChange} defaultChecked={true}>
+                    </Input>{'Total Distance'}
+                </Label>
+            </FormGroup>
+            </div>;
+        return(items);
+    }
+
+    tableHeader(){
+        this.getActiveAttributes();
+        let attributes = this.state.attributes;
+        let table = [];
+        let item = [];
+
+        item.push(<th key='count'>{"#"}</th>);  //index
+
+        for (let i = 0; i < attributes.length; i++ ){
+            let attr = attributes[i];
+            item.push(<th key={attr}>{attr.charAt(0).toUpperCase() + attr.slice(1)}</th>);
+        }
+        if(this.state.DistanceToNext === true)
+            item.push(<th key='distance'>{"Distance to Next Place " + "(" + this.getDistanceName() + ")"}</th>);  //distance
+        if(this.state.TotalDistance === true)
+            item.push(<th key='total'>{"Total Distance " + "("+ this.getDistanceName() + ")"}</th>);  //total distance
+        table.push(<tr key='header'>{item}</tr>);
+
+        return table;
+    }
+
+    tableGenerator() {
+        let wholeTrip = 0;
+        let table = this.tableHeader();
+        let trip = this.props.trip;
+        let attributes = this.state.attributes;
+
+        for (let i = 0; i < trip.places.length; i++) {
+            let cell = [];
+            let place = trip.places[i];
+
+            cell.push(<td key={'index' + i}>{this.action(i+1)}</td>);  //index
+            for (let j=0; j< attributes.length; j++){
+                let attr = attributes[j];
+                let item = place[attr];
+                cell.push(<td key={attr + i}>{item}</td>)
+            }
+            if(this.state.DistanceToNext === true)
+                cell.push(<td key={'distance' + i}>{trip.distances[i]}</td>);
+            if(this.state.TotalDistance === true)
+                if (trip.distances.length === 0) {
+                    cell.push(<td key={'totalDistance' + i}>{' '}</td>);  //total distance
+                }else {
+                    wholeTrip += trip.distances[i];
+                    cell.push(<td key={'totalDistance' + i}>{wholeTrip}</td>);  //total distance
+                }
+            table.push(<tr key={'row' + i}>{cell}</tr>)
+        }
+        return table;
+    }
+
     render() {
         return(
             <div id="itinerary">
@@ -169,9 +219,9 @@ class ItineraryForm extends Component {
                             <tbody>{this.tableGenerator()}</tbody>
                         </Table>
                     </div>
-                    <Button id="reverse-button" onClick={this.reverseTable}>
-                        Reverse
-                    </Button>
+                    <Form>{this.makeCheckBoxes()}
+                    </Form>
+                    <Button id="reverse-button" onClick={this.reverseTable}>Reverse</Button>
                 </Collapse>
             </div>
         )

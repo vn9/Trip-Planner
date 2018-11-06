@@ -5,11 +5,14 @@ import {Card, CardBody, Button, Input, Row, Col, Collapse, Form, InputGroup, Inp
 
 
 export class Place {
-    constructor(id, name, latitude, longitude){
+    constructor(id, name, latitude, longitude, municipality, country, continent){
         this.id = id;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.municipality = municipality;
+        this.country = country;
+        this.continent = continent;
     }
 }
 
@@ -23,15 +26,25 @@ export default class UploadFile extends Component {
                 name: "",
                 latitude: "",
                 longitude: "",
-            }
+                municipality: "",
+                country: "",
+                continent: "",
+            },
+            myPlace: []
         };
+
+        for (let attributes of this.props.config.attributes) {
+            let values = {};
+            values[attributes] = "";
+
+            this.state.myPlace[attributes] = values;
+        }
 
         this.updatePlace = this.updatePlace.bind(this);
         this.addPlace = this.addPlace.bind(this);
         this.toggle = this.toggle.bind(this);
         this.addOwn = this.addOwn.bind(this);
         this.clearFields = this.clearFields.bind(this);
-
 
     }
 
@@ -64,28 +77,27 @@ export default class UploadFile extends Component {
 
     }
 
-
     clearFields(){
             let noPlace = this.state.place;
             noPlace.id = '';
             noPlace.name= '';
             noPlace.latitude = '';
             noPlace.longitude = '';
+            noPlace.municipality= "";
+            noPlace.country= "";
+            noPlace.continent = '';
             this.setState(noPlace);
         }
-
-
 
     addPlace(){
         let myPlaces = this.props.trip.places;
         let place = this.state.place;
-        let newPlace = new Place(place.id, place.name, place.latitude, place.longitude);
+        let newPlace = new Place(place.id, place.name, place.latitude, place.longitude, place.municipality,
+            place.country, place.municipality);
         myPlaces.push(newPlace);
         this.props.updateTrip('places', myPlaces);
         this.clearFields();
-
     }
-
 
     addOwn(){
         let place = this.state.place;
@@ -120,7 +132,7 @@ export default class UploadFile extends Component {
                         <CardBody>
                             <p align="Center">Name Your Trip</p>
                             <Input placeholder="Name Your Trip" value={this.props.trip.title}
-                                   onChange={(event)=>this.updateTrip('title', event.target.value)}/><br/>
+                                   onChange={(event)=>this.props.updateTrip('title', event.target.value)}/><br/>
                             <Row>
                                 <Col md={6}>
                                     <p align="Center"> Upload Your File </p>
