@@ -2,7 +2,7 @@ package com.tripco.t04.planner;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.io.IOException;
 
@@ -72,11 +72,14 @@ public class Trip {
                 for(int j = 0; j < candidate.length; j++){
                     if(j+1 < candidate.length)
                         Total += latice[candidate[j]][candidate[j+1]];
-                    else
+                    else{
                         Total += latice[candidate[j]][candidate[0]];
+                        //System.out.println(Total);
+                    }
+
                 }
-                //System.out.println(Total);
-                if(Total < bestTotal){
+                //System.out.println(Arrays.toString(candidate));
+                if(Total < bestTotal){ //compare candidate total to "best" total
                     bestTotal = Total;
                     best = candidate;
                 }
