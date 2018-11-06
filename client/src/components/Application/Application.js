@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody} from 'reactstrap';
-import Attributes from './Attributes';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -38,14 +37,7 @@ class Application extends Component {
                 distances: [],
                 map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
             },
-            attributes: {
-                name: true,
-                id: true,
-                latitude: true,
-                longitude: true,
-                showLegDistance: true,
-                showTotalDistance: true
-            }
+
         };
         this.bindFunctions = this.bindFunctions.bind(this);
     }
@@ -55,7 +47,6 @@ class Application extends Component {
         this.updateTrip = this.updateTrip.bind(this);
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
-        this.updateAttributes = this.updateAttributes.bind(this);
         this.saveTFFI = this.saveTFFI.bind(this);
         this.saveMap = this.saveMap.bind(this);
         this.toggle = this.toggle.bind(this);
@@ -63,6 +54,7 @@ class Application extends Component {
         this.createOptions = this.createOptions.bind(this);
         this.createTrip = this.createTrip.bind(this);
         this.clearTrip = this.clearTrip.bind(this);
+
     }
 
 
@@ -80,12 +72,6 @@ class Application extends Component {
         let trip = this.state.trip;
         trip[field] = value;
         this.setState(trip);
-    }
-
-    updateAttributes(field, value){
-        let attributes = this.state.attributes;
-        attributes[field] = value;
-        this.setState(attributes);
     }
 
     updateBasedOnResponse(value) {
@@ -217,8 +203,8 @@ class Application extends Component {
                 </Row><br/>
                 {this.createTrip()} <br/>
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
-                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} attributes={this.state.attributes}/><br/>
-                <Attributes attributes={this.state.attributes} updateAttributes={this.updateAttributes} config={this.state.config}/>
+                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config} /><br/>
+
                 <Map trip={this.state.trip} config={this.state.config}/><br/>
                 <div align="center">
                     <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
@@ -231,5 +217,3 @@ class Application extends Component {
 
 
 export default Application;
-
-

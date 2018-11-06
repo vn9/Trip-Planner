@@ -158,13 +158,17 @@ public class Driver {
             final Place place = new Place(query.getString("id"),
                     query.getString("name"),
                     query.getString("latitude"),
-                    query.getString("longitude"));
+                    query.getString("longitude"),
+                    query.getString("world_airports.municipality"),
+                    query.getString("country.name"),
+                    query.getString("continents.name"));
             System.out.printf(" {\"id\":\"%s\", ", query.getString("id"));
             System.out.printf("\"name\":\"%s\", ", query.getString("name"));
             System.out.printf("\"latitude\":\"%s\", ", query.getString("latitude"));
-            System.out.printf("\"longitude\":\"%s\"}", query.getString("longitude"));
-            //System.out.printf("\"name\":\"%s\", ", query.getString("country"));
-            //System.out.printf("\"name\":\"%s\", ", query.getString("continent"));
+            System.out.printf("\"longitude\":\"%s\", ", query.getString("longitude"));
+            System.out.printf("\"municipality\":\"%s\", ", query.getString("world_airports.municipality"));
+            System.out.printf("\"country\":\"%s\", ", query.getString("country.name"));
+            System.out.printf("\"continent\":\"%s\"}", query.getString("continents.name"));
             if (--results == 0)  //All stuffs are printed. Adding a new break line and exit
             {System.out.printf("\n");}
             else

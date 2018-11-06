@@ -31,10 +31,10 @@ public class TestTrip {
   // Setup to be done before every test in TestPlan
   @Before
   public void initialize() {
-    denver = new Place("1", "Denver", "39.555", "-104.66");
-    peublo = new Place("2", "Pueblo", "38.111", "-104.3");
-    saguache = new Place("3", "Saguache", "38.02", "-106.08");
-    minturn = new Place("4", "Minturn", "39.35", "-106.25");
+    denver = new Place("1", "Denver", "39.555", "-104.66", "Colorado", "United States of America", "North America");
+    peublo = new Place("2", "Pueblo", "38.111", "-104.3", "Colorado", "United States of America", "North America");
+    saguache = new Place("3", "Saguache", "38.02", "-106.08", "Colorado", "United States of America", "North America");
+    minturn = new Place("4", "Minturn", "39.35", "-106.25", "Colorado", "United States of America", "North America");
     ArrayList<Place> places = new ArrayList<>();
     places.add(denver);
     places.add(peublo);

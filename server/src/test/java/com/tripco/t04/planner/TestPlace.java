@@ -22,7 +22,7 @@ public class TestPlace {
   // Setup to be done before every test in TestPlan
   @Before
   public void initialize() {
-    place = new Place("dnvr","Denver", "39.5", "-104.5");
+    place = new Place("dnvr","Denver", "39.5", "-104.5", "Colorado", "United States of America", "North America");
     //place.id = "dnvr";
     //place.name="Denver";
   }
@@ -38,9 +38,9 @@ public class TestPlace {
   @Test
   public void testGet(){
     // corver the invaild input
-    place = new Place("dnvr","Denver", "-390.5", "-104.5");
+    place = new Place("dnvr","Denver", "-390.5", "-104.5", "Colorado", "United States of America", "North America");
     assertEquals(-999.0, place.getLat(),0.0);
-    place = new Place("dnvr","Denver", "-39.5", "-1040.5");
+    place = new Place("dnvr","Denver", "-39.5", "-1040.5", "Colorado", "United States of America", "North America");
     assertEquals(-999.0, place.getLong(),0.0);
   }
 }

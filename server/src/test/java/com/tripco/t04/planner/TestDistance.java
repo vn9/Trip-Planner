@@ -22,10 +22,10 @@ public class TestDistance {
 
     @Before
     public void initialize() {
-        test1Origin = new Place("dnvr","Denver", "39.7392", "-104.9903");
-        test1Destination = new Place("bldr","Boulder", "40.015", "-105.2706");
-        test2Origin = new Place("bldr","Boulder", "40.015", "-105.2706");
-        test2Destination = new Place("foco","Fort Collins", "40.5853", "-105.0844");
+        test1Origin = new Place("dnvr","Denver", "39.7392", "-104.9903", "Colorado", "United States of America", "North America");
+        test1Destination = new Place("bldr","Boulder", "40.015", "-105.2706", "Colorado", "United States of America", "North America");
+        test2Origin = new Place("bldr","Boulder", "40.015", "-105.2706", "Colorado", "United States of America", "North America");
+        test2Destination = new Place("foco","Fort Collins", "40.5853", "-105.0844", "Colorado", "United States of America", "North America");
 
         distance1 = new Distance( test1Origin, test1Destination,"user defined", "accurate miles", 3958.7613);
         distance2 = new Distance( test2Origin, test2Destination,"user defined", "accurate miles", 3958.7613);
