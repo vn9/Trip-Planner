@@ -42,13 +42,52 @@ public class Trip {
 
     if(options.optimization != null){
         if(options.optimization.equals("short")){
-            while(true){
-                ArrayList<Integer> temp;
-                temp = distances;
-                nearestNeighbor(distanceLatice());
-                this.distances = legDistances();
-                if(distances.equals(temp)){break;}
+            int[] best = new int[places.size()];
+            int bestTotal = 0;
+            int[][] latice = distanceLatice();
+            for(int i = 0; i < best.length; i++){
+                best[i] = i;
             }
+            for(int j = 0; j < best.length; j++){
+                if(j+1 < best.length)
+                    bestTotal += latice[best[j]][best[j+1]];
+                else
+                    bestTotal += latice[best[j]][0];
+            }
+
+            for(int i = 0; i < best.length; i++){//for all start points
+                int Total = 0;
+                //start points
+                boolean[] seen = new boolean[best.length];
+                int[] candidate = new int[best.length];
+                candidate[0] = i; // set start point, different for each iteration
+                seen[i] = true;
+                for(int j = 1; j < candidate.length; j++){ //find nearest neighbor path for one that starts at i
+                    int nearestIndex = neighbor(candidate[j-1], latice, seen); //find the nearest index to j-1
+                    seen[nearestIndex] = true; //it has now been seen
+                    candidate[j] = nearestIndex; //next is nearest index
+                }
+
+                //calculate total distance and compare
+                for(int j = 0; j < candidate.length; j++){
+                    if(j+1 < candidate.length)
+                        Total += latice[candidate[j]][candidate[j+1]];
+                    else
+                        Total += latice[candidate[j]][candidate[0]];
+                }
+                //System.out.println(Total);
+                if(Total < bestTotal){
+                    bestTotal = Total;
+                    best = candidate;
+                }
+            }
+
+            ArrayList<Place> nearestNei = new ArrayList<>();
+            for(int i = 0; i < best.length; i++){
+                nearestNei.add(places.get(best[i]));
+            }
+            places = nearestNei;
+            //System.out.println(places.get(0).name);
         }
         else if (options.optimization.equals("shorter")){
             opt2();
@@ -174,52 +213,56 @@ public class Trip {
       return dist;
       }
 
-      private int[][] distanceLatice() {
-        int[][] latice = new int[places.size()][places.size()];
-          String units = options.units;
-          String unitName = null;
-          Double unitRadius = null;
+  private int[][] distanceLatice() {
+    int[][] latice = new int[places.size()][places.size()];
+      String units = options.units;
+      String unitName = null;
+      Double unitRadius = null;
 
-          if (options.units.equals("user defined")) {
-              unitName = options.unitName;
-              unitRadius = options.unitRadius;
-          }
-        for(int i = 0; i < places.size(); i++){
-            latice[i][i] = 0;
-            for(int j = i+1; j < places.size(); j++){
-                Distance temp = new Distance(places.get(i),places.get(j),units, unitName, unitRadius);
-                latice[i][j] = temp.vincenty();
-                latice[j][i] = latice[i][j];
-            }
-          }
-          return latice;
+      if (options.units.equals("user defined")) {
+          unitName = options.unitName;
+          unitRadius = options.unitRadius;
       }
-
-      private void nearestNeighbor(int[][] latice) {
-        for(int i = 1; i < places.size(); i++){
-            int index = neighbor(i, latice);
-            swap(i, index);
+    for(int i = 0; i < places.size(); i++){
+        latice[i][i] = 0;
+        for(int j = i+1; j < places.size(); j++){
+            Distance temp = new Distance(places.get(i),places.get(j),units, unitName, unitRadius);
+            latice[i][j] = temp.vincenty();
+            latice[j][i] = latice[i][j];
         }
       }
+      return latice;
+  }
 
-      private void swap(int first, int sec){
-        Place firstPlace = places.get(first);
-        this.places.set(first, places.get(sec));
-        this.places.set(sec, firstPlace);
-      }
+  //private void nearestNeighbor(int[][] latice) {
+  //  for(int i = 1; i < places.size(); i++){
+   //     int index = neighbor(i, latice);
+   //     swap(i, index);
+   // }
+  //}
 
-      private int neighbor(int start, int[][] latice){
-        int min = Integer.MAX_VALUE;
-        int j = -1;
-        for(int i = start; i < places.size(); i++){
-            int distance = latice[start-1][i];
-            if(distance < min){
-                min = distance;
-                j = i;
-            }
+  private void swap(int first, int sec)
+  {
+    Place firstPlace = places.get(first);
+    this.places.set(first, places.get(sec));
+    this.places.set(sec, firstPlace);
+  }
+
+  private int neighbor(int start, int[][] latice, boolean[] seen) //returns index of nearest neighbor
+  {
+    int min = Integer.MAX_VALUE;
+    int j = -1;
+    for(int i = 0; i < places.size(); i++){
+        int distance = latice[start][i];
+        if(distance < min && seen[i] == false){
+            min = distance;
+            j = i;
         }
-        return j;
-      }
+    }
+    if(j == -1)
+        j = 0;
+    return j;
+  }
 
     private static int distanceBetween(Place from, Place to) {
         Distance calculator = new Distance(from, to, "miles", null ,null);
