@@ -128,15 +128,14 @@ class ItineraryForm extends Component {
 
     makeCheckBoxes(){
         let items =
-            <div>
-            {this.props.config.attributes.map((attribute) =>
-                <FormGroup check inline key={attribute}>
-                    <Label check>
-                        <Input name={attribute} type = "checkbox" value={'!this.state.' + attribute}
-                               defaultChecked={true} onChange={this.onCheck}/>
-                        {attribute.charAt(0).toUpperCase() + attribute.slice(1)}
-                    </Label>
-                </FormGroup>
+            <div>{this.props.config.attributes.map((attribute) =>
+            <FormGroup check inline key={attribute}>
+                <Label check>
+                    <Input name={attribute} type = "checkbox" value={'!this.state.' + attribute}
+                           defaultChecked={true} onChange={this.onCheck}/>
+                    {attribute.charAt(0).toUpperCase() + attribute.slice(1)}
+                </Label>
+            </FormGroup>
             )}
             <FormGroup check inline>
                 <Label check>
@@ -189,8 +188,7 @@ class ItineraryForm extends Component {
             cell.push(<td key={'index' + i}>{this.action(i+1)}</td>);  //index
             for (let j=0; j< attributes.length; j++){
                 let attr = attributes[j];
-                let item = place[attr];
-                cell.push(<td key={attr + i}>{item}</td>)
+                cell.push(<td key={attr + i}>{place[attr]}</td>)
             }
             if(this.state.DistanceToNext === true)
                 cell.push(<td key={'distance' + i}>{trip.distances[i]}</td>);

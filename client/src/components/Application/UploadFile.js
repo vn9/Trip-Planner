@@ -101,25 +101,11 @@ export default class UploadFile extends Component {
 
     addOwn(){
         let place = this.state.place;
-        let myAdd =
-            <div>
-                <InputGroup>
-                    <InputGroupAddon addonType="prepend">ID</InputGroupAddon>
-                    <Input type="text" placeholder="ex. den" value={place.id} onChange={(e)=>this.updatePlace('id', e.target.value)}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroupAddon addonType="prepend">Name</InputGroupAddon>
-                    <Input type="text" placeholder="ex. Denver" value={place.name} onChange={(e)=>this.updatePlace('name', e.target.value)}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroupAddon addonType="prepend">Latitude</InputGroupAddon>
-                    <Input type="text" placeholder="ex. 39.73" value={place.latitude} onChange={(e)=>this.updatePlace('latitude', e.target.value)}/>
-                </InputGroup>
-                <InputGroup>
-                    <InputGroupAddon addonType="prepend">Longitude</InputGroupAddon>
-                    <Input type="text" placeholder="ex. -104.99" value={place.longitude} onChange={(e)=>this.updatePlace('longitude', e.target.value)}/>
-                </InputGroup>
-            </div>;
+        let myAdd = this.props.config.attributes.map((att) =>
+            <InputGroup key={att}>
+                <InputGroupAddon addonType="prepend">{att.charAt(0).toUpperCase() + att.slice(1)}</InputGroupAddon>
+                <Input type="text" value={place[att]} onChange={(e)=>this.updatePlace(att, e.target.value)}/>
+            </InputGroup>);
         return(myAdd)
     }
 
@@ -134,18 +120,15 @@ export default class UploadFile extends Component {
                             <Input placeholder="Name Your Trip" value={this.props.trip.title}
                                    onChange={(event)=>this.props.updateTrip('title', event.target.value)}/><br/>
                             <Row>
-                                <Col md={6}>
-                                    <p align="Center"> Upload Your File </p>
+                                <Col md={6}><p align="Center"> Upload Your File </p>
                                     <Input title="upload" type="file" id="fileInput" onChange={(event)=>this.loadFile(event)}/>
                                 </Col>
-                                <Col md={6}>
-                                    <p align="Center"> Add Your Own </p>
+                                <Col md={6}><p align="Center"> Add Your Own </p>
                                     {this.addOwn()}
                                     <br/>
                                     <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
                                 </Col>
                             </Row>
-                            <br/>
                         </CardBody>
                     </Card>
                 </Collapse>
