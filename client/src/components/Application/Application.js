@@ -54,7 +54,6 @@ class Application extends Component {
         this.createOptions = this.createOptions.bind(this);
         this.createTrip = this.createTrip.bind(this);
         this.clearTrip = this.clearTrip.bind(this);
-
     }
 
 
@@ -193,9 +192,7 @@ class Application extends Component {
                 <Row>
                     <Col md={6}>
                         <Button onClick={this.toggle} className="btn-dark" block>Trip Options</Button>
-                        <Collapse isOpen={this.state.collapse}>
-                            {this.createOptions()}
-                        </Collapse>
+                        <Collapse isOpen={this.state.collapse}>{this.createOptions()}</Collapse>
                     </Col>
                     <Col md={6}>
                         <TwoPtCalculator config={this.state.config} options={this.state.trip.options}/><br/>
@@ -204,7 +201,6 @@ class Application extends Component {
                 {this.createTrip()} <br/>
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
                 <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config} /><br/>
-
                 <Map trip={this.state.trip} config={this.state.config}/><br/>
                 <div align="center">
                     <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}

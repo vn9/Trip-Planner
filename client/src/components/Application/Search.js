@@ -133,9 +133,7 @@ export default class Search extends Component {
            }
         }
         let newSearch = this.state.search;
-        newSearch['places'] =
-                this.state.search.places.slice(0, myIndex).
-            concat(this.state.search.places.slice(myIndex+1));
+        newSearch['places'] = this.state.search.places.slice(0, myIndex).concat(this.state.search.places.slice(myIndex+1));
         this.setState({'search': newSearch });
     }
 
@@ -205,15 +203,12 @@ export default class Search extends Component {
                             <h4 align="Center">Search for Places by Name</h4>
                             <InputGroup>
                                 <Input placeholder="ex. Aspen" onChange={(event) => this.matchChange(event.target.value)}/>
-                                <InputGroupAddon addonType="append"><Button className="btn-dark"
-                                                                            onClick={this.onSearch}>Search</Button>
+                                <InputGroupAddon addonType="append"><Button className="btn-dark" onClick={this.onSearch}>Search</Button>
                                 </InputGroupAddon>
                                 <Input type={'number'} id={'Limit'} placeholder="Limit" onChange={(event) => this.limitChange(event.target.value)}/>
                             </InputGroup>
                             <CardBody>
-                                <Row>
-                                    {this.makeFilters()}
-                                </Row>
+                                <Row>{this.makeFilters()}</Row>
                             </CardBody>
                             <br/>
                             <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
