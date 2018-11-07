@@ -96,9 +96,24 @@ public class Trip {
             opt2();
         }
     }
-    this.map = svg();
+    if(options.map != null) {
+        if (options.map.equals("kml"))
+            this.map = kml();
+        else
+            this.map = svg();
+    }
+    else
+        this.map = svg();  //set svg as default if map attribute inside options is not specified.
     this.distances = legDistances();
   }
+
+    /**
+    * @return an KML containing the background and the legs of the trip.
+    */
+    public String kml(){   //update kml() for legs once kml map is finished
+        return new String("");
+    }
+
 
   /**
    * @return an SVG containing the background and the legs of the trip.
