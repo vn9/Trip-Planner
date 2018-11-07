@@ -77,7 +77,7 @@ export default class UploadFile extends Component {
         let place = this.state.myPlace;
         let myAdd = this.props.config.attributes.map((att) =>
             <InputGroup key={att}>
-                <InputGroupAddon addonType="prepend">{att.charAt(0).toUpperCase() + att.slice(1)}</InputGroupAddon>
+                <InputGroupAddon key={att} addonType="prepend">{att.charAt(0).toUpperCase() + att.slice(1)}</InputGroupAddon>
                 <Input id={att} type="text" defaultValue={place[att]} onChange={(e)=>this.updatePlace(att, e.target.value)}/>
             </InputGroup>);
         return(myAdd)
