@@ -42,5 +42,5 @@ test('Check to see if Manual Inputs Match Config (Lambda)', () => {
     let actual = [];
     boxes.find('Label').map((element) => actual.push(element.text().charAt(0).toLowerCase() + element.text().slice(1)));
 
-    expect(actual).toEqual(startProps.config.attributes);
+    expect(actual).toEqual(expected);
 });
