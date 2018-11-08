@@ -7,9 +7,12 @@ const startProps = {
     'config': { 'attributes': ['id', 'name', 'latitude', 'longitude', 'municipality', 'country'] },
     'trip': {'type': "trip", 'title': "Summer Vacation",
         'options': {'units': "miles", 'unitName': "", 'unitRadius': 0.0000, 'optimization': ""},
-        'places': [{'id': 'den', 'name': 'denver', 'latitude': 39.73, 'longitude': -104.99},
-            {'id': 'bld', 'name': 'boulder', 'latitude': 40.01, 'longitude': -105.27}],
-        'distances': [24, 24],
+        'places': [
+            {"id":"dnvr", "name":"Denver", "latitude":39.7392, "longitude":-104.9903},
+            {"id":"bldr", "name":"Boulder", "latitude":40.01499, "longitude":-105.27055},
+            {"id":"foco", "name":"Fort Collins", "latitude":40.585258, "longitude":-105.084419},
+            {"id":"aspn", "name":"Aspen", "latitude":39.1911, "longitude":-106.8175}],
+        'distances': [24,41,133,105],
         'map': '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'}
 };
 
@@ -38,7 +41,7 @@ test('Check to see if table gets generated correctly', () => {
         <ItineraryForm config={startProps.config} trip={startProps.trip}/>
     ));
 
-    let expected = ["header", "denver", "boulder"];
+    let expected = ["header", "Denver", "Boulder", "Fort Collins", "Aspen"];
 
     let actual = [];
     table.find('tr').map((element) => actual.push(element.prop('className')));
