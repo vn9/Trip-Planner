@@ -4,7 +4,6 @@ import {Button, Input,Card, Collapse, CardBody, InputGroup,InputGroupAddon, Inpu
 import {serverURL} from  './SetServer'
 
 import {request} from '../../api/api';
-import {Place} from './UploadFile';
 
 
 export default class Search extends Component {
@@ -120,14 +119,12 @@ export default class Search extends Component {
         let myplace = event.target.value;
         let jplace = JSON.parse(myplace);
         let myPlaces = this.props.trip.places;
-        let newPlace = new Place(jplace.id, jplace.name, jplace.latitude, jplace.longitude, jplace.municipality,
-            jplace.country, jplace.continent);
-        myPlaces.push(newPlace);
+        myPlaces.push(jplace);
         this.props.updateTrip('places', myPlaces);
         //remove it from search result list
         let myIndex = -1;
         for (let i = 0; i < this.state.search.places.length; i++) {
-           if(this.state.search.places[i].id === newPlace.id){
+           if(this.state.search.places[i].id === jplace.id){
                myIndex = i;
                break;
            }
