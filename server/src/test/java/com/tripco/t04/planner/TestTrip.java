@@ -89,7 +89,7 @@ public class TestTrip {
       trip.options.optimization = "shorter";
       trip.plan();
       ArrayList<Place> testplaces = new ArrayList<>();
-      testplaces.add(denver); testplaces.add(peublo); testplaces.add(saguache); testplaces.add(minturn);
+      testplaces.add(denver); testplaces.add(minturn); testplaces.add(saguache); testplaces.add(peublo);
       assertEquals(trip.places, testplaces);
   }
 
