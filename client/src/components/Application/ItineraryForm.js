@@ -160,7 +160,7 @@ class ItineraryForm extends Component {
         let table = [];
         let item = [];
 
-        item.push(<th key='count'>{"#"}</th>);  //index
+        item.push(<th key={'count'}>{"#"}</th>);  //index
 
         for (let i = 0; i < attributes.length; i++ ){
             let attr = attributes[i];
@@ -169,8 +169,8 @@ class ItineraryForm extends Component {
         if(this.state.DistanceToNext === true)
             item.push(<th key='distance'>{"Distance to Next Place " + "(" + this.getDistanceName() + ")"}</th>);  //distance
         if(this.state.TotalDistance === true)
-            item.push(<th key='total'>{"Total Distance " + "("+ this.getDistanceName() + ")"}</th>);  //total distance
-        table.push(<tr key='header'>{item}</tr>);
+            item.push(<th key={'total'}>{"Total Distance " + "("+ this.getDistanceName() + ")"}</th>);  //total distance
+        table.push(<tr className={"header"} key={'header'}>{item}</tr>);
 
         return table;
     }
@@ -199,7 +199,7 @@ class ItineraryForm extends Component {
                     wholeTrip += trip.distances[i];
                     cell.push(<td key={'totalDistance' + i}>{wholeTrip}</td>);  //total distance
                 }
-            table.push(<tr key={'row' + i}>{cell}</tr>)
+            table.push(<tr className={place.name} key={'row' + i} >{cell}</tr>)
         }
         return table;
     }
