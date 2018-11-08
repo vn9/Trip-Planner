@@ -178,7 +178,7 @@ export default class Search extends Component {
                 <InputGroupAddon addonType="prepend">
                     <InputGroupText>{(index + 1)}</InputGroupText>
                 </InputGroupAddon>
-                <Input readOnly value={place.name + ", " + place.municipality + ", " + place.country}/>
+                <Input readOnly className={place.name} value={place.name + ", " + place.municipality + ", " + place.country}/>
                 <InputGroupAddon addonType="append">
                     <Button id={place.id} value={JSON.stringify(place)} onClick={this.addPlace} block>Add</Button>
                 </InputGroupAddon>
@@ -199,16 +199,16 @@ export default class Search extends Component {
                         <CardBody>
                             <h4 align="Center">Search for Places by Name</h4>
                             <InputGroup>
-                                <Input placeholder="ex. Aspen" onChange={(event) => this.matchChange(event.target.value)}/>
+                                <Input className={'match'} placeholder="ex. Aspen" onChange={(event) => this.matchChange(event.target.value)}/>
                                 <InputGroupAddon addonType="append"><Button className="btn-dark" onClick={this.onSearch}>Search</Button>
                                 </InputGroupAddon>
-                                <Input type={'number'} id={'Limit'} placeholder="Limit" onChange={(event) => this.limitChange(event.target.value)}/>
+                                <Input className={'limit'} type={'number'} id={'Limit'} placeholder="Limit" onChange={(event) => this.limitChange(event.target.value)}/>
                             </InputGroup>
                             <CardBody>
                                 <Row>{this.makeFilters()}</Row>
                             </CardBody>
                             <br/>
-                            <div style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
+                            <div key={"found"} style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                                 {this.showPlaces()}
                             </div>
                             <p align="Center">{this.state.search.found} Places Found</p>
