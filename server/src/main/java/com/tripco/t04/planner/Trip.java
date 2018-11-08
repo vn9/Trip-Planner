@@ -2,7 +2,6 @@ package com.tripco.t04.planner;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.io.IOException;
 
@@ -105,10 +104,75 @@ public class Trip {
    */
   public String svg() {
 
-    /*
-    Load the file that contains the raw of the Colorado map using Maven stream.
-    *@param line temporarily each line of the file when it was read
-    */
+      StringBuilder readMap = readRawMap();
+      StringBuilder paths = new StringBuilder();
+      String line;
+      int width= 1024;
+      int height= 512;
+
+      for(int i = 0; i < places.size(); i++){
+
+          double curloo = Double.parseDouble(places.get(i).longitude);
+          double curlat = Double.parseDouble(places.get(i).latitude);
+          double nextloo, nextlat,x1, y1, x2, y2, modx1, modx2;
+
+          if(i == places.size()-1) {
+              nextloo = Double.parseDouble(places.get(0).longitude);
+              nextlat = Double.parseDouble(places.get(0).latitude);
+          }
+          else {
+              nextloo = Double.parseDouble(places.get(i+1).longitude);
+              nextlat = Double.parseDouble(places.get(i+1).latitude);
+          }
+
+          if(Math.abs(curloo - nextloo) > 180) { // Draw two lines
+
+              if(curloo > nextloo)
+                  curloo -= 360;
+              else
+                  nextloo -= 360;
+
+              x1 = (curloo + 180) * width / 360;
+              x2 = (nextloo + 180) * width / 360;
+              y1 = (90 - curlat) * height / 180;
+              y2 = (90 - nextlat) * height / 180;
+
+              modx1 = x1 + 1024;
+              modx2 = x2 + 1024;
+
+              line = String.format("<line  x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" "
+              + "stroke=\"black\" stroke-width=\"2\"/>",x1,y1,x2,y2);
+
+              String line2 = String.format("<line  x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" "
+                  + "stroke=\"black\" stroke-width=\"2\"/>",modx1,y1,modx2,y2);
+
+              paths.append(line+"\n");
+              paths.append(line2+"\n");
+          }
+          else{ // Draw 1 line
+
+              x1 = (curloo + 180) * width / 360;
+              x2 = (nextloo + 180) * width / 360;
+              y1 = (90 - curlat) * height / 180;
+              y2 = (90 - nextlat) * height / 180;
+
+              line = String.format("<line  x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" "
+              + "stroke=\"black\" stroke-width=\"2\"/>",x1,y1,x2,y2);
+
+              paths.append(line+"\n");
+          }
+      }
+
+      StringBuilder newMap = readMap;
+      newMap.insert(readMap.indexOf("</svg>"),paths.toString());
+
+      return newMap.toString();
+  }
+
+  private StringBuilder readRawMap(){
+      /*Load the file that contains the raw of the Colorado map using Maven stream.
+       *@param line temporarily each line of the file when it was read
+       */
 
       BufferedReader reader;
       String line;
@@ -126,53 +190,7 @@ public class Trip {
       } catch (IOException e) {
           e.printStackTrace();
       }
-
-//      String rawMap = readMap.toString();
-      StringBuilder paths = new StringBuilder();
-      String draw;
-      int width= 1024;
-      int height= 512;
-
-      for(int i = 0; i < places.size(); i++){
-          double x1 = (Double.parseDouble(places.get(i).longitude)+180) * width/360;
-          double y1 = (90 - Double.parseDouble(places.get(i).latitude)) * height/180;
-          double x2;
-          double y2;
-          if(i == places.size()-1) {
-              x2 = (Double.parseDouble(places.get(0).longitude)+180) * width/360;
-              y2 = (90 - Double.parseDouble(places.get(0).latitude)) * height/180;
-          }
-          else {
-              x2 = (Double.parseDouble(places.get(i+1).longitude)+180) * width/360;
-              y2 = (90 - Double.parseDouble(places.get(i+1).latitude)) * height/180;
-          }
-          draw = String.format("<line  x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" "
-              + "stroke=\"black\" "
-              + "stroke-width=\"2\"/>",x1,y1,x2,y2);
-          paths.append(draw+"\n");
-      }
-
-      StringBuilder newMap = readMap;
-      newMap.insert(readMap.indexOf("</svg>"),paths.toString());
-
-      return newMap.toString();
-
-
-
-//      String template = "<svg width=\"1066.6073\" height=\"783.0824\" " +
-//              "xmlns:svg=\"http://www.w3.org/2000/svg\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
-//              "%s\n" +
-//              "<svg width=\"1066.6073\" height=\"783.0824\"> %s </svg>\n" +
-//              "</svg>";
-//
-//      // "M" for move point, "L" for draw line, "z" for draw a line to the start point
-//      String d = places.parallelStream().map(p -> p.getSvgCoordinate())
-//              .collect(Collectors.joining(" L ", "M ", " z"));
-//      String path = String.format("<path d=\"%s\" " +
-//                      "fill=\"none\" stroke=\"black\" stroke-width=\"3\" />", d);
-//
-//      // first fill in string is rawMap, second is path
-//      return String.format(template, rawMap, path);
+      return readMap;
   }
 
 
