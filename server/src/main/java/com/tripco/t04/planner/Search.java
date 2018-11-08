@@ -47,7 +47,7 @@ public class Search {
      */
 
     public void getPlaces () {
-        Driver myDriver = new Driver();
+        Driver myDriver = new Driver(this.match, this.limit,this.filters);
         myDriver.find(this.match, this.filters, this.limit);
         this.places = Driver.places;
         this.found = Driver.places.size();

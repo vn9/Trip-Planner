@@ -180,29 +180,40 @@ class ItineraryForm extends Component {
         let table = this.tableHeader();
         let trip = this.props.trip;
         let attributes = this.state.attributes;
-
         for (let i = 0; i < trip.places.length; i++) {
             let cell = [];
             let place = trip.places[i];
-
             cell.push(<td key={'index' + i}>{this.action(i+1)}</td>);  //index
-            for (let j=0; j< attributes.length; j++){
-                let attr = attributes[j];
-                cell.push(<td key={attr + i}>{place[attr]}</td>)
-            }
-            if(this.state.DistanceToNext === true)
+            this.addAttr(attributes,place,i,cell); // generate attributes
+            if(this.state.DistanceToNext === true) { //distance between two places
                 cell.push(<td key={'distance' + i}>{trip.distances[i]}</td>);
-            if(this.state.TotalDistance === true)
-                if (trip.distances.length === 0) {
-                    cell.push(<td key={'totalDistance' + i}>{' '}</td>);  //total distance
-                }else {
-                    wholeTrip += trip.distances[i];
-                    cell.push(<td key={'totalDistance' + i}>{wholeTrip}</td>);  //total distance
-                }
-            table.push(<tr className={place.name} key={'row' + i} >{cell}</tr>)
+            }
+            wholeTrip += trip.distances[i];
+            if(this.state.TotalDistance === true) { // total trip's distances
+                this.addTotalDis(trip, cell, i, wholeTrip);
+            }
+            table.push(<tr className={place.name} key={'row' + i}>{cell}</tr>)
         }
         return table;
     }
+
+    addAttr(attributes,place,index,cell){
+        for (let j=0; j< attributes.length; j++){
+            let attr = attributes[j];
+            cell.push(<td key={attr + index}>{place[attr]}</td>)
+        }
+        return cell;
+    }
+
+    addTotalDis(trip,cell,index,wholeTrip){
+        if (trip.distances.length === 0)
+            cell.push(<td key={'totalDistance' + index}>{' '}</td>);  //total distance
+        else
+            cell.push(<td key={'totalDistance' + index}>{wholeTrip}</td>);  //total distance
+        return cell;
+    }
+
+
 
     render() {
         return(
