@@ -4,40 +4,18 @@ import {Card, CardBody, Button, Input, Row, Col, Collapse, Form, InputGroup, Inp
 
 
 
-export class Place {
-    constructor(id, name, latitude, longitude, municipality, country, continent){
-        this.id = id;
-        this.name = name;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.municipality = municipality;
-        this.country = country;
-        this.continent = continent;
-    }
-}
-
 export default class UploadFile extends Component {
     constructor(props) {
         super(props);
         this.state = {
             collapse: true,
-            place: {
-                id: "",
-                name: "",
-                latitude: "",
-                longitude: "",
-                municipality: "",
-                country: "",
-                continent: "",
-            },
-            myPlace: []
+            myPlace: {},
         };
 
         for (let attributes of this.props.config.attributes) {
             let values = {};
             values[attributes] = "";
-
-            this.state.myPlace[attributes] = values;
+            this.state.myPlace = values;
         }
 
         this.updatePlace = this.updatePlace.bind(this);
@@ -71,40 +49,36 @@ export default class UploadFile extends Component {
 
 
     updatePlace(field, value){
-        let place = this.state.place;
+        let place = this.state.myPlace;
         place[field] = value;
         this.setState(place);
-
     }
 
     clearFields(){
-            let noPlace = this.state.place;
-            noPlace.id = '';
-            noPlace.name= '';
-            noPlace.latitude = '';
-            noPlace.longitude = '';
-            noPlace.municipality= "";
-            noPlace.country= "";
-            noPlace.continent = '';
-            this.setState(noPlace);
+        let place = this.state.myPlace;
+        for (let attr in place){
+            document.getElementById(attr).value = "";
         }
+    }
 
     addPlace(){
         let myPlaces = this.props.trip.places;
-        let place = this.state.place;
-        let newPlace = new Place(place.id, place.name, place.latitude, place.longitude, place.municipality,
-            place.country, place.municipality);
-        myPlaces.push(newPlace);
+        let place = {};
+        for (let attributes of this.props.config.attributes){
+            place[attributes] = this.state.myPlace[attributes];
+        }
+        console.log(place);
+        myPlaces.push(place);
         this.props.updateTrip('places', myPlaces);
         this.clearFields();
     }
 
     addOwn(){
-        let place = this.state.place;
+        let place = this.state.myPlace;
         let myAdd = this.props.config.attributes.map((att) =>
             <InputGroup key={att}>
-                <InputGroupAddon addonType="prepend">{att.charAt(0).toUpperCase() + att.slice(1)}</InputGroupAddon>
-                <Input type="text" value={place[att]} onChange={(e)=>this.updatePlace(att, e.target.value)}/>
+                <InputGroupAddon key={att} addonType="prepend">{att.charAt(0).toUpperCase() + att.slice(1)}</InputGroupAddon>
+                <Input id={att} type="text" defaultValue={place[att]} onChange={(e)=>this.updatePlace(att, e.target.value)}/>
             </InputGroup>);
         return(myAdd)
     }
