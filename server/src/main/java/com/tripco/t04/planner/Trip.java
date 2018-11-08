@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 /**
  * The Trip class supports TFFI so it can easily be converted to/from Json by Gson.
@@ -95,7 +96,17 @@ public class Trip {
             opt2();
         }
     }
-    this.map = svg();
+
+    if (options.map.equals("svg")){
+        this.map = svg();
+      }
+    else if (options.map.equals("kml")){
+        this.map = kml();
+    }
+    else if (options.map == null){
+        this.map = svg();
+    }
+
     this.distances = legDistances();
   }
 
@@ -167,6 +178,40 @@ public class Trip {
       newMap.insert(readMap.indexOf("</svg>"),paths.toString());
 
       return newMap.toString();
+  }
+
+  public String kml(){
+      String start = "<?xml version= \"1.0\" encoding = \"UTF-8\"?>\n"
+              +"<kml xmlns=\"http://www.opengis.net/kml/2.2\"><Document>\n"
+              +"<name>Paths</name> " +
+              "<description>Examples of paths. Note that the tessellate tag is by default\n" +
+              " set to 0. If you want to create tessellated lines, they must be authored\n" +
+              " (or edited) directly in KML.</description>"+
+              "<Style id=\"yellowLineGreenPoly\">\n"
+              +"<LineStyle>\n" +
+              " <color>7f00ffff</color>\n" +
+              " <width>4</width>\n" +
+              " </LineStyle>\n" +
+              " <PolyStyle>\n" +
+              " <color>7f00ff00</color>\n" +
+              " </PolyStyle>\n" +
+              " </Style> <Placemark>\n" +
+              " <name>Absolute Extruded</name>\n" +
+              " <description>Transparent green wall with yellow outlines</description>"+
+              " <styleUrl>#yellowLineGreenPoly</styleUrl>\n" +
+              " <LineString>\n" +
+              " <extrude>1</extrude>\n" +
+              " <tessellate>1</tessellate>\n" +
+              " <altitudeMode>absolute</altitudeMode>\n" +
+              " <coordinates>";
+      //-112.2550785337791,36.07954952145647,2357   single line
+      String end = "</coordinates>\n" + " </LineString> </Placemark>\n" + " </Document> </kml> ";
+
+      String middle = places.parallelStream().map( p -> String.format("%s,%s,7000",p.longitude, p.latitude)).
+              collect(Collectors.joining("\n"));
+
+      //System.out.print("SEE:"+start + " " + middle + " " + end);
+      return start + " " + middle + " " + end;
   }
 
   private StringBuilder readRawMap(){

@@ -32,6 +32,7 @@ class Application extends Component {
                     unitName: "",
                     unitRadius: 0.0000,
                     optimization: "",
+                    map : "svg"
                 },
                 places: [],
                 distances: [],
@@ -140,7 +141,14 @@ class Application extends Component {
         //generate file and download
         let element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + this.state.trip.map);
-        element.setAttribute('download', 'download.svg');
+
+        if (this.state.trip.options.map === "svg"){
+            element.setAttribute('download', 'download.svg');
+        }
+        else if (this.state.trip.options.map === "kml"){
+            element.setAttribute('download', 'download.kml');
+        }
+
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
