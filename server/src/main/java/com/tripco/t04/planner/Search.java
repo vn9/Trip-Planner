@@ -19,16 +19,6 @@ public class Search {
     public Integer found;
     public List<Place> places;
 
-    public Search(){
-        this.version = 4;
-        this.type = "Search";
-        this.match = "";
-        this.filters = new ArrayList<Filter>();
-        this.limit = 0;  //default unlimited
-        this.found = null;
-        this.places = new ArrayList<Place>();
-    }
-
     public Search(Integer version, String type,
                    String match, List<Filter> filters, int limit, Integer found, List<Place> places){
 

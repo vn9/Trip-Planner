@@ -32,8 +32,6 @@ public class Driver {
         this.match = match;
         this.limit = limit;
         this.filters = filters;
-
-
     }
 
     /**
@@ -67,9 +65,9 @@ public class Driver {
 
     public String getLimitString(int limit){
         String myLimit;
-        if(limit == 0){
+        if(limit == 0) {
             myLimit = " ";
-        }else {
+        } else {
             myLimit = "LIMIT " + limit;
         }
         return(myLimit);
@@ -97,7 +95,6 @@ public class Driver {
             myQuery = " ";
         } else {
             myQuery = "WHERE (" + match + ") AND " + filters;
-            System.out.print(myQuery);
         }
         return(myQuery);
     }
@@ -111,8 +108,6 @@ public class Driver {
         String myQuery = getMyQueryString(myMatch, myFilters);
 
         //String myQuery = getQueryString(myFilters, myMatch);
-
-
 
         count = "SELECT count(*) FROM world_airports";
         search = "SELECT world_airports.id, world_airports.name, world_airports.municipality, " +
@@ -135,20 +130,16 @@ public class Driver {
             myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
         }
 
-        try {
-            Class.forName(myDriver);
+        try { Class.forName(myDriver);
             // connect to the database and query
             try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
                  Statement stCount = conn.createStatement();
                  Statement stQuery = conn.createStatement();
                  ResultSet rsCount = stCount.executeQuery(count);
                  ResultSet rsQuery = stQuery.executeQuery(search)
-            ) {
-                printJson(rsCount, rsQuery, match);
+            ) { printJson(rsCount, rsQuery, match);
             }
-        } catch (Exception e) {
-            System.err.println("Exception: " + e.getMessage());
-        }
+        } catch (Exception e) { System.err.println("Exception: " + e.getMessage()); }
     }
 
     /**
@@ -159,11 +150,6 @@ public class Driver {
     private void printJson(ResultSet count, ResultSet query, String match)
             throws SQLException {
         places.clear();
-        System.out.printf("\n{\n");
-        System.out.printf("\"type\": \"find\",\n");
-        System.out.printf("\"title\": \"%s\",\n", match);
-        System.out.printf("\"places\": [\n");
-        // determine the number of results that match the query
         count.next();
         int results = count.getInt(1);
         // iterate through query results and print out the airport codes
@@ -175,21 +161,8 @@ public class Driver {
                     query.getString("world_airports.municipality"),
                     query.getString("country.name"),
                     query.getString("continents.name"));
-            System.out.printf(" {\"id\":\"%s\", ", query.getString("id"));
-            System.out.printf("\"name\":\"%s\", ", query.getString("name"));
-            System.out.printf("\"latitude\":\"%s\", ", query.getString("latitude"));
-            System.out.printf("\"longitude\":\"%s\", ", query.getString("longitude"));
-            System.out.printf("\"municipality\":\"%s\", ", query.getString("world_airports.municipality"));
-            System.out.printf("\"country\":\"%s\", ", query.getString("country.name"));
-            System.out.printf("\"continent\":\"%s\"}", query.getString("continents.name"));
-            if (--results == 0)  //All stuffs are printed. Adding a new break line and exit
-            {System.out.printf("\n");}
-            else
-            {System.out.printf(",\n");} //continue print
             places.add(place); //add the printed place into places ArrayList
         }
-        System.out.printf(" ]\n}\n");
-        System.out.print(search);
     }
 
 }

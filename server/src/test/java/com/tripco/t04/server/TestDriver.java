@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -17,8 +18,10 @@ public class TestDriver {
 
     Driver driver1;
     Driver driver2;
+    Driver driver3;
     List<Filter> filters1;
     List<Filter> filters2;
+    List<Filter> filters3;
     String match1;
     String match2;
 
@@ -28,8 +31,9 @@ public class TestDriver {
         Filter filter1 = new Filter("world_airports.type", Arrays.asList("heliport"));
         Filter filter2 = new Filter("continents.name", Arrays.asList("South America", "Europe"));
         filters1 = Arrays.asList(filter1, filter2);
-//        filters.add(filter1);
-//        filters.add(filter2);
+        List myList = new ArrayList<>();
+        filters3 = myList;
+
 
         int limit = 5;
         int limit2 = 0;
@@ -39,6 +43,7 @@ public class TestDriver {
 
         driver1 = new Driver(match1, limit, filters1);
         driver2 = new Driver(match2, limit2, filters2);
+        driver3 = new Driver(match1, limit2, filters3);
     }
 
     @Test
@@ -56,11 +61,13 @@ public class TestDriver {
 
         String filterString = driver1.getFilterQueryString(driver1.filters);
         String filter2String = driver2.getFilterQueryString(driver2.filters);
+        String filter3String = driver3.getFilterQueryString(driver3.filters);
 
         String actual1 = "world_airports.type IN (\"heliport\") AND continents.name IN (\"South America\", \"Europe\") ";
 
         assertEquals(filterString, actual1);
         assertEquals(filter2String, "");
+        assertEquals(filter3String, "");
     }
 
     @Test

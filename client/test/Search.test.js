@@ -48,11 +48,11 @@ const Props2 = {
 };
 
 function testResults() {
-    const checks = mount((
+    const results = mount((
         <Search config={Props2.config} trip={Props2.trip}/>
     ));
 
-    checks.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
+    results.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
             places: [{'id': 'den', 'name': 'Denver', 'latitude': 39.73, 'longitude': -104.99},
                 {'id': 'bldr', 'name': 'Boulder', 'latitude': 40.01, 'longitude': -105.27}]
         }});
@@ -60,7 +60,7 @@ function testResults() {
     let expected = ["match", "limit", "Denver", "Boulder"];
 
     let actual = [];
-    checks.find('Input').map((element) => actual.push(element.prop('className')));
+    results.find('Input').map((element) => actual.push(element.prop('className')));
 
     expect(actual).toEqual(expected);
 }
