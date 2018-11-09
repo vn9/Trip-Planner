@@ -58,13 +58,13 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *7* | *total* |
-| Tasks |  *29*   | *total* | 
-| Story Points |  *46*  | *total* | 
+| Epics | *7* | *4* |
+| Tasks |  *29*   | *36* | 
+| Story Points |  *46*  | *51* | 
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+*This sprint we decided to prioritize cleaning and fixing our old code, as we learned it was worse than we had thought.  We ended up putting 3-opt and the embed kml into the icebox, as it was no longer required.*
 
-*Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
+*We ended up with more tasks and points because certain things ended up being more work than we thought and we neglected to add all the testing tasks at the beginning of the sprint.*
 
 
 ## Scrums
@@ -107,6 +107,7 @@ file and continuing planning.*
 * *#363 User: I want the shortest trips possible: We spent most of the time to modify nearest neighbor 
   algorithm and 2-opt function since our outputs are incorrect. We just recently finished modifying
 these functions; hence, we do not have enough time to implement 3-opt.*
+* *#361 User: I want to view my trip in other tools: We almost completed this one, but the UI for the buttons was not approved in time, so we left it out.*
 
 
 #### What Went Well
@@ -121,7 +122,7 @@ these functions; hence, we do not have enough time to implement 3-opt.*
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *Hard starting: We got some tasks completely new for us such as the kml map. Thus we spend a long time discussing what it looks like and how to start it. Asking TAs and the professor can help to solve this problem but it still took time.*
+* *Hard starting: We got some tasks completely new for us such as the kml map. Thus we spent a long time discussing what it looks like and how to start it. Asking TAs and the professor can help to solve this problem but it still took time.*
 * *Detail handling: With the growth of our project, the code becomes more complex and lengthy such as the Trip class. We will try to re-construct some long files to make code be easier to read and understand.*
 
 ## Retrospective
@@ -131,7 +132,7 @@ these functions; hence, we do not have enough time to implement 3-opt.*
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+*This sprint we wanted to set mini deadlines for ourselves, but were unsuccessful.  However, we were more relaxed this sprint and did a better job of constantly checking in, even if there was little progress made.*
 
 #### What we did well
 
@@ -139,8 +140,8 @@ these functions; hence, we do not have enough time to implement 3-opt.*
 
 #### What we need to work on
 
-*We definitely need to add more tests and improve our code habits to keep our code clean. Additionally, we need to follow Zenhub and burndown chart to keep track on our progress to meet the deadlines.*
+*We definitely need to add more tests and improve our coding habits to keep our code clean. Additionally, we need to follow Zenhub and the burndown chart to keep track on our progress to meet the deadlines.*
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+*Next sprint we will consistently write tests for our code instead of writing the majority of it towards the end.*
