@@ -42,5 +42,10 @@ public class TestPlace {
     assertEquals(-999.0, place.getLat(),0.0);
     place = new Place("dnvr","Denver", "-39.5", "-1040.5", "Colorado", "United States of America", "North America");
     assertEquals(-999.0, place.getLong(),0.0);
+    place = new Place("dnvr","Denver", "-40.01", "-1040.5", "Colorado", "United States of America", "North America");
+    assertEquals(-40.01, place.getLat(), 0.0);
+    place = new Place("dnvr","Denver", "-40.01", "-100.5", "Colorado", "United States of America", "North America");
+    assertEquals(-100.5, place.getLong(), 0.0);
   }
+
 }
