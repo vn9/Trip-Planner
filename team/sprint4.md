@@ -71,7 +71,6 @@ Epics planned for this sprint.
 
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
-| *date* | *#task, ...* | *#task, ...* | *none* | 
 | *10/22* | *none* | *#354* | *none* | 
 | *10/24* | *#367* | *#354, #364, #365, #366, #368, #371, #372, #376, #381* | *none* | 
 | *10/26* | *#354, #365, #372* | *#364, #366, #368, #371, #373, #376, #381, #382, #384* | *Modify 1-opt and 2-opt implementations to imporove performance to work with large data will be challenging* |
@@ -101,11 +100,11 @@ file and continuing planning.*
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
 * *#124 TripCo: All Code Shall Be Clean: Most of the code are not as clean as it could be. Most of them are duplicated and we could not find out a good way to refactor them.*
-  *#205 Tripo: All Code Must Be Tested: Most of the code are untested. We tried to test along with implement them. The back-end is easy to test, but we had a hard time testing the front-end.*
-  *#363 User: I want the shortest trips possible: We spent most of the time to modify nearest neighbor 
+* *#205 TripCo: All Code Must Be Tested: Most of the code are untested. We tried to test along with implementing them. The back-end is easy to test, but we had a hard time testing the front-end.*
+* *#363 User: I want the shortest trips possible: We spent most of the time to modify nearest neighbor 
   algorithm and 2-opt function since our outputs are incorrect. We just recently finished modifying
-  these functions; hence, we do not have enough time to implement 3-opt.*
-*
+these functions; hence, we do not have enough time to implement 3-opt.*
+
 
 #### What Went Well
 
@@ -135,7 +134,7 @@ file and continuing planning.*
 
 #### What we need to work on
 
-*We definitely need to add more tests and improve our code habits to keep code our code clean. Additionally, we need to follow Zenhub and burndown chart to keep track on our progress and meet the deadlines.*
+*We definitely need to add more tests and improve our code habits to keep our code clean. Additionally, we need to follow Zenhub and burndown chart to keep track on our progress to meet the deadlines.*
 
 #### What we will change next sprint 
 
