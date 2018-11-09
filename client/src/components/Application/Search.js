@@ -140,10 +140,10 @@ export default class Search extends Component {
         let myPlaces= this.props.trip.places;
         for (let i = 0; i < newPlaces.length; i++){
             let aPlace = newPlaces[i];
-            let newPlace = new Place(aPlace.id, aPlace.name, aPlace.latitude, aPlace.longitude);
-            myPlaces.push(newPlace);
-        this.props.updateTrip('places', myPlaces)
-        }
+            myPlaces.push(aPlace);
+            }
+        this.props.updateTrip('places', myPlaces);
+
         let newSearch = this.state.search;
         newSearch['places'] = [];
         this.setState({'search': newSearch });

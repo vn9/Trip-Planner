@@ -2,33 +2,42 @@ import React, {Component} from 'react'
 import {Card, CardBody, Button, Input, InputGroup, InputGroupAddon, Collapse, Fade, CardText} from 'reactstrap'
 
 export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
+import {get_config} from "../../api/api";
 
 class SetServer extends React.Component {
     constructor(props) {
         super(props);
         this.state ={
             collapse: false,
+            server: "",
         };
 
         this.serverChange = this.serverChange.bind(this);
         this.toggleServer= this.toggleServer.bind(this);
-        this.resetServer = this.resetServer.bind(this);
+        this.onClick = this.onClick.bind(this);
     };
 
     serverChange(e){
-        serverURL = e.target.value;
-        console.log(serverURL)
+        let myServer = e.target.value;
+        this.setState({server:myServer});
+
+        console.log(serverURL);
+        console.log(this.state.server);
+    }
+
+    onClick(){
+        let aServer = this.state.server;
+        if (aServer === "" || null){
+            aServer = 'http://' + location.host;
+        }
+        serverURL = aServer;
+        this.props.updateConfig();
     }
 
     toggleServer(){
         this.setState({collapse: !this.state.collapse})
     }
 
-    resetServer(){
-        serverURL = 'http://' + location.host;
-        document.getElementById("newServer").value = serverURL;
-        console.log(serverURL)
-    }
 
     render(){
         return(
@@ -39,11 +48,8 @@ class SetServer extends React.Component {
                         <InputGroup>
                             <InputGroupAddon addonType={"prepend"}>URL</InputGroupAddon>
                             <Input id="newServer" defaultValue={serverURL}  onChange={(e)=> this.serverChange(e)}/>
-                            <InputGroupAddon addonType={"append"}><Button onClick={this.resetServer}>Reset Default</Button></InputGroupAddon>
+                            <InputGroupAddon addonType={"append"}><Button onClick={this.onClick}>Set Server</Button></InputGroupAddon>
                         </InputGroup>
-                        <CardText>
-                            <small className="text-muted">The server updates automatically as you type. If you wish to restore the default, hit Reset Default.</small>
-                        </CardText>
                     </CardBody>
                 </Card>
             </div>

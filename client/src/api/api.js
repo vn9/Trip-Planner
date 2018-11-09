@@ -11,8 +11,8 @@ export async function request(body, type, serverURL){
     }).then(response => {return response.json()}).catch(err => {console.error(err)});
 }
 
-export async function get_config(type, port=get_port()) {
-    return fetch('http://' + location.hostname + ":" + port + '/config', {
+export async function get_config(serverURL) {
+    return fetch(serverURL + '/config', {
         method:"GET"
     }).then(response => {return response.json()}).catch(err => {console.error(err)});
 }
