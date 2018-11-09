@@ -22,7 +22,7 @@ class Map extends Component {
 
 
     render() {
-         if(this.props.options.map === "kml" && this.props.trip.distances.length === 0){
+         if(this.props.trip.distances.length === 0){
             return(
                 <div>
                     <Alert align="center" color={"danger"}>Plan Your Trip in Order to Get Your Map</Alert>
