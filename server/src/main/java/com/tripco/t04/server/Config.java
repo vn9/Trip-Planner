@@ -18,6 +18,7 @@ public class Config {
     private List<Optimization> optimization;
     private List<String> attributes;
     private List<Filter> filters;
+    private List<String> map ;
 
     public Config() {
 
@@ -35,6 +36,8 @@ public class Config {
         Filter filter2 = new Filter("continents.name", Arrays.asList("North America", "South America", "Africa",
                 "Asia", "Oceania", "Europe", "Antarctica"));
         this.filters = Arrays.asList(filter1, filter2);
+
+        this.map = Arrays.asList("svg", "kml");
     }
 
     static String getConfig() {

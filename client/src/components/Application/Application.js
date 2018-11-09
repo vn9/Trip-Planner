@@ -32,6 +32,7 @@ class Application extends Component {
                     unitName: "",
                     unitRadius: 0.0000,
                     optimization: "",
+                    map : "svg"
                 },
                 places: [],
                 distances: [],
@@ -140,7 +141,14 @@ class Application extends Component {
         //generate file and download
         let element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + this.state.trip.map);
-        element.setAttribute('download', 'download.svg');
+
+        if (this.state.trip.options.map === "svg"){
+            element.setAttribute('download', 'download.svg');
+        }
+        else if (this.state.trip.options.map === "kml"){
+            element.setAttribute('download', 'download.kml');
+        }
+
         document.body.appendChild(element);
         element.click();
         document.body.removeChild(element);
@@ -172,7 +180,7 @@ class Application extends Component {
         let tripBuilder =
             <Row>
                 <Col md={6}>
-                    <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
+                    <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip} clearTrip={this.clearTrip}/>
                 </Col>
                 <Col md={6}>
                     <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
@@ -202,7 +210,7 @@ class Application extends Component {
                 {this.createTrip()} <br/>
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
                 <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config} /><br/>
-                <Map trip={this.state.trip} config={this.state.config}/><br/>
+                <Map trip={this.state.trip} config={this.state.config} options={this.state.trip.options}/><br/>
                 <div align="center">
                     <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
                     <Button onClick={this.saveMap} className="btn-dark">Save Map</Button>{' '}

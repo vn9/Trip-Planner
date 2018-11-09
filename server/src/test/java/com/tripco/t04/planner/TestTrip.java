@@ -32,7 +32,9 @@ public class TestTrip {
     places.add(peublo);
     places.add(saguache);
     places.add(minturn);
-    options = new Option("none", "user defined", "miles", 3959.0, "");
+
+    options = new Option("none", "user defined", "miles", 3959.0, "svg");
+
     trip = new Trip("trip", 2 , "Test", options, places, null , "");
   }
 
@@ -59,7 +61,8 @@ public class TestTrip {
       String unit = "user defined";
       String unName = "miles";
       Double unRad = 3959.0;
-      String map = "";
+      String map = "svg";
+
 
       assertEquals(opt, trip.options.optimization);
       assertEquals(unit, trip.options.units);
