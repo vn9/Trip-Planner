@@ -118,8 +118,8 @@ file and continuing planning.*
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *something*
-*
+* *Hard starting: We got some tasks completely new for us such as the kml map. Thus we spend a long time discussing what it looks like and how to start it. Asking TAs and the professor can help to solve this problem but it still took time.*
+* *Detail handling: With the growth of our project, the code becomes more complex and lengthy such as the Trip class. We will try to re-construct some long files to make code be easier to read and understand.*
 
 ## Retrospective
 
