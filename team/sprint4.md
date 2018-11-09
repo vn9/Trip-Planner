@@ -78,7 +78,7 @@ Epics planned for this sprint.
 | *10/31* | *#373* | *#371, #376, #381, #398, #409* | *Scaling the paths between places to fit the given svg map is not easy as it seems to be. Find errors and fix our restAPI is also a challenging* |
 | *11/02* | *#371, #398* | *#381, #382, #392, #394, #396, #403* | *We had a distance problem on trips earlier, once we have it fixed, we will get the chance to work on 1-opt, 2-opt and 3-opt.* |
 | *11/05* | *#382, #403* | *#369, #381, #392, #394, #396, #399, #424, #430* | *Modify 1-opt and 2-opt as well as implement 3-opt in two days will be our next challenge. Also, we want to finish planning the trip using different tools soon, so we can test and deploy before Thursday.* |
-| *11/07* | *#359, #360, #369, #376, #381, #396, #399, #409, #424, #430, #431, #433, #441, #444, #445* | *#370, #388, #392* | *We are still working on KML map and 2opt and 3opt.* |
+| *11/07* | *#359, #360, #369, #376, #381, #396, #399, #409, #424, #433, #444, #445* | *#370, #388, #392* | *We are still working on KML map and 2opt and 3opt.* |
 
 *Add a new row for the scrum session after each lecture. *
 
