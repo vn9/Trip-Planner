@@ -111,8 +111,8 @@ Epics planned for this sprint.
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *something*
-*
+* *Hard starting: We got some tasks completely new for us such as the kml map. Thus we spend a long time to discuss what it looks like and how to start it. Asking TAs and professor can help to solve this problem but it still need time.*
+* *Details handling: With the growth of out project, the code becomes more complex and lengthy such as the Trip class. We will try to re-construct some long files to make code be easier to read and understand.*
 
 ## Retrospective
 
