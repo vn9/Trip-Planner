@@ -15,15 +15,26 @@ import java.util.List;
 
 public class Driver {
     // db configuration information
-    private final static String myDriver = "com.mysql.jdbc.Driver";
+    public final static String myDriver = "com.mysql.jdbc.Driver";
     //
-    private static String myUrl = "jdbc:mysql://localhost:5655/cs314?useUnicode=true&characterEncoding=utf-8";
-    private final static String user = "cs314-db";
-    private final static String pass = "eiK5liet1uej";
+    public static String myUrl = "jdbc:mysql://localhost:5655/cs314?useUnicode=true&characterEncoding=utf-8";
+    public final static String user = "cs314-db";
+    public final static String pass = "eiK5liet1uej";
     // fill in SQL queries to count the number of records and to retrieve the data
-    private static String count = "";
-    private static String search = "";
+    public static String count = "";
+    public static String search = "";
+    public String match;
+    public int limit;
+    public List<Filter> filters;
     public static ArrayList<Place> places = new ArrayList<>();
+
+    public Driver(String match, int limit, List<Filter> filters) {
+        this.match = match;
+        this.limit = limit;
+        this.filters = filters;
+
+
+    }
 
     /**
      * The method accesses to the database.
@@ -64,26 +75,28 @@ public class Driver {
         return(myLimit);
     }
 
-    public String getMatchQueryString(String match){
-        String myMatch =
-                " country.name LIKE '%" + match + "%' " + "OR world_airports.municipality LIKE'%" + match + "%' " +
-                        "OR world_airports.name LIKE '%" + match + "%' " +
-                        "OR world_airports.id LIKE '%" + match + "%' ";
-        return(myMatch);
+    public String getMatchQueryString(String match) {
+        String myMatch = "";
+        if (match.equals("")) {
+            return (myMatch);
+        } else { myMatch = " country.name LIKE '%" + match + "%' " + "OR world_airports.municipality LIKE'%" + match
+                + "%' OR world_airports.name LIKE '%" + match + "%' OR world_airports.id LIKE '%" + match + "%' ";
+            return (myMatch);
+        }
     }
 
     public String getMyQueryString(String match, String filters){
         String myQuery = "";
 
-        if (match.equals("")){
+        if (match.equals("") && !filters.equals("")){
             myQuery = "WHERE " + filters;
             System.out.print(myQuery);
-        } else if (filters.equals("")){
+        } else if (!match.equals("") && filters.equals("")){
             myQuery = "WHERE " + match + " ";
         } else if (filters.equals("") && match.equals("")){
             myQuery = " ";
         } else {
-            myQuery = "WHERE ( " + match + " ) AND " + filters;
+            myQuery = "WHERE (" + match + ") AND " + filters;
             System.out.print(myQuery);
         }
         return(myQuery);

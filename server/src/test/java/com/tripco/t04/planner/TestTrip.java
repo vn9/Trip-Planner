@@ -40,7 +40,9 @@ public class TestTrip {
     places.add(peublo);
     places.add(saguache);
     places.add(minturn);
+
     options = new Option("none", "user defined", "miles", 3959.0, "svg");
+
     trip = new Trip("trip", 2 , "Test", options, places, null , "");
   }
 
@@ -70,6 +72,7 @@ public class TestTrip {
       Double unRad = 3959.0;
       String map = "svg";
 
+
       assertEquals(opti, trip.options.optimization);
       assertEquals(unit, trip.options.units);
       assertEquals(unName, trip.options.unitName);
@@ -82,7 +85,7 @@ public class TestTrip {
     trip.options.optimization = "short";
     trip.plan();
     ArrayList<Place> testplaces = new ArrayList<>();
-    testplaces.add(denver); testplaces.add(peublo); testplaces.add(saguache); testplaces.add(minturn);
+    testplaces.add(denver); testplaces.add(minturn); testplaces.add(saguache); testplaces.add(peublo);
     assertEquals(trip.places, testplaces);
   }
 
@@ -91,7 +94,7 @@ public class TestTrip {
       trip.options.optimization = "shorter";
       trip.plan();
       ArrayList<Place> testplaces = new ArrayList<>();
-      testplaces.add(denver); testplaces.add(peublo); testplaces.add(saguache); testplaces.add(minturn);
+      testplaces.add(denver); testplaces.add(minturn); testplaces.add(saguache); testplaces.add(peublo);
       assertEquals(trip.places, testplaces);
   }
 
