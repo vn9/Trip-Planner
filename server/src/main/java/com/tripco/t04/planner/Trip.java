@@ -43,13 +43,15 @@ public class Trip {
           opt2(); //follow meeeeeeeee
       }
   }
+
   private void whichMap(){
       Map myMap = new Map(places);
       if (options.map.equals("kml")){ this.map = myMap.kml(); } //kml
       else{ this.map = myMap.svg(); }                          //svg
   }
 
-  /** The function calculates the destination between two points
+  /**
+   * The function calculates the destination between two points
    * @return the distances between consecutive places, including the return to the starting
    * point to make a round trip.
    */

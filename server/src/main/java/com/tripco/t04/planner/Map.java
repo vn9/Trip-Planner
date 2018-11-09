@@ -13,7 +13,8 @@ public class Map {
         this.places = places;
     }
 
-    /**Load the file that contains the raw of the Colorado map using Maven stream.
+    /**
+     * Load the file that contains the raw of the Colorado map using Maven stream.
      * @return StringBuilder a raw map
      */
     private StringBuilder readRawMap(){
@@ -36,7 +37,8 @@ public class Map {
         return readMap;
     }
 
-    /**Using the map's dimensions along with longitudes and latitudes to calculate the image's pixel
+    /**
+     * Using the map's dimensions along with longitudes and latitudes to calculate the image's pixel
      * @return double[] holds 4 values x1,x2,y1,y2
      */
     private double[] calculatePixels(double curloo, double nextloo, double curlat, double nextlat){
@@ -50,7 +52,8 @@ public class Map {
         return coordinates;
     }
 
-    /**Using the index to get the longitude and latitude at that index
+    /**
+     * Using the index to get the longitude and latitude at that index
      * @return double[] holds 2 values the longitude and latitude
      */
     private double[] latlong(ArrayList<Place> places, int index){
@@ -66,7 +69,8 @@ public class Map {
         return nextloolat;
     }
 
-    /**Call functions to get the coordinates on the image and format a string of tag line
+    /**
+     * Call functions to get the coordinates on the image and format a string of tag line
      * @return StringBuilder contains an origin line and a shifted line
      */
     private StringBuilder draw2Lines(double curloo, double nextloo, double curlat, double nextlat){
@@ -86,7 +90,8 @@ public class Map {
         return paths;
     }
 
-    /**Call functions to get the coordinates on the image and format a string of tag line
+    /**
+     * Call functions to get the coordinates on the image and format a string of tag line
      * @return String a line that connects two places together
      */
     private String draw1Line(double curloo, double nextloo, double curlat, double nextlat){
@@ -96,7 +101,8 @@ public class Map {
             coordinates[0],coordinates[2],coordinates[1],coordinates[3]);
     }
 
-    /** Call functions to convert coordinates to pixels using map's dimensions and
+    /**
+     *  Call functions to convert coordinates to pixels using map's dimensions and
      * @return String SVG containing the background and the legs of the trip.
      */
     public String svg() {
@@ -120,7 +126,8 @@ public class Map {
         return readMap.toString();
     }
 
-    /** Attach the longitude and latitude of the place to the kml format
+    /**
+     * Attach the longitude and latitude of the place to the kml format
      * @return String kml format that can be use in other tools
      */
     public String kml(){
