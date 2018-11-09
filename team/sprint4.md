@@ -46,6 +46,7 @@ Epics planned for this sprint.
 
 * *#124: All code shall be clean!*
 * *#205: All code must be tested*
+* *#359: User: I want to choose what information is displayed in the itinerary and map*
 * *#360: User: I want to plan trips worldwide*
 * *#361: User: I want to view my trip in other tools*
 * *#362: User: I want trip planning to be fast*
@@ -84,20 +85,26 @@ Epics planned for this sprint.
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*This sprint we finished with an application that allows the users to build their trip worldwide, 
+have the options to download a kml file to view on different tools or using our tool to view the trip 
+on svg format, and receive distance results in a blink. The users also can be able to download a trip
+that they built along with the calculated distances, options, and a map. Later, they can use the downloaded 
+file and continuing planning.*
 
 #### Completed Epics in Sprint Backlog 
 
 *Describe the solution based on the completed epics and list the epics below.*
-
-* *## epic title: comments*
 * 
 
 #### Incomplete Epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
+* *#124 TripCo: All Code Shall Be Clean: Most of the code are not as clean as it could be. Most of them are duplicated and we could not find out a good way to refactor them.*
+  *#205 Tripo: All Code Must Be Tested: Most of the code are untested. We tried to test along with implement them. The back-end is easy to test, but we had a hard time testing the front-end.*
+  *#363 User: I want the shortest trips possible: We spent most of the time to modify nearest neighbor 
+  algorithm and 2-opt function since our outputs are incorrect. We just recently finished modifying
+  these functions; hence, we do not have enough time to implement 3-opt.*
 *
 
 #### What Went Well
@@ -128,7 +135,7 @@ Epics planned for this sprint.
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+*We definitely need to add more tests and improve our code habits to keep code our code clean. Additionally, we need to follow Zenhub and burndown chart to keep track on our progress and meet the deadlines.*
 
 #### What we will change next sprint 
 
