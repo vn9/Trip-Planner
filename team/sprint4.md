@@ -46,6 +46,7 @@ Epics planned for this sprint.
 
 * *#124: All code shall be clean!*
 * *#205: All code must be tested*
+* *#359: User: I want to choose what information is displayed in the itinerary and map*
 * *#360: User: I want to plan trips worldwide*
 * *#361: User: I want to view my trip in other tools*
 * *#362: User: I want trip planning to be fast*
@@ -78,16 +79,22 @@ Epics planned for this sprint.
 | *10/31* | *#373* | *#371, #376, #381, #398, #409* | *Scaling the paths between places to fit the given svg map is not easy as it seems to be. Find errors and fix our restAPI is also a challenging* |
 | *11/02* | *#371, #398* | *#381, #382, #392, #394, #396, #403* | *We had a distance problem on trips earlier, once we have it fixed, we will get the chance to work on 1-opt, 2-opt and 3-opt.* |
 | *11/05* | *#382, #403* | *#369, #381, #392, #394, #396, #399, #424, #430* | *Modify 1-opt and 2-opt as well as implement 3-opt in two days will be our next challenge. Also, we want to finish planning the trip using different tools soon, so we can test and deploy before Thursday.* |
+| *11/07* | *#359, #360, #369, #376, #381, #396, #399, #409, #424, #433, #444, #445* | *#370, #388, #392* | *We are still working on KML map and 2opt and 3opt.* |
 
 *Add a new row for the scrum session after each lecture. *
 
 ## Review
 
-*An introductory paragraph describing the overall results of the sprint.*
+*This sprint we finished with an application that allows the users to build their trip worldwide, 
+have the options to download a kml file to view on different tools or using our tool to view the trip 
+on svg format, and receive distance results in a blink. The users also can be able to download a trip
+that they built along with the calculated distances, options, and a map. Later, they can use the downloaded 
+file and continuing planning.*
 
 #### Completed Epics in Sprint Backlog 
 
 *Describe the solution based on the completed epics and list the epics below.*
+
 
 * *## User: I want to plan trips worldwide: We successfully allow the user to access a database of airports around the world.  Users can now filter search results by those offered by the config.  The map is no longer limited to Colorado and spans the whole world.* 
 * *##User: I want to choose what information is displayed in the itinerary and map: The user can now choose what attributes they would like to see on the itinerary by using checkboxes (generated from config).  This epic took multiple days to complete, particularly since the place object was hardcoded and had to be redone.*
@@ -96,7 +103,11 @@ Epics planned for this sprint.
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
+* *#124 TripCo: All Code Shall Be Clean: Most of the code are not as clean as it could be. Most of them are duplicated and we could not find out a good way to refactor them.*
+  *#205 Tripo: All Code Must Be Tested: Most of the code are untested. We tried to test along with implement them. The back-end is easy to test, but we had a hard time testing the front-end.*
+  *#363 User: I want the shortest trips possible: We spent most of the time to modify nearest neighbor 
+  algorithm and 2-opt function since our outputs are incorrect. We just recently finished modifying
+  these functions; hence, we do not have enough time to implement 3-opt.*
 *
 
 #### What Went Well
@@ -129,7 +140,7 @@ Epics planned for this sprint.
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+*We definitely need to add more tests and improve our code habits to keep code our code clean. Additionally, we need to follow Zenhub and burndown chart to keep track on our progress and meet the deadlines.*
 
 #### What we will change next sprint 
 
