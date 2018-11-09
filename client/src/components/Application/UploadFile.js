@@ -33,6 +33,7 @@ export default class UploadFile extends Component {
 
     // Reads the file contents and updates trip in application
     loadFile(event){
+        this.props.updateTrip('distances', []);
         let file = event.target.files[0];
         let reader = new FileReader();
         reader.readAsText(file);

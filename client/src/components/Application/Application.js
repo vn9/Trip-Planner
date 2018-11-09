@@ -180,7 +180,7 @@ class Application extends Component {
         let tripBuilder =
             <Row>
                 <Col md={6}>
-                    <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip}/>
+                    <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip} clearTrip={this.clearTrip}/>
                 </Col>
                 <Col md={6}>
                     <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
@@ -210,7 +210,7 @@ class Application extends Component {
                 {this.createTrip()} <br/>
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
                 <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config} /><br/>
-                <Map trip={this.state.trip} config={this.state.config}/><br/>
+                <Map trip={this.state.trip} config={this.state.config} options={this.state.trip.options}/><br/>
                 <div align="center">
                     <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
                     <Button onClick={this.saveMap} className="btn-dark">Save Map</Button>{' '}
