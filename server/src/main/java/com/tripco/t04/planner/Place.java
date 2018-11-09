@@ -42,13 +42,6 @@ public class Place {
     else{
       return decLong;}
   }
-
-  public String getSvgCoordinate() {
-    // Only for drawing on the Colorado Background
-    return String.format("%.5f,%.5f",
-            34.72952 + (getLong() + 109.3) / 7.5 * 992.96318,
-            34.76269 + (41.2 - getLat()) / 4.4 * 709.59277);
-  }
 }
 
 

@@ -93,11 +93,15 @@ class TwoPtCalculator extends Component {
                 <Collapse isOpen={this.state.collapse}>
                     <Card>
                         <CardBody>
-                          <Input placeholder="Origin Latitude in Degree ex. 45.00" onChange={(event) => this.updateLocation('latitude', event.target.value, true)}/>
-                          <Input placeholder="Origin Longitude in Degree ex. 101.00" onChange={(event) => this.updateLocation('longitude', event.target.value, true)}/>
+                          <Input className={'OLat'} placeholder="Origin Latitude in Degree ex. 45.00"
+                                 onChange={(event) => this.updateLocation('latitude', event.target.value, true)}/>
+                          <Input className={'OLon'} placeholder="Origin Longitude in Degree ex. 101.00"
+                                 onChange={(event) => this.updateLocation('longitude', event.target.value, true)}/>
                           <br/>
-                          <Input placeholder="Destination Latitude in Degree ex. 45.00" onChange={(event) => this.updateLocation('latitude', event.target.value, false)}/>
-                          <Input placeholder="Destination Longitude in Degree ex. 101.00" onChange={(event) => this.updateLocation('longitude', event.target.value, false)}/>
+                          <Input className={'DLat'} placeholder="Destination Latitude in Degree ex. 45.00"
+                                 onChange={(event) => this.updateLocation('latitude', event.target.value, false)}/>
+                          <Input className={'DLon'} placeholder="Destination Longitude in Degree ex. 101.00"
+                                 onChange={(event) => this.updateLocation('longitude', event.target.value, false)}/>
                           <br/>
                           <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
                           <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.displayUnits()}</p>
