@@ -93,7 +93,10 @@ file and continuing planning.*
 #### Completed Epics in Sprint Backlog 
 
 *Describe the solution based on the completed epics and list the epics below.*
-* 
+
+
+* *## User: I want to plan trips worldwide: We successfully allow the user to access a database of airports around the world.  Users can now filter search results by those offered by the config.  The map is no longer limited to Colorado and spans the whole world.* 
+* *##User: I want to choose what information is displayed in the itinerary and map: The user can now choose what attributes they would like to see on the itinerary by using checkboxes (generated from config).  This epic took multiple days to complete, particularly since the place object was hardcoded and had to be redone.*
 
 #### Incomplete Epics in Sprint Backlog 
 
@@ -108,10 +111,11 @@ these functions; hence, we do not have enough time to implement 3-opt.*
 
 #### What Went Well
 
-*Describe what went well during the sprint in general terms followed by a more detailed list.*
+*This sprint we did a better job of working within the team.*
 
-* *something*
-*
+* *We did a good job of checking in on others on progress*
+* *People were very willing to ask for help and share code to get help*
+* *There was less stress within the team as we have figured out how to work with others in the group*
 
 #### Problems Encountered and Resolutions
 
@@ -123,6 +127,7 @@ these functions; hence, we do not have enough time to implement 3-opt.*
 ## Retrospective
 
 *An introductory paragraph for your retrospective.*
+*This sprint we were hoping to be more ontop of our deadlines by setting small goals, but this did not happen.  Everyone seemed to be burnt out and busy with other classes at some point in the sprint.  Despite this, we were able to pull together at the end and still make meaningful improvements and changes to our product.  There is still a lot for us to improve on and for us to do, but we will continue to work to make the best final product we can.*
 
 #### What we changed this sprint
 
@@ -130,7 +135,7 @@ these functions; hence, we do not have enough time to implement 3-opt.*
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+*At the end of the sprint, we were able to make progress on the things that we wanted to.  We didn't finish everything that we had hoped, but we made necessary changes to previous work.  We also did a better job of being more flexible in our tasks and helping each other out.  We dropped tasks, picked up ones others were stuck on, and asked for help more frequently.*
 
 #### What we need to work on
 
