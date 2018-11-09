@@ -36,6 +36,9 @@ public class Map {
         return readMap;
     }
 
+    /**Using the map's dimensions along with longitudes and latitudes to calculate the image's pixel
+     * @return double[] holds 4 values x1,x2,y1,y2
+     */
     private double[] calculatePixels(double curloo, double nextloo, double curlat, double nextlat){
         double[] coordinates = new double[4];
         int width= 1024; // of the svg
@@ -47,6 +50,9 @@ public class Map {
         return coordinates;
     }
 
+    /**Using the index to get the longitude and latitude at that index
+     * @return double[] holds 2 values the longitude and latitude
+     */
     private double[] latlong(ArrayList<Place> places, int index){
         double[] nextloolat = {0.0,0.0};
         if(index == places.size()-1) {
@@ -60,6 +66,9 @@ public class Map {
         return nextloolat;
     }
 
+    /**Call functions to get the coordinates on the image and format a string of tag line
+     * @return StringBuilder contains an origin line and a shifted line
+     */
     private StringBuilder draw2Lines(double curloo, double nextloo, double curlat, double nextlat){
         // Subtract 360 to go different direction according to the Earth
         // Add 1024 to shift the points respects to the width of the svg
@@ -77,10 +86,13 @@ public class Map {
         return paths;
     }
 
+    /**Call functions to get the coordinates on the image and format a string of tag line
+     * @return String a line that connects two places together
+     */
     private String draw1Line(double curloo, double nextloo, double curlat, double nextlat){
         double[] coordinates = calculatePixels(curloo,nextloo,curlat,nextlat);
         return String.format("<line  x1=\"%f\" y1=\"%f\" x2=\"%f\" y2=\"%f\" "
-                + "stroke=\"black\" " + "stroke-width=\"2\"/>",
+                + "stroke=\"black\" stroke-width=\"2\"/>",
             coordinates[0],coordinates[2],coordinates[1],coordinates[3]);
     }
 
@@ -108,6 +120,9 @@ public class Map {
         return readMap.toString();
     }
 
+    /** Attach the longitude and latitude of the place to the kml format
+     * @return String kml format that can be use in other tools
+     */
     public String kml(){
         String start = "<?xml version= \"1.0\" encoding = \"UTF-8\"?>\n"
             +"<kml xmlns=\"http://www.opengis.net/kml/2.2\"><Document>\n"
