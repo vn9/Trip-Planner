@@ -93,20 +93,14 @@ file and continuing planning.*
 #### Completed Epics in Sprint Backlog 
 
 *Describe the solution based on the completed epics and list the epics below.*
-
-* *#359 User: I want to choose what information is displayed in the itinerary and map: The users are able 
-to see more or less information(latitude, longitude, continent, country, id, etc) with a click on the checkboxes.
-This epic took us a few days to find out how to dynamically generate the itinerary table based on the checked boxes.*
-  *#360 User: I want to plan trips worldwide: The users can now see the world map and we need to draw the travel paths such that it will appear two lines 
-  if the differences between two longitudes are greater than 180.*
 * 
 
 #### Incomplete Epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *#124 All Code Shall Be Clean: Most of the code are not as clean as it could be. Most of them are duplicated and we could not find out a good way to refactor them.*
-  *#205 All Code Must Be Tested: Most of the code are untested. We tried to test along with implement them. The back-end is easy to test, but we had a hard time testing the front-end.*
+* *#124 TripCo: All Code Shall Be Clean: Most of the code are not as clean as it could be. Most of them are duplicated and we could not find out a good way to refactor them.*
+  *#205 Tripo: All Code Must Be Tested: Most of the code are untested. We tried to test along with implement them. The back-end is easy to test, but we had a hard time testing the front-end.*
   *#363 User: I want the shortest trips possible: We spent most of the time to modify nearest neighbor 
   algorithm and 2-opt function since our outputs are incorrect. We just recently finished modifying
   these functions; hence, we do not have enough time to implement 3-opt.*
@@ -140,8 +134,8 @@ This epic took us a few days to find out how to dynamically generate the itinera
 
 #### What we need to work on
 
-*We definitely need to add more tests and improve our code habits to keep code our code clean. Additionally, we need to follow Zenhub and burndown chart.*
+*We definitely need to add more tests and improve our code habits to keep code our code clean. Additionally, we need to follow Zenhub and burndown chart to keep track on our progress and meet the deadlines.*
 
 #### What we will change next sprint 
 
-*One thing we would like to change next sprint is to have small deadlines. This will help us being productive.*
+*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
