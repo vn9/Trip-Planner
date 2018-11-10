@@ -37,19 +37,10 @@ test('Filter checkboxes get made correctly test', testCheckBoxes);
 /*--------------------------------------------------------------------------*/
 
 
-const Props2 = {
-    'config': {'filters': []},
-    'trip': {
-        'type': "trip", 'title': "Summer Vacation",
-        'options': {'units': "miles", 'unitName': "", 'unitRadius': 0.0000, 'optimization': ""},
-        'places': [], 'distances': [],
-        'map': '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
-    },
-};
-
 function testResults() {
+    startProps.config.filters= [];
     const results = mount((
-        <Search config={Props2.config} trip={Props2.trip}/>
+        <Search config={startProps.config} trip={startProps.trip}/>
     ));
 
     results.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
@@ -70,8 +61,9 @@ test('Test that results are formed', testResults);
 /*--------------------------------------------------------------------------*/
 
 function testChanges() {
+    startProps.config.filters= [];
     const results = mount((
-        <Search config={Props2.config} trip={Props2.trip}/>
+        <Search config={startProps.config} trip={startProps.trip}/>
     ));
 
     results.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
@@ -89,9 +81,9 @@ test('Test that results are formed', testChanges);
 
 /*--------------------------------------------------------------------------*/
 
-//const Props3={'config': {'filters': [{"name": "continents.name", "values":['Asia']}]}};
-
 function testCheck() {
+    startProps.config.filters= [{"name": "continents.name", "values":['Asia']}];
+
     const results = mount((
         <Search config={startProps.config} trip={startProps.trip}/>
     ));
