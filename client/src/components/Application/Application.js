@@ -62,13 +62,6 @@ class Application extends Component {
     componentWillMount() {
         this.updateConfig();
         }
-        // get_config(serverURL).then(
-        //     config => {
-        //         this.setState({
-        //             config:config
-        //         })
-        //     }
-        // );
 
     updateConfig() {
         if(serverURL === 'http://localhost:31428'){

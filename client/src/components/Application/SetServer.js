@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Card, CardBody, Button, Input, InputGroup, InputGroupAddon, Collapse, Fade, CardText} from 'reactstrap'
 
 export var serverURL =  'http://' + location.host;  //Sets the default server to some local host
-import {get_config} from "../../api/api";
 
 class SetServer extends React.Component {
     constructor(props) {
@@ -20,9 +19,6 @@ class SetServer extends React.Component {
     serverChange(e){
         let myServer = e.target.value;
         this.setState({server:myServer});
-
-        console.log(serverURL);
-        console.log(this.state.server);
     }
 
     onClick(){
@@ -37,7 +33,6 @@ class SetServer extends React.Component {
     toggleServer(){
         this.setState({collapse: !this.state.collapse})
     }
-
 
     render(){
         return(
@@ -59,30 +54,6 @@ class SetServer extends React.Component {
 
 export default SetServer;
 
-/*
-    render(){
-        return(
-            <div>
-                <Button onClick={this.toggleServer} className='btn-dark' block>Choose a Server</Button>
-                <Collapse isOpen={this.state.collapse}>
-                    <Card>
-                        <CardBody>
-                            <InputGroup>
-                                <InputGroupAddon addonType={"prepend"}> Server URL</InputGroupAddon>
-                                <Input id="newServer" defaultValue={serverURL}  onChange={(e)=> this.serverChange(e)}/>
-                                <InputGroupAddon addonType={"append"}><Button onClick={this.resetServer}>Reset Server</Button></InputGroupAddon>
-                            </InputGroup>
-                            <CardText>
-                                <small className="text-muted">The server updates automatically as you type. If you wish to restore the default, hit Reset Server.</small>
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                </Collapse>
-            </div>
-
-        )
-    }
- */
 
 
 
