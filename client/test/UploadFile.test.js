@@ -9,11 +9,12 @@ const startProps = {
         'options': {'units': "miles", 'unitName': "", 'unitRadius': 0.0000, 'optimization': ""},
         'places': [],
         'distances': [],
-        'map': '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'}
+        'map': '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
+    }
 };
 
 /* Test example using a pre-defined function */
-function testExample() {
+function testManualFields() {
     const fields = mount((
         <UploadFile config={startProps.config} trip={startProps.trip}/>
     ));
@@ -24,7 +25,7 @@ function testExample() {
     expect(actual).toEqual(startProps.config.attributes);
 }
 
-test('Check to see if Manual Inputs Match Config', testExample);
+test('Check to see if Manual Inputs Match Config', testManualFields);
 
 /*--------------------------------------------------------------------------*/
 
@@ -40,3 +41,31 @@ test('Check to see if Manual Inputs Match Config (Lambda)', () => {
 
     expect(actual).toEqual(startProps.config.attributes);
 });
+
+/*--------------------------------------------------------------------------*/
+
+function testChange() {
+    const fields = mount((
+        <UploadFile config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    fields.find('#latitude').first().simulate('change', {target : {value: "39.73"}});
+
+}
+
+test('Test Manual change', testChange);
+
+/*--------------------------------------------------------------------------*/
+
+function testToggle() {
+    const fields = mount((
+        <UploadFile config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    fields.setState({collapse: false});
+
+    fields.find('#toggle').first().simulate('click');
+
+}
+
+test('Test toggle', testToggle);

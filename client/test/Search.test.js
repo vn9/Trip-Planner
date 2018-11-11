@@ -77,7 +77,7 @@ function testChanges() {
 
 }
 
-test('Test that results are formed', testChanges);
+test('Test limit and match changes', testChanges);
 
 /*--------------------------------------------------------------------------*/
 

@@ -25,7 +25,7 @@ class Options extends Component{
 
   render() {
     let buttons = this.props.config.units.map((unit) =>
-      <Button key={'distance_button_' + unit} className='btn-outline-dark unit-button'
+      <Button id={unit} key={unit} className='btn-outline-dark unit-button'
         active={this.props.options.units === unit} value={unit} onClick={this._userDefinedOn}
         block>
         {unit.charAt(0).toUpperCase() + unit.slice(1)}
@@ -36,12 +36,12 @@ class Options extends Component{
       <Card>
         <CardBody>
             <p align="Center">Select Your Units</p>
-            {buttons}
-            <p>{' '}</p>
+            {buttons}<br/>
             {this.state.userDefinedOn && (<Form>
-                  <Input placeholder="Unit Name ex. Miles" onChange={(event) => this.props.updateOptions('unitName', event.target.value)}/>
-                  <br/>
-                  <Input placeholder="Earth Radius ex. 3959" onChange={(event) => this.props.updateOptions('unitRadius', event.target.value)}/>
+                  <Input id={"uName"} placeholder="Unit Name ex. Miles"
+                         onChange={(event) => this.props.updateOptions('unitName', event.target.value)}/><br/>
+                  <Input id={"uRadius"} placeholder="Earth Radius ex. 3959"
+                         onChange={(event) => this.props.updateOptions('unitRadius', event.target.value)}/>
             </Form>)}
         </CardBody>
       </Card>

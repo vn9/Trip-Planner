@@ -26,7 +26,7 @@ function testKmlReady() {
 
 }
 
-test('Check to see if check boxes get made propertly', testKmlReady);
+test('Check for Kml Ready', testKmlReady);
 
 /*--------------------------------------------------------------------------*/
 
@@ -42,5 +42,5 @@ function testKmlNotReady() {
     expect(message).toEqual('Plan Your Trip in Order to Get Your Map');
 }
 
-test('Check to see if check boxes get made propertly', testKmlNotReady);
+test('Check for Map is not Ready', testKmlNotReady);
 

@@ -23,7 +23,6 @@ export default class UploadFile extends Component {
         this.toggle = this.toggle.bind(this);
         this.addOwn = this.addOwn.bind(this);
         this.clearFields = this.clearFields.bind(this);
-
     }
 
 
@@ -68,7 +67,6 @@ export default class UploadFile extends Component {
         for (let attributes of this.props.config.attributes){
             place[attributes] = this.state.myPlace[attributes];
         }
-        console.log(place);
         myPlaces.push(place);
         this.props.updateTrip('places', myPlaces);
         this.clearFields();
@@ -87,7 +85,7 @@ export default class UploadFile extends Component {
     render() {
         return (
             <div>
-                <Button onClick={this.toggle} className='btn-dark' block>Create Trip: I Have Places</Button>
+                <Button id={"toggle"} onClick={this.toggle} className='btn-dark' block>Create Trip: I Have Places</Button>
                 <Collapse isOpen={this.state.collapse}>
                     <Card>
                         <CardBody>

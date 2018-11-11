@@ -8,14 +8,12 @@ class Optimization extends Component{
     }
 
     changeOpt(event){
-        console.log(event.target.value);
         this.props.updateOptions('optimization', event.target.value);
-        console.log(this.props.options)
     }
 
     render() {
         let buttons = this.props.config.optimization.map((opt) =>
-            <Button key={'opt_button' + opt.label} className='btn-outline-dark unit-button'
+            <Button id={opt.label} key={'opt_button' + opt.label} className='btn-outline-dark unit-button'
                     active={this.props.options.optimization === opt.label} value={opt.label}
                     onClick={(event)=>this.changeOpt(event)}
                     block>{opt.label}

@@ -103,7 +103,6 @@ export default class Search extends Component {
     onSearch() {
         this.getLimit();
         let search = Object.assign({}, this.state.search);
-        console.log(search);
         search.filters = this.getActiveFilterValues();
 
         request(search, 'search', serverURL).then(
