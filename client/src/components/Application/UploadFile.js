@@ -90,7 +90,7 @@ export default class UploadFile extends Component {
                     <Card>
                         <CardBody>
                             <p align="Center">Name Your Trip</p>
-                            <Input placeholder="Name Your Trip" value={this.props.trip.title}
+                            <Input id={"title"} placeholder="Name Your Trip" value={this.props.trip.title}
                                    onChange={(event)=>this.props.updateTrip('title', event.target.value)}/><br/>
                             <Row>
                                 <Col md={6}><p align="Center"> Upload Your File </p>
@@ -99,7 +99,7 @@ export default class UploadFile extends Component {
                                 <Col md={6}><p align="Center"> Add Your Own </p>
                                     {this.addOwn()}
                                     <br/>
-                                    <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
+                                    <Button id={"myAdd"} type={"button"} onClick={this.addPlace}>Add Place</Button>
                                 </Col>
                             </Row>
                         </CardBody>

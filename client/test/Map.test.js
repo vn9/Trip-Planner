@@ -18,7 +18,7 @@ const startProps = {
 
 function testKmlReady() {
     const myMap = mount((
-        <Map config={startProps.config} trip={startProps.trip} options={startProps.options}/>
+        <Map config={startProps.config} trip={startProps.trip}/>
     ));
 
     let message = myMap.find('Alert').text();
@@ -27,6 +27,21 @@ function testKmlReady() {
 }
 
 test('Check for Kml Ready', testKmlReady);
+
+/*--------------------------------------------------------------------------*/
+
+function testSvgReady() {
+    startProps.trip.options.map = "svg";
+    const myMap = mount((
+        <Map config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    expect(myMap.find('Button').text()).toEqual('Map');
+    myMap.find('Button').simulate('click');
+
+}
+
+test('Check for Kml Ready', testSvgReady);
 
 /*--------------------------------------------------------------------------*/
 

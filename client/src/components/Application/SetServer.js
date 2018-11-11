@@ -12,7 +12,6 @@ class SetServer extends React.Component {
         };
 
         this.serverChange = this.serverChange.bind(this);
-        this.toggleServer= this.toggleServer.bind(this);
         this.onClick = this.onClick.bind(this);
     };
 
@@ -28,10 +27,6 @@ class SetServer extends React.Component {
         }
         serverURL = aServer;
         this.props.updateConfig();
-    }
-
-    toggleServer(){
-        this.setState({collapse: !this.state.collapse})
     }
 
     render(){

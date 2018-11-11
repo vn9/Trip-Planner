@@ -1,7 +1,12 @@
 import './enzyme.config.js'
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import Search from '../src/components/Application/Search'
+
+const jest = require('jest-mock');
+
+const updateTripSpy = jest.fn();
+const updateMyTrip = updateTripSpy;
 
 const startProps = {
     'config': {
@@ -97,7 +102,7 @@ test('Test onCheck', testCheck);
 
 function testToggle() {
     const search = mount((
-        <Search config={startProps.config} options={startProps.options}/>
+        <Search config={startProps.config} trip={startProps.trip}/>
     ));
 
     search.setState({collapse: false});
@@ -107,3 +112,29 @@ function testToggle() {
 }
 
 test('Test Toggle', testToggle);
+
+/*--------------------------------------------------------------------------*/
+
+const mySearch = shallow(<Search config={startProps.config} trip={startProps.trip} updateTrip={updateMyTrip}/>);
+
+mySearch.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
+        places: [{'id': 'den', 'name': 'Denver', 'latitude': 39.73, 'longitude': -104.99},
+            {'id': 'bldr', 'name': 'Boulder', 'latitude': 40.01, 'longitude': -105.27}]
+    }});
+
+let myPlace = JSON.stringify({"id": "den", "name": "Denver", "latitude": "39.73", "longitude": "-104.99"});
+let myPlaces = mySearch.state.places;
+
+describe("Check Add Buttons", ()=> {
+        it("Should check individual add", ()=> {
+            mySearch.find('#den').first().simulate('click',
+                {target: {value: myPlace}});
+            expect(updateTripSpy).toHaveBeenCalled();
+        });
+    it("Should check the add All", ()=> {
+        mySearch.find('#addAll').first().simulate('click',
+            {target: {value: myPlaces}});
+        expect(updateTripSpy).toHaveBeenCalled();
+    });
+    }
+);

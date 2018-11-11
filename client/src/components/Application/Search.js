@@ -107,7 +107,6 @@ export default class Search extends Component {
 
         request(search, 'search', serverURL).then(
             (response) => {
-                console.log(response);
                 this.updateSearch(response);
             })
     }
@@ -209,7 +208,7 @@ export default class Search extends Component {
                             </div>
                             <p align="Center">{this.state.search.found} Places Found</p>
                             <br/>
-                            <Button onClick={this.addAll}>Add All</Button>
+                            <Button id={"addAll"} onClick={this.addAll}>Add All</Button>
                         </CardBody>
                     </Card>
                 </Collapse>
