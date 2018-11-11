@@ -4,7 +4,7 @@ import { mount } from 'enzyme'              // (2)
 import Map from '../src/components/Application/Map'
 
 const startProps = {
-    'config': { 'attributes': ['id', 'name', 'latitude', 'longitude', 'municipality', 'country'] },
+    'config': { 'attributes': ['id', 'name', 'latitude', 'longitude', 'municipality', 'country'], 'map': ["svg", "kml"]},
     'trip': {'type': "trip", 'title': "Summer Vacation",
         'options': {'units': "miles", 'unitName': "", 'unitRadius': 0.0000, 'optimization': "", 'map': "kml"},
         'places': [
@@ -24,7 +24,6 @@ function testKmlReady() {
     let message = myMap.find('Alert').text();
     expect(message).toEqual('Your Map is Ready for Download!');
 
-    //expect(message).toEqual('Plan Your Trip in Order to Get Your Map');
 }
 
 test('Check to see if check boxes get made propertly', testKmlReady);
