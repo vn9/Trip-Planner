@@ -11,8 +11,14 @@
 
 import './enzyme.config.js'                   // (1)
 import React from 'react'
-import { mount } from 'enzyme'              // (2)
+import { mount, shallow } from 'enzyme'              // (2)
 import Options from '../src/components/Application/Options'
+
+
+const jest = require('jest-mock');
+
+const updateUnitSpy = jest.fn();
+const updateUnit = updateUnitSpy;
 
 /* Both of these tests are functionally identical although the standard way
  *  of writing tests uses lambda or anonymous functions. These are useful
@@ -25,7 +31,7 @@ import Options from '../src/components/Application/Options'
  * component on construction.
  */
 const startProps = {
-  'config': { 'units': ['miles', 'kilometers', 'nautical miles', 'users defined'] },
+  'config': { 'units': ['miles', 'kilometers', 'nautical miles', 'user defined'] },
   'options': { 'unit': 'miles' }
 };
 
@@ -41,7 +47,7 @@ function testExample() {
   expect(actual).toEqual(startProps.config.units);
 }
 
-test('Check to see if table gets made correctly (Function)', testExample);
+test('Check to see if option buttons (Function)', testExample);
 
 /*--------------------------------------------------------------------------*/
 
@@ -63,3 +69,27 @@ test('Check to see if table gets made correctly (Lambda)', () => {
 
   expect(actual).toEqual(startProps.config.units);  // (3)
 });
+
+/*--------------------------------------------------------------------------*/
+
+const units = shallow(<Options config={startProps.config} options={startProps.options} updateOptions={updateUnit}/>);
+
+describe("Check Unit Button Behavior", ()=> {
+        it("should have new units now", ()=> {
+            units.find('[id="user defined"]').simulate('click', {target: {value: "user defined"}});
+            expect(updateUnitSpy).toHaveBeenCalled();
+        });
+    }
+);
+
+/*--------------------------------------------------------------------------*/
+
+//const units = shallow(<Options config={startProps.config} options={startProps.options} updateOptions={updateUnit}/>);
+
+describe("Check User Defined Changes", ()=> {
+        it("should have new units now", ()=> {
+            units.find('[id="uName"]').simulate('change', {target: {value: "awkward miles"}});
+            units.find('[id="uRadius"]').simulate('change', {target: {value: "awkward miles"}});
+        });
+    }
+);

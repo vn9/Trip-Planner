@@ -23,7 +23,6 @@ export default class UploadFile extends Component {
         this.toggle = this.toggle.bind(this);
         this.addOwn = this.addOwn.bind(this);
         this.clearFields = this.clearFields.bind(this);
-
     }
 
 
@@ -68,7 +67,6 @@ export default class UploadFile extends Component {
         for (let attributes of this.props.config.attributes){
             place[attributes] = this.state.myPlace[attributes];
         }
-        console.log(place);
         myPlaces.push(place);
         this.props.updateTrip('places', myPlaces);
         this.clearFields();
@@ -87,12 +85,12 @@ export default class UploadFile extends Component {
     render() {
         return (
             <div>
-                <Button onClick={this.toggle} className='btn-dark' block>Create Trip: I Have Places</Button>
+                <Button id={"toggle"} onClick={this.toggle} className='btn-dark' block>Create Trip: I Have Places</Button>
                 <Collapse isOpen={this.state.collapse}>
                     <Card>
                         <CardBody>
                             <p align="Center">Name Your Trip</p>
-                            <Input placeholder="Name Your Trip" value={this.props.trip.title}
+                            <Input id={"title"} placeholder="Name Your Trip" value={this.props.trip.title}
                                    onChange={(event)=>this.props.updateTrip('title', event.target.value)}/><br/>
                             <Row>
                                 <Col md={6}><p align="Center"> Upload Your File </p>
@@ -101,7 +99,7 @@ export default class UploadFile extends Component {
                                 <Col md={6}><p align="Center"> Add Your Own </p>
                                     {this.addOwn()}
                                     <br/>
-                                    <Button type={"button"} onClick={this.addPlace}>Add Place</Button>
+                                    <Button id={"myAdd"} type={"button"} onClick={this.addPlace}>Add Place</Button>
                                 </Col>
                             </Row>
                         </CardBody>

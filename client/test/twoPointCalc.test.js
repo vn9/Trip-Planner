@@ -14,11 +14,51 @@ function testUnits() {
         <TwoPtCalculator config={startProps.config} options={startProps.options}/>
     ));
 
-    calculator.setState({distance: {distance: 24, units: "miles"}});
+    calculator.setState({distance: {distance: 24, units: "user defined", unitName: "odd miles", unitRadius: 3959.0}});
 
-    let expected = "Your Distance: 24 miles";
+    let expected = "Your Distance: 24 odd miles";
     expect(calculator.find('p').text()).toEqual(expected);
 
 }
 
 test('Test Distance Result Generation', testUnits);
+
+/*--------------------------------------------------------------------------*/
+
+function testChange() {
+    const calculator = mount((
+        <TwoPtCalculator config={startProps.config} options={startProps.options}/>
+    ));
+
+    calculator.setState({distance: {type: "distance", version: 3, units: "miles", unitName: "", unitRadius: 0.00,
+            origin: {latitude: "", longitude: "",},
+            destination: {latitude: "", longitude: "",}, distance: 0,
+        }});
+
+    calculator.find('Input').at(0).simulate('change', {target: {value: '39.73'}});
+    calculator.find('Input').at(1).simulate('change', {target:{value:'-104.99'}});
+    calculator.find('Input').at(2).simulate('change', {target: {value: '40º1'}});
+    calculator.find('Input').at(3).simulate('change', {target:{value:'-105.27'}});
+
+}
+
+test('Test Change Functions', testChange);
+
+/*--------------------------------------------------------------------------*/
+
+function testToggle() {
+    const calculator = mount((
+        <TwoPtCalculator config={startProps.config} options={startProps.options}/>
+    ));
+
+    calculator.setState({collapse: false});
+
+    calculator.find('Button').at(0).simulate('click');
+
+}
+
+test('Test Toggle', testToggle);
+
+/*--------------------------------------------------------------------------*/
+
+

@@ -55,17 +55,32 @@ class Application extends Component {
         this.createOptions = this.createOptions.bind(this);
         this.createTrip = this.createTrip.bind(this);
         this.clearTrip = this.clearTrip.bind(this);
+        this.updateConfig = this.updateConfig.bind(this);
     }
 
 
     componentWillMount() {
-        get_config().then(
-            config => {
-                this.setState({
-                    config:config
-                })
-            }
-        );
+        this.updateConfig();
+        }
+
+    updateConfig() {
+        if(serverURL === 'http://localhost:31428'){
+            get_config('http://localhost:31404').then(
+                config => {
+                    this.setState({
+                        config:config
+                    })
+                }
+            );
+        } else{
+            get_config(serverURL).then(
+                config => {
+                    this.setState({
+                        config:config
+                    })
+                }
+            );
+        }
     }
 
     updateTrip(field, value){
@@ -165,7 +180,7 @@ class Application extends Component {
                         <ModalHeader>Advanced Options</ModalHeader>
                         <ModalBody>
                             <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-                            <SetServer/>
+                            <SetServer config={this.state.config} updateConfig={this.updateConfig}/>
                         </ModalBody>
                         <ModalFooter>
                             <Button onClick={this.toggleModal}>Done</Button>
@@ -188,7 +203,6 @@ class Application extends Component {
             </Row>;
 
         return(tripBuilder)
-
     }
 
     render() {
@@ -210,7 +224,7 @@ class Application extends Component {
                 {this.createTrip()} <br/>
                 <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
                 <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config} /><br/>
-                <Map trip={this.state.trip} config={this.state.config} options={this.state.trip.options}/><br/>
+                <Map trip={this.state.trip} config={this.state.config}/><br/>
                 <div align="center">
                     <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
                     <Button onClick={this.saveMap} className="btn-dark">Save Map</Button>{' '}

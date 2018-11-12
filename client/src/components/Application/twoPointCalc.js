@@ -11,7 +11,7 @@ class TwoPtCalculator extends Component {
           collapse: false,
           distance: {
             type: "distance",
-            version: 3,
+            version: 4,
             units: "miles",
             unitName: "",
             unitRadius: 0.00,
@@ -45,13 +45,10 @@ class TwoPtCalculator extends Component {
             distance.unitRadius = options.unitRadius;
         }
         this.setState(distance);
-        console.log(distance);
-
     }
 
     onFormSubmit() {
         this.getUnits();
-        console.log(JSON.stringify(this.state.distance));
         request(this.state.distance, 'distance', serverURL).then(
             (response) => {
                 console.log(response);

@@ -62,14 +62,12 @@ export default class Search extends Component {
     }
 
     limitChange(aLimit){
-        console.log(aLimit);
         if(aLimit === ""){
             aLimit = 0;
         }
         let search = this.state.search;
         search['limit'] = aLimit;
         this.setState(search);
-        console.log(this.state.search);
     }
 
     getLimit(){
@@ -105,12 +103,10 @@ export default class Search extends Component {
     onSearch() {
         this.getLimit();
         let search = Object.assign({}, this.state.search);
-        console.log(search);
         search.filters = this.getActiveFilterValues();
 
         request(search, 'search', serverURL).then(
             (response) => {
-                console.log(response);
                 this.updateSearch(response);
             })
     }
@@ -136,14 +132,13 @@ export default class Search extends Component {
 
     addAll(){
         let newPlaces = this.state.search.places;
-        console.log(newPlaces);
         let myPlaces= this.props.trip.places;
         for (let i = 0; i < newPlaces.length; i++){
             let aPlace = newPlaces[i];
-            let newPlace = new Place(aPlace.id, aPlace.name, aPlace.latitude, aPlace.longitude);
-            myPlaces.push(newPlace);
-        this.props.updateTrip('places', myPlaces)
-        }
+            myPlaces.push(aPlace);
+            }
+        this.props.updateTrip('places', myPlaces);
+
         let newSearch = this.state.search;
         newSearch['places'] = [];
         this.setState({'search': newSearch });
@@ -162,7 +157,7 @@ export default class Search extends Component {
                 {filter.values.map((myValue)=>
                     <div key={myValue}>
                         <Label check key={myValue}>
-                            <Input name={myValue} type="checkbox" value={filter.name} onChange={this.onCheck}/>
+                            <Input id={myValue} name={myValue} type="checkbox" value={filter.name} onChange={this.onCheck}/>
                             {myValue.charAt(0).toUpperCase() + myValue.slice(1)}
                         </Label>
                     </div>
@@ -199,7 +194,7 @@ export default class Search extends Component {
                         <CardBody>
                             <h4 align="Center">Search for Places by Name</h4>
                             <InputGroup>
-                                <Input className={'match'} placeholder="ex. Aspen" onChange={(event) => this.matchChange(event.target.value)}/>
+                                <Input className={'match'} id={'match'} placeholder="ex. Aspen" onChange={(event) => this.matchChange(event.target.value)}/>
                                 <InputGroupAddon addonType="append"><Button className="btn-dark" onClick={this.onSearch}>Search</Button>
                                 </InputGroupAddon>
                                 <Input className={'limit'} type={'number'} id={'Limit'} placeholder="Limit" onChange={(event) => this.limitChange(event.target.value)}/>
@@ -213,7 +208,7 @@ export default class Search extends Component {
                             </div>
                             <p align="Center">{this.state.search.found} Places Found</p>
                             <br/>
-                            <Button onClick={this.addAll}>Add All</Button>
+                            <Button id={"addAll"} onClick={this.addAll}>Add All</Button>
                         </CardBody>
                     </Card>
                 </Collapse>

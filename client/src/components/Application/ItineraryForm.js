@@ -106,7 +106,6 @@ class ItineraryForm extends Component {
         let checked = e.target.checked;
         let attr = e.target.name;
         this.state.myAttributes[attr] = checked;
-        console.log(attr, this.state.myAttributes[attr]);
         this.setState({'attributes': this.getActiveAttributes()});
     }
 
@@ -212,8 +211,6 @@ class ItineraryForm extends Component {
             cell.push(<td key={'totalDistance' + index}>{wholeTrip}</td>);  //total distance
         return cell;
     }
-
-
 
     render() {
         return(

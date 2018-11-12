@@ -88,7 +88,6 @@ public class Driver {
 
         if (match.equals("") && !filters.equals("")){
             myQuery = "WHERE " + filters;
-            System.out.print(myQuery);
         } else if (!match.equals("") && filters.equals("")){
             myQuery = "WHERE " + match + " ";
         } else if (filters.equals("") && match.equals("")){

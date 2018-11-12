@@ -8,26 +8,25 @@ class SetServer extends React.Component {
         super(props);
         this.state ={
             collapse: false,
+            server: "",
         };
 
         this.serverChange = this.serverChange.bind(this);
-        this.toggleServer= this.toggleServer.bind(this);
-        this.resetServer = this.resetServer.bind(this);
+        this.onClick = this.onClick.bind(this);
     };
 
     serverChange(e){
-        serverURL = e.target.value;
-        console.log(serverURL)
+        let myServer = e.target.value;
+        this.setState({server:myServer});
     }
 
-    toggleServer(){
-        this.setState({collapse: !this.state.collapse})
-    }
-
-    resetServer(){
-        serverURL = 'http://' + location.host;
-        document.getElementById("newServer").value = serverURL;
-        console.log(serverURL)
+    onClick(){
+        let aServer = this.state.server;
+        if (aServer === "" || null){
+            aServer = 'http://' + location.host;
+        }
+        serverURL = aServer;
+        this.props.updateConfig();
     }
 
     render(){
@@ -39,11 +38,8 @@ class SetServer extends React.Component {
                         <InputGroup>
                             <InputGroupAddon addonType={"prepend"}>URL</InputGroupAddon>
                             <Input id="newServer" defaultValue={serverURL}  onChange={(e)=> this.serverChange(e)}/>
-                            <InputGroupAddon addonType={"append"}><Button onClick={this.resetServer}>Reset Default</Button></InputGroupAddon>
+                            <InputGroupAddon addonType={"append"}><Button onClick={this.onClick}>Set Server</Button></InputGroupAddon>
                         </InputGroup>
-                        <CardText>
-                            <small className="text-muted">The server updates automatically as you type. If you wish to restore the default, hit Reset Default.</small>
-                        </CardText>
                     </CardBody>
                 </Card>
             </div>
@@ -53,30 +49,6 @@ class SetServer extends React.Component {
 
 export default SetServer;
 
-/*
-    render(){
-        return(
-            <div>
-                <Button onClick={this.toggleServer} className='btn-dark' block>Choose a Server</Button>
-                <Collapse isOpen={this.state.collapse}>
-                    <Card>
-                        <CardBody>
-                            <InputGroup>
-                                <InputGroupAddon addonType={"prepend"}> Server URL</InputGroupAddon>
-                                <Input id="newServer" defaultValue={serverURL}  onChange={(e)=> this.serverChange(e)}/>
-                                <InputGroupAddon addonType={"append"}><Button onClick={this.resetServer}>Reset Server</Button></InputGroupAddon>
-                            </InputGroup>
-                            <CardText>
-                                <small className="text-muted">The server updates automatically as you type. If you wish to restore the default, hit Reset Server.</small>
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                </Collapse>
-            </div>
-
-        )
-    }
- */
 
 
 

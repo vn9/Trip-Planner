@@ -1,7 +1,12 @@
-import './enzyme.config.js'                   // (1)
+import './enzyme.config.js'
 import React from 'react'
-import { mount } from 'enzyme'              // (2)
+import { mount, shallow } from 'enzyme'
 import Search from '../src/components/Application/Search'
+
+const jest = require('jest-mock');
+
+const updateTripSpy = jest.fn();
+const updateMyTrip = updateTripSpy;
 
 const startProps = {
     'config': {
@@ -37,19 +42,10 @@ test('Filter checkboxes get made correctly test', testCheckBoxes);
 /*--------------------------------------------------------------------------*/
 
 
-const Props2 = {
-    'config': {'filters': []},
-    'trip': {
-        'type': "trip", 'title': "Summer Vacation",
-        'options': {'units': "miles", 'unitName': "", 'unitRadius': 0.0000, 'optimization': ""},
-        'places': [], 'distances': [],
-        'map': '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
-    },
-};
-
 function testResults() {
+    startProps.config.filters= [];
     const results = mount((
-        <Search config={Props2.config} trip={Props2.trip}/>
+        <Search config={startProps.config} trip={startProps.trip}/>
     ));
 
     results.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
@@ -66,3 +62,79 @@ function testResults() {
 }
 
 test('Test that results are formed', testResults);
+
+/*--------------------------------------------------------------------------*/
+
+function testChanges() {
+    startProps.config.filters= [];
+    const results = mount((
+        <Search config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    results.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
+            places: [{'id': 'den', 'name': 'Denver', 'latitude': 39.73, 'longitude': -104.99},
+                {'id': 'bldr', 'name': 'Boulder', 'latitude': 40.01, 'longitude': -105.27}]
+        }});
+
+    results.find('#Limit').first().simulate('change', {target: {value: 5}});
+    results.find('#Limit').first().simulate('change', {target: {value: ""}});
+    results.find('#match').first().simulate('change', {target: {value: "barcelona"}});
+
+}
+
+test('Test limit and match changes', testChanges);
+
+/*--------------------------------------------------------------------------*/
+
+function testCheck() {
+    startProps.config.filters= [{"name": "continents.name", "values":['Asia']}];
+
+    const results = mount((
+        <Search config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    results.find('#Asia').first().simulate('change');
+}
+
+test('Test onCheck', testCheck);
+
+/*--------------------------------------------------------------------------*/
+
+function testToggle() {
+    const search = mount((
+        <Search config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    search.setState({collapse: false});
+
+    search.find('Button').at(0).simulate('click');
+
+}
+
+test('Test Toggle', testToggle);
+
+/*--------------------------------------------------------------------------*/
+
+const mySearch = shallow(<Search config={startProps.config} trip={startProps.trip} updateTrip={updateMyTrip}/>);
+
+mySearch.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
+        places: [{'id': 'den', 'name': 'Denver', 'latitude': 39.73, 'longitude': -104.99},
+            {'id': 'bldr', 'name': 'Boulder', 'latitude': 40.01, 'longitude': -105.27}]
+    }});
+
+let myPlace = JSON.stringify({"id": "den", "name": "Denver", "latitude": "39.73", "longitude": "-104.99"});
+let myPlaces = mySearch.state.places;
+
+describe("Check Add Buttons", ()=> {
+        it("Should check individual add", ()=> {
+            mySearch.find('#den').first().simulate('click',
+                {target: {value: myPlace}});
+            expect(updateTripSpy).toHaveBeenCalled();
+        });
+    it("Should check the add All", ()=> {
+        mySearch.find('#addAll').first().simulate('click',
+            {target: {value: myPlaces}});
+        expect(updateTripSpy).toHaveBeenCalled();
+    });
+    }
+);

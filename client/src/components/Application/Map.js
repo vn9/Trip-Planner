@@ -22,20 +22,21 @@ class Map extends Component {
 
 
     render() {
-         if(this.props.trip.distances.length === 0){
+        let trip = this.props.trip;
+         if(trip.distances.length === 0){
             return(
                 <div>
                     <Alert align="center" color={"danger"}>Plan Your Trip in Order to Get Your Map</Alert>
                 </div>
             )
-        } else if(this.props.options.map === "kml" && this.props.trip.distances.length > 0) { return(
+        } else if(trip.options.map === "kml" && trip.distances.length > 0) { return(
                 <div>
                     <Alert align="center" color={"success"}>Your Map is Ready for Download!</Alert>
                 </div>
             )
         } else{
             let svgHeader='data:image/svg+xml;charset=UTF-8,';
-            let svgData = this.props.trip.map;
+            let svgData = trip.map;
             return (
                 <div>
                     <Button onClick={this.toggle} className='btn-dark' block>Map</Button>

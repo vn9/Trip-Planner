@@ -49,3 +49,35 @@ test('Check to see if table gets generated correctly', () => {
     expect(actual).toEqual(expected);
 });
 
+/*--------------------------------------------------------------------------*/
+
+/* Test example using an anonymous function */
+test('Check to see if table gets generated correctly', () => {
+
+    const table = mount((   // (1)
+        <ItineraryForm config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    table.find("[name='latitude']").first().simulate('change');
+    table.find("[name='showLegDist']").first().simulate('change');
+});
+
+/*--------------------------------------------------------------------------*/
+
+function testToggle() {
+    const table = mount((
+        <ItineraryForm config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    table.setState({collapse: false});
+
+    table.find('Button').at(0).simulate('click');
+}
+
+test('Test Toggle', testToggle);
+
+
+
+
+
+
