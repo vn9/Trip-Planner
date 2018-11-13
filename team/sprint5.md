@@ -108,7 +108,7 @@ Epics planned for this sprint.
 
 #### What we changed this sprint
 
-*Articulate specifically what you will do differently based on the retrospective from the previous sprint before the sprint starts.*
+*We will do a better job at focusing on taking down one/two epics at a time instead of trying to work on them all at once.*
 
 #### What we did well
 
