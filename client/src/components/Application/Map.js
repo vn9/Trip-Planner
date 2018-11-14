@@ -1,53 +1,72 @@
 import React, {Component} from 'react';
-import {Button, Collapse, Alert} from "reactstrap";
+import {Button, Collapse, Alert, Card} from "reactstrap";
+import { Map, Marker, TileLayer, Polyline} from 'react-leaflet'
 
 
 /* Map obtains and renders the map for the trip.
  * Might be an SVG or KML contained in the server response.
  */
-class Map extends Component {
-    constructor(props){
+class myMap extends Component {
+    constructor(props) {
         super(props);
         this.state = {
-            collapse: true,
+            lat: 0.00,
+            lng: -104.99,
+            zoom: 2,
         };
-
-        this.toggle = this.toggle.bind(this);
-
+        this.makeLine = this.makeLine.bind(this);
+        this.getCordPairs = this.getCordPairs.bind(this);
     }
 
-    toggle(){
-        this.setState({collapse: !this.state.collapse})
+    getCordPairs() {
+        let myPlaces = this.props.trip.places;
+        let coordinateList = [];
+        for (let i = -1; i < myPlaces.length; i++) {
+            let place = myPlaces[(i + 1) % myPlaces.length];
+            let coord = [parseFloat(place.latitude), parseFloat(place.longitude)];
+            coordinateList.push(coord);
+        }
+        return(coordinateList);
     }
 
+    makeLine() {
+        let cordList = this.getCordPairs();
+        let path = <Polyline positions={cordList} color={"purple"}/>;
+        return(path)
+    }
 
     render() {
-        let trip = this.props.trip;
-         if(trip.distances.length === 0){
+        let svgHeader='data:image/svg+xml;charset=UTF-8,';
+        let svgData = this.props.trip.map;
+
+        if (this.props.trip.distances.length === 0){
             return(
                 <div>
-                    <Alert align="center" color={"danger"}>Plan Your Trip in Order to Get Your Map</Alert>
+                    <Map id={"map"} center={[this.state.lat, this.state.lng]} zoom={this.state.zoom}>
+                        <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                                   url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
+                    </Map>
                 </div>
             )
-        } else if(trip.options.map === "kml" && trip.distances.length > 0) { return(
-                <div>
-                    <Alert align="center" color={"success"}>Your Map is Ready for Download!</Alert>
+        } else {
+            return(
+            <div>
+                <Map id={"map"} center={[this.state.lat, this.state.lng]} zoom={this.state.zoom}>
+                    <TileLayer
+                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
+                    {this.makeLine()}
+                </Map>
+                <div style={{display: "none"}}>
+                    <img className="figure-img img-fluid" alt="Map"
+                         src={svgHeader.concat(svgData)} width="100%" height="100%"/>
                 </div>
-            )
-        } else{
-            let svgHeader='data:image/svg+xml;charset=UTF-8,';
-            let svgData = trip.map;
-            return (
-                <div>
-                    <Button onClick={this.toggle} className='btn-dark' block>Map</Button>
-                    <Collapse isOpen={this.state.collapse}>
-                        <img className="figure-img img-fluid" alt="Map"
-                             src={svgHeader.concat(svgData)} width="100%" height="100%"/>
-                    </Collapse>
-                </div>
-            )
+            </div>);
+
         }
     }
+
 }
 
-export default Map;
+export default myMap;
+
