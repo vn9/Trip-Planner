@@ -49,14 +49,14 @@
 
 Epics planned for this sprint.
 
-* *##TripCo: All code must be tested: minimum 50% coverage, preferred 70% coverage*
-* * #419 User: I want an interactive map*
-* * #488 User: I want to know who to thank for this application*
-* * #487 User: Make the system easier to use*
-* * #363 User: I want the shortest trips possible*
-* * #362 User: I want trip planning to be fast*
-* * #361 User: I want to view my trip in other tools*
-* * #124 TripCo: All code shall be clean!*
+* *#205 TripCo: All code must be tested: minimum 50% coverage, preferred 70% coverage*
+* *#419 User: I want an interactive map*
+* *#488 User: I want to know who to thank for this application*
+* *#487 User: Make the system easier to use*
+* *#363 User: I want the shortest trips possible*
+* *#362 User: I want trip planning to be fast*
+* *#361 User: I want to view my trip in other tools*
+* *#124 TripCo: All code shall be clean!*
 
 ## Metrics
 
