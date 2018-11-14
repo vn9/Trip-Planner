@@ -36,9 +36,6 @@ class myMap extends Component {
     }
 
     render() {
-        let svgHeader='data:image/svg+xml;charset=UTF-8,';
-        let svgData = this.props.trip.map;
-
         if (this.props.trip.distances.length === 0){
             return(
                 <div>
@@ -57,10 +54,6 @@ class myMap extends Component {
                         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'/>
                     {this.makeLine()}
                 </Map>
-                <div style={{display: "none"}}>
-                    <img className="figure-img img-fluid" alt="Map"
-                         src={svgHeader.concat(svgData)} width="100%" height="100%"/>
-                </div>
             </div>);
 
         }
