@@ -27,7 +27,8 @@ public class Config {
         Optimization opt1 = new Optimization("none","The trip is not optimized.");
         Optimization opt2 = new Optimization("short","Nearest neighbor.");
         Optimization opt3 = new Optimization("shorter","2-opt.");
-        this.optimization = Arrays.asList(opt1, opt2, opt3);
+        Optimization opt4 = new Optimization("shortest","3-opt.");
+        this.optimization = Arrays.asList(opt1, opt2, opt3, opt4);
 
         this.attributes = Arrays.asList("id", "name", "latitude", "longitude", "municipality", "country", "continent");
 

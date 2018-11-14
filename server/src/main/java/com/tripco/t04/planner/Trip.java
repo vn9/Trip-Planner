@@ -45,9 +45,10 @@ public class Trip {
 
     private void kOpt(){
         if(options.optimization.equals("short")){ nearestNeighbor(); }
-        else if (options.optimization.equals("shorter")){
-            opt2(); //follow meeeeeeeee
-        }
+        else if (options.optimization.equals("shorter"))
+            opt2();
+        else if (options.optimization.equals("shortest"))
+            opt3();
     }
 
     private void whichMap(){
@@ -309,6 +310,11 @@ public class Trip {
           minDist = iterate(candidate, minDist, latice);
       }
       return minDist;
+  }
+
+  //3 opt
+  private void opt3 () {  //implement this method to realize the 3opt
+
   }
 }
 
