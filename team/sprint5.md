@@ -12,6 +12,10 @@
 * Increment deployed for demo and testing as server-5.0.jar on the production server.
 * Increment release `v5.0` created on GitHub with appropriate version number and name.
 * Epics and Tasks updated in Zenhub.
+* Interactive Map and ability to save kml/svg files
+* 3-opt works and all opts are fast
+* There is an about page with information
+* The client looks sleek and is easy to use
 
 
 ## Policies
@@ -45,17 +49,22 @@
 
 Epics planned for this sprint.
 
-* *## epic title: description*
-*
-
+* *##TripCo: All code must be tested: minimum 50% coverage, preferred 70% coverage*
+* * #419 User: I want an interactive map*
+* * #488 User: I want to know who to thank for this application*
+* * #487 User: Make the system easier to use*
+* * #363 User: I want the shortest trips possible*
+* * #362 User: I want trip planning to be fast*
+* * #361 User: I want to view my trip in other tools*
+* * #124 TripCo: All code shall be clean!*
 
 ## Metrics
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *total* | *total* |
-| Tasks |  *total*   | *total* | 
-| Story Points |  *total*  | *total* | 
+| Epics | *28* | *total* |
+| Tasks |  *20*   | *total* | 
+| Story Points |  *28*  | *total* | 
 
 *Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
 
@@ -78,8 +87,8 @@ Epics planned for this sprint.
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* *## epic title: comments*
-* 
+* * #205 TripCo: All code must be tested: minimum 50% coverage, preferred 70% coverage*
+*
 
 #### Incomplete Epics in Sprint Backlog 
 
