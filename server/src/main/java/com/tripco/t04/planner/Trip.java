@@ -44,10 +44,15 @@ public class Trip {
   }
 
     private void kOpt(){
-        if(options.optimization.equals("short")){ nearestNeighbor(); }
+      Optimize opt = null;
+      int[][] latice = distanceLatice();
+        if(options.optimization.equals("short")){ opt = new NearestNeighbor(places, latice); }
         else if (options.optimization.equals("shorter")){
-            opt2(); //follow meeeeeeeee
+            opt = new TwoOpt(places, latice); {
+            } //follow meeeeeeeee
         }
+        if(opt != null)
+            places = opt.begin();
     }
 
     private void whichMap(){
@@ -147,41 +152,6 @@ public class Trip {
       return dist;
   }
 
-  private void cleanUp ( int[] route, int start){ // Set the array to the new starting point
-      for (int i = 0; i < route.length; i++) {
-          route[i] = i;
-      }
-      swap(route, 0, start);
-  }
-
-  private void nearestNeighbor () {
-      int[] best = new int[places.size()]; //array of indices that are the "best" route
-      int minTotal = Integer.MAX_VALUE; //total distance for the best array
-      int[][] latice = distanceLatice(); //matrix of all the distances
-      int[] candidate = new int[best.length];
-      //System.out.println(Arrays.toString(latice));
-      for (int newStart = 0; newStart < places.size(); newStart++) {
-          cleanUp(candidate, newStart);
-          int contender = bestCandidate(candidate, latice);
-          if (contender < minTotal) {
-              minTotal = contender;
-              int[] temp = candidate;
-              candidate = best;
-              best = temp;
-          }
-      }
-      ArrayList<Place> nearestNei = new ArrayList<>(best.length);
-      for (int index : best) {
-          nearestNei.add(places.get(index));
-      }
-      places = nearestNei;
-  }
-
-  private void swap ( int[] arr, int firstIndex, int secondIndex){
-      int firstValue = arr[firstIndex];
-      arr[firstIndex] = arr[secondIndex];
-      arr[secondIndex] = firstValue;
-  }
 
   private int[][] distanceLatice () {
       int[][] latice = new int[places.size()][places.size()];
@@ -203,113 +173,6 @@ public class Trip {
       return latice;
   }
 
-  private int bestCandidate ( int[] candidate, int[][] latice){
-      int Total = 0;
-      for (int i = 1; i < candidate.length; i++) {//for all start points
-          int nearestIndex = neighbor(candidate, i, latice);
-          int dist = latice[candidate[i - 1]][candidate[nearestIndex]];
-          Total += dist;
-          swap(candidate, i, nearestIndex);
-      }
-      //System.out.println(bestTotal);
-      Total = Total + latice[candidate[0]][candidate[candidate.length - 1]];
-      return Total;
-  }
-
-  private int neighbor ( int[] indices, int from, int[][] latice){
-      int min = Integer.MAX_VALUE;
-      int j = -1;
-      for (int i = from; i < places.size(); i++) {
-          int distance = latice[indices[from - 1]][indices[i]];
-          if (distance < min) {
-              min = distance;
-              j = i;
-          }
-      }
-      if (j == -1) {
-          j = 0;
-      }
-      return j; //returns index of nearest neighbor
-  }
-
-  private void optReverse ( int[] candidate, int i1, int k){
-      int start = Math.min(i1, k);
-      int end = Math.max(i1, k);
-      while (start < end) { //copied from Dave's code. keep swapping until all swaps are done
-          swap(candidate, start++, end--); //actual swapping
-      }
-  }
-
-  private int swapAttempt ( int[] candidate, int index1, int index2, int[][] latice){
-      int c1 = candidate[index1 - 1]; // c1
-      int c2 = candidate[index1]; // c2
-      int c3 = candidate[index2]; // c3
-      int c4 = candidate[(index2 + 1) % candidate.length]; // c4
-      // latice[c1][c2] distance between point 1 and the point that is pointing towards it
-      // latice[c3][c4] distance between point 2 and the point next
-      // THE MOD IS FOR ONLY ONE CASE, WHERE WE ARE AT THE END AND NEED A LOOP
-      int candDist = latice[c1][c2] + latice[c3][c4];
-      // latice[c1][c3] the distance between point pointing to point1 and point 2
-      // latice[c2][c4] distance between point 1 and point that point 2 is pointing towards
-      int newDist = latice[c1][c3] + latice[c2][c4];
-      if (candDist > newDist) {
-          //if candDist is greater than newDist, there is a cross.
-          // Draw a picture if you don't understand this line. Really useful
-          optReverse(candidate, index1, index2); //reveres them
-          return candDist - newDist;
-      } else {
-          return 0;
-      }
-  }
-
-  private int iterate ( int[] candidate, int minDist, int[][] latice){
-      for (int i = 1; i < candidate.length - 1; i++) {
-          for (int j = i + 1; j < candidate.length; j++) {
-              //nested for loop in the psuedo code given from Dave.
-              // if there is a swap, check if we are allowed to swap
-              minDist -= swapAttempt(candidate, i, j, latice);
-          }
-      }
-      return minDist;
-  }
-
-  // 2 opt is an optimazation that uses nearestNeighbor to ensure no crosses exist
-  private void opt2 () {
-      int[] best = new int[places.size()]; //array of indices that are the "best" route
-      int minTotal = Integer.MAX_VALUE; //total distance for the best array
-      int[][] latice = distanceLatice(); //matrix of all the distances
-      int[] candidate = new int[best.length];
-      //System.out.println(Arrays.toString(latice));
-      for (int newStart = 0; newStart < places.size(); newStart++) {
-          //As you can see up until this point we are identical to nearest neighbor
-          cleanUp(candidate, newStart);
-          int contender = twoOpt(candidate, latice); //actual 2opt calculations will begin
-          if (contender < minTotal) {
-              minTotal = contender;
-              int[] temp = candidate;
-              candidate = best;
-              best = temp;
-          }
-      }
-      ArrayList<Place> nearestNei = new ArrayList<>(best.length);
-      for (int index : best) {
-          nearestNei.add(places.get(index));
-      }
-      places = nearestNei;
-  }
-
-  private int twoOpt ( int[] candidate, int[][] latice){
-      int lastDist = Integer.MAX_VALUE;
-      //runs 1opt. -> best = nn(0) in picture from Dave's office
-      int minDist = bestCandidate(candidate, latice);
-      while (lastDist != minDist) {
-          //After running 1-opt for some certain start points, keep improving until we can't anymore
-          lastDist = minDist;
-          //Iterate through the candidate and returns the minimum total distance
-          minDist = iterate(candidate, minDist, latice);
-      }
-      return minDist;
-  }
 }
 
 
