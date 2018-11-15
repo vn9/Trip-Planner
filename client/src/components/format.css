@@ -155,3 +155,11 @@ code {
 .pagefade-exit.pagefade-exit-active {
     opacity:0;
 }
+
+/* MAP */
+
+.leaflet-container {
+  height: 500px;
+  width: 100%;
+  margin: auto;
+}
