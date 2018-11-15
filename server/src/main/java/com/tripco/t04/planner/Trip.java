@@ -42,12 +42,15 @@ public class Trip {
   }
 
   private void kOpt(){
+      Optimize opt = null;
       if(options.optimization.equals("short")){ 
-        nearestNeighbor(); 
+        opt = new NearestNeighbor(places, distanceLatice());
       }
       else if (options.optimization.equals("shorter")){
-          opt2(); //follow meeeeeeeee
+        opt = new TwoOpt(places, distanceLatice()); //follow meeeeeeeee
       }
+      if(opt != null)
+        places = opt.begin();
   }
 
   private void whichMap(){
