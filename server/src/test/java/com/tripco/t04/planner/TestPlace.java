@@ -5,9 +5,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 import static org.junit.Assert.*;
 import java.io.ByteArrayOutputStream;
 
@@ -22,7 +19,8 @@ public class TestPlace {
   // Setup to be done before every test in TestPlan
   @Before
   public void initialize() {
-    place = new Place("dnvr","Denver", "39.5", "-104.5", "Colorado", "United States of America", "North America");
+    place = new Place("dnvr","Denver", "39.5", "-104.5",
+        "Colorado", "United States of America", "North America");
     //place.id = "dnvr";
     //place.name="Denver";
   }
@@ -33,19 +31,6 @@ public class TestPlace {
     String name = "Denver";
     assertEquals(place.id, id);
     assertEquals(place.name,name);
-  }
-
-  @Test
-  public void testGet(){
-    // corver the invaild input
-    place = new Place("dnvr","Denver", "-390.5", "-104.5", "Colorado", "United States of America", "North America");
-    assertEquals(-999.0, place.getLat(),0.0);
-    place = new Place("dnvr","Denver", "-39.5", "-1040.5", "Colorado", "United States of America", "North America");
-    assertEquals(-999.0, place.getLong(),0.0);
-    place = new Place("dnvr","Denver", "-40.01", "-1040.5", "Colorado", "United States of America", "North America");
-    assertEquals(-40.01, place.getLat(), 0.0);
-    place = new Place("dnvr","Denver", "-40.01", "-100.5", "Colorado", "United States of America", "North America");
-    assertEquals(-100.5, place.getLong(), 0.0);
   }
 
 }
