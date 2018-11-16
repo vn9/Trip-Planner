@@ -9,6 +9,7 @@ import TwoPtCalculator from './twoPointCalc';
 import SetServer, {serverURL} from './SetServer';
 import Search from './Search';
 import Optimization from './Optimization';
+import MapType from './MapType'
 
 
 import {get_config, request} from '../../api/api';
@@ -180,6 +181,7 @@ class Application extends Component {
                         <ModalHeader>Advanced Options</ModalHeader>
                         <ModalBody>
                             <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                            <MapType options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
                             <SetServer config={this.state.config} updateConfig={this.updateConfig}/>
                         </ModalBody>
                         <ModalFooter>
