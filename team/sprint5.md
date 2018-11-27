@@ -92,6 +92,7 @@ Epics planned for this sprint.
 | Date | Tasks closed  | Tasks in progress | Impediments |
 | :--- | :--- | :--- | :--- |
 | *11/14* | *None* | *#392, #394, #492, #493, #494, #495, #496, #497, #499* | *None* | 
+| *11/26* | *#392, #492, #498 #499*| *#370, #389, #493, #495, #496, #497, #504, #506, #508, #509* | *Implement 3-opt and changing the user interface without having duplicated codes will be our next challengings* | 
 
 *Add a new row for the scrum session after each lecture. *
 
