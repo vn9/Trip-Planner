@@ -9,7 +9,8 @@ import TwoPtCalculator from './twoPointCalc';
 import SetServer, {serverURL} from './SetServer';
 import Search from './Search';
 import Optimization from './Optimization';
-import MapType from './MapType'
+import MapType from './MapType';
+import ManualAdd from './ManualAdd';
 
 
 import {get_config, request} from '../../api/api';
@@ -196,11 +197,14 @@ class Application extends Component {
     createTrip(){
         let tripBuilder =
             <Row>
-                <Col md={6}>
+                <Col md={4}>
                     <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip} clearTrip={this.clearTrip}/>
                 </Col>
-                <Col md={6}>
+                <Col md={4}>
                     <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
+                </Col>
+                <Col md={4}>
+                    <ManualAdd config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
                 </Col>
             </Row>;
 
