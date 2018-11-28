@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardBody, Button} from 'reactstrap'
+import {CardBody, Button} from 'reactstrap'
 
 export default class MapType extends Component{
     constructor(props) {
@@ -30,12 +30,10 @@ export default class MapType extends Component{
         );
 
         return(
-            <Card>
                 <CardBody>
-                    <p align="Center">Select Your Map Type</p>
+                    <h5 align="Center">Select Your Map Type</h5>
                     {buttons}
                 </CardBody>
-            </Card>
         );
     }
 }
