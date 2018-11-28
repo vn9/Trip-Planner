@@ -31,16 +31,3 @@ function testToggle() {
 }
 
 test('Test toggle', testToggle);
-
-/*--------------------------------------------------------------------------*/
-
-const upload = mount(<UploadFile config={startProps.config} trip={startProps.trip} updateTrip={updateMyTrip}/>);
-
-upload.setState({myPlace: {}});
-
-describe("Check Add Manual", ()=> {
-    it("Check Title Change", ()=> {
-        upload.find('#title').first().simulate('change', {target: {value: "Road Trip"}});
-        expect(updateTripSpy).toHaveBeenCalled();
-    });
-});

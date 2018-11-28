@@ -44,9 +44,6 @@ export default class UploadFile extends Component {
                 <Collapse isOpen={this.state.collapse}>
                     <Card>
                         <CardBody>
-                            <p align="Center">Name Your Trip</p>
-                            <Input id={"title"} placeholder="Name Your Trip" value={this.props.trip.title}
-                                   onChange={(event)=>this.props.updateTrip('title', event.target.value)}/><br/>
                             <p align="Center"> Upload Your File </p>
                             <Input title="upload" type="file" id="fileInput" onChange={(event)=>this.loadFile(event)}/>
                         </CardBody>
