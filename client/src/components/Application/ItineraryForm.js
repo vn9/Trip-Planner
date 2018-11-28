@@ -6,7 +6,6 @@ class ItineraryForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            collapse: true,
             attributes: [],
             myAttributes: [],
             DistanceToNext: true,
@@ -22,7 +21,6 @@ class ItineraryForm extends Component {
         this.tableHeader = this.tableHeader.bind(this);
         this.tableGenerator = this.tableGenerator.bind(this);
         this.reverseTable = this.reverseTable.bind(this);
-        this.toggle = this.toggle.bind(this);
         this.onCheck = this.onCheck.bind(this);
         this.getActiveAttributes = this.getActiveAttributes.bind(this);
         this.makeCheckBoxes = this.makeCheckBoxes.bind(this);
@@ -214,10 +212,7 @@ class ItineraryForm extends Component {
 
     render() {
         return(
-            <div id="itinerary">
-                <Button onClick={this.toggle} className='btn-dark' block>
-                    Itinerary</Button>
-                <Collapse isOpen={this.state.collapse}>
+            <div id="itinerary"><br/>
                     <h4 align="Center">{this.tripTitle()}</h4>
                     <div style={{'height': '300px', 'overflow':'scroll',
                         'display':'block', 'width':'100%'}} align="center">
@@ -228,7 +223,6 @@ class ItineraryForm extends Component {
                     <Form>{this.makeCheckBoxes()}
                     </Form>
                     <Button id="reverse-button" onClick={this.reverseTable}>Reverse</Button>
-                </Collapse>
             </div>
         )
     }

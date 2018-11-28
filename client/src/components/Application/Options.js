@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {CardBody, Input, Form, Button} from 'reactstrap'
+import {Input, Form, Button} from 'reactstrap'
 
 /* Options allows the user to change the parameters for planning
  * and rendering the trip map and itinerary.
@@ -35,7 +35,7 @@ class Options extends Component{
     );
 
     return(
-        <CardBody>
+        <div><br/>
             <h5 align="Center">Select Your Units</h5>
             {buttons}<br/>
             {this.state.userDefinedOn && (
@@ -50,7 +50,7 @@ class Options extends Component{
                                  event.target.value)}/>
                 </Form>)
             }
-        </CardBody>
+        </div>
     );
   }
 }

@@ -9,7 +9,8 @@ const updateServerSpy = jest.fn();
 const updateServer = updateServerSpy;
 
 const startProps = {
-    'config': { 'units': ['miles', 'kilometers', 'nautical miles', 'users defined'] },
+    'config': { 'units': ['miles', 'kilometers', 'nautical miles',
+            'users defined'] },
     'options': { 'unit': 'miles' }
 };
 
@@ -20,7 +21,8 @@ function testServer() {
 
     server.setState({server: 'http://localhost:8088'});
 
-    server.find('Input').simulate('change', {target: {value: "http://black-bottle.cs.colostate.edu:31400" }});
+    server.find('Input').simulate('change', {target:
+            {value: "http://black-bottle.cs.colostate.edu:31400" }});
 
 }
 
@@ -28,7 +30,8 @@ test('Test the Server Change', testServer);
 
 /*--------------------------------------------------------------------------*/
 
-const myServer = shallow(<SetServer config={startProps.config} updateConfig={updateServer}/>);
+const myServer = shallow(<SetServer config={startProps.config}
+                                    updateConfig={updateServer}/>);
 
 myServer.setState({server: ""});
 

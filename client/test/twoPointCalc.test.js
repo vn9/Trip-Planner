@@ -43,22 +43,6 @@ function testChange() {
 }
 
 test('Test Change Functions', testChange);
-
-/*--------------------------------------------------------------------------*/
-
-function testToggle() {
-    const calculator = mount((
-        <TwoPtCalculator config={startProps.config} options={startProps.options}/>
-    ));
-
-    calculator.setState({collapse: false});
-
-    calculator.find('Button').at(0).simulate('click');
-
-}
-
-test('Test Toggle', testToggle);
-
 /*--------------------------------------------------------------------------*/
 
 

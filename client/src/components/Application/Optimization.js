@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {CardBody, Button} from 'reactstrap'
+import {Button} from 'reactstrap'
 
 class Optimization extends Component{
     constructor(props) {
@@ -23,10 +23,10 @@ class Optimization extends Component{
         );
 
         return(
-                <CardBody>
-                    <h5 align="Center">Select Your Level of Optimization</h5>
-                    {buttons}
-                </CardBody>
+            <div>
+                <h5 align="Center">Select Your Level of Optimization</h5>
+                {buttons}
+            </div>
         );
     }
 }

@@ -154,15 +154,13 @@ export default class Application extends Component {
 
     createOptions(){
         let options =
-            <Card>
-                <CardBody>
-                    <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}
+            <div>
+                <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}
                                 trip={this.state.trip} updateTrip={this.updateTrip}/>
-                    <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-                    <MapType options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-                    <SetServer config={this.state.config} updateConfig={this.updateConfig}/>
-                </CardBody>
-            </Card>;
+                <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                <MapType options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                <SetServer config={this.state.config} updateConfig={this.updateConfig}/>
+            </div>;
         return(options)
     }
 
@@ -189,7 +187,7 @@ export default class Application extends Component {
 
     smallTabs(){
         return(
-            <CardBody>
+            <div>
                 {this.myNav()}
                 <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade show active" id="nav-upload"
@@ -209,7 +207,7 @@ export default class Application extends Component {
                         {this.createOptions()}
                     </div>
                 </div>
-            </CardBody>
+            </div>
         );
     }
 
