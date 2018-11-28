@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody} from 'reactstrap';
+import {Container, Button, Modal, ModalBody, ModalFooter, ModalHeader, Card, CardBody} from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -12,9 +12,7 @@ import Optimization from './Optimization';
 import MapType from './MapType';
 import ManualAdd from './ManualAdd';
 
-
 import {get_config, request} from '../../api/api';
-
 
 /* Renders the application.
  * Holds the destinations and options state shared with showName: true,
@@ -38,9 +36,8 @@ class Application extends Component {
                 },
                 places: [],
                 distances: [],
-                map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>'
+                map: '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"></g></svg>'
             },
-
         };
         this.bindFunctions = this.bindFunctions.bind(this);
     }
@@ -52,18 +49,15 @@ class Application extends Component {
         this.updateOptions = this.updateOptions.bind(this);
         this.saveTFFI = this.saveTFFI.bind(this);
         this.saveMap = this.saveMap.bind(this);
-        this.toggle = this.toggle.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.createOptions = this.createOptions.bind(this);
-        this.createTrip = this.createTrip.bind(this);
         this.clearTrip = this.clearTrip.bind(this);
         this.updateConfig = this.updateConfig.bind(this);
     }
 
-
     componentWillMount() {
         this.updateConfig();
-        }
+    }
 
     updateConfig() {
         if(serverURL === 'http://localhost:31428'){
@@ -113,9 +107,6 @@ class Application extends Component {
         this.setState({modal: !this.state.modal})
     }
 
-    toggle(){
-        this.setState({collapse: !this.state.collapse})
-    }
 
     clearTrip(){
         let myTrip = this.state.trip;
@@ -128,7 +119,6 @@ class Application extends Component {
         this.setState(myTrip);
 
     }
-
 
     /* Saves the map and itinerary to the local file system. */
 
@@ -173,72 +163,147 @@ class Application extends Component {
 
     createOptions(){
         let options =
-            <Card>
-                <CardBody>
-                    <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}
-                                trip={this.state.trip} updateTrip={this.updateTrip}/>
-                    <Button size="sm" color="Link" onClick={this.toggleModal}>Advanced Options</Button>
-                    <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
-                        <ModalHeader>Advanced Options</ModalHeader>
+            <CardBody>
+                <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}
+                         trip={this.state.trip} updateTrip={this.updateTrip}/>
+                <Button size="sm" color="Link" onClick={this.toggleModal}>Advanced Options</Button>
+                <Modal isOpen={this.state.modal} toggle={this.toggleModal}>
+                    <ModalHeader>Advanced Options</ModalHeader>
                         <ModalBody>
                             <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
                             <MapType options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
                             <SetServer config={this.state.config} updateConfig={this.updateConfig}/>
                         </ModalBody>
-                        <ModalFooter>
-                            <Button onClick={this.toggleModal}>Done</Button>
-                        </ModalFooter>
-                    </Modal>
-                </CardBody>
-            </Card>;
+                    <ModalFooter>
+                        <Button onClick={this.toggleModal}>Done</Button>
+                    </ModalFooter>
+                </Modal>
+            </CardBody>;
         return(options)
     }
 
-    createTrip(){
-        let tripBuilder =
-            <Row>
-                <Col md={4}>
-                    <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip} clearTrip={this.clearTrip}/>
-                </Col>
-                <Col md={4}>
-                    <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
-                </Col>
-                <Col md={4}>
-                    <ManualAdd config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
-                </Col>
-            </Row>;
+    myNav(){
+        return(
+            <nav>
+                <div className="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a className="nav-item nav-link active" id="nav-upload-tab"
+                       data-toggle="tab" href="#nav-upload" role="tab"
+                       aria-controls="nav-upload" aria-selected="true">Upload File</a>
+                    <a className="nav-item nav-link" id="nav-manual-tab"
+                       data-toggle="tab" href="#nav-manual" role="tab"
+                       aria-controls="nav-manual" aria-selected="false">Manual Add</a>
+                    <a className="nav-item nav-link" id="nav-search-tab"
+                       data-toggle="tab" href="#nav-search" role="tab"
+                       aria-controls="nav-search" aria-selected="false">Search</a>
+                    <a className="nav-item nav-link" id="nav-options-tab"
+                       data-toggle="tab" href="#nav-options" role="tab"
+                       aria-controls="nav-options" aria-selected="false">Options</a>
+                </div>
+            </nav>
+        );
+    }
 
-        return(tripBuilder)
+    smallTabs(){
+        return(
+            <CardBody>
+                {this.myNav()}
+                <div className="tab-content" id="nav-tabContent">
+                    <div className="tab-pane fade show active" id="nav-upload"
+                         role="tabpanel" aria-labelledby="nav-upload-tab">
+                        <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip} clearTrip={this.clearTrip}/>
+                    </div>
+                    <div className="tab-pane fade" id="nav-manual" role="tabpanel"
+                         aria-labelledby="nav-manual-tab">
+                        <ManualAdd config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
+                    </div>
+                    <div className="tab-pane fade" id="nav-search" role="tabpanel"
+                         aria-labelledby="nav-search-tab">
+                        <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
+                    </div>
+                    <div className="tab-pane fade" id="nav-options" role="tabpanel"
+                         aria-labelledby="nav-options-tab">
+                        {this.createOptions()}
+                    </div>
+                </div>
+            </CardBody>
+        );
+    }
+
+    planPill(){
+        let pill =
+            <Card>
+                <CardBody>
+                    <Info/>
+                    <Map trip={this.state.trip}/>
+                    <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config}/><br/>
+                    <div align="center">
+                        <Button color="primary" type="Submit" onClick={this.planTrip}>Plan Trip</Button>{' '}
+                        <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
+                        <Button onClick={this.saveMap} className="btn-dark">Save Map</Button>{' '}
+                        <Button className="btn-dark" onClick={this.clearTrip}>Clear</Button>
+                    </div><br/>
+                    {this.smallTabs()}
+                </CardBody>
+            </Card>;
+        return(pill);
+    }
+
+    generateTabs(){
+        let tabs =
+            <ul className="nav nav-pills mb-3" id="pills-tab"
+                role="tablist">
+                <li className="nav-item">
+                    <a className="nav-link active" id="pills-home-tab"
+                       data-toggle="pill" href="#pills-home" role="tab"
+                       aria-controls="pills-home"
+                       aria-selected="true">Plan Trip</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" id="pills-profile-tab"
+                       data-toggle="pill" href="#pills-profile" role="tab"
+                       aria-controls="pills-profile"
+                       aria-selected="false">Distance Calculation</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" id="pills-contact-tab"
+                       data-toggle="pill" href="#pills-contact" role="tab"
+                       aria-controls="pills-contact"
+                       aria-selected="false">About Us</a>
+                </li>
+            </ul>;
+        return(tabs);
+    }
+
+    tabContents() {
+        return(
+            <div className="tab-content">
+                {this.generateTabs()}
+                <div className="tab-content" id="pills-tabContent">
+                    <div className="tab-pane fade show active" id="pills-home"
+                         role="tabpanel" aria-labelledby="pills-home-tab">
+                        {this.planPill()}
+                    </div>
+                    <div className="tab-pane fade" id="pills-profile"
+                         role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <TwoPtCalculator config={this.state.config}
+                                         options={this.state.trip.options}/>
+                    </div>
+                    <div className="tab-pane fade" id="pills-contact"
+                         role="tabpanel" aria-labelledby="pills-contact-tab">
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     render() {
         this.bindFunctions();
         if(!this.state.config) { return <div/> }
-
         return(
             <Container id="Application">
-                <Info/><br/>
-                <Row>
-                    <Col md={6}>
-                        <Button onClick={this.toggle} className="btn-dark" block>Trip Options</Button>
-                        <Collapse isOpen={this.state.collapse}>{this.createOptions()}</Collapse>
-                    </Col>
-                    <Col md={6}>
-                        <TwoPtCalculator config={this.state.config} options={this.state.trip.options}/><br/>
-                    </Col>
-                </Row><br/>
-                {this.createTrip()} <br/>
-                <Button color="primary" type="Submit" onClick={this.planTrip} block>Plan Trip</Button><br/>
-                <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config} /><br/>
-                <Map trip={this.state.trip}/><br/>
-                <div align="center">
-                    <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
-                    <Button onClick={this.saveMap} className="btn-dark">Save Map</Button>{' '}
-                    <Button className="btn-dark" onClick={this.clearTrip}>Clear</Button></div>
+                {this.tabContents()}
             </Container>
         )
     }
 }
-
-
 export default Application;
