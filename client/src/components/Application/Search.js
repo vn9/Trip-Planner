@@ -177,27 +177,31 @@ export default class Search extends Component {
         return(destinations)
     }
 
+    myInputs(){
+        return(
+            <InputGroup>
+                <Input className={'match'} id={'match'}
+                       placeholder="ex. Aspen" onChange={(event) =>
+                    this.matchChange(event.target.value)}/>
+                <InputGroupAddon addonType="append">
+                    <Button className="btn-dark"
+                            onClick={this.onSearch}>Search
+                    </Button>
+                </InputGroupAddon>
+                <Input className={'limit'} type={'number'} id={'Limit'}
+                       placeholder="Limit" onChange={(event) =>
+                    this.limitChange(event.target.value)}/>
+            </InputGroup>
+        );
+    }
 
     render() {
         this.bindFunctions();
-
         return (
             <div>
                 <br/>
                 <h4 align="Center">Search for Places by Name</h4>
-                <InputGroup>
-                    <Input className={'match'} id={'match'}
-                           placeholder="ex. Aspen" onChange={(event) =>
-                        this.matchChange(event.target.value)}/>
-                    <InputGroupAddon addonType="append">
-                        <Button className="btn-dark"
-                                onClick={this.onSearch}>Search
-                        </Button>
-                    </InputGroupAddon>
-                    <Input className={'limit'} type={'number'} id={'Limit'}
-                           placeholder="Limit" onChange={(event) =>
-                        this.limitChange(event.target.value)}/>
-                </InputGroup>
+                {this.myInputs()}
                 <CardBody>
                     <Row>{this.makeFilters()}</Row>
                 </CardBody>
@@ -209,7 +213,6 @@ export default class Search extends Component {
                 <p align="Center">{this.state.search.found} Places Found</p>
                 <br/>
                 <Button id={"addAll"} onClick={this.addAll}>Add All</Button>
-
             </div>
         )
     }

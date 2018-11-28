@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Button, Modal, ModalBody, ModalFooter, ModalHeader, Card, CardBody} from 'reactstrap';
+import {Container, Button, Row, Col, Card, CardBody} from 'reactstrap';
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -155,10 +155,18 @@ export default class Application extends Component {
     createOptions(){
         let options =
             <div>
-                <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}
+                <Row>
+                    <Col md={4}>
+                        <Options options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}
                                 trip={this.state.trip} updateTrip={this.updateTrip}/>
-                <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
-                <MapType options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                    </Col>
+                    <Col md={4}>
+                        <Optimization options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                    </Col>
+                    <Col md={4}>
+                        <MapType options={this.state.trip.options} config={this.state.config} updateOptions={this.updateOptions}/>
+                    </Col>
+                </Row>
                 <SetServer config={this.state.config} updateConfig={this.updateConfig}/>
             </div>;
         return(options)

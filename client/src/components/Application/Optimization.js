@@ -23,7 +23,7 @@ class Optimization extends Component{
         );
 
         return(
-            <div>
+            <div><br/>
                 <h5 align="Center">Select Your Level of Optimization</h5>
                 {buttons}
             </div>
