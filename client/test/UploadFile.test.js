@@ -19,19 +19,6 @@ const startProps = {
     }
 };
 
-function testToggle() {
-    const fields = mount((
-        <UploadFile config={startProps.config} trip={startProps.trip}/>
-    ));
-
-    fields.setState({collapse: false});
-
-    fields.find('#toggle').first().simulate('click');
-
-}
-
-test('Test toggle', testToggle);
-
 /*--------------------------------------------------------------------------*/
 
 const upload = mount(<UploadFile config={startProps.config} trip={startProps.trip} updateTrip={updateMyTrip}/>);
