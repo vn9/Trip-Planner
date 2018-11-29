@@ -3,6 +3,7 @@ package com.tripco.t04.planner;
 import java.util.ArrayList;
 
 public class ThreeOpt extends Optimize{
+
     ThreeOpt(ArrayList<Place> places, int[][] latice){
         super(places, latice);
     }
@@ -20,4 +21,19 @@ public class ThreeOpt extends Optimize{
         }
         return minDist;
     }
+
+    /*
+    This method fetch a certain part of elements in a list with the order same as the original list
+     */
+    protected int[] Fetcher(int startIndex, int endIndex, int[] candidate) {
+        int[] newChunk = new int[endIndex - startIndex +1];
+        int index =0;
+        for(int k = startIndex; k <= endIndex; k++) {
+            newChunk[index]= candidate[k];
+            index++;
+        }
+        return newChunk;
+    }
+
+
 }

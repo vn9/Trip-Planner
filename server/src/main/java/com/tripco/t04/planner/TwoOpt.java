@@ -7,13 +7,7 @@ public class TwoOpt extends Optimize{
         super(places, latice);
     }
 
-    private void optReverse ( int[] candidate, int i1, int k){
-        int start = Math.min(i1, k);
-        int end = Math.max(i1, k);
-        while (start < end) { //copied from Dave's code. keep swapping until all swaps are done
-            swap(candidate, start++, end--); //actual swapping
-        }
-    }
+
 
     private int swapAttempt ( int[] candidate, int index1, int index2, int[][] latice){
         int c1 = candidate[index1 - 1]; // c1

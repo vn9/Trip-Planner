@@ -17,6 +17,14 @@ public abstract class Optimize {
         arr[secondIndex] = firstValue;
     }
 
+    protected void optReverse ( int[] candidate, int i1, int k){
+        int start = Math.min(i1, k);
+        int end = Math.max(i1, k);
+        while (start < end) { //copied from Dave's code. keep swapping until all swaps are done
+            swap(candidate, start++, end--); //actual swapping
+        }
+    }
+
     private void cleanUp ( int[] route, int start){ // Set the array to the new starting point
         for (int i = 0; i < route.length; i++) {
             route[i] = i;
