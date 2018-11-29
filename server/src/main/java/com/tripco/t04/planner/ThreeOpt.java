@@ -46,5 +46,21 @@ public class ThreeOpt extends Optimize{
         }
     }
 
+    /*
+    This method combine two index chunks into one
+     */
+    protected int[] Combiner(int[] smallChunkOne, int[] smallChunkTwo) {
+        int[] newBiggerChunk = new int[smallChunkOne.length+ smallChunkTwo.length];
+        for(int i = 0; i< smallChunkOne.length; i++){
+            newBiggerChunk[i]= smallChunkOne[i];
+        }
+        int index =0;
+        for(int j = smallChunkOne.length; j< newBiggerChunk.length; j++) {
+            newBiggerChunk[j]= smallChunkTwo[index];
+            index++;
+        }
+        return newBiggerChunk;
+    }
+
 
 }
