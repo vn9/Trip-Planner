@@ -49,6 +49,9 @@ public class Trip {
       else if (options.optimization.equals("shorter")){
         opt = new TwoOpt(places, distanceLatice()); //follow meeeeeeeee
       }
+      else if (options.optimization.equals("shortest")){
+          opt = new ThreeOpt(places, distanceLatice());
+      }
       if(opt != null)
         places = opt.begin();
   }
