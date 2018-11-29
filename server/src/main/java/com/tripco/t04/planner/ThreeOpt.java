@@ -35,5 +35,16 @@ public class ThreeOpt extends Optimize{
         return newChunk;
     }
 
+    /*
+        This method replaces part of elements in one list with another smaller list
+         */
+    protected void Reorder(int startIndex, int endIndex, int[] newChunk, int[] candidate) {
+        int index=0;
+        for(int k = startIndex; k <= endIndex; k++) {
+            candidate[k]= newChunk[index];
+            index++;
+        }
+    }
+
 
 }
