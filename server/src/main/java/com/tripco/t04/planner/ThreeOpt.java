@@ -74,5 +74,55 @@ public class ThreeOpt extends Optimize{
     }
 
 
+    private int iterate ( int[] candidate, int minDist, int[][] latice){
 
+        int lengthOfCandidate = candidate.length;
+
+        for (int i = 0; i < lengthOfCandidate - 2; i++) {
+            for (int j = i + 1; j < lengthOfCandidate - 1; j++) {
+                for (int k = j + 1; k < lengthOfCandidate; k++) {
+
+                    int a1, a2, b1, b2, c1, c2;
+                    a1 = candidate[i];
+                    a2 = candidate[i + 1];
+                    b1 = candidate[j];
+                    b2 = candidate[j + 1];
+                    c1 = candidate[k];
+
+                    //special case when meet end because of round trip
+                    if (k == lengthOfCandidate - 1)
+                        c2 = candidate[0];
+                    else
+                        c2 = candidate[k + 1];
+
+                    int[] optCase = new int[7];
+                    //case 1 to 7
+                    optCase[0] = -latice[a1][a2] - latice[c1][c2] + latice[a1][c1] + latice[a2][c2];
+                    optCase[1] = -latice[a1][a2] - latice[b1][b2] + latice[a1][b1] + latice[a2][b2];
+                    optCase[2] = -latice[b1][b2] - latice[c1][c2] + latice[b1][c1] + latice[b2][c2];
+                    optCase[3] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b1] + latice[a2][c1] + latice[b2][c2];
+                    optCase[4] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][c1] + latice[b2][a2] + latice[b1][c2];
+                    optCase[5] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b2] + latice[c1][b1] + latice[a2][c2];
+                    optCase[6] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b2] + latice[c1][a2] + latice[b1][c2];
+
+                    if (optCase[0] < 0) {
+                        optReverse(candidate, i + 1, k);
+                        minDist += optCase[0];
+                        continue;
+                    }
+                    if (optCase[1] < 0) {
+                        optReverse(candidate, i + 1, j);
+                        minDist += optCase[1];
+                        continue;
+                    }
+                    if (optCase[2] < 0) {
+                        optReverse(candidate, j + 1, k);
+                        minDist += optCase[2];
+                        continue;
+                    }
+                }
+            }
+        }
+        return minDist;
+    }
 }
