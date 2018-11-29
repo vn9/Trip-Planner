@@ -62,5 +62,17 @@ public class ThreeOpt extends Optimize{
         return newBiggerChunk;
     }
 
+    /*
+    This method reverse position of the first half elements and the last half elements one by one
+    */
+    protected void Reverser(int[] candidate) {
+        for(int i = 0; i < candidate.length / 2; i++) {
+            int temp = candidate[i];
+            candidate[i] = candidate[candidate.length - i - 1];
+            candidate[candidate.length - i - 1] = temp;
+        }
+    }
+
+
 
 }
