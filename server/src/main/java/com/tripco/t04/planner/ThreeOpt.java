@@ -129,6 +129,14 @@ public class ThreeOpt extends Optimize{
                         minDist += optCase[5];
                         continue;
                     }
+                    if (optCase[6] < 0) {
+                        int[] temp = Fetcher(i + 1, j, candidate);
+                        int[] temp2 = Fetcher(j + 1, k, candidate);
+                        int[] temp3 = Combiner(temp2, temp);
+                        Reorder(i + 1, k, temp3, candidate);
+                        minDist += optCase[5];
+                        continue;
+                    }
                     if (optCase[0] < 0) {
                         optReverse(candidate, i + 1, k);
                         minDist += optCase[0];
