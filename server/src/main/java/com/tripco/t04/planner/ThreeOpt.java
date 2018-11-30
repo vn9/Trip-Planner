@@ -2,20 +2,20 @@ package com.tripco.t04.planner;
 
 import java.util.ArrayList;
 
-public class ThreeOpt extends Optimize{
+public class ThreeOpt extends Optimize {
 
-    ThreeOpt(ArrayList<Place> places, int[][] latice){
+    ThreeOpt(ArrayList<Place> places, int[][] latice) {
         super(places, latice);
     }
 
     /*
     This method fetch a certain part of elements in a list with the order same as the original list
      */
-    protected int[] Fetcher(int startIndex, int endIndex, int[] candidate) {
-        int[] newChunk = new int[endIndex - startIndex +1];
-        int index =0;
-        for(int k = startIndex; k <= endIndex; k++) {
-            newChunk[index]= candidate[k];
+    private int[] Fetcher(int startIndex, int endIndex, int[] candidate) {
+        int[] newChunk = new int[endIndex - startIndex + 1];
+        int index = 0;
+        for (int k = startIndex; k <= endIndex; k++) {
+            newChunk[index] = candidate[k];
             index++;
         }
         return newChunk;
@@ -24,10 +24,10 @@ public class ThreeOpt extends Optimize{
     /*
         This method replaces part of elements in one list with another smaller list
          */
-    protected void Reorder(int startIndex, int endIndex, int[] newChunk, int[] candidate) {
-        int index=0;
-        for(int k = startIndex; k <= endIndex; k++) {
-            candidate[k]= newChunk[index];
+    private void Reorder(int startIndex, int endIndex, int[] newChunk, int[] candidate) {
+        int index = 0;
+        for (int k = startIndex; k <= endIndex; k++) {
+            candidate[k] = newChunk[index];
             index++;
         }
     }
@@ -35,14 +35,14 @@ public class ThreeOpt extends Optimize{
     /*
     This method combine two index chunks into one
      */
-    protected int[] Combiner(int[] smallChunkOne, int[] smallChunkTwo) {
-        int[] newBiggerChunk = new int[smallChunkOne.length+ smallChunkTwo.length];
-        for(int i = 0; i< smallChunkOne.length; i++){
-            newBiggerChunk[i]= smallChunkOne[i];
+    private int[] Combiner(int[] smallChunkOne, int[] smallChunkTwo) {
+        int[] newBiggerChunk = new int[smallChunkOne.length + smallChunkTwo.length];
+        for (int i = 0; i < smallChunkOne.length; i++) {
+            newBiggerChunk[i] = smallChunkOne[i];
         }
-        int index =0;
-        for(int j = smallChunkOne.length; j< newBiggerChunk.length; j++) {
-            newBiggerChunk[j]= smallChunkTwo[index];
+        int index = 0;
+        for (int j = smallChunkOne.length; j < newBiggerChunk.length; j++) {
+            newBiggerChunk[j] = smallChunkTwo[index];
             index++;
         }
         return newBiggerChunk;
@@ -51,8 +51,8 @@ public class ThreeOpt extends Optimize{
     /*
     This method reverse position of the first half elements and the last half elements one by one
     */
-    protected void Reverser(int[] candidate) {
-        for(int i = 0; i < candidate.length / 2; i++) {
+    private void Reverser(int[] candidate) {
+        for (int i = 0; i < candidate.length / 2; i++) {
             int temp = candidate[i];
             candidate[i] = candidate[candidate.length - i - 1];
             candidate[candidate.length - i - 1] = temp;
@@ -60,7 +60,7 @@ public class ThreeOpt extends Optimize{
     }
 
 
-    protected int iterate ( int[] candidate, int minDist, int[][] latice){
+    protected int iterate(int[] candidate, int minDist, int[][] latice) {
 
         int lengthOfCandidate = candidate.length;
 
@@ -136,7 +136,6 @@ public class ThreeOpt extends Optimize{
                     if (optCase[2] < 0) {
                         optReverse(candidate, j + 1, k);
                         minDist += optCase[2];
-                        continue;
                     }
                 }
             }

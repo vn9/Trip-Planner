@@ -2,12 +2,12 @@ package com.tripco.t04.planner;
 
 import java.util.ArrayList;
 
-public class NearestNeighbor extends Optimize{
-    NearestNeighbor(ArrayList<Place> places, int[][] latice){
+public class NearestNeighbor extends Optimize {
+    NearestNeighbor(ArrayList<Place> places, int[][] latice) {
         super(places, latice);
     }
 
-    private int neighbor ( int[] indices, int from){
+    private int neighbor(int[] indices, int from) {
         int min = Integer.MAX_VALUE;
         int j = -1;
         for (int i = from; i < places.size(); i++) {
@@ -24,7 +24,7 @@ public class NearestNeighbor extends Optimize{
     }
 
     @Override
-    protected int optimizer(int[] candidate){
+    protected int optimizer(int[] candidate) {
         int Total = 0;
         for (int i = 1; i < candidate.length; i++) {//for all start points
             int nearestIndex = neighbor(candidate, i);
@@ -38,5 +38,7 @@ public class NearestNeighbor extends Optimize{
     }
 
 
-    protected int iterate ( int[] candidate, int minDist, int[][] latice) {return 0;}
+    protected int iterate(int[] candidate, int minDist, int[][] latice) {
+        return 0;
+    }
 }
