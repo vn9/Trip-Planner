@@ -2,7 +2,7 @@
  
 | Inspection | Details |
 | ----- | ----- |
-| Subject | *ThreeOpt.java-Entire File*, Map.js |
+| Subject | *ThreeOpt.java-Entire File*, Map.js, MapType.js |
 | Meeting | *date, time, location* |
 | Checklist | *reference, URL, etc.* |
 
@@ -11,7 +11,7 @@
 | Name | Preparation Time |
 | ----- | ----- |
 | Kira Deming | 75 minutes |
-|  |  |
+|  Vina Nguyen | 30 minutes |
 |  |  |
 
 ### Problems found
@@ -20,4 +20,5 @@
 | ----- | ----- | ----- | ----- | ----- |
 | ThreeOpt.java:123 | 5 needs to be 6 | high | Kira | --- |
 | Map.js:22-37 | Line draws incorrectly | high | Kira | --- |
+| MapType.js:41 | Unable to set server | high | Vina | 539 |
  
