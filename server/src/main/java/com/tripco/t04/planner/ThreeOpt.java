@@ -104,7 +104,13 @@ public class ThreeOpt extends Optimize{
                     optCase[4] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][c1] + latice[b2][a2] + latice[b1][c2];
                     optCase[5] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b2] + latice[c1][b1] + latice[a2][c2];
                     optCase[6] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b2] + latice[c1][a2] + latice[b1][c2];
-
+                    //check each case and do the optimize(deduction) if distance is shorter(negative)
+                    if (optCase[3] < 0) {
+                        optReverse(candidate, i + 1, j);
+                        optReverse(candidate, j + 1, k);
+                        minDist += optCase[3];
+                        continue;
+                    }
                     if (optCase[0] < 0) {
                         optReverse(candidate, i + 1, k);
                         minDist += optCase[0];
