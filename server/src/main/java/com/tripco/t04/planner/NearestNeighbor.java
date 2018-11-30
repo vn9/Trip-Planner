@@ -23,6 +23,7 @@ public class NearestNeighbor extends Optimize{
         return j; //returns index of nearest neighbor
     }
 
+    @Override
     protected int optimizer(int[] candidate){
         int Total = 0;
         for (int i = 1; i < candidate.length; i++) {//for all start points
@@ -35,4 +36,7 @@ public class NearestNeighbor extends Optimize{
         Total = Total + latice[candidate[0]][candidate[candidate.length - 1]];
         return Total;
     }
+
+
+    protected int iterate ( int[] candidate, int minDist, int[][] latice) {return 0;}
 }
