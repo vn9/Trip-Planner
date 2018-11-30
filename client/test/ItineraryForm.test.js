@@ -64,18 +64,6 @@ test('Check to see if table gets generated correctly', () => {
 
 /*--------------------------------------------------------------------------*/
 
-function testToggle() {
-    const table = mount((
-        <ItineraryForm config={startProps.config} trip={startProps.trip}/>
-    ));
-
-    table.setState({collapse: false});
-
-    table.find('Button').at(0).simulate('click');
-}
-
-test('Test Toggle', testToggle);
-
 
 
 

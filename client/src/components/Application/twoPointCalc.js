@@ -8,7 +8,6 @@ class TwoPtCalculator extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          collapse: false,
           distance: {
             type: "distance",
             version: 4,
@@ -28,7 +27,6 @@ class TwoPtCalculator extends Component {
         };
 
         this.onFormSubmit = this.onFormSubmit.bind(this);
-        this.toggle = this.toggle.bind(this);
         this.updateDist = this.updateDist.bind(this);
         this.getUnits = this.getUnits.bind(this);
         this.displayUnits = this.displayUnits.bind(this);
@@ -57,10 +55,6 @@ class TwoPtCalculator extends Component {
         )
     }
 
-    toggle(){
-        this.setState({collapse: !this.state.collapse})
-    }
-
     updateLocation(coordinate,value,origin){
       let place;
       if(origin=== true)
@@ -85,27 +79,24 @@ class TwoPtCalculator extends Component {
 
     render() {
         return (
-            <div>
-                <Button onClick={this.toggle} className='btn-dark' block>Distance Calculator</Button>
-                <Collapse isOpen={this.state.collapse}>
-                    <Card>
-                        <CardBody>
-                          <Input className={'OLat'} placeholder="Origin Latitude in Degree ex. 45.00"
-                                 onChange={(event) => this.updateLocation('latitude', event.target.value, true)}/>
-                          <Input className={'OLon'} placeholder="Origin Longitude in Degree ex. 101.00"
-                                 onChange={(event) => this.updateLocation('longitude', event.target.value, true)}/>
-                          <br/>
-                          <Input className={'DLat'} placeholder="Destination Latitude in Degree ex. 45.00"
-                                 onChange={(event) => this.updateLocation('latitude', event.target.value, false)}/>
-                          <Input className={'DLon'} placeholder="Destination Longitude in Degree ex. 101.00"
-                                 onChange={(event) => this.updateLocation('longitude', event.target.value, false)}/>
-                          <br/>
-                          <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button>
-                          <p>{"Your Distance: " + this.state.distance.distance + ' ' + this.displayUnits()}</p>
-                        </CardBody>
-                    </Card>
-                </Collapse>
-            </div>
+            <Card>
+                <CardBody>
+                    <Input className={'OLat'}
+                           placeholder="Origin Latitude in Degree ex. 45.00"
+                           onChange={(event) => this.updateLocation('latitude', event.target.value, true)}/>
+                    <Input className={'OLon'} placeholder="Origin Longitude in Degree ex. 101.00"
+                           onChange={(event) => this.updateLocation('longitude', event.target.value, true)}/>
+                    <br/>
+                    <Input className={'DLat'} placeholder="Destination Latitude in Degree ex. 45.00"
+                           onChange={(event) => this.updateLocation('latitude', event.target.value, false)}/>
+                    <Input className={'DLon'} placeholder="Destination Longitude in Degree ex. 101.00"
+                           onChange={(event) => this.updateLocation('longitude', event.target.value, false)}/>
+                    <br/>
+                    <Button type="submit" onClick={this.onFormSubmit}>Get Distance</Button><br/>
+                    <h5 align="center">{"Your Distance: " + this.state.distance.distance+ ' ' +this.displayUnits()}
+                    </h5>
+                </CardBody>
+            </Card>
         )
     }
 }

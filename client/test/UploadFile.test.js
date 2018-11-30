@@ -19,15 +19,17 @@ const startProps = {
     }
 };
 
-function testToggle() {
-    const fields = mount((
-        <UploadFile config={startProps.config} trip={startProps.trip}/>
-    ));
 
-    fields.setState({collapse: false});
+/*--------------------------------------------------------------------------*/
 
-    fields.find('#toggle').first().simulate('click');
+const upload = mount(<UploadFile config={startProps.config} trip={startProps.trip} updateTrip={updateMyTrip}/>);
 
-}
+upload.setState({myPlace: {}});
 
-test('Test toggle', testToggle);
+describe("Check Add Manual", ()=> {
+    it("Check Title Change", ()=> {
+        upload.find('#title').first().simulate('change', {target: {value: "Road Trip"}});
+        expect(updateTripSpy).toHaveBeenCalled();
+    });
+});
+

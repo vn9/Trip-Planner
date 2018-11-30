@@ -1,16 +1,12 @@
 import React, {Component} from 'react'
-import {Button, Input,Card, Collapse, CardBody, InputGroup,InputGroupAddon, InputGroupText, Label, Col, Row} from 'reactstrap'
-
+import {Button, Input, CardBody, InputGroup,InputGroupAddon, InputGroupText, Label, Col, Row} from 'reactstrap'
 import {serverURL} from  './SetServer'
-
 import {request} from '../../api/api';
-
 
 export default class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            collapse: true,
             search: {
                 version: 4,
                 type: "search",
@@ -37,7 +33,6 @@ export default class Search extends Component {
         this.matchChange = this.matchChange.bind(this);
         this.onSearch = this.onSearch.bind(this);
         this.updateSearch = this.updateSearch.bind(this);
-        this.toggle = this.toggle.bind(this);
         this.addPlace = this.addPlace.bind(this);
         this.showPlaces = this.showPlaces.bind(this);
         this.addAll = this.addAll.bind(this);
@@ -45,10 +40,6 @@ export default class Search extends Component {
         this.onCheck = this.onCheck.bind(this);
         this.getLimit = this.getLimit.bind(this);
         this.limitChange = this.limitChange.bind(this);
-    }
-
-    toggle() {
-        this.setState({collapse: !this.state.collapse});
     }
 
     updateSearch(response) {
@@ -126,7 +117,8 @@ export default class Search extends Component {
            }
         }
         let newSearch = this.state.search;
-        newSearch['places'] = this.state.search.places.slice(0, myIndex).concat(this.state.search.places.slice(myIndex+1));
+        newSearch['places'] = this.state.search.places.slice(0, myIndex).
+        concat(this.state.search.places.slice(myIndex+1));
         this.setState({'search': newSearch });
     }
 
@@ -157,7 +149,8 @@ export default class Search extends Component {
                 {filter.values.map((myValue)=>
                     <div key={myValue}>
                         <Label check key={myValue}>
-                            <Input id={myValue} name={myValue} type="checkbox" value={filter.name} onChange={this.onCheck}/>
+                            <Input id={myValue} name={myValue} type="checkbox"
+                                   value={filter.name} onChange={this.onCheck}/>
                             {myValue.charAt(0).toUpperCase() + myValue.slice(1)}
                         </Label>
                     </div>
@@ -173,45 +166,53 @@ export default class Search extends Component {
                 <InputGroupAddon addonType="prepend">
                     <InputGroupText>{(index + 1)}</InputGroupText>
                 </InputGroupAddon>
-                <Input readOnly className={place.name} value={place.name + ", " + place.municipality + ", " + place.country}/>
+                <Input readOnly className={place.name} value={place.name + ", "
+                + place.municipality + ", " + place.country}/>
                 <InputGroupAddon addonType="append">
-                    <Button id={place.id} value={JSON.stringify(place)} onClick={this.addPlace} block>Add</Button>
+                    <Button id={place.id} value={JSON.stringify(place)}
+                            onClick={this.addPlace} block>Add</Button>
                 </InputGroupAddon>
             </InputGroup>
         );
         return(destinations)
     }
 
+    myInputs(){
+        return(
+            <InputGroup>
+                <Input className={'match'} id={'match'}
+                       placeholder="ex. Aspen" onChange={(event) =>
+                    this.matchChange(event.target.value)}/>
+                <InputGroupAddon addonType="append">
+                    <Button className="btn-dark"
+                            onClick={this.onSearch}>Search
+                    </Button>
+                </InputGroupAddon>
+                <Input className={'limit'} type={'number'} id={'Limit'}
+                       placeholder="Limit" onChange={(event) =>
+                    this.limitChange(event.target.value)}/>
+            </InputGroup>
+        );
+    }
 
     render() {
         this.bindFunctions();
-
         return (
             <div>
-                <Button onClick={this.toggle} className='btn-dark' block>Create Trip: Search For Places</Button>
-                <Collapse isOpen={this.state.collapse}>
-                    <Card>
-                        <CardBody>
-                            <h4 align="Center">Search for Places by Name</h4>
-                            <InputGroup>
-                                <Input className={'match'} id={'match'} placeholder="ex. Aspen" onChange={(event) => this.matchChange(event.target.value)}/>
-                                <InputGroupAddon addonType="append"><Button className="btn-dark" onClick={this.onSearch}>Search</Button>
-                                </InputGroupAddon>
-                                <Input className={'limit'} type={'number'} id={'Limit'} placeholder="Limit" onChange={(event) => this.limitChange(event.target.value)}/>
-                            </InputGroup>
-                            <CardBody>
-                                <Row>{this.makeFilters()}</Row>
-                            </CardBody>
-                            <br/>
-                            <div key={"found"} style={{'height': '150px', 'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
-                                {this.showPlaces()}
-                            </div>
-                            <p align="Center">{this.state.search.found} Places Found</p>
-                            <br/>
-                            <Button id={"addAll"} onClick={this.addAll}>Add All</Button>
-                        </CardBody>
-                    </Card>
-                </Collapse>
+                <br/>
+                <h4 align="Center">Search for Places by Name</h4>
+                {this.myInputs()}
+                <CardBody>
+                    <Row>{this.makeFilters()}</Row>
+                </CardBody>
+                <br/>
+                <div key={"found"} style={{'height': '150px',
+                    'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
+                    {this.showPlaces()}
+                    </div>
+                <p align="Center">{this.state.search.found} Places Found</p>
+                <br/>
+                <Button id={"addAll"} onClick={this.addAll}>Add All</Button>
             </div>
         )
     }
