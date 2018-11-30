@@ -42,8 +42,7 @@ class myMap extends Component {
             return(
                 <div>
                     <Map maxBounds={map.maxBounds} id={"map"} center={[map.lat, map.lng]} zoom={map.zoom}>
-                        <TileLayer
-                            attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>,
+                        <TileLayer attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>,
                         &copy; <a href="https://carto.com/attribution">CARTO</a>'
                             url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"/>
                     </Map>
@@ -52,17 +51,14 @@ class myMap extends Component {
         } else {
             return(
             <div>
-                <Map id={"map"} setView={true} zoom={map.zoom} maxBounds={map.maxBounds}
-                minZoom={1}>
-                    <TileLayer
-                        attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>,
+                <Map id={"map"} setView={true} zoom={map.zoom} maxBounds={map.maxBounds} minZoom={1}>
+                    <TileLayer attribution='&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>,
                         &copy; <a href="https://carto.com/attribution">CARTO</a>'
                         url="https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
                         />
                     {this.makeLine()}
                 </Map>
             </div>);
-
         }
     }
 

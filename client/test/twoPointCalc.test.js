@@ -17,7 +17,7 @@ function testUnits() {
     calculator.setState({distance: {distance: 24, units: "user defined", unitName: "odd miles", unitRadius: 3959.0}});
 
     let expected = "Your Distance: 24 odd miles";
-    expect(calculator.find('p').text()).toEqual(expected);
+    expect(calculator.find('h5').text()).toEqual(expected);
 
 }
 
@@ -43,22 +43,6 @@ function testChange() {
 }
 
 test('Test Change Functions', testChange);
-
-/*--------------------------------------------------------------------------*/
-
-function testToggle() {
-    const calculator = mount((
-        <TwoPtCalculator config={startProps.config} options={startProps.options}/>
-    ));
-
-    calculator.setState({collapse: false});
-
-    calculator.find('Button').at(0).simulate('click');
-
-}
-
-test('Test Toggle', testToggle);
-
 /*--------------------------------------------------------------------------*/
 
 
