@@ -17,7 +17,7 @@ public class ThreeOpt extends Optimize{
             //After running 1-opt for some certain start points, keep improving until we can't anymore
             lastDist = minDist;
             //Iterate through the candidate and returns the minimum total distance
-            //minDist = iterate(candidate, minDist, latice);
+            minDist = iterate(candidate, minDist, latice);
         }
         return minDist;
     }
