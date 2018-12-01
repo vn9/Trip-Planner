@@ -120,7 +120,7 @@ public class ThreeOpt extends Optimize {
                         int[] temp2 = Fetcher(j + 1, k, candidate);
                         int[] temp3 = Combiner(temp2, temp);
                         Reorder(i + 1, k, temp3, candidate);
-                        minDist += optCase[5];
+                        minDist += optCase[6];
                         continue;
                     }
                     if (optCase[0] < 0) {
