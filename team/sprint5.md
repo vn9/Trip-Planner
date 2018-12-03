@@ -96,7 +96,6 @@ Epics planned for this sprint.
 | *11/28* | *None*| *#370, #389, #493, #495, #496, #497, #504, #506, #508, #509* | *Continue working on 3-opt and inspect bugs are our next step* |
 | *11/30* | *#495, #504, #508#*| *#370, #389, #493, #496, #497, #506, #509* | *Test and implement 3-opt to get the correct outputs before next week deadline will be our next goal* | 
 
-
 *Add a new row for the scrum session after each lecture. *
 
 ## Review
