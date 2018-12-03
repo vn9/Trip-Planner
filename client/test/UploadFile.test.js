@@ -19,6 +19,7 @@ const startProps = {
     }
 };
 
+
 /*--------------------------------------------------------------------------*/
 
 const upload = mount(<UploadFile config={startProps.config} trip={startProps.trip} updateTrip={updateMyTrip}/>);
@@ -31,3 +32,4 @@ describe("Check Add Manual", ()=> {
         expect(updateTripSpy).toHaveBeenCalled();
     });
 });
+

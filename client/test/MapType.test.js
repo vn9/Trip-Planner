@@ -9,7 +9,7 @@ const updateMapSpy = jest.fn();
 const updateMap = updateMapSpy;
 
 const startProps = {
-    'config': { 'map': ["svg", "kml"]},
+    'config': { 'maps': ["svg", "kml"]},
     'options': { 'map': 'svg' }
 };
 
@@ -21,7 +21,7 @@ function MapButtonGeneration() {
     let actual = [];
     types.find('Button').map((element) => actual.push(element.prop('value')));
 
-    expect(actual).toEqual(startProps.config.map);
+    expect(actual).toEqual(startProps.config.maps);
 }
 
 test('Check if map options are made', MapButtonGeneration);

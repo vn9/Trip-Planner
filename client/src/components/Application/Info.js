@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {Card, CardImg, CardBody, CardText, Row, Col, CardTitle} from 'reactstrap'
 import kira_photo from '../../../../server/src/main/resources/kira_photo.jpg'
 import vina_photo from '../../../../server/src/main/resources/vina_photo.jpg'
-import john_deere from '../../../../server/src/main/resources/john_deer_photo.jpg'
 
 let bio = class biography {
     constructor(image, name, text){
@@ -18,18 +17,16 @@ let kira_bio = new bio(kira_photo, "Kira Deming", "Kira is a graduate student at
     "runner, her free time is spent training for marathons and mountain ultras.");
 
 let vina_bio = new bio(vina_photo, "Vina Nguyen", "Vina is an undergraduate "
-    + "student in Computer Science at CSU. She expects to receive her Bachelor "
-    + "Degree in May 2019. She is interested in making web pages; therefore, "
-    + "she was very enjoyed working on this project. In her free time, she "
-    + "likes to read, translates stories, draws, and solves puzzles.");
-
-let john_bio = new bio(john_deere, "John Deere", "Nothing runs like a Deere");
+    + "student in Computer Science at CSU. She expects to receive her Bachelor's "
+    + "Degree in May 2019. She is interested in making web pages, and therefore, "
+    + "very much enjoyed working on this project. In her free time, she "
+    + "likes to read, translates stories, draw, and solves puzzles.");
 
 export default class Info extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bios: [kira_bio, vina_bio, john_bio]
+            bios: [kira_bio, vina_bio]
         }
     }
 

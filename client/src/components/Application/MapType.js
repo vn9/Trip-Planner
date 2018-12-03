@@ -21,7 +21,7 @@ export default class MapType extends Component{
     }
 
     render() {
-        let buttons = this.props.config.map.map((opt) =>
+        let buttons = this.props.config.maps.map((opt) =>
             <Button id={opt} key={'map_' + opt} className='btn-outline-dark'
                     active={this.props.options.map === opt} value={opt}
                     onClick={(event)=>this.changeOpt(event)}

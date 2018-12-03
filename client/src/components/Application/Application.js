@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {Container, Button, Row, Col, Card, CardBody} from 'reactstrap';
+import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody, Input,
+    InputGroup, InputGroupAddon} from 'reactstrap';
+
 import Info from './Info'
 import Options from './Options';
 import UploadFile from './UploadFile';
@@ -11,6 +13,7 @@ import Search from './Search';
 import Optimization from './Optimization';
 import MapType from './MapType';
 import ManualAdd from './ManualAdd';
+import ClearSavePlan from './ClearSavePlan';
 
 
 import {get_config, request} from '../../api/api';
@@ -48,11 +51,8 @@ export default class Application extends Component {
         this.updateTrip = this.updateTrip.bind(this);
         this.updateBasedOnResponse = this.updateBasedOnResponse.bind(this);
         this.updateOptions = this.updateOptions.bind(this);
-        this.saveTFFI = this.saveTFFI.bind(this);
-        this.saveMap = this.saveMap.bind(this);
-        this.createOptions = this.createOptions.bind(this);
-        this.clearTrip = this.clearTrip.bind(this);
         this.updateConfig = this.updateConfig.bind(this);
+        this.updateTitle = this.updateTitle.bind(this);
     }
 
     componentWillMount() {
@@ -103,53 +103,10 @@ export default class Application extends Component {
             })
     }
 
-    clearTrip(){
-        let myTrip = this.state.trip;
-        myTrip.distances= [];
-        myTrip.title = '';
-        myTrip.places = [];
-        myTrip.map = '<svg width="1920" height="20" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g></g></svg>';
-        myTrip.options = {units: 'miles'};
-        document.getElementById('fileInput').value = null;
-        this.setState(myTrip);
 
-    }
-
-    /* Saves the map and itinerary to the local file system. */
-
-    saveTFFI(){
-        let tripTitle = this.state.trip.title;
-        //Convert data to TFFI formatted string
-        let trip = this.state.trip;
-        trip['map'] = this.state.trip.map;
-        let tffi = JSON.stringify(trip); // make the map attributes to be ''
-        //add .json extension if not already added by user
-        if(!tripTitle.endsWith(".json")){
-            tripTitle += ".json";
-        }
-
-        //generate file and download
-        let element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(tffi));
-        element.setAttribute('download', tripTitle);
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
-    }
-
-    saveMap(){
-        //generate file and download
-        let element = document.createElement('a');
-        element.setAttribute('href', 'data:text/plain;charset=utf-8,' + this.state.trip.map);
-        if (this.state.trip.options.map === "svg"){
-            element.setAttribute('download', 'download.svg');
-        }
-        else if (this.state.trip.options.map === "kml"){
-            element.setAttribute('download', 'download.kml');
-        }
-        document.body.appendChild(element);
-        element.click();
-        document.body.removeChild(element);
+    updateTitle() {
+        let title = document.getElementById("title").value;
+        this.updateTrip('title', title);
     }
 
     createOptions(){
@@ -176,18 +133,14 @@ export default class Application extends Component {
         return(
             <nav>
                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a className="nav-item nav-link active" id="nav-upload-tab"
-                       data-toggle="tab" href="#nav-upload" role="tab"
-                       aria-controls="nav-upload" aria-selected="true">Upload File</a>
-                    <a className="nav-item nav-link" id="nav-manual-tab"
-                       data-toggle="tab" href="#nav-manual" role="tab"
+                    <a className="nav-item nav-link active" id="nav-upload-tab" data-toggle="tab"
+                       href="#nav-upload" role="tab" aria-controls="nav-upload" aria-selected="true">Upload File</a>
+                    <a className="nav-item nav-link" id="nav-manual-tab" data-toggle="tab" href="#nav-manual" role="tab"
                        aria-controls="nav-manual" aria-selected="false">Manual Add</a>
-                    <a className="nav-item nav-link" id="nav-search-tab"
-                       data-toggle="tab" href="#nav-search" role="tab"
+                    <a className="nav-item nav-link" id="nav-search-tab" data-toggle="tab" href="#nav-search" role="tab"
                        aria-controls="nav-search" aria-selected="false">Search</a>
-                    <a className="nav-item nav-link" id="nav-options-tab"
-                       data-toggle="tab" href="#nav-options" role="tab"
-                       aria-controls="nav-options" aria-selected="false">Options</a>
+                    <a className="nav-item nav-link" id="nav-options-tab" data-toggle="tab" href="#nav-options"
+                       role="tab" aria-controls="nav-options" aria-selected="false">Options</a>
                 </div>
             </nav>
         );
@@ -200,18 +153,16 @@ export default class Application extends Component {
                 <div className="tab-content" id="nav-tabContent">
                     <div className="tab-pane fade show active" id="nav-upload"
                          role="tabpanel" aria-labelledby="nav-upload-tab">
-                        <UploadFile trip={this.state.trip} config={this.state.config} updateTrip={this.updateTrip} clearTrip={this.clearTrip}/>
+                        <UploadFile trip={this.state.trip} config={this.state.config}
+                                    updateTrip={this.updateTrip} clearTrip={this.clearTrip}/>
                     </div>
-                    <div className="tab-pane fade" id="nav-manual" role="tabpanel"
-                         aria-labelledby="nav-manual-tab">
+                    <div className="tab-pane fade" id="nav-manual" role="tabpanel" aria-labelledby="nav-manual-tab">
                         <ManualAdd config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
                     </div>
-                    <div className="tab-pane fade" id="nav-search" role="tabpanel"
-                         aria-labelledby="nav-search-tab">
+                    <div className="tab-pane fade" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab">
                         <Search config={this.state.config} trip={this.state.trip} updateTrip={this.updateTrip}/>
                     </div>
-                    <div className="tab-pane fade" id="nav-options" role="tabpanel"
-                         aria-labelledby="nav-options-tab">
+                    <div className="tab-pane fade" id="nav-options" role="tabpanel" aria-labelledby="nav-options-tab">
                         {this.createOptions()}
                     </div>
                 </div>
@@ -226,12 +177,8 @@ export default class Application extends Component {
                     <Info/>
                     <Map trip={this.state.trip}/>
                     <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config}/><br/>
-                    <div align="center">
-                        <Button color="primary" type="Submit" onClick={this.planTrip}>Plan Trip</Button>{' '}
-                        <Button onClick={this.saveTFFI} className="btn-dark">Save Trip</Button>{' '}
-                        <Button onClick={this.saveMap} className="btn-dark">Save Map</Button>{' '}
-                        <Button className="btn-dark" onClick={this.clearTrip}>Clear</Button>
-                    </div><br/>
+                    <ClearSavePlan trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}
+                                   planTrip={this.planTrip}/><br/>
                     {this.smallTabs()}
                 </CardBody>
             </Card>;

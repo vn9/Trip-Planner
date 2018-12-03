@@ -27,13 +27,11 @@ export default class UploadFile extends Component {
         return (
             <div>
                 <br/>
-                <Input id={"title"} placeholder="Name Your Trip"
-                       value={this.props.trip.title}
-                       onChange={(event)=>this.props.updateTrip('title',
-                           event.target.value)}/><br/>
+                <Input id={"title"} placeholder="Name Your Trip" value={this.props.trip.title}
+                       onChange={(event)=>this.props.updateTrip('title', event.target.value)}/>
+                <br/>
                 <p align="Center"> Upload Your File </p>
-                <Input title="upload" type="file" id="fileInput"
-                       onChange={(event)=>this.loadFile(event)}/>
+                <Input title="upload" type="file" id="fileInput" onChange={(event)=>this.loadFile(event)}/>
             </div>
         )
     }
