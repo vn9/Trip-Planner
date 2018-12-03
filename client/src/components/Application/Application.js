@@ -174,7 +174,7 @@ export default class Application extends Component {
         let pill =
             <Card>
                 <CardBody>
-                    <Info/>
+
                     <Map trip={this.state.trip}/>
                     <ItineraryForm trip={this.state.trip} updateTrip={this.updateTrip} planTrip={this.planTrip} config={this.state.config}/><br/>
                     <ClearSavePlan trip={this.state.trip} updateBasedOnResponse={this.updateBasedOnResponse}
@@ -227,6 +227,7 @@ export default class Application extends Component {
                     </div>
                     <div className="tab-pane fade" id="pills-contact"
                          role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <Info/>
                     </div>
                 </div>
             </div>
