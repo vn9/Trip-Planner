@@ -25,7 +25,7 @@ let vina_bio = new bio(vina_photo, "Vina Nguyen", "Vina is an undergraduate "
 
 let abel_bio = new bio(abel_photo, "Abel Ykalo", "Abel is a third year undergraduate "
     + "student studying Computer Science at CSU. He expects to receive his Bachelor's "
-    + "Degree in May 2020. He has a interest in learning about machine learning and AI. "
+    + "Degree in May 2020. He has an interest in learning about machine learning and AI. "
     + "In his free time, he enjoys playing single-player story based video games and seeing movies.");
 
 export default class Info extends Component {
