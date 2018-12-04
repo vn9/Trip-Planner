@@ -94,7 +94,8 @@ Epics planned for this sprint.
 | *11/14* | *None* | *#392, #394, #492, #493, #494, #495, #496, #497, #499* | *None* | 
 | *11/26* | *#392, #492, #498 #499*| *#370, #389, #493, #495, #496, #497, #504, #506, #508, #509* | *Implement 3-opt and changing the user interface without having duplicated codes will be our next challenges* | 
 | *11/28* | *None*| *#370, #389, #493, #495, #496, #497, #504, #506, #508, #509* | *Continue working on 3-opt and inspect bugs are our next step* |
-| *11/30* | *#495, #504, #508#*| *#370, #389, #493, #496, #497, #506, #509* | *Test and implement 3-opt to get the correct outputs before next week deadline will be our next goal* | 
+| *11/30* | *#495, #504, #508*| *#370, #389, #493, #496, #497, #506, #509* | *Test and implement 3-opt to get the correct outputs before next week deadline will be our next goal* | 
+| *12/03* | *#505, #506, #507, #509, #510, #531, #539*| *#370, #389, #493, #496, #497, #542, #545, #546, #547* | *Continue testing and fixing bugs that we found in the old code. Reduce the amount of smell codes along with refactor to avoid Cognitive Complexity to produce a clean and friendly application are our goal* | 
 
 *Add a new row for the scrum session after each lecture. *
 
