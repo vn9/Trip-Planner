@@ -27,29 +27,25 @@ class Options extends Component{
   render() {
     let buttons = this.props.config.units.map((unit) =>
       <Button id={unit} key={unit} className='btn-outline-dark unit-button'
-        active={this.props.options.units === unit}
-              value={unit} onClick={this._userDefinedOn}
-        block>
-        {unit.charAt(0).toUpperCase() + unit.slice(1)}
+              active={this.props.options.units === unit} value={unit}
+              onClick={this._userDefinedOn} block>
+          {unit.charAt(0).toUpperCase() + unit.slice(1)}
       </Button>
     );
-
     return(
         <div><br/>
-            <h5 align="Center">Select Your Units</h5>
-            {buttons}<br/>
+            <h5 align="Center">Select Your Units</h5> {buttons}<br/>
             {this.state.userDefinedOn && (
                 <Form>
-                  <Input id={"uName"} placeholder="Unit Name ex. Miles"
+                    <Input id={"uName"} placeholder="Unit Name ex. Miles"
                          onChange={(event) =>
                              this.props.updateOptions('unitName',
                                  event.target.value)}/><br/>
-                  <Input id={"uRadius"} placeholder="Earth Radius ex. 3959"
+                    <Input id={"uRadius"} placeholder="Earth Radius ex. 3959"
                          onChange={(event) =>
                              this.props.updateOptions('unitRadius',
                                  event.target.value)}/>
-                </Form>)
-            }
+                </Form>)}
         </div>
     );
   }
