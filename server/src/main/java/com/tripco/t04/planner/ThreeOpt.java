@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ThreeOpt extends Optimize {
 
-    ThreeOpt(ArrayList<Place> places, int[][] latice){
+    ThreeOpt(ArrayList<Place> places, long[][] latice){
         super(places, latice);
     }
 
@@ -59,7 +59,7 @@ public class ThreeOpt extends Optimize {
         }
     }
 
-    private void optCaseStore(int[] optCase, int[][] latice, int[] candidate, int a1, int a2, int b1, int b2, int c1, int c2){
+    private void optCaseStore(long[] optCase, long[][] latice, int[] candidate, int a1, int a2, int b1, int b2, int c1, int c2){
         optCase[0] = -latice[a1][a2] - latice[c1][c2] + latice[a1][c1] + latice[a2][c2];
         optCase[1] = -latice[a1][a2] - latice[b1][b2] + latice[a1][b1] + latice[a2][b2];
         optCase[2] = -latice[b1][b2] - latice[c1][c2] + latice[b1][c1] + latice[b2][c2];
@@ -69,8 +69,8 @@ public class ThreeOpt extends Optimize {
         optCase[6] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b2] + latice[c1][a2] + latice[b1][c2];
     }
 
-    private int checkTwoOptCase(int[] optCase, int[] candidate, int minDist, int[] ijk){
-        int min = minDist;
+    private long checkTwoOptCase(long[] optCase, int[] candidate, long minDist, int[] ijk){
+        long min = minDist;
         if (optCase[0] < 0) {
             optReverse(candidate, ijk[0] + 1, ijk[2]);
             min += optCase[0];
@@ -89,7 +89,7 @@ public class ThreeOpt extends Optimize {
         return min;
     }
 
-    protected int iterate(int[] candidate, int minDist, int[][] latice){
+    protected long iterate(int[] candidate, long minDist, long[][] latice){
 
         int lengthOfCandidate = candidate.length;
 
@@ -109,7 +109,7 @@ public class ThreeOpt extends Optimize {
                         c2 = candidate[k + 1];
 
                     //create and initialize the optCase
-                    int[] optCase = new int[7];
+                    long[] optCase = new long[7];
                     optCaseStore(optCase,latice,candidate,a1,a2,b1,b2,c1,c2);
                     int[] ijk = new int[]{i,j,k};
 

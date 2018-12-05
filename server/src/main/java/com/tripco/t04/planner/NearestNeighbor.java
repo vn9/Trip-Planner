@@ -41,7 +41,7 @@ public class NearestNeighbor extends Optimize {
     }
 
 
-    protected int iterate(int[] candidate, int minDist, int[][] latice) {
+    protected long iterate(int[] candidate, long minDist, long[][] latice) {
         return 0;
     }
 }

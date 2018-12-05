@@ -3,12 +3,12 @@ import java.util.ArrayList;
 
 public abstract class Optimize {
     protected ArrayList<Place> places;
-    Long[][] latice;
+    long[][] latice;
 
-    Optimize(ArrayList<Place> places, Long[][] latice)
+    Optimize(ArrayList<Place> places, long[][] latice)
     {
         this.places = places;
-        this. latice = latice;
+        this.latice = latice;
     }
 
     protected void swap ( int[] arr, int firstIndex, int secondIndex){
@@ -57,10 +57,10 @@ public abstract class Optimize {
 
 
     protected long optimizer(int[] candidate){
-        int lastDist = Integer.MAX_VALUE;
+        long lastDist = Long.MAX_VALUE;
         //runs 1opt. -> best = nn(0) in picture from Dave's office
         Optimize oneOpt = new NearestNeighbor(places, latice);
-        int minDist = oneOpt.optimizer(candidate);
+        long minDist = oneOpt.optimizer(candidate);
         while (lastDist != minDist) {
             //After running 1-opt, keep improving until we can't anymore
             lastDist = minDist;
@@ -70,6 +70,6 @@ public abstract class Optimize {
         return minDist;
     }
 
-    abstract int iterate ( int[] candidate, int minDist, int[][] latice);
+    abstract long iterate ( int[] candidate, long minDist, long[][] latice);
 
 }
