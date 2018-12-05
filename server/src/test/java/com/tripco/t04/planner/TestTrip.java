@@ -48,8 +48,8 @@ public class TestTrip {
   @Test
   public void testLegDistances() {
     trip.plan();
-    ArrayList<Integer> expectedDistances = new ArrayList<>();
-    Collections.addAll(expectedDistances,  102, 97, 92, 86);
+    ArrayList<Long> expectedDistances = new ArrayList<>();
+    Collections.addAll(expectedDistances,  (long)102, (long)97, (long)92, (long)86);
     // Call the equals() method of the first object on the second object.
     assertEquals(expectedDistances, trip.distances);
   }

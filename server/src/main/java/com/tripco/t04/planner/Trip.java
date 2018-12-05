@@ -11,11 +11,11 @@ public class Trip {
   public String title;
   public Option options;
   public ArrayList<Place> places;
-  public ArrayList<Integer> distances;
+  public ArrayList<Long> distances;
   public String map;
 
   public Trip(String type, Integer version, String title, Option options, ArrayList<Place> places,
-      ArrayList<Integer>  distances,  String map){
+      ArrayList<Long>  distances,  String map){
       this.type = type;
       this.version = version;
       this.title = title;
@@ -66,8 +66,8 @@ public class Trip {
    * @return the distances between consecutive places, including the return to the starting
    * point to make a round trip.
    */
-  private ArrayList<Integer> legDistances () {
-      ArrayList<Integer> dist = new ArrayList<>();
+  private ArrayList<Long> legDistances () {
+      ArrayList<Long> dist = new ArrayList<>();
       if (places == null) {
           return dist;
       } // if places is empty return dist
@@ -91,8 +91,8 @@ public class Trip {
   }
 
 
-  private int[][] distanceLatice () {
-      int[][] latice = new int[places.size()][places.size()];
+  private Long[][] distanceLatice () {
+      Long[][] latice = new Long[places.size()][places.size()];
       String units = options.units;
       String unitName = null;
       Double unitRadius = null;
@@ -101,7 +101,7 @@ public class Trip {
           unitRadius = options.unitRadius;
       }
       for (int i = 0; i < places.size(); i++) {
-          latice[i][i] = 0;
+          latice[i][i] = (long)0;
           for (int j = i + 1; j < places.size(); j++) {
               Distance temp = new Distance(places.get(i), places.get(j),
                   units, unitName, unitRadius);

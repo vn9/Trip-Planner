@@ -33,10 +33,10 @@ public class TestDistance {
 
     @Test
     public void testDistance() {
-        int test1Distance = 24;
-        int test2Distance = 41;
-        int result1 = distance1.vincenty();
-        int result2 = distance2.vincenty();
+        Long test1Distance = (long)24;
+        Long test2Distance = (long)41;
+        Long result1 = distance1.vincenty();
+        Long result2 = distance2.vincenty();
         assertEquals(result1,test1Distance);
         assertEquals(result2,test2Distance);
     }
@@ -45,10 +45,10 @@ public class TestDistance {
     public void testDistanceUnits(){
         distance1.units = "miles";
         distance2.units = "kilometers";
-        int test3Distance = 24;
-        int test4Distance = 65;
-        int result3 = distance1.vincenty();
-        int result4 = distance2.vincenty();
+        Long test3Distance = (long)24;
+        Long test4Distance = (long)65;
+        Long result3 = distance1.vincenty();
+        Long result4 = distance2.vincenty();
         assertEquals(result3, test3Distance);
         assertEquals(result4, test4Distance);
     }
@@ -56,17 +56,17 @@ public class TestDistance {
     @Test
     public void testDistanceNauticalMilesUnits(){
         distance2.units = "nautical miles";
-        int test6Distance = 35;
-        int result6 = distance2.vincenty();
+        Long test6Distance = (long)35;
+        Long result6 = distance2.vincenty();
         assertEquals(result6, test6Distance);
     }
 
     @Test
     public void testCalculateMethod(){
         distance2.units = "nautical miles";
-        int test7Distance = 35;
+        Long test7Distance = (long)35;
         distance2.calculate();
-        int result7 = distance2.distance;
+        Long result7 = distance2.distance;
         assertEquals(result7, test7Distance);
     }
 
