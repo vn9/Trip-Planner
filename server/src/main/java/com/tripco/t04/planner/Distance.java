@@ -17,7 +17,7 @@ public class Distance {
     public Double unitRadius;
 
     //variable for calculation
-    public int distance;
+    public Long distance;
 
     //create a specified constructor
 
@@ -35,7 +35,7 @@ public class Distance {
         this.distance = vincenty();
     }
 
-    public int vincenty(){
+    public Long vincenty(){
         double phi1 = Math.toRadians(Double.parseDouble(origin.latitude));
         double phi2 = Math.toRadians(Double.parseDouble(destination.latitude));
         double lambda1 = Math.toRadians(Double.parseDouble(origin.longitude));
@@ -46,16 +46,16 @@ public class Distance {
         double angle = Math.atan2(Math.sqrt(top),bottom);
 
         if(units.equals("miles")) {
-            distance = (int)Math.round(angle * 3959);
+            distance = Math.round(angle * 3959);
         }
         else if(units.equals("kilometers")) {
-            distance = (int)Math.round(angle * 6371);
+            distance = Math.round(angle * 6371);
         }
         else if(units.equals("nautical miles")) {
-            distance = (int)Math.round(angle * 3440);
+            distance = Math.round(angle * 3440);
         }
         else if(units.equals("user defined")){
-            distance = (int)Math.round(angle * unitRadius.doubleValue());
+            distance = Math.round(angle * unitRadius.doubleValue());
         }
         return distance;
     }
