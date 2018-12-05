@@ -61,7 +61,7 @@ public abstract class Optimize {
         Optimize oneOpt = new NearestNeighbor(places, latice);
         int minDist = oneOpt.optimizer(candidate);
         while (lastDist != minDist) {
-            //After running 1-opt for some certain start points, keep improving until we can't anymore
+            //After running 1-opt, keep improving until we can't anymore
             lastDist = minDist;
             //Iterate through the candidate and returns the minimum total distance
             minDist = iterate(candidate, minDist, latice);
