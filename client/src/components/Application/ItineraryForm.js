@@ -30,6 +30,8 @@ class ItineraryForm extends Component {
     getDistanceName(){
         let units = this.props.trip.options.units;
         if(units === "user defined") {
+            if(!(this.props.trip.options.unitName))
+                return units;
             units = this.props.trip.options.unitName;
         }
         return units.charAt(0).toUpperCase() + units.slice(1);
