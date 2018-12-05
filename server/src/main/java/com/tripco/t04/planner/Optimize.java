@@ -3,9 +3,9 @@ import java.util.ArrayList;
 
 public abstract class Optimize {
     protected ArrayList<Place> places;
-    int[][] latice;
+    Long[][] latice;
 
-    Optimize(ArrayList<Place> places, int[][] latice)
+    Optimize(ArrayList<Place> places, Long[][] latice)
     {
         this.places = places;
         this. latice = latice;
@@ -34,13 +34,13 @@ public abstract class Optimize {
 
     public ArrayList<Place> begin(){
         int[] best = new int[places.size()]; //array of indices that are the "best" route
-        int minTotal = Integer.MAX_VALUE; //total distance for the best array
+        Long minTotal = Long.MAX_VALUE; //total distance for the best array
         //int[][] latice = distanceLatice(); //matrix of all the distances
         int[] candidate = new int[best.length];
         //System.out.println(Arrays.toString(latice));
         for (int newStart = 0; newStart < places.size(); newStart++) {
             cleanUp(candidate, newStart);
-            int contender = optimizer(candidate);
+            Long contender = optimizer(candidate);
             if (contender < minTotal) {
                 minTotal = contender;
                 int[] temp = candidate;
@@ -55,7 +55,8 @@ public abstract class Optimize {
         return nearestNei;
     }
 
-    protected int optimizer(int[] candidate){
+
+    protected long optimizer(int[] candidate){
         int lastDist = Integer.MAX_VALUE;
         //runs 1opt. -> best = nn(0) in picture from Dave's office
         Optimize oneOpt = new NearestNeighbor(places, latice);
@@ -70,4 +71,5 @@ public abstract class Optimize {
     }
 
     abstract int iterate ( int[] candidate, int minDist, int[][] latice);
+
 }

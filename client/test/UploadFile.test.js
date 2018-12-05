@@ -19,18 +19,6 @@ const startProps = {
     }
 };
 
-function testToggle() {
-    const fields = mount((
-        <UploadFile config={startProps.config} trip={startProps.trip}/>
-    ));
-
-    fields.setState({collapse: false});
-
-    fields.find('#toggle').first().simulate('click');
-
-}
-
-test('Test toggle', testToggle);
 
 /*--------------------------------------------------------------------------*/
 
@@ -44,3 +32,4 @@ describe("Check Add Manual", ()=> {
         expect(updateTripSpy).toHaveBeenCalled();
     });
 });
+

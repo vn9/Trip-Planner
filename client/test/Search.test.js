@@ -100,21 +100,6 @@ test('Test onCheck', testCheck);
 
 /*--------------------------------------------------------------------------*/
 
-function testToggle() {
-    const search = mount((
-        <Search config={startProps.config} trip={startProps.trip}/>
-    ));
-
-    search.setState({collapse: false});
-
-    search.find('Button').at(0).simulate('click');
-
-}
-
-test('Test Toggle', testToggle);
-
-/*--------------------------------------------------------------------------*/
-
 const mySearch = shallow(<Search config={startProps.config} trip={startProps.trip} updateTrip={updateMyTrip}/>);
 
 mySearch.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,

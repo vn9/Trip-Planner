@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import {Card, CardImg, CardBody, CardText, Row, Col, CardTitle} from 'reactstrap'
 import kira_photo from '../../../../server/src/main/resources/kira_photo.jpg'
-import john_deere from '../../../../server/src/main/resources/john_deer_photo.jpg'
+import vina_photo from '../../../../server/src/main/resources/vina_photo.jpg'
+import abel_photo from '../../../../server/src/main/resources/abel_photo.jpg'
+import liuzhe_photo from '../../../../server/src/main/resources/liuzhe_photo.jpg'
 
 let bio = class biography {
     constructor(image, name, text){
@@ -16,13 +18,29 @@ let kira_bio = new bio(kira_photo, "Kira Deming", "Kira is a graduate student at
     "Forest Restoration Institute and the Department of Forestry and Rangeland Stewardship. An avid " +
     "runner, her free time is spent training for marathons and mountain ultras.");
 
-let john_bio = new bio(john_deere, "John Deere", "Nothing runs like a Deere");
+let vina_bio = new bio(vina_photo, "Vina Nguyen", "Vina is an undergraduate "
+    + "student in Computer Science at CSU. She expects to receive her Bachelor's "
+    + "Degree in May 2019. She is interested in making web pages, and therefore, "
+    + "very much enjoyed working on this project. In her free time, she "
+    + "likes to read, translates stories, draw, and solves puzzles.");
+
+let abel_bio = new bio(abel_photo, "Abel Ykalo", "Abel is a third year undergraduate "
+    + "student studying Computer Science at CSU. He expects to receive his Bachelor's "
+    + "Degree in May 2020. He has an interest in learning about machine learning and AI. "
+    + "In his free time, he enjoys playing single-player story based video games and seeing movies.");
+
+let zhe_bio = new bio(liuzhe_photo, "Zhe Liu", "Zhe is an undergraduate student "
+    + "in Computer Science (CS). He changed his major from Electrical and Computer Engineering (ECE) to CS in his second year "
+    + "because it didn't interest him. By the way, he has a math minor because he took too many math courses "
+    + "while in ECE. He will earn his Bachelor's degree in May 2019 and is "
+    + "looking for a graduate program to get more knowledge about Computer Science.");
 
 export default class Info extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            bios: [kira_bio, john_bio]
+            bios: [kira_bio, vina_bio, abel_bio, zhe_bio]
+
         }
     }
 

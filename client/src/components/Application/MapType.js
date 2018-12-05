@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Card, CardBody, Button} from 'reactstrap'
+import {Button} from 'reactstrap'
 
 export default class MapType extends Component{
     constructor(props) {
@@ -21,7 +21,7 @@ export default class MapType extends Component{
     }
 
     render() {
-        let buttons = this.props.config.map.map((opt) =>
+        let buttons = this.props.config.maps.map((opt) =>
             <Button id={opt} key={'map_' + opt} className='btn-outline-dark'
                     active={this.props.options.map === opt} value={opt}
                     onClick={(event)=>this.changeOpt(event)}
@@ -30,14 +30,11 @@ export default class MapType extends Component{
         );
 
         return(
-            <Card>
-                <CardBody>
-                    <p align="Center">Select Your Map Type</p>
+                <div>
+                    <br/>
+                    <h5 align="Center">Select Your Map Type</h5>
                     {buttons}
-                </CardBody>
-            </Card>
+                </div>
         );
     }
 }
-
-

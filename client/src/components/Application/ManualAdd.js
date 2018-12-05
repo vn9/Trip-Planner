@@ -49,19 +49,24 @@ export default class ManualAdd extends Component {
         let place = this.state.myPlace;
         let myAdd = this.props.config.attributes.map((att) =>
             <InputGroup key={att}>
-                <InputGroupAddon key={att} addonType="prepend">{att.charAt(0).toUpperCase() + att.slice(1)}</InputGroupAddon>
-                <Input id={att} type="text" defaultValue={place[att]} onChange={(e)=>this.updatePlace(att, e.target.value)}/>
+                <InputGroupAddon key={att} addonType="prepend">
+                    {att.charAt(0).toUpperCase() + att.slice(1)}
+                    </InputGroupAddon>
+                <Input id={att} type="text" defaultValue={place[att]}
+                       onChange={(e)=>this.updatePlace(att, e.target.value)}/>
             </InputGroup>);
         return(myAdd)
     }
 
     render() {
         return (
-            <div>
-                <p align="Center"> Add Your Own </p>
+            <div><br/>
+                <h5 align="Center"> Add Your Own </h5>
                 {this.addOwn()}
                 <br/>
-                <Button id={"myAdd"} type={"button"} onClick={this.addPlace}>Add Place</Button>
+                <Button id={"myAdd"} type={"button"} onClick={this.addPlace}>
+                    Add Place
+                </Button>
             </div>
         )
     }
