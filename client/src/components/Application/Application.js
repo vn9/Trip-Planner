@@ -98,7 +98,7 @@ export default class Application extends Component {
     planTrip(){
         request(this.state.trip, 'plan', serverURL).then(
             (response) => {
-                console.log(response);
+                //console.log(response);
                 this.updateBasedOnResponse(response);
             })
     }

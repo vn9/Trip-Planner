@@ -13,9 +13,9 @@ export default class UploadFile extends Component {
         let reader = new FileReader();
         reader.readAsText(file);
         reader.onload = (event)=> {
-            console.warn("file data",event.target.result);
+            //console.warn("file data",event.target.result);
             const object = JSON.parse(event.target.result);
-            console.log(object);
+            //console.log(object);
             for (var key in object){
                 var value = object[key];
                 this.props.updateTrip(key,value);
