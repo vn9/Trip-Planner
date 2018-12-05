@@ -114,10 +114,11 @@ public class Driver {
             + " world_airports.type, region.name FROM continents INNER JOIN country ON "
             + "continents.id = country.continent INNER JOIN region ON country.id = "
             + "region.iso_country INNER JOIN world_airports ON region.id = "
-            + "world_airports.iso_region ORDER BY continents.name, country.name, region.name, "
-            + "world_airports.name ASC " + myLimit;
+            + "world_airports.iso_region " + myQuery + " ORDER BY continents.name, country.name,"
+            + " region.name, world_airports.name ASC " + myLimit;
 
-        /** Note that if the variable isn't defined, System.getenv will return null.
+        /**
+         *  Note that if the variable isn't defined, System.getenv will return null.
          *  When test on own computer, make sure set up "export CS314_ENV=development" in
          *  .bash_profile for Mac or .bashrc for linux.
          *  Then make sure the ssh -L 5655:faure:3306 -N <username>@<cs-machine> has port (5655)
