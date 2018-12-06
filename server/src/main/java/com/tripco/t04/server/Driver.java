@@ -17,7 +17,8 @@ public class Driver {
     // db configuration information
     public final static String myDriver = "com.mysql.jdbc.Driver";
     //
-    public static String myUrl = "jdbc:mysql://localhost:5655/cs314?useUnicode=true&characterEncoding=utf-8";
+    public static String myUrl = "jdbc:mysql:"
+        + "//localhost:5655/cs314?useUnicode=true&characterEncoding=utf-8";
     public final static String user = "cs314-db";
     public final static String pass = "eiK5liet1uej";
     // fill in SQL queries to count the number of records and to retrieve the data
@@ -37,7 +38,6 @@ public class Driver {
 
     /**
      * The method accesses to the database.
-     *
      */
 
     public String getFilterQueryString(List<Filter> filters){
@@ -103,12 +103,10 @@ public class Driver {
 
     public void find(String match, List<Filter> filters, int limit) {
         //count the number of records in the table
-
         String myMatch = getMatchQueryString(match);
         String myFilters = getFilterQueryString(filters);
         String myLimit = getLimitString(limit);
         String myQuery = getMyQueryString(myMatch, myFilters);
-
         //String myQuery = getQueryString(myFilters, myMatch);
 
         count = "SELECT count(*) FROM world_airports";
@@ -131,7 +129,6 @@ public class Driver {
             //user is on the campus wired network (deploy)
             myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
         }
-
         try { Class.forName(myDriver);
             // connect to the database and query
             try (Connection conn = DriverManager.getConnection(myUrl, user, pass);
