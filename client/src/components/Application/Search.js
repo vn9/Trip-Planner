@@ -71,6 +71,15 @@ export default class Search extends Component {
         }
     }
 
+    addValues(filtersValues,values){
+        for (let valueName in filtersValues) {
+            if (filtersValues[valueName]) {
+                values.push(valueName);
+            }
+        }
+        return values;
+    }
+
     getActiveFilterValues () {
         // modify search.filters so that it matches what the server expects
         //   search.filters = [
@@ -79,11 +88,12 @@ export default class Search extends Component {
         for (let filterName in this.state.myFilters) {
             let filter = this.state.myFilters[filterName];
             let values = [];
-            for (let valueName in filter.values) {
-                if (filter.values[valueName]) {
-                    values.push(valueName);
-                }
-            }
+            this.addValues(filter.values,values);
+            // for (let valueName in filter.values) {
+            //     if (filter.values[valueName]) {
+            //         values.push(valueName);
+            //     }
+            // }
             if (values.length > 0){
                 filters.push({'name': filterName, 'values': values});
             }
@@ -102,11 +112,21 @@ export default class Search extends Component {
             })
     }
 
+    exits(myPlaces,value){
+        for (let i = 0; i < myPlaces.length; i++){
+            let p = myPlaces[i];
+            if(p.id === value.id)
+                return true;
+        }
+        return false;
+    }
+
     addPlace(event) {
         let myplace = event.target.value;
         let jplace = JSON.parse(myplace);
         let myPlaces = this.props.trip.places;
-        myPlaces.push(jplace);
+        if(this.exits(myPlaces,jplace)===false)
+            myPlaces.push(jplace);
         this.props.updateTrip('places', myPlaces);
         //remove it from search result list
         let myIndex = -1;
@@ -127,8 +147,9 @@ export default class Search extends Component {
         let myPlaces= this.props.trip.places;
         for (let i = 0; i < newPlaces.length; i++){
             let aPlace = newPlaces[i];
-            myPlaces.push(aPlace);
-            }
+            if(this.exits(myPlaces,aPlace)===false)
+                myPlaces.push(aPlace);
+        }
         this.props.updateTrip('places', myPlaces);
 
         let newSearch = this.state.search;
