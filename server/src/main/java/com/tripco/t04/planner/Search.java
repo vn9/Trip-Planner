@@ -40,7 +40,7 @@ public class Search {
         Driver myDriver = new Driver(this.match, this.limit,this.filters);
         myDriver.find(this.match, this.filters, this.limit);
         this.places = Driver.places;
-        this.found = Driver.places.size();
+        this.found = Driver.found;
     }
 
 }
