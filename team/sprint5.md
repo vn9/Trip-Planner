@@ -137,11 +137,11 @@ Epics planned for this sprint.
 
 #### What we changed this sprint
 
-*We will do a better job at focusing on taking down one/two epics at a time instead of trying to work on them all at once.*
+*We focused on taking epics down one by one as well as helping each other through rough story points. As a group we increased the amount of pull requests that were sent and approved throughout the week.*
 
 #### What we did well
 
-*Articulate what went well at the end of the sprint.*
+*We did a better job at having smaller pull requests so they were easier to review. We were able to find and fix bugs at a higher speed than we had earlier in the semester. Our code was significantly more clean that it was earlier in the semester, having less edits after the pull request has been sent. We also did a good job at going back and cleaning older code.*
 
 #### What we need to work on
 
