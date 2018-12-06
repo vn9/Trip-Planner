@@ -85,17 +85,17 @@ private StringBuilder readRawMap(){
      * Call functions to get the coordinates on the image and format a string of tag line
      * @return [] double holds the values of the shifted longitudes {currentShift, nextShift}
      */
-    private double[] latLon( double cLon, double nLon){
+    private double[] latLon( double clong, double nlong){
         double[] coordinates = {0.0,0.0};
-        if (cLon > nLon) {
-            coordinates[0] = cLon - 360;
-            coordinates[1] = nLon + 360;
+        if (clong > nlong) {
+            coordinates[0] = clong - 360;
+            coordinates[1] = nlong + 360;
         } else {
-            coordinates[0] = cLon + 360;
-            coordinates[1] = nLon - 360;
+            coordinates[0] = clong + 360;
+            coordinates[1] = nlong - 360;
         }
         return(coordinates);
-    };
+    }
 
     /**
      *  Call functions to convert coordinates to pixels using map's dimensions and
@@ -137,23 +137,22 @@ private StringBuilder readRawMap(){
     public String kml(){
         String start = "<?xml version= \"1.0\" encoding = \"UTF-8\"?>\n"
                 +"<kml xmlns=\"http://www.opengis.net/kml/2.2\"><Document>\n"
-                +"<name>Trip Path</name> " +
-                "<description>Generates a path of the trip.</description>\n" +
-                "<Style id=\"yellowLineGreenPoly\">\n <LineStyle>\n <color>7f00ffff</color>\n " +
-                "<width>9</width>\n </LineStyle>\n <PolyStyle>\n  <color>7f00ff00</color>\n" +
-                " </PolyStyle>\n </Style> <Placemark>\n <name>Absolute</name>\n" +
-                " <description>Yellow Line</description>"+
-                " <styleUrl>#yellowLineGreenPoly</styleUrl>\n <LineString>\n" +
-                " <tessellate>1</tessellate>\n <altitudeMode>clampToGround</altitudeMode>\n <coordinates>";
-        //-112.2550785337791,36.07954952145647,2357   single line
-        String lastPlace = String.format("%s,%s,7000",places.get(0).longitude, places.get(0).latitude);
+                +"<name>Trip Path</name> "
+                +"<description>Generates a path of the trip.</description>\n"
+                +"<Style id=\"yellowLineGreenPoly\">\n <LineStyle>\n <color>7f00ffff</color>\n "
+                +"<width>9</width>\n </LineStyle>\n <PolyStyle>\n  <color>7f00ff00</color>\n"
+                +" </PolyStyle>\n </Style> <Placemark>\n <name>Absolute</name>\n"
+                +" <description>Yellow Line</description>"
+                +" <styleUrl>#yellowLineGreenPoly</styleUrl>\n <LineString>\n"
+                +" <tessellate>1</tessellate>\n"
+                +" <altitudeMode>clampToGround</altitudeMode>\n <coordinates>";
+        String lPlace = String.format("%s,%s,7000",places.get(0).longitude, places.get(0).latitude);
         String end = "</coordinates>\n" + " </LineString> </Placemark>\n" + " </Document> </kml> ";
 
         String middle = places.parallelStream().map( p ->
                 String.format("%s,%s,7000",p.longitude, p.latitude)).
                 collect(Collectors.joining("\n"));
-        //System.out.print("SEE:"+start + " " + middle + " " + end);
-        return start + " " + middle + " " + lastPlace + " " + end;
+        return start + " " + middle + " " + lPlace + " " + end;
     }
 }
 

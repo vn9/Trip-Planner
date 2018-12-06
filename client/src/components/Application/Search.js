@@ -219,15 +219,13 @@ export default class Search extends Component {
 
     getMessage(){
         let search = this.state.search;
-        if(search.limit === 0 ){
-            let message =
-                <p align="Center">Showing {search.found} of {search.found} Results</p>;
-            return(message)
-        } else{
-            let message=
-                <p align="Center">Showing {search.limit} of {search.found} Results</p>;
-            return(message)
+        let result;
+        if(search.limit === 0 || search.found < search.limit){
+            result = search.found;
+        } else {
+            result = search.limit;
         }
+        return(result)
 
     }
 
@@ -246,7 +244,7 @@ export default class Search extends Component {
                     'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                     {this.showPlaces()}
                     </div>
-                {this.getMessage()}
+                <p align="Center">Showing {this.getMessage()} of {this.state.search.found}</p>;
                 <br/>
                 <Button id={"addAll"} onClick={this.addAll}>Add All</Button>
             </div>

@@ -113,7 +113,7 @@ function testMessage0() {
         }});
 
     let message = results.find('p').text();
-    let ideal = "Showing 2 of 2 Results";
+    let ideal = "Showing 2 of 2";
     expect(message).toEqual(ideal)
 }
 
@@ -134,7 +134,7 @@ function testMessage() {
         }});
 
     let message = results.find('p').text();
-    let ideal = "Showing 2 of 50 Results";
+    let ideal = "Showing 2 of 50";
     expect(message).toEqual(ideal)
 }
 
