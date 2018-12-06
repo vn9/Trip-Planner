@@ -137,24 +137,23 @@ private StringBuilder readRawMap(){
     public String kml(){
         String start = "<?xml version= \"1.0\" encoding = \"UTF-8\"?>\n"
                 +"<kml xmlns=\"http://www.opengis.net/kml/2.2\"><Document>\n"
-                +"<name>Paths</name> " +
-                "<description>Examples of paths. Note that the tessellate tag is by default\n" +
-                " set to 0. If you want to create tessellated lines, they must be authored\n" +
-                " (or edited) directly in KML.</description>"+
+                +"<name>Trip Path</name> " +
+                "<description>Generates a path of the trip.</description>\n" +
                 "<Style id=\"yellowLineGreenPoly\">\n <LineStyle>\n <color>7f00ffff</color>\n " +
-                "<width>4</width>\n </LineStyle>\n <PolyStyle>\n  <color>7f00ff00</color>\n" +
-                " </PolyStyle>\n </Style> <Placemark>\n <name>Absolute Extruded</name>\n" +
-                " <description>Transparent green wall with yellow outlines</description>"+
-                " <styleUrl>#yellowLineGreenPoly</styleUrl>\n <LineString>\n <extrude>1</extrude>\n" +
-                " <tessellate>1</tessellate>\n <altitudeMode>absolute</altitudeMode>\n <coordinates>";
+                "<width>9</width>\n </LineStyle>\n <PolyStyle>\n  <color>7f00ff00</color>\n" +
+                " </PolyStyle>\n </Style> <Placemark>\n <name>Absolute</name>\n" +
+                " <description>Yellow Line</description>"+
+                " <styleUrl>#yellowLineGreenPoly</styleUrl>\n <LineString>\n" +
+                " <tessellate>1</tessellate>\n <altitudeMode>clampToGround</altitudeMode>\n <coordinates>";
         //-112.2550785337791,36.07954952145647,2357   single line
+        String lastPlace = String.format("%s,%s,7000",places.get(0).longitude, places.get(0).latitude);
         String end = "</coordinates>\n" + " </LineString> </Placemark>\n" + " </Document> </kml> ";
 
         String middle = places.parallelStream().map( p ->
                 String.format("%s,%s,7000",p.longitude, p.latitude)).
                 collect(Collectors.joining("\n"));
         //System.out.print("SEE:"+start + " " + middle + " " + end);
-        return start + " " + middle + " " + end;
+        return start + " " + middle + " " + lastPlace + " " + end;
     }
 }
 
