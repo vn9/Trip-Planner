@@ -27,6 +27,7 @@ export default class Search extends Component {
         }
 
         this.bindFunctions = this.bindFunctions.bind(this);
+        this.getMessage = this.getMessage.bind(this);
     }
 
     bindFunctions(){
@@ -216,6 +217,20 @@ export default class Search extends Component {
         );
     }
 
+    getMessage(){
+        let search = this.state.search;
+        if(search.limit === 0 ){
+            let message =
+                <p align="Center">Showing {search.found} of {search.found} Results</p>;
+            return(message)
+        } else{
+            let message=
+                <p align="Center">Showing {search.limit} of {search.found} Results</p>;
+            return(message)
+        }
+
+    }
+
     render() {
         this.bindFunctions();
         return (
@@ -231,7 +246,7 @@ export default class Search extends Component {
                     'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                     {this.showPlaces()}
                     </div>
-                <p align="Center">{this.state.search.found} Places Found</p>
+                {this.getMessage()}
                 <br/>
                 <Button id={"addAll"} onClick={this.addAll}>Add All</Button>
             </div>

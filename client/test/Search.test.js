@@ -100,6 +100,48 @@ test('Test onCheck', testCheck);
 
 /*--------------------------------------------------------------------------*/
 
+function testMessage0() {
+    startProps.config.filters= [{"name": "continents.name", "values":['Asia']}];
+
+    const results = mount((
+        <Search config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    results.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
+            places: [{'id': 'den', 'name': 'Denver', 'latitude': 39.73, 'longitude': -104.99},
+                {'id': 'bldr', 'name': 'Boulder', 'latitude': 40.01, 'longitude': -105.27}]
+        }});
+
+    let message = results.find('p').text();
+    let ideal = "Showing 2 of 2 Results";
+    expect(message).toEqual(ideal)
+}
+
+test('Test Messages (0 Limit)', testMessage0);
+
+/*--------------------------------------------------------------------------*/
+
+function testMessage() {
+    startProps.config.filters= [{"name": "continents.name", "values":['Asia']}];
+
+    const results = mount((
+        <Search config={startProps.config} trip={startProps.trip}/>
+    ));
+
+    results.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 2, found: 50,
+            places: [{'id': 'den', 'name': 'Denver', 'latitude': 39.73, 'longitude': -104.99},
+                {'id': 'bldr', 'name': 'Boulder', 'latitude': 40.01, 'longitude': -105.27}]
+        }});
+
+    let message = results.find('p').text();
+    let ideal = "Showing 2 of 50 Results";
+    expect(message).toEqual(ideal)
+}
+
+test('Test Messages (Limit, Variable Found)', testMessage);
+
+/*--------------------------------------------------------------------------*/
+
 const mySearch = shallow(<Search config={startProps.config} trip={startProps.trip} updateTrip={updateMyTrip}/>);
 
 mySearch.setState({search: {version: 4, type: "search", match: "", filters: [], limit: 0, found: 2,
@@ -123,3 +165,4 @@ describe("Check Add Buttons", ()=> {
     });
     }
 );
+

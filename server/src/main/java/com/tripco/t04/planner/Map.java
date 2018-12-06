@@ -106,13 +106,13 @@ private StringBuilder readRawMap(){
         StringBuilder paths = new StringBuilder();
         String line;
         String line2;
-        for(int i = 0; i < places.size(); i++){
+        for (int i = 0; i < places.size(); i++){
             double curloo = Double.parseDouble(places.get(i).longitude);
             double curlat = Double.parseDouble(places.get(i).latitude);
             double nextloo = latlong(places,i)[0];
             double nextlat = latlong(places,i)[1];
 
-            if(Math.abs(curloo - nextloo) > 180) {
+            if (Math.abs(curloo - nextloo) > 180) {
                 double [] coords = latLon(curloo, nextloo);
                 double cLon = coords[0];
                 double nLon = coords[1];
@@ -121,7 +121,7 @@ private StringBuilder readRawMap(){
                 paths.append(line);
                 paths.append(line2);
             }
-            else{ // Draw 1 line
+            else {
                 line = draw1Line(curloo,nextloo,curlat,nextlat);
                 paths.append(line).append("\n");
             }
@@ -142,7 +142,7 @@ private StringBuilder readRawMap(){
                 " set to 0. If you want to create tessellated lines, they must be authored\n" +
                 " (or edited) directly in KML.</description>"+
                 "<Style id=\"yellowLineGreenPoly\">\n <LineStyle>\n <color>7f00ffff</color>\n " +
-                "<width>4</width>\n </LineStyle>\n PolyStyle>\n  <color>7f00ff00</color>\n" +
+                "<width>4</width>\n </LineStyle>\n <PolyStyle>\n  <color>7f00ff00</color>\n" +
                 " </PolyStyle>\n </Style> <Placemark>\n <name>Absolute Extruded</name>\n" +
                 " <description>Transparent green wall with yellow outlines</description>"+
                 " <styleUrl>#yellowLineGreenPoly</styleUrl>\n <LineString>\n <extrude>1</extrude>\n" +
