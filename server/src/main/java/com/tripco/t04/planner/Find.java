@@ -16,7 +16,7 @@ public class Find {
      */
     public Find (Request request) {
         // first print the request
-        System.out.println(HTTP.echoRequest(request));
+        //System.out.println(HTTP.echoRequest(request));
 
         // extract the information from the body of the request.
         JsonParser jsonParser = new JsonParser();

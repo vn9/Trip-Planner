@@ -14,7 +14,7 @@ let bio = class biography {
 };
 
 let kira_bio = new bio(kira_photo, "Kira Deming", "Kira is a graduate student at CSU working to develop " +
-    "forest" + "planning software for the US Forest Service. She also works as a GIS Analyst for the Colorado " +
+    "forest " + "planning software for the US Forest Service. She also works as a GIS Analyst for the Colorado " +
     "Forest Restoration Institute and the Department of Forestry and Rangeland Stewardship. An avid " +
     "runner, her free time is spent training for marathons and mountain ultras.");
 
@@ -29,8 +29,8 @@ let abel_bio = new bio(abel_photo, "Abel Ykalo", "Abel is a third year undergrad
     + "Degree in May 2020. He has an interest in learning about machine learning and AI. "
     + "In his free time, he enjoys playing single-player story based video games and seeing movies.");
 
-let zhe_bio = new bio(liuzhe_photo, "Zhe Liu", "Zhe is an undergraduate student "
-    + "in Computer Science (CS). He changed his major from Electrical and Computer Engineering (ECE) to CS in his second year "
+let zhe_bio = new bio(liuzhe_photo, "Zhe Liu", "Zhe is an undergraduate student in Computer Science (CS). "
+    + "He changed his major from Electrical and Computer Engineering (ECE) to CS in his second year "
     + "because it didn't interest him. By the way, he has a math minor because he took too many math courses "
     + "while in ECE. He will earn his Bachelor's degree in May 2019 and is "
     + "looking for a graduate program to get more knowledge about Computer Science.");
@@ -90,9 +90,9 @@ export default class Info extends Component {
 /*
 <h2 align="Center">About</h2>
               <CardText> Here at TripCo we specialize in planning. Our dedicated team has worked hard to bring you a
-                product that is simple and easy to use, but sleek and elegant. Whether you've already got your
+                product that is simple and easy to use, but still remains sleek and elegant. Whether you've already got your
                   itinerary or need to search for places, this app has you covered. Simply add your places, customize,
                   and save! We've provided a variety of personalization options so your trip is exactly the way you
-                  want.
+                  want. From all of us at TripCo, happy planning!
               </CardText>
  */

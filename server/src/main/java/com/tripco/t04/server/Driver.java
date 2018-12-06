@@ -59,7 +59,7 @@ public class Driver {
             myFilters += filterString + " AND ";
         }
         myFilters = myFilters.substring(0, myFilters.length() - 4);
-        System.out.print(myFilters);
+        //System.out.print(myFilters);
 
         return(myFilters);
     }
@@ -124,7 +124,7 @@ public class Driver {
          *  Then make sure the ssh -L 5655:faure:3306 -N <username>@<cs-machine> be the same port here (5655)
          */
         String isDevelopment = System.getenv("CS314_ENV");
-        System.out.printf("%s",isDevelopment);
+        //System.out.printf("%s",isDevelopment);
         if(isDevelopment == null ) {
             //user is on the campus wired network (deploy)
             myUrl = "jdbc:mysql://faure.cs.colostate.edu/cs314";
