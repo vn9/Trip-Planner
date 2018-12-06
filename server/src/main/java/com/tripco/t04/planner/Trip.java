@@ -97,7 +97,7 @@ public class Trip {
   }
 
 
-  private long[][] distanceLatice () {
+  private long[][] distanceLatice(){
       long[][] latice = new long[places.size()][places.size()];
       String units = options.units;
       String unitName = null;

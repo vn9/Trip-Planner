@@ -28,16 +28,16 @@ public class NearestNeighbor extends Optimize {
 
     @Override
     protected long optimizer(int[] candidate) {
-        long Total = (long)0;
+        long total = (long)0;
         for (int i = 1; i < candidate.length; i++) {//for all start points
             int nearestIndex = neighbor(candidate, i);
             Long dist = latice[candidate[i - 1]][candidate[nearestIndex]];
-            Total += dist;
+            total += dist;
             swap(candidate, i, nearestIndex);
         }
         //System.out.println(bestTotal);
-        Total = Total + latice[candidate[0]][candidate[candidate.length - 1]];
-        return Total;
+        total = total + latice[candidate[0]][candidate[candidate.length - 1]];
+        return total;
     }
 
 

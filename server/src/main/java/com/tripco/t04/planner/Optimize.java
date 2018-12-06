@@ -17,9 +17,9 @@ public abstract class Optimize {
         arr[secondIndex] = firstValue;
     }
 
-    protected void optReverse ( int[] candidate, int i1, int k){
-        int start = Math.min(i1, k);
-        int end = Math.max(i1, k);
+    protected void optReverse(int[] candidate, int i1, int k0){
+        int start = Math.min(i1, k0);
+        int end = Math.max(i1, k0);
         while (start < end) { //copied from Dave's code. keep swapping until all swaps are done
             swap(candidate, start++, end--); //actual swapping
         }
@@ -70,6 +70,6 @@ public abstract class Optimize {
         return minDist;
     }
 
-    abstract long iterate ( int[] candidate, long minDist, long[][] latice);
+    abstract long iterate(int[] candidate, long minDist, long[][] latice);
 
 }

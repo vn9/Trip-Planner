@@ -103,17 +103,18 @@ public class ThreeOpt extends Optimize {
                     int c1 = candidate[k];
                     int c2;
                     //special case when meet end because of round trip
-                    if (k == lengthOfCandidate - 1)
+                    if (k == lengthOfCandidate - 1) {
                         c2 = candidate[0];
-                    else
+                    }
+                    else {
                         c2 = candidate[k + 1];
+                    }
 
                     //create and initialize the optCase
                     long[] optCase = new long[7];
                     optCaseStore(optCase,latice,candidate,a1,a2,b1,b2,c1,c2);
-                    int[] ijk = new int[]{i,j,k};
 
-                    //check each case and do the optimize(deduction) if distance is shorter(negative)
+                    //check each case, do the optimize if distance is shorter
                     if (optCase[3] < 0) {
                         optReverse(candidate, i + 1, j);
                         optReverse(candidate, j + 1, k);
@@ -146,6 +147,7 @@ public class ThreeOpt extends Optimize {
                         minDist += optCase[6];
                         continue;
                     }
+                    int[] ijk = new int[]{i,j,k};
                     minDist = checkTwoOptCase(optCase,candidate,minDist,ijk);
                 }
             }
