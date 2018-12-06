@@ -244,7 +244,7 @@ export default class Search extends Component {
                     'overflow': 'scroll', 'display': 'block', 'width': '100%'}}>
                     {this.showPlaces()}
                     </div>
-                <p align="Center">Showing {this.getMessage()} of {this.state.search.found}</p>;
+                <p align="Center">Showing {this.getMessage()} of {this.state.search.found}</p>
                 <br/>
                 <Button id={"addAll"} onClick={this.addAll}>Add All</Button>
             </div>
