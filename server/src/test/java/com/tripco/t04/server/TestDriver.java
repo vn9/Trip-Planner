@@ -76,8 +76,9 @@ public class TestDriver {
         String matchString = driver1.getMatchQueryString(driver1.match);
         String match2String = driver2.getMatchQueryString(driver2.match);
 
-        String actual1 = " country.name LIKE '%Barcelona%' OR world_airports.municipality LIKE'%Barcelona%' " +
-                "OR world_airports.name LIKE '%Barcelona%' OR world_airports.id LIKE '%Barcelona%' ";
+        String actual1 = " country.name LIKE '%Barcelona%' OR world_airports.municipality LIKE '%Barcelona%' " +
+                "OR world_airports.name LIKE '%Barcelona%' OR continents.name LIKE '%Barcelona%' " +
+                "OR region.name LIKE '%Barcelona%' OR world_airports.type LIKE '%Barcelona%' OR world_airports.id LIKE '%Barcelona%' ";
 
         assertEquals(matchString, actual1);
         assertEquals(match2String, "");
