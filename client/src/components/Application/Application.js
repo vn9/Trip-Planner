@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Col, Row, Button, Modal, ModalBody, ModalFooter, ModalHeader, Collapse, Card, CardBody, Input,
-    InputGroup, InputGroupAddon} from 'reactstrap';
+import {Container, Col, Row, Card, CardBody} from 'reactstrap';
 
 import Info from './Info'
 import Options from './Options';
@@ -189,7 +188,7 @@ export default class Application extends Component {
         let items = [['home', 'Plan Trip', 'active', 'true'],['profile', 'Distance Calculator', '', 'false'],
             ['contact', 'About Us', '', 'false']];
         let tabs = items.map((myItem) =>
-                <li className="nav-item">
+                <li className="nav-item" key={myItem[0]}>
                     <a className={"nav-link " + myItem[2]} id={"pills-" + myItem[0] + "-tab"}
                        data-toggle="pill" href={"#pills-" + myItem[0]} role="tab"
                        aria-controls={"pills-" + myItem[0]}
@@ -233,31 +232,3 @@ export default class Application extends Component {
         )
     }
 }
-
-/*
-    generateTabs(){
-        let tabs =
-            <ul className="nav nav-pills mb-3" id="pills-tab"
-                role="tablist">
-                <li className="nav-item">
-                    <a className="nav-link active" id="pills-home-tab"
-                       data-toggle="pill" href="#pills-home" role="tab"
-                       aria-controls="pills-home"
-                       aria-selected="true">Plan Trip</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" id="pills-profile-tab"
-                       data-toggle="pill" href="#pills-profile" role="tab"
-                       aria-controls="pills-profile"
-                       aria-selected="false">Distance Calculator</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link" id="pills-contact-tab"
-                       data-toggle="pill" href="#pills-contact" role="tab"
-                       aria-controls="pills-contact"
-                       aria-selected="false">About Us</a>
-                </li>
-            </ul>;
-        return(tabs);
-    }
- */
