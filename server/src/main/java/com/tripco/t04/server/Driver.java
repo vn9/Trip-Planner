@@ -148,6 +148,14 @@ public class Driver {
      * This method will print the Json created on the terminal or console to log.
      * Those places which matched will be added into places ArrayList.
      */
+    private int myLimit(){
+        if (limit == 0){
+            int aLimit = found;
+            return(aLimit);
+        } else{
+            return(limit);
+        }
+    }
 
     private void printJson(ResultSet count, ResultSet query, String match)
             throws SQLException {
@@ -162,7 +170,8 @@ public class Driver {
             query.beforeFirst();
         }
         int index = 0;
-        while (query.next()  && index < limit) {
+        int myLimit = myLimit();
+        while (query.next()  && index < myLimit) {
             final Place place = new Place(query.getString("id"),
                     query.getString("name"),
                     query.getString("latitude"),
