@@ -145,7 +145,7 @@ Epics planned for this sprint.
 
 #### What we need to work on
 
-*We need to work on being more responsive with requests. We also still need to improve with incremental development, pushing things so group members know where they are. We need to work on cleaning up our code before we merge into master.*
+*We need to work on being more responsive with requests and continue to improve with incremental development by pushing code so group members know where they are. We also need to work on cleaning up our code before we merge into master, instead of saying we'll clean it afterward.*
 
 #### What we will change next sprint 
 
