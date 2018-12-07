@@ -121,8 +121,9 @@ Epics planned for this sprint.
 
 *Describe what went well during the sprint in general terms followed by a more detailed list.*
 
-* *something*
-*
+* *We improved at cleaning code:  We wrote better code to start and also were better at cleaning up smells*
+* *We had smaller pull requests:  The pull requests we pushed were more specific to one issue instead of multiple*
+* *We had good direction:  This sprint we all sat down and made sure we were on the same page going forward.  Also, we had our best picture yet for reference.*
 
 #### Problems Encountered and Resolutions
 
