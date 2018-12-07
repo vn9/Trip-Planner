@@ -78,7 +78,7 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *8* | ** |
+| Epics | *8* | *6* |
 | Tasks |  *20*   | *28* | 
 | Story Points |  *28*  | *37* | 
 
@@ -96,6 +96,7 @@ Epics planned for this sprint.
 | *11/28* | *None*| *#370, #389, #493, #495, #496, #497, #504, #506, #508, #509* | *Continue working on 3-opt and inspect bugs are our next step* |
 | *11/30* | *#495, #504, #508*| *#370, #389, #493, #496, #497, #506, #509* | *Test and implement 3-opt to get the correct outputs before next week deadline will be our next goal* | 
 | *12/03* | *#505, #506, #507, #509, #510, #531, #539*| *#370, #389, #493, #496, #497, #542, #545, #546, #547* | *Continue testing and fixing bugs that we found in the old code. Reduce the amount of smell codes along with refactor to avoid Cognitive Complexity to produce a clean and friendly application are our goal* | 
+| *12/05* | *#493, #496, #497, #545, #546*| *#370, #389, #547* | *Find and fix bugs along with refactor old code to maintain clean code before deploying are our last goal.* | 
 
 *Add a new row for the scrum session after each lecture. *
 
@@ -107,15 +108,20 @@ Epics planned for this sprint.
 
 *Describe the solution based on the completed epics and list the epics below.*
 
-* * #205 TripCo: All code must be tested: minimum 50% coverage, preferred 70% coverage*
-*
+* * #205 TripCo: All code must be tested: minimum 50% coverage, preferred 70% coverage: We added more tests for client and server*
+* * #361 User: I want to view my trip in other tools: Users would be able to download either svg or kml map, then upload to Google Map*
+* * #363 User: I want the shortest trips possible: We implemented 3-opt*
+* * #419 User: I want an interactive map: Using Leaftlet in our project is a solution*
+* * #487 User: Make the system easier to use: We reorganize our user interface for a fresh nice look*
+* * #488 User: I want to know who to thank for this application: We added an About Us tab that listed what does the application do and our team members short information plus creative profile pictures*
+
 
 #### Incomplete Epics in Sprint Backlog 
 
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
-* *## epic title: explanation*
-*
+* * #124 TripCo: All code shall be clean: Most of our code are not clean because we have so many similar codes which are differ by a tiny string, but we do not know how to refactor that. Also, one of the big problem we did not know how to reduce the cognitive complexity of three opt without breaking the optimization.*
+* * #362 User: I want trip planning to be fast: Our trip planning is significantly fast when planning the trip; hence, we decided to implement shortest path possible while checking and fixing on our current code.*
 
 #### What Went Well
 
