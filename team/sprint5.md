@@ -121,7 +121,7 @@ Epics planned for this sprint.
 *Describe capabilities not included in the release and list the epics below with an explanation.*
 
 * * #124 TripCo: All code shall be clean: Most of our code are not clean because we have so many similar codes which are differ by a tiny string, but we do not know how to refactor that. Also, one of the big problem we did not know how to reduce the cognitive complexity of three opt without breaking the optimization.*
-* * #362 User: I want trip planning to be fast: Most of our available time was spent implementing and cleaning up 3opt. Our goal of adding concurrency was not met due to lack of time spents towards that objective.*
+* * #362 User: I want trip planning to be fast: Most of our available time was spent implementing and cleaning up 3opt. Our goal of adding concurrency was not met due to lack of time spent towards that objective.*
 
 #### What Went Well
 
