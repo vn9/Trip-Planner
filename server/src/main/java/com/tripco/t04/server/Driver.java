@@ -78,10 +78,13 @@ public class Driver {
         String myMatch = "";
         if (match.equals("")) {
             return (myMatch);
-        } else { myMatch = " country.name LIKE '%" + match + "%' " + "OR world_airports.municipality LIKE '%" + match
-                + "%' OR world_airports.name LIKE '%" + match + "%' " + "OR continents.name LIKE '%" + match
-                + "%' " + "OR region.name LIKE '%" + match + "%' OR world_airports.type LIKE '%" + match +
-                "%' OR world_airports.id LIKE '%" + match + "%' ";
+        } else { myMatch = " country.name LIKE '%" + match + "%' "
+                + "OR world_airports.municipality LIKE '%" + match
+                + "%' OR world_airports.name LIKE '%" + match + "%' "
+                + "OR continents.name LIKE '%" + match
+                + "%' " + "OR region.name LIKE '%" + match
+                + "%' OR world_airports.type LIKE '%" + match
+                + "%' OR world_airports.id LIKE '%" + match + "%' ";
             return (myMatch);
         }
     }
@@ -107,20 +110,20 @@ public class Driver {
         String myFilters = getFilterQueryString(filters);
         String myLimit = getLimitString(limit);
         String myQuery = getMyQueryString(myMatch, myFilters);
-        //String myQuery = getQueryString(myFilters, myMatch);
 
         count = "SELECT count(*) FROM world_airports";
-        search = "SELECT world_airports.id, world_airports.name, world_airports.municipality, " +
-                "world_airports.latitude, world_airports.longitude, country.name, continents.name, world_airports.type, " +
-                "region.name FROM continents INNER JOIN country ON continents.id = country.continent " +
-                "INNER JOIN region ON country.id = region.iso_country " +
-                "INNER JOIN world_airports ON region.id = world_airports.iso_region "
-                + myQuery +
-                " ORDER BY continents.name, country.name, region.name, world_airports.name ASC ";
-                //+ myLimit;
+        search = "SELECT world_airports.id, world_airports.name, world_airports.municipality, "
+                + "world_airports.latitude, world_airports.longitude, country.name, "
+                + "continents.name, world_airports.type, region.name FROM continents "
+                + "INNER JOIN country ON continents.id = country.continent "
+                + "INNER JOIN region ON country.id = region.iso_country "
+                + "INNER JOIN world_airports ON region.id = world_airports.iso_region "
+                + myQuery
+                + " ORDER BY continents.name, country.name, region.name, world_airports.name ASC ";
 
         /** Note that if the variable isn't defined, System.getenv will return null.
-         *  When test on own computer, make sure set up "export CS314_ENV=development" in .bash_profile for Mac or .bashrc for linux.
+         *  When test on own computer, make sure set up "export CS314_ENV=development"
+         *  in .bash_profile for Mac or .bashrc for linux.
          *  Then make sure the ssh -L 5655:faure:3306 -N <username>@<cs-machine> be the same port here (5655)
          */
         String isDevelopment = System.getenv("CS314_ENV");

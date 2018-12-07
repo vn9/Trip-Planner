@@ -59,14 +59,19 @@ public class ThreeOpt extends Optimize {
         }
     }
 
-    private void optCaseStore(long[] optCase, long[][] latice, int[] candidate, int a1, int a2, int b1, int b2, int c1, int c2){
+    private void optCaseStore(long[] optCase, long[][] latice, int[] candidate, int a1,
+                              int a2, int b1, int b2, int c1, int c2){
         optCase[0] = -latice[a1][a2] - latice[c1][c2] + latice[a1][c1] + latice[a2][c2];
         optCase[1] = -latice[a1][a2] - latice[b1][b2] + latice[a1][b1] + latice[a2][b2];
         optCase[2] = -latice[b1][b2] - latice[c1][c2] + latice[b1][c1] + latice[b2][c2];
-        optCase[3] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b1] + latice[a2][c1] + latice[b2][c2];
-        optCase[4] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][c1] + latice[b2][a2] + latice[b1][c2];
-        optCase[5] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b2] + latice[c1][b1] + latice[a2][c2];
-        optCase[6] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2] + latice[a1][b2] + latice[c1][a2] + latice[b1][c2];
+        optCase[3] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2]
+                + latice[a1][b1] + latice[a2][c1] + latice[b2][c2];
+        optCase[4] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2]
+                + latice[a1][c1] + latice[b2][a2] + latice[b1][c2];
+        optCase[5] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2]
+                + latice[a1][b2] + latice[c1][b1] + latice[a2][c2];
+        optCase[6] = -latice[a1][a2] - latice[b1][b2] - latice[c1][c2]
+                + latice[a1][b2] + latice[c1][a2] + latice[b1][c2];
     }
 
     private long checkTwoOptCase(long[] optCase, int[] candidate, long minDist, int[] ijk){
