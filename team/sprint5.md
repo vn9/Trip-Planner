@@ -133,7 +133,7 @@ Epics planned for this sprint.
 
 ## Retrospective
 
-*An introductory paragraph for your retrospective.*
+*We had a pretty successful sprint. A lot of time was spent on making our UI more user-friendly and fixing bugs we discovered through testing our client. We struggled in making sure our code was clean before our pull requests were merged with our master. This lead to a lot of time wasted retracing our steps.*
 
 #### What we changed this sprint
 
@@ -145,8 +145,8 @@ Epics planned for this sprint.
 
 #### What we need to work on
 
-*Articulate things you could improve at the end of the sprint.*
+*We need to work on being more responsive with requests and continue to improve with incremental development by pushing code so group members know where they are. We also need to work on cleaning up our code before we merge into master, instead of saying we'll clean it afterward.*
 
 #### What we will change next sprint 
 
-*Articulate the one thing you will change for the next sprint and how you will accomplish that.*
+*If there was another sprint to be had, we would be better at advocating for our pull requests, so that when questions are asked about it, those quetsions can be answered and pull requests fulfilled.*
