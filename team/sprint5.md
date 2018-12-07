@@ -78,13 +78,13 @@ Epics planned for this sprint.
 
 | Statistic | Planned | Completed |
 | --- | ---: | ---: |
-| Epics | *28* | *total* |
-| Tasks |  *20*   | *total* | 
-| Story Points |  *28*  | *total* | 
+| Epics | *8* | ** |
+| Tasks |  *20*   | *28* | 
+| Story Points |  *28*  | *37* | 
 
-*Enter the `# Planned` at the beginning of the sprint.  Include a discussion of planning decisions based on the planned number of story points versus how many were completed in previous sprints.*
+*This sprint we decided to focus on epics that would be closely related to each other in order to perfect what we already have instead of trying to add new things.*
 
-*Enter the `# Completed` at the end of the sprint.  Include a discussion about any difference in the number planned versus completed tasks and story points.*
+*This sprint we ended up with more tasks and story points than planned because we found a lot of bugs in our code that we hadn't noticed before.*
 
 
 ## Scrums
@@ -128,8 +128,8 @@ Epics planned for this sprint.
 
 *Describe what problems occurred during the sprint in general terms followed by a more detailed list.*
 
-* *something*
-*
+* *API fiascos:  When our Sprint 5 test results came back we discovered that a lot of our code didn't meet TFFI specs, or was implemented incorrectly.  To fix this we made tasks for all the issues and people took them by group (eg. someone took the filters, another took the maps"*
+* *Smelly Code At End:  At the end of the sprint we had an important piece of code that was really smelly and we didn't want to compromise our code climate.  In the end we cleaned up as much code as we could to maintain our score and then merged the (less) smelly code.*
 
 ## Retrospective
 
