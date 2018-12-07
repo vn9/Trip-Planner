@@ -1,4 +1,5 @@
 package com.tripco.t04.planner;
+
 import com.tripco.t04.server.Driver;
 import com.tripco.t04.server.Filter;
 
@@ -20,7 +21,7 @@ public class Search {
     public List<Place> places;
 
     public Search(Integer version, String type,
-                   String match, List<Filter> filters, int limit, Integer found, List<Place> places){
+                  String match, List<Filter> filters, int limit, Integer found, List<Place> places) {
 
         this.version = version;
         this.type = type;
@@ -32,12 +33,13 @@ public class Search {
 
     }
 
-    /** Handles the response for an ArrayList of places object.
+    /**
+     * Handles the response for an ArrayList of places object.
      * Does the conversion from a Java class to a Json string.
      */
 
-    public void getPlaces () {
-        Driver myDriver = new Driver(this.match, this.limit,this.filters);
+    public void getPlaces() {
+        Driver myDriver = new Driver(this.match, this.limit, this.filters);
         myDriver.find(this.match, this.filters, this.limit);
         this.places = Driver.places;
         this.found = Driver.found;

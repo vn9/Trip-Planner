@@ -5,6 +5,7 @@ import java.util.ArrayList;
 //The Trip class supports TFFI so it can easily be converted to/from Json by Gson.
 
 public class Trip {
+
   // The variables in this class should reflect TFFI.
   public String type;
   public Integer version;
@@ -25,41 +26,46 @@ public class Trip {
       this.map = map;
   }
 
-  /** The top level method that does planning. At this point it just adds the map and distances
-   * for the places in order. It might need to reorder the places in the future.*/
-  public void plan(){
-      if(options.optimization != null){ 
-        kOpt(); 
-      }
-      if(options.map != null) { 
-        whichMap(); 
-      }
-      else{ //default svg if map attribute inside options is not specified.
-          Map myMap = new Map(places);
-          this.map = myMap.svg();
-      }
-      this.distances = legDistances();
-  }
+    /**
+     * The top level method that does planning. At this point it just adds the map and distances
+     * for the places in order. It might need to reorder the places in the future.
+     */
+    public void plan() {
+        if (options.optimization != null) {
+            kOpt();
+        }
+        if (options.map != null) {
+            whichMap();
+        } else { //default svg if map attribute inside options is not specified.
+            Map myMap = new Map(places);
+            this.map = myMap.svg();
+        }
+        this.distances = legDistances();
+    }
 
-  private void kOpt(){
-      Optimize opt = null;
-      if(options.optimization.equals("short")){ 
-        opt = new NearestNeighbor(places, distanceLatice());
-      }
-      else if (options.optimization.equals("shorter")){
-        opt = new TwoOpt(places, distanceLatice()); //follow meeeeeeeee
-      }
-      if(opt != null)
-        places = opt.begin();
-  }
+    private void kOpt() {
+        Optimize opt = null;
+        if (options.optimization.equals("short")) {
+            opt = new NearestNeighbor(places, distanceLatice());
+        } else if (options.optimization.equals("shorter")) {
+            opt = new TwoOpt(places, distanceLatice()); //follow meeeeeeeee
+        } else if (options.optimization.equals("shortest")) {
+            opt = new ThreeOpt(places, distanceLatice());
+        }
+        if (opt != null)
+            places = opt.begin();
+    }
 
-  private void whichMap(){
-      Map myMap = new Map(places);
-      if (options.map.equals("kml")){
-        this.map = myMap.kml(); 
-      } //kml
-      else{ this.map = myMap.svg(); }                          //svg
-  }
+    private void whichMap() {
+        Map myMap = new Map(places);
+        if (options.map.equals("kml")) {
+            this.map = myMap.kml();
+        } //kml
+        else {
+            this.map = myMap.svg();
+        }                          //svg
+    }
+
 
   /**
    * The function calculates the destination between two points
@@ -91,8 +97,8 @@ public class Trip {
   }
 
 
-  private Long[][] distanceLatice () {
-      Long[][] latice = new Long[places.size()][places.size()];
+  private long[][] distanceLatice(){
+      long[][] latice = new long[places.size()][places.size()];
       String units = options.units;
       String unitName = null;
       Double unitRadius = null;

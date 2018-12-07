@@ -2,13 +2,15 @@ package com.tripco.t04.planner;
 
 import java.util.ArrayList;
 
-public class NearestNeighbor extends Optimize{
-    NearestNeighbor(ArrayList<Place> places, Long[][] latice){
+
+public class NearestNeighbor extends Optimize {
+    NearestNeighbor(ArrayList<Place> places, long[][] latice) {
         super(places, latice);
     }
 
-    private int neighbor ( int[] indices, int from){
-        Long min = Long.MAX_VALUE;
+    private int neighbor(int[] indices, int from) {
+        long min = Long.MAX_VALUE;
+
         int j = -1;
         for (int i = from; i < places.size(); i++) {
             Long distance = latice[indices[from - 1]][indices[i]];
@@ -23,16 +25,23 @@ public class NearestNeighbor extends Optimize{
         return j; //returns index of nearest neighbor
     }
 
-    protected Long optimizer(int[] candidate){
-        Long Total = (long)0;
+
+    @Override
+    protected long optimizer(int[] candidate) {
+        long total = (long)0;
         for (int i = 1; i < candidate.length; i++) {//for all start points
             int nearestIndex = neighbor(candidate, i);
             Long dist = latice[candidate[i - 1]][candidate[nearestIndex]];
-            Total += dist;
+            total += dist;
             swap(candidate, i, nearestIndex);
         }
         //System.out.println(bestTotal);
-        Total = Total + latice[candidate[0]][candidate[candidate.length - 1]];
-        return Total;
+        total = total + latice[candidate[0]][candidate[candidate.length - 1]];
+        return total;
+    }
+
+
+    protected long iterate(int[] candidate, long minDist, long[][] latice) {
+        return 0;
     }
 }
